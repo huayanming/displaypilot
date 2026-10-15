@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DisplayPilot · macOS 显示器控制台</title>
+<meta name="description" content="原生 macOS 外接显示器控制台：逐帧平滑滚动、CoreGraphics 伽马表软件调光、按面板原始曲线校准色彩，还带安全清理与会话恢复。99 元买断。">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<!--
+  下载地址占位。上线前把 github.com/huayanming/displaypilot/releases 换成 Cloudflare R2 的公开域名
+  （见 Docs/deploy-guide.md 第 3 步与第 7 步）。
+  这个地址只在本文件出现一次；站点其它页面不要另写一份。
+-->
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<main id="main">
+
+  <!-- 1. Hero -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="brand"><img src="img/icon.png" alt="" width="28" height="28">DisplayPilot</p>
+      <h1>滚轮、亮度、色彩，都调成顺手的样子</h1>
+      <p class="lede">
+        原生 macOS 显示器控制台。滚轮的一格拆成一段逐帧投递的连续滚动；
+        亮度走 CoreGraphics 伽马表，显示器固件不支持 DDC/CI 也照样能调；
+        色彩以面板原始曲线为基准换算，随时一键交回系统。
+      </p>
+      <p class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/huayanming/displaypilot/releases/download/v5.0.0/DisplayPilot-5.0.0.dmg">下载 macOS 版</a>
+        <a class="btn btn-quiet" href="#price">14 天免费试用，99 元买断</a>
+      </p>
+      <p class="spec-line">macOS 14 或更高 · Apple 芯片与 Intel 通用 · 不注册也能用</p>
+    </div>
+    <figure class="hero-shot">
+      <img src="img/display.webp" width="700" height="1552"
+           alt="DisplayPilot 的「显示」面板：顶部是显示器型号与链路信息，下面是软件调光推子，再下面是色彩校准的对比度、伽马、色温三条推子，以及从 EDID 读出的色域三角。">
+    </figure>
+  </section>
+
+  <!-- 2. 核心功能 -->
+  <section class="features">
+    <header class="sec-head">
+      <h2>核心功能</h2>
+      <p>不是把系统设置里的开关换个地方摆，而是做系统没做的那几件事。</p>
+    </header>
+
+    <div class="grid">
+      <article class="card">
+        <h3>丝滑滚动</h3>
+        <p>滚轮的一格不再是「一跳」，而是逐帧投递的一段连续滚动。按时间衰减，60Hz 和 144Hz 手感一致。</p>
+        <p class="more">看图、PPT、地图这类把滚轮当缩放的窗口会自动交回系统，不被平滑放大；按住 ⌘ 随时回到原生滚动。</p>
+      </article>
+
+      <article class="card">
+        <h3>软件调光</h3>
+        <p>用 CoreGraphics 伽马表压暗画面，不依赖面板固件——不支持 DDC/CI 的显示器也能用。</p>
+        <p class="more">进程退出后系统自动还原，屏幕不会留在黑暗里；还有一条不依赖应用运行的恢复路径。</p>
+      </article>
+
+      <article class="card">
+        <h3>色彩校准</h3>
+        <p>对比度、伽马、色温都以面板的原始曲线为基准换算，反复拖动不叠加误差。</p>
+        <p class="more">6500K 被锚定为恒等变换，默认状态就是显示器本来的样子；一键交回系统 ColorSync 校准。</p>
+      </article>
+
+      <article class="card">
+        <h3>安全清理</h3>
+        <p>只处理 13 类有确定性重建方式的产物，先移进隔离区，30 天后才允许永久删除。</p>
+        <p class="more">全应用只有一个函数能真正删文件，且必须先核对内容摘要；不申请全盘访问，受系统保护的目录直接跳过。</p>
+      </article>
+
+      <article class="card">
+        <h3>会话恢复</h3>
+        <p>把显示器、窗口、音频、滚动、鼠标与护眼设置存成一张具名快照，换环境时逐域还原。</p>
+        <p class="more">恢复前先列出将要改变的内容，确认后才执行；某个域不可用就单独跳过，不会整体失败。</p>
+      </article>
+
+      <article class="card">
+        <h3>输入源与硬件通道</h3>
+        <p>显示器支持 DDC/CI 时，切 HDMI / DisplayPort 输入源不用去摸 OSD 按钮。</p>
+        <p class="more">不支持就如实标出「DDC 无应答」，并继续用软件通道工作——不假装能做到。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3. 截图 -->
+  <section class="shots">
+    <header class="sec-head">
+      <h2>一块校准台，不是一排开关</h2>
+      <p>13 个板块共用同一套读数语言：大号数值、带刻度的推子、写清楚后果的动作按钮。</p>
+    </header>
+
+    <div class="shot-row">
+      <figure>
+        <img src="img/scroll.webp" width="700" height="1552" loading="lazy"
+             alt="滚动面板：顶部显示滚动平滑状态与四层实时计数，下面是安全模式开关和 21 条内置缩放应用库。">
+        <figcaption>滚动：看到／手势／拦截／投递四层计数就在界面上，卡在哪一层一眼看得出。</figcaption>
+      </figure>
+      <figure>
+        <img src="img/display.webp" width="700" height="1552" loading="lazy"
+             alt="显示面板：软件调光推子显示 100%，下方是色彩校准的对比度、伽马与色温，以及色域覆盖率。">
+        <figcaption>显示：调光与校准共用一套基准，所以两条通道不会互相污染。</figcaption>
+      </figure>
+      <figure>
+        <img src="img/storage.webp" width="700" height="1552" loading="lazy"
+             alt="存储面板：磁盘总览、系统数据拆解、个人文件夹、大文件定位与可清理项，底部写着扫描只读、清理只进隔离区。">
+        <figcaption>存储：扫描只读，删除只在隔离区之后发生，而且永远需要你单独确认。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 4. 价格 -->
+  <section class="price" id="price">
+    <header class="sec-head">
+      <h2>价格</h2>
+      <p>一次买断，包含一年更新。没有订阅，没有账号，没有「按设备数」的算法。</p>
+    </header>
+
+    <div class="price-plate">
+      <p class="price-readout"><span class="num tid">99</span><span class="unit">元</span></p>
+      <p class="price-label">一次买断 · 包含一年更新</p>
+      <p class="cta-row">
+        <a class="btn btn-primary" href="https://huayanming.github.io/displaypilot/#buy">去购买</a>
+      </p>
+      <ul class="ticks">
+        <li>14 天免费试用，试用期内功能不阉割</li>
+        <li>买断后永久可用，一年内的新版本免费</li>
+        <li>一年之后仍然能用当前版本，想继续拿更新再续</li>
+        <li>试用结束只暂停 5 项增强功能；还原画面、交回系统校准、退出这些恢复操作永不收费</li>
+        <li>支付、发票与全球增值税由 Lemon Squeezy 作为商户处理</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. 系统要求 -->
+  <section class="req">
+    <header class="sec-head">
+      <h2>系统要求</h2>
+    </header>
+    <dl class="req-list">
+      <div><dt>系统</dt><dd>macOS 14 Sonoma 或更高</dd></div>
+      <div><dt>机型</dt><dd>Apple 芯片与 Intel 通用二进制，一个包跑两种</dd></div>
+      <div><dt>安装包</dt><dd>无第三方依赖，不装后台服务，不写入系统级组件</dd></div>
+      <div><dt>权限</dt><dd>辅助功能权限只有滚动平滑、鼠标映射与窗口布局需要；亮度、色彩、音频不受影响</dd></div>
+      <div><dt>联网</dt><dd>不联网也能用。只有两件事会联网：检查更新（默认关闭）、校验许可（激活之后才有）</dd></div>
+    </dl>
+  </section>
+
+</main>
+
+<!-- 6. 页脚 -->
+<footer>
+  <p class="foot-links">
+    <a href="privacy.html">隐私政策</a>
+    <a href="eula.html">许可协议</a>
+    <a href="support.html">支持</a>
+    <!-- 联系邮箱占位：上线前换成真实邮箱 -->
+    <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+  </p>
+  <p class="foot-note">本页没有跟踪脚本、没有 Cookie、没有第三方字体，也没有一个会发出去的请求。</p>
+  <p class="foot-copy">© 2026 DisplayPilot</p>
+</footer>
+
+</body>
+</html>
