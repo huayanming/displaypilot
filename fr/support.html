@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assistance · DisplayPilot</title>
+<meta name="description" content="Assistance et FAQ DisplayPilot : DDC ne répond pas, conflits avec Mos, restaurer l'état d'origine de l'écran, ce qui fonctionne encore après l'essai, état actuel du canal d'achat et sûreté du nettoyage.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/fr/support.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/support.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/support.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/support.html">
+<link rel="alternate" hreflang="ja" href="https://huayanming.github.io/displaypilot/ja/support.html">
+<link rel="alternate" hreflang="ko" href="https://huayanming.github.io/displaypilot/ko/support.html">
+<link rel="alternate" hreflang="de" href="https://huayanming.github.io/displaypilot/de/support.html">
+<link rel="alternate" hreflang="fr" href="https://huayanming.github.io/displaypilot/fr/support.html">
+<link rel="alternate" hreflang="es" href="https://huayanming.github.io/displaypilot/es/support.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/support.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Assistance · DisplayPilot">
+<meta property="og:description" content="Assistance et FAQ DisplayPilot : DDC ne répond pas, conflits avec Mos, restaurer l'état d'origine de l'écran, ce qui fonctionne encore après l'essai, état actuel du canal d'achat et sûreté du nettoyage.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/fr/support.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/display.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu principal</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html#features">Fonctions</a>
+      <a href="index.html#price">Tarif</a>
+      <a href="support.html">Assistance</a>
+    </nav>
+    <details class="lang"><summary>Français</summary><ul class="lang-menu" aria-label="Langue"><li><a href="../support.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/support.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/support.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/support.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/support.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/support.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/support.html" aria-current="true" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/support.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Télécharger</a>
+  </div>
+</header>
+<main id="main">
+<article class="doc">
+  <h1>Assistance</h1>
+  <p class="updated">Dernière mise à jour : 16 octobre 2026</p>
+  <p class="summary">Consultez d'abord la FAQ ci-dessous. Si vous devez poser une question, utilisez dans l'appli <strong>Général → À propos → Signaler un problème</strong> pour générer les informations de diagnostic, relisez-les vous-même, puis publiez-les avec une description du problème sur <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a> — c'est actuellement le seul canal d'assistance. L'appli <strong>ne collecte ni ne transmet jamais rien automatiquement</strong>.</p>
+  <h2>Questions fréquentes</h2>
+  <h3>1. Pourquoi mon écran affiche-t-il « DDC ne répond pas » ?</h3>
+  <p>Parce que cette dalle n'implémente pas DDC/CI (le jeu de commandes de contrôle d'écran). Ce n'est pas un problème de l'appli : certains écrans, téléviseurs, stations d'accueil et adaptateurs ne répondent tout simplement pas à ces commandes, et l'UP32R7-A que nous utilisons pour les tests en fait partie.</p>
+  <p>Dans ce cas, la luminosité, le volume matériels et le basculement de source ne sont pas disponibles. L'appli signale clairement « DDC ne répond pas » et confie automatiquement la luminosité à la <strong>gradation logicielle</strong> (assombrissement de l'image via la table gamma CoreGraphics). La gradation logicielle assombrit aussi l'écran, mais ne modifie pas le courant du rétroéclairage : l'économie d'énergie diffère donc de la gradation matérielle.</p>
+  <h3>2. Que faire si le défilement fluide entre en conflit avec Mos ou Mac Mouse Fix ?</h3>
+  <p>Ces outils lissent le défilement en interceptant les événements de molette, et <strong>deux d'entre eux activés en même temps avalent mutuellement leurs entrées de molette</strong>. L'appli détecte les outils similaires au lancement et en cours d'exécution, et signale le conflit. Pour le résoudre, choisissez l'une de ces options :</p>
+  <ul><li>ne garder qu'un seul outil de lissage ;</li><li>désactiver le lissage du défilement dans le panneau « Défilement » de cette appli, ou désactiver l'autre outil ;</li><li>garder les deux et utiliser le <strong>mode sans échec</strong> : maintenir ⌘ en défilant rend temporairement la main au système, et les fenêtres qui utilisent la molette comme zoom (visionneuses d'images, diaporamas, cartes) sont rendues automatiquement au système.</li></ul>
+  <h3>3. Comment restaurer l'état d'origine de mon écran ?</h3>
+  <p>Du plus léger au plus lourd, dans cet ordre :</p>
+  <ol><li><strong>Restauration dans l'appli</strong> : panneau « Écran », en bas → « Restaurer cet écran » ou « Rendre à la calibration système ». Les deux sont aussi dans le menu de l'icône de la barre des menus.</li><li><strong>Sans l'appli</strong> : dans le Terminal, exécutez <code>bash Scripts/restore-dimming.sh</code>. Cela réécrit la luminosité, la température de couleur et les préréglages à des valeurs neutres, <strong>sans que l'appli ait besoin de tourner</strong>.</li><li><strong>Disposition d'écran bloquée / écran externe non détecté</strong> : un mot de passe administrateur est nécessaire. Supprimez la configuration d'écran au niveau système puis redémarrez : <pre><code>sudo rm /Library/Preferences/com.apple.windowserver.displays.plist
+rm -f ~/Library/Preferences/ByHost/com.apple.windowserver.displays.*.plist
+sudo shutdown -r now</code></pre><strong>Supprimer uniquement le niveau utilisateur ne suffit pas</strong> — c'est bien le fichier système qui stocke la disposition, et un redémarrage est obligatoire ensuite.</li><li><strong>Si vous ne pouvez plus du tout entrer dans le système</strong> : éteignez → maintenez le bouton d'alimentation → Options → Terminal, puis exécutez <code>emergency-restore-display.sh</code> (dans le dossier Scripts du dossier d'installation).</li></ol>
+  <p>Ces voies de récupération sont délibérément conçues pour ne pas dépendre de l'appli. Nous avons nous-mêmes réussi à rendre un écran noir pendant les tests : pouvoir toujours récupérer est donc une exigence forte du produit, pas un bonus.</p>
+  <h3>4. Que reste-t-il utilisable après la fin de l'essai ?</h3>
+  <p>Pendant les 14 jours d'essai, toutes les fonctions sont disponibles. Après l'essai, <strong>seules 5 fonctions d'extension se mettent en pause</strong> : le lissage du défilement, la correspondance des boutons de souris, le programme de confort visuel, les règles d'automatisation, et l'enregistrement/restauration de session.</p>
+  <p><strong>Les opérations de récupération restent toujours disponibles et ne dépendent jamais d'une connexion réseau</strong> : restaurer cet écran, rendre à la calibration système, veille de l'écran, quitter, la page de licence, la page À propos et l'entrée de désinstallation/réinitialisation. Autrement dit, un essai expiré ne vous enfermera jamais devant un écran impossible à restaurer.</p>
+  <h3>5. Puis-je acheter ou activer maintenant ?</h3>
+  <p class="callout"><strong>Pas encore.</strong> L'achat, l'activation et les remboursements doivent être pris en charge par Lemon Squeezy en tant que marchand enregistré, mais le canal marchand n'est pas ouvert : <strong>il n'existe aujourd'hui aucun point d'entrée de paiement, et l'activation ne peut pas être menée à bien dans l'appli</strong>. D'ici l'ouverture : pendant l'essai, tout est disponible ; après l'essai, seules les 5 fonctions ci-dessus se mettent en pause, et les opérations de récupération restent toujours accessibles. L'annonce de l'ouverture figurera dans les notes de version sur <a href="https://github.com/huayanming/displaypilot/releases">GitHub Releases</a>.</p>
+  <p>Une fois le canal ouvert, le passage à un nouveau Mac se déroule ainsi : sur le nouveau Mac, ouvrez Général → Licence, saisissez la clé de licence de l'e-mail d'achat et activez. Si l'appli indique que tous les emplacements sont pris, cliquez sur « Désactiver » sur la même page de l'ancien Mac pour en libérer un, puis activez sur le nouveau Mac — la désactivation ne retire que la licence de cette machine et n'affecte pas votre achat. Le nombre d'activations simultanées est fixé par le service de licence et indiqué sur la page d'achat.</p>
+  <h3>6. Le nettoyage peut-il supprimer la mauvaise chose ?</h3>
+  <p>La conception vise à rendre « supprimer la mauvaise chose » aussi improbable que possible :</p>
+  <ul><li>seules <strong>13 catégories d'artefacts à reconstruction déterministe</strong> sont traitées (Xcode DerivedData, SwiftPM, CocoaPods, npm/pnpm/Yarn, Go, Gradle, <code>__pycache__</code>, Rust target, rapports de plantage, caches Homebrew, etc.) ;</li><li><strong>jamais concernés par le nettoyage</strong> : Documents, Bureau, Téléchargements, Images, Films, Musique, préférences, Application Support, trousseau, Mail, Messages, Safari ;</li><li>avant suppression, les fichiers sont <strong>d'abord déplacés en quarantaine</strong>, conservés 30 jours par défaut et restaurables à tout moment ;</li><li>la suppression définitive n'existe pas par défaut : une seule fonction dans l'appli peut supprimer définitivement et exige six conditions simultanées — une seule manque et elle s'arrête ;</li><li>les règles d'automatisation peuvent <strong>pré-analyser, jamais supprimer</strong>.</li></ul>
+  <h3>7. Collectez-vous automatiquement des informations sur moi ?</h3>
+  <p><strong>Non.</strong> L'appli n'a ni télémétrie ni analyse d'audience, ne téléverse ni données d'usage ni journaux de plantage automatiquement. Ce que génère « Signaler un problème » reste sur votre Mac et doit être copié ou envoyé à la main. Seules trois choses atteignent le réseau : la recherche de mises à jour (désactivée par défaut), la vérification de licence (uniquement une fois le canal ouvert et l'activation faite) et l'ouverture d'une page web quand vous cliquez vous-même. Voir la <a href="privacy.html">politique de confidentialité</a>.</p>
+  <h2>Comment signaler un problème</h2>
+  <ol><li>Ouvrez Général → À propos → Signaler un problème et cliquez pour générer les informations de diagnostic ;</li><li><strong>relisez-les vous-même</strong> (les numéros de série, noms d'utilisateur, chemins de fichiers et clés de licence sont retirés, mais vérifiez quand même) ;</li><li>cliquez sur « Copier dans le presse-papiers », puis <a href="https://github.com/huayanming/displaypilot/issues/new">ouvrez une nouvelle issue sur GitHub</a> et collez le tout avec la description du problème.</li></ol>
+  <h3>Joindre un journal de plantage (si l'appli a planté)</h3>
+  <ol><li>ouvrez <strong>Applications → Utilitaires → Console</strong> ;</li><li>choisissez « Rapports de plantage » dans la barre latérale ;</li><li>trouvez l'entrée DisplayPilot, clic droit → Afficher dans le Finder ;</li><li>glissez le fichier <code>.ips</code> correspondant à l'horodatage dans l'issue en pièce jointe.</li></ol>
+  <p>L'emplacement habituel des journaux est <code>~/Library/Logs/DiagnosticReports/</code>.</p>
+  <h2>Ce que nous ne pouvons pas faire</h2>
+  <ul><li>fournir la luminosité, le volume ou le basculement de source matériels sur un écran sans DDC/CI ;</li><li>garantir que la gradation logicielle rend exactement comme la gradation matérielle ;</li><li>piloter à votre place la disposition d'écran de macOS — la récupération doit suivre les étapes ci-dessus ;</li><li>traiter un remboursement pour l'instant — non par mauvaise volonté, mais parce que <strong>le canal d'achat n'est pas ouvert et qu'aucune transaction n'a eu lieu</strong>. Une fois ouvert, les remboursements seront assurés par Lemon Squeezy en tant que marchand enregistré.</li></ul>
+  <a class="back" href="index.html">← Retour à l'accueil</a>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Confidentialité</a>
+      <a href="eula.html">Licence</a>
+      <a href="support.html">Assistance</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions et retours · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

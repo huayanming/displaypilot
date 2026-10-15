@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サポート · DisplayPilot</title>
+<meta name="description" content="DisplayPilot のサポートとよくある質問：DDC 応答なし、Mos との競合、ディスプレイを元の状態に戻す方法、トライアル終了後に使える機能、購入チャンネルの現在の状態、クリーンアップの安全性。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/ja/support.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/support.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/support.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/support.html">
+<link rel="alternate" hreflang="ja" href="https://huayanming.github.io/displaypilot/ja/support.html">
+<link rel="alternate" hreflang="ko" href="https://huayanming.github.io/displaypilot/ko/support.html">
+<link rel="alternate" hreflang="de" href="https://huayanming.github.io/displaypilot/de/support.html">
+<link rel="alternate" hreflang="fr" href="https://huayanming.github.io/displaypilot/fr/support.html">
+<link rel="alternate" hreflang="es" href="https://huayanming.github.io/displaypilot/es/support.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/support.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="サポート · DisplayPilot">
+<meta property="og:description" content="DisplayPilot のサポートとよくある質問：DDC 応答なし、Mos との競合、ディスプレイを元の状態に戻す方法、トライアル終了後に使える機能、購入チャンネルの現在の状態、クリーンアップの安全性。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/ja/support.html">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/display.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">メイン コンテンツへスキップ</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="メイン ナビゲーション">
+      <a href="index.html#features">機能</a>
+      <a href="index.html#price">価格</a>
+      <a href="support.html">サポート</a>
+    </nav>
+    <details class="lang"><summary>日本語</summary><ul class="lang-menu" aria-label="言語"><li><a href="../support.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/support.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/support.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/support.html" aria-current="true" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/support.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/support.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/support.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/support.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">ダウンロード</a>
+  </div>
+</header>
+<main id="main">
+<article class="doc">
+  <h1>サポート</h1>
+  <p class="updated">最終更新：2026 年 10 月 16 日</p>
+  <p class="summary">まず下のよくある質問をご確認ください。質問が必要なときは、アプリ内の<strong>「一般 → 情報 → 問題を報告」</strong>で診断情報を生成し、ご自身で目を通したうえで、問題の説明とともに <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a> へ投稿してください — 現在これが唯一のサポート窓口です。アプリが<strong>自動で何かを収集・送信することはありません</strong>。</p>
+  <h2>よくある質問</h2>
+  <h3>1. ディスプレイが「DDC 応答なし」になるのはなぜですか？</h3>
+  <p>そのパネルが DDC/CI（ディスプレイ制御コマンド セット）を実装していないためです。アプリの問題ではありません。ディスプレイ、テレビ、ドック、変換アダプターのなかには、この種のコマンドにまったく応答しないものがあり、テストに使っている UP32R7-A もその 1 つです。</p>
+  <p>この場合、ハードウェアの明るさ、ハードウェアの音量、入力ソースの切り替えは使えません。アプリは「DDC 応答なし」と明確に表示し、明るさを自動的に<strong>ソフトウェア調光</strong>（CoreGraphics ガンマテーブルで画面を暗くする方式）へ引き渡します。ソフトウェア調光でも画面は暗くできますが、パネルのバックライト電流は変えないため、消費電力の削減幅はハードウェア調光とは異なります。</p>
+  <h3>2. スクロール スムージングが Mos / Mac Mouse Fix と競合したら？</h3>
+  <p>これらのツールはいずれもホイール イベントを横取りしてスムージングするため、<strong>同時に有効にすると互いのホイール入力を飲み込み合います</strong>。アプリは起動時と動作中に同種のツールを検出し、競合を警告します。対処は次のいずれかです。</p>
+  <ul><li>スムージング ツールを 1 つだけ残す。</li><li>本アプリの「スクロール」パネルでスクロール スムージングをオフにする、またはもう一方のツールをオフにする。</li><li>両方を残す場合は「セーフ モード」を使う：⌘ を押しながらのスクロールは一時的にシステムへ返し、画像ビューア、スライド、地図などホイールをズームとして扱うウィンドウも自動でシステムへ返します。</li></ul>
+  <h3>3. ディスプレイを元の状態に戻すには？</h3>
+  <p>軽いものから順に試してください。</p>
+  <ol><li><strong>アプリ内で復元</strong>：「ディスプレイ」パネル下部 →「このディスプレイを復元」または「システムのキャリブレーションへ返す」。メニュー バーのアイコンからも選べます。</li><li><strong>アプリに依存しない方法</strong>：ターミナルで <code>bash Scripts/restore-dimming.sh</code> を実行します。明るさ、色温度、プリセットを中立値に書き戻し、<strong>アプリが起動している必要はありません</strong>。</li><li><strong>ディスプレイ配置が固まった／外付けディスプレイが認識されない</strong>：管理者パスワードが必要です。システム レベルのディスプレイ設定を削除して再起動します：<pre><code>sudo rm /Library/Preferences/com.apple.windowserver.displays.plist
+rm -f ~/Library/Preferences/ByHost/com.apple.windowserver.displays.*.plist
+sudo shutdown -r now</code></pre><strong>ユーザー レベルの削除だけでは不十分</strong>です — ディスプレイ配置を実際に保存しているのはシステム レベルのファイルで、削除後は必ず再起動が必要です。</li><li><strong>システムに入れなくなった場合</strong>：電源を切る → 電源ボタンを長押し → オプション → ターミナルを開き、<code>emergency-restore-display.sh</code>（インストール先の Scripts 内）を実行します。</li></ol>
+  <p>これらの復旧経路は、意図的にアプリへ依存しない形で用意しています。当方もテスト中にディスプレイを真っ黒にしたことがあるため、「必ず復旧できる」ことは製品の必須要件であり、おまけの機能ではありません。</p>
+  <h3>4. トライアル終了後も使える機能は？</h3>
+  <p>14 日間のトライアル中はすべての機能が使えます。トライアル終了後に<strong>一時停止するのは 5 つの拡張機能だけ</strong>です — スクロール スムージング、マウス ボタンの割り当て、眼の保護スケジュール、自動化ルール、セッションの保存と復元。</p>
+  <p><strong>復旧系の操作は常に利用でき、ネット接続も必要としません</strong>：このディスプレイを復元、システムのキャリブレーションへ返す、ディスプレイのスリープ、終了、ライセンス ページ、情報ページ、アンインストール／リセットの入口。つまり、トライアル切れで復元できない画面に閉じ込められることはありません。</p>
+  <h3>5. 今すぐ購入・アクティベーションできますか？</h3>
+  <p class="callout"><strong>まだできません。</strong>購入、アクティベーション、返金は Lemon Squeezy がマーチャント・オブ・レコードとして担う予定ですが、販売チャンネルが開通していないため、<strong>現在利用できる支払い入口はなく、アプリ内でもアクティベーションを完了できません</strong>。開通までは、トライアル中はすべての機能が使え、終了後も上記 5 つの拡張機能だけが一時停止し、復旧系の操作は常に利用できます。開通の情報は <a href="https://github.com/huayanming/displaypilot/releases">GitHub Releases</a> のリリースノートに記載します。</p>
+  <p>開通後の新しい Mac への移行手順は次のとおりです。新しい Mac で「一般 → ライセンス」を開き、購入メールのライセンス キーを入力してアクティベーションします。枠が満杯と表示されたら、古い Mac の同じページで「非アクティベーション」を押して枠を解放し、新しい Mac で再度アクティベーションします — 非アクティベーションはそのマシンのライセンスを外すだけで、購入には影響しません。同時にアクティベーションできる台数はライセンス サービスが決め、購入ページに記載されます。</p>
+  <h3>6. クリーンアップが間違ったものを削除することはありませんか？</h3>
+  <p>「間違えて削除する」可能性をできるかぎり下げる設計にしています。</p>
+  <ul><li>対象は<strong>再生成の手順が確定している 13 種類</strong>の生成物のみ（Xcode DerivedData、SwiftPM、CocoaPods、npm/pnpm/Yarn、Go、Gradle、<code>__pycache__</code>、Rust target、クラッシュレポート、Homebrew キャッシュなど）。</li><li><strong>クリーンアップの対象に決してならないもの</strong>：書類、デスクトップ、ダウンロード、ピクチャ、ムービー、ミュージック、環境設定、Application Support、キーチェーン、メール、メッセージ、Safari。</li><li>削除の前に<strong>まず隔離領域へ移動</strong>し、既定で 30 日間保持、いつでも復元できます。</li><li>完全削除は既定で存在せず、アプリ全体でたった 1 つの関数だけが実行できます。6 つの条件を同時に満たす必要があり、1 つでも欠ければ中止します。</li><li>自動化ルールは<strong>事前スキャンのみで、削除はできません</strong>。</li></ul>
+  <h3>7. 情報を自動で収集していませんか？</h3>
+  <p><strong>していません。</strong>アプリはテレメトリも解析も行わず、使用データやクラッシュ ログを自動でアップロードしません。「問題を報告」で生成される内容はあなたの Mac 内にとどまり、手動でコピーまたは送信しなければ出ていきません。ネットワークに接続するのは 3 つだけです — アップデートの確認（既定でオフ）、ライセンスの確認（開通してアクティベーションしたあとのみ）、そしてご自身でクリックしたときにウェブ ページを開くこと。詳細は<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+  <h2>問題の報告方法</h2>
+  <ol><li>「一般 → 情報 → 問題を報告」を開き、クリックして診断情報を生成します。</li><li><strong>ご自身で内容を確認します</strong>（シリアル番号、ユーザー名、ファイル パス、ライセンス キーは除去されますが、それでも目を通してください）。</li><li>「クリップボードにコピー」を押し、<a href="https://github.com/huayanming/displaypilot/issues/new">GitHub で新しい issue を作成</a>して、問題の説明とともに貼り付けます。</li></ol>
+  <h3>クラッシュ ログの添付（アプリがクラッシュした場合）</h3>
+  <ol><li><strong>「アプリケーション → ユーティリティ → コンソール」</strong>を開きます。</li><li>左側で「クラッシュ レポート」を選びます。</li><li>DisplayPilot の項目を見つけ、右クリック → Finder で表示。</li><li>該当時刻の <code>.ips</code> ファイルをその issue に添付としてドラッグします。</li></ol>
+  <p>ログの一般的な場所は <code>~/Library/Logs/DiagnosticReports/</code> です。</p>
+  <h2>できないこと</h2>
+  <ul><li>DDC/CI に対応していないディスプレイで、ハードウェアの明るさ／音量／入力ソースを提供することはできません。</li><li>ソフトウェア調光とハードウェア調光の見え方が完全に一致することを保証はできません。</li><li>macOS のディスプレイ配置を代わりに操作することはできません。復旧は上記の手順に沿って行う必要があります。</li><li>現在は返金の手続きもできません — 前向きでないからではなく、<strong>購入チャンネルが開通しておらず、取引がまだ 1 件も発生していない</strong>ためです。開通後は Lemon Squeezy がマーチャント・オブ・レコードとして返金を実行します。</li></ul>
+  <a class="back" href="index.html">← ホームへ戻る</a>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="eula.html">ライセンス</a>
+      <a href="support.html">サポート</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">質問・フィードバック · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

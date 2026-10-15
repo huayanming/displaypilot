@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DisplayPilot · macOS 显示器控制台</title>
+<meta name="description" content="原生 macOS 显示器控制台：逐帧投递的平滑滚动、CoreGraphics 伽马表软件调光、以面板原始曲线为基准的色彩校准，以及先隔离再删除的安全清理。14 天免费试用。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/">
+<link rel="alternate" hreflang="ja" href="https://huayanming.github.io/displaypilot/ja/">
+<link rel="alternate" hreflang="ko" href="https://huayanming.github.io/displaypilot/ko/">
+<link rel="alternate" hreflang="de" href="https://huayanming.github.io/displaypilot/de/">
+<link rel="alternate" hreflang="fr" href="https://huayanming.github.io/displaypilot/fr/">
+<link rel="alternate" hreflang="es" href="https://huayanming.github.io/displaypilot/es/">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="DisplayPilot · macOS 显示器控制台">
+<meta property="og:description" content="原生 macOS 显示器控制台：逐帧投递的平滑滚动、CoreGraphics 伽马表软件调光、以面板原始曲线为基准的色彩校准，以及先隔离再删除的安全清理。14 天免费试用。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/display.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#features">功能</a>
+      <a href="#price">价格</a>
+      <a href="support.html">支持</a>
+    </nav>
+    <details class="lang"><summary>简体中文</summary><ul class="lang-menu" aria-label="语言"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" aria-current="true" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <h1>滚轮、亮度、色彩</h1>
+      <p class="sub">都调成顺手的样子</p>
+      <p class="lede">原生 macOS 显示器控制台。滚轮的一格拆成一段逐帧投递的连续滚动；亮度走 CoreGraphics 伽马表，显示器不实现 DDC/CI 也照样能调；色彩以面板的原始曲线为基准换算，随时一键交回系统。</p>
+      <p class="hero-cta">
+        <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载 macOS 版</a>
+        <a class="btn btn-ghost" href="#price">14 天免费试用</a>
+      </p>
+      <p class="hero-spec">macOS 14 或更高 · Apple 芯片与 Intel 通用二进制 · 不注册也能用</p>
+      <figure class="hero-shot neu plate">
+        <img src="../img/display.webp" width="700" height="1552" alt="DisplayPilot 的「显示」面板：顶部是显示器型号与链路信息，下面是软件调光推子，再下面是色彩校准的对比度、伽马、色温三条推子，以及从 EDID 读出的色域三角。">
+      </figure>
+    </div>
+  </section>
+  <section class="statement">
+    <div class="wrap">
+      <p class="big">不是把系统设置里的开关换个地方摆，而是做系统没做的那几件事。</p>
+      <p class="small">逐帧投递的滚动、不依赖面板固件的调光、以原始曲线为基准的校准，以及一条「先隔离、再删除」的清理路径。</p>
+    </div>
+  </section>
+  <section class="features" id="features">
+    <div class="wrap">
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">01 · 丝滑滚动</p>
+          <h2 class="f-title">一格滚轮，拆成一段</h2>
+          <p class="f-body">滚轮的一格不再是一次跳变。事件先被攒起来，再挂在屏幕刷新上逐帧投递，每帧投出 <code>pending × (1 − e^(−dt/τ))</code>。因为按时间衰减、不按帧数，60Hz 与 144Hz 的手感一致：离线基准里，120Hz 的首帧从 3 点提到 9 点，90% 用时从 158ms 缩到 133ms。</p>
+          <p class="f-note sunk neu neu-sink">终端、看图、PPT 这类把滚轮当精确输入或缩放的窗口默认交回系统；按住 ⌘ 随时回到原生滚动；平滑<strong>默认关闭</strong>，不打开就不会接管你的滚轮。界面上留着「看到 / 手势 / 拦截 / 投递」四个实时计数，换了鼠标出问题，一眼看得出卡在哪一层。</p>
+        </div>
+        <figure class="f-media tall neu plate">
+          <img src="../img/scroll.webp" width="700" height="1552" loading="lazy" alt="滚动面板：顶部显示滚动平滑状态与四层实时计数，下面是安全模式开关和 21 条内置缩放应用库。">
+        </figure>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">02 · 软件调光</p>
+          <h2 class="f-title">不靠面板固件调暗</h2>
+          <p class="f-body">亮度走 CoreGraphics 伽马表，显示器不实现 DDC/CI 也一样能调。每次写入都读回比对，不一致就退避重试，最多 4 次；换分辨率、休眠唤醒之后自动重放，不会失效。</p>
+          <p class="f-note sunk neu neu-sink">重放永远从面板的<strong>原始基准</strong>重算，而不是拿当前曲线当基准，所以反复调整不累积误差 —— 实测中灰中点 0.5020 → 0.3012。进程退出后系统自动还原；应用内和 <code>Scripts/restore-dimming.sh</code> 各有一条不依赖应用运行的恢复路径。</p>
+        </div>
+        <figure class="f-media wide neu plate">
+          <img src="../img/display.webp" width="700" height="1552" loading="lazy" alt="显示面板下半部分：色彩校准的对比度、伽马与色温推子，以及从 EDID 读出的色域覆盖率。">
+          <figcaption>调光与校准共用同一条伽马基准，所以两条通道不会互相污染。</figcaption>
+        </figure>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">03 · 色彩校准</p>
+          <h2 class="f-title">以面板原始曲线为准</h2>
+          <p class="f-body">对比度以中灰为轴、伽马走中间调、色温覆盖 2700–9000 K，三条通道都在面板的原始曲线上做换算。6500 K 被锚定为恒等变换，所以默认状态就是显示器本来的样子。</p>
+          <p class="f-note sunk neu neu-sink">物理色域直接从 EDID 读出来画成 CIE xy 三角，和 sRGB、Display P3 的覆盖率摆在一起：能对齐的对齐，对不齐的那部分（面板到不了的高饱和红与绿）<strong>如实标出</strong>，不假装能显示。一键交回系统 ColorSync 校准。</p>
+        </div>
+        <div class="f-media instrument card neu" role="group" aria-label="色彩校准实测读数">
+          <p class="gauge sunk neu neu-sink"><span class="k">色温</span><span class="v tid">6500</span><span class="u">K · 锚定为恒等变换</span></p>
+          <p class="gauge sunk neu neu-sink"><span class="k">伽马</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
+          <p class="gauge sunk neu neu-sink"><span class="k">色域</span><span class="v tid">104%</span><span class="u">sRGB · 仅覆盖 Display P3 的 77%</span></p>
+        </div>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">04 · 安全清理</p>
+          <h2 class="f-title">先隔离，再谈删除</h2>
+          <p class="f-body">只处理 13 类有确定性重建方式的产物：Xcode DerivedData、SwiftPM、CocoaPods、npm / pnpm / Yarn、Go、Gradle、Rust target、<code>__pycache__</code>、崩溃报告、Homebrew 缓存这类。删除前先移进隔离区，默认保留 30 天，随时还原。</p>
+          <p class="f-note sunk neu neu-sink">永久删除默认不存在：全应用只有一个函数能做这件事，必须同时满足 6 个条件，一条不过就中止。不申请全盘访问，受系统保护的目录按 macOS 规则跳过；自动化规则<strong>只能预扫描，不能删</strong>。</p>
+        </div>
+        <figure class="f-media tall neu plate">
+          <img src="../img/storage.webp" width="700" height="1552" loading="lazy" alt="存储面板：磁盘总览、系统数据拆解、个人文件夹、大文件定位与可清理项，底部写着扫描只读、清理只进隔离区。">
+        </figure>
+      </article>
+    </div>
+  </section>
+  <section class="trio">
+    <div class="wrap"><div class="trio-grid">
+      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>会话恢复</h3><p>把显示器、窗口、音频、滚动、鼠标与护眼设置存成一份具名快照，覆盖 14 个板块。恢复前先列出将要改变的内容，确认后才执行；某个域不可用就跳过该域，不会整体失败。</p></article>
+      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>输入源与硬件通道</h3><p>显示器支持 DDC/CI 时，切 HDMI / DisplayPort 不用去摸 OSD 按钮，硬件亮度、对比度与音量也在同一栏。不支持就如实标「DDC 无应答」，然后继续用软件通道工作 —— 不假装成功。</p></article>
+      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>可访问性</h3><p>22 个推子与 22 个开关都有辅助功能标签，能进辅助功能树；界面文字的对比度按 4.5:1 基线重做过（修复前最差 2.65:1）。全局热键 ⌃⌥↑ / ⌃⌥↓，加 ⇧ 是 ±1% 微调。</p></article>
+    </div></div>
+  </section>
+  <section class="price" id="price">
+    <div class="wrap">
+      <div class="sec-head"><h2>一次买断</h2><p>没有订阅，没有账号，也没有按设备数的算法。</p></div>
+      <div class="price-plate plate neu">
+        <p class="price-readout sunk neu neu-sink" aria-label="价格"><span class="num tid" data-price="num">99</span><span class="unit" data-price="unit">元</span></p>
+        <p class="price-label">一次买断 · 含自购买之日起一年的更新</p>
+        <ul class="ticks">
+          <li>14 天免费试用，试用期内功能完整</li>
+          <li>买断后永久可用，一年内的新版本免费</li>
+          <li>一年之后仍可继续使用手上的版本；续期可选，不续不影响使用</li>
+          <li>试用结束只暂停 5 项增强功能；还原显示器、交回系统校准、显示器休眠与退出永远可用，且不依赖联网</li>
+        </ul>
+        <div class="buy">
+          <a class="btn btn-primary" data-site="purchase" href="#price" hidden>购买 · 99 元</a>
+          <p class="buy-status" data-buy-status="pending"><strong>购买通道尚未接通。</strong>应用内的许可、激活与退款计划由 Lemon Squeezy 作为商户记录方承担，商户审核还没走完，所以现在没有可用的付款入口，应用内也还无法完成激活 —— 这一页不会放一个点了没反应的购买按钮。通道接通后会写进 <a href="https://github.com/huayanming/displaypilot/releases">GitHub Releases</a> 的发布说明，并把结账地址填进价格区。在那之前，请先用 14 天免费试用。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="spec" id="spec">
+    <div class="wrap"><h2>系统要求</h2><p class="spec-line">macOS 14 Sonoma 或更高 · Apple 芯片与 Intel 通用二进制 · 无第三方依赖，不装后台服务 · 只有滚动平滑与鼠标映射需要辅助功能权限 · 不联网也能用</p></div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与建议 · GitHub Issues</a>
+    </p>
+    <p class="foot-note">本页没有跟踪脚本、没有 Cookie、没有第三方字体，也没有一个会发出去的请求。</p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

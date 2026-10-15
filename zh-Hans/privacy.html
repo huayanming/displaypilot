@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隐私政策 · DisplayPilot</title>
+<meta name="description" content="DisplayPilot 不做遥测、不做埋点、不上传显示器数据。这份政策逐条写明应用在本地读什么、真正联网的只有哪几件事。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/privacy.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://huayanming.github.io/displaypilot/ja/privacy.html">
+<link rel="alternate" hreflang="ko" href="https://huayanming.github.io/displaypilot/ko/privacy.html">
+<link rel="alternate" hreflang="de" href="https://huayanming.github.io/displaypilot/de/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://huayanming.github.io/displaypilot/fr/privacy.html">
+<link rel="alternate" hreflang="es" href="https://huayanming.github.io/displaypilot/es/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/privacy.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="隐私政策 · DisplayPilot">
+<meta property="og:description" content="DisplayPilot 不做遥测、不做埋点、不上传显示器数据。这份政策逐条写明应用在本地读什么、真正联网的只有哪几件事。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/display.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+    </nav>
+    <details class="lang"><summary>简体中文</summary><ul class="lang-menu" aria-label="语言"><li><a href="../privacy.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/privacy.html" aria-current="true" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/privacy.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/privacy.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/privacy.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/privacy.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/privacy.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/privacy.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main">
+<article class="doc">
+  <h1>隐私政策</h1>
+  <p class="updated">最后更新：2026 年 10 月 16 日</p>
+  <p class="summary">一句话：<strong>DisplayPilot 不做遥测、不做埋点、不做使用统计。</strong>应用里没有接任何统计 SDK，也没有一条会把你「怎么用它」发出去的请求。下面把它在本地读什么、真正联网的只有哪几件事，逐条写清楚。</p>
+  <h2>一、我们收集什么</h2>
+  <p><strong>不收集任何使用数据。</strong>没有埋点、没有事件上报、没有崩溃日志上报、没有设备指纹、没有广告标识符、没有用户画像。</p>
+  <p>唯一一次由我们主动发起、并且会带上识别信息的联网行为，是<strong>你主动输入授权码之后的许可校验</strong>。它发送的内容只有两项：</p>
+  <ul><li><strong>授权码</strong>（license key）——你自己在购买邮件里收到、并手动输入的那串字符；</li><li><strong>一个随机生成的设备标识</strong>——首次激活时由应用在本地用 UUID 生成，存放在系统钥匙串里。它<strong>不包含</strong>硬件序列号、MAC 地址、显示器 EDID、机器名称、Apple ID 或任何账号信息。</li></ul>
+  <p>这个随机标识的唯一用途，是让商户知道「这台 Mac 已经占用了一个授权名额」，以免同一枚授权码被无限台机器同时使用。它无法反查到你本人，也无法反查到你的设备型号。</p>
+  <p class="callout"><strong>当前状态：许可校验还没有生效。</strong>上面这段描述的是应用的既定行为；购买与激活接的是 Lemon Squeezy，截至本页更新日期商户通道尚未接通，应用内还没有可用的激活入口。所以在通道接通之前，<strong>这条请求根本不会发出</strong>——不是「发了但不记录」，是还没有这一步。</p>
+  <h2>二、我们不收集什么</h2>
+  <p>下面这些数据应用<strong>会用到、但只在你本机内存里处理，永远不上传</strong>：</p>
+  <ul><li>显示器型号、厂商 ID、型号 ID、EDID 全文与物理色域；</li><li>分辨率、刷新率、当前伽马表、亮度与色温数值；</li><li>磁盘容量、缓存目录大小、扫描结果与清理记录；</li><li>窗口标题与窗口位置（窗口布局与会话恢复需要，要你授权辅助功能后才读得到）；</li><li>滚轮事件与热键按键（滚动平滑、鼠标映射需要）。</li></ul>
+  <p>另外这些我们<strong>根本不碰</strong>：</p>
+  <ul><li>不上传显示器型号、EDID 或序列号——从来没有这类代码路径；</li><li>不上传使用时长、功能点击次数或启动次数；</li><li>不记录键盘输入。滚动平滑只读取滚轮事件的位移量；键盘只用于判断「按住 ⌘ 时绕过平滑」这一个状态；</li><li>不申请麦克风、屏幕录制与全盘访问权限。存储扫描是只读的，受系统保护的目录按 macOS 的规则直接跳过；</li><li>不采集画面与声音。应用里没有任何摄像头或麦克风调用。（Info.plist 中仍留有一条历史摄像头用途声明，是早期白点比对实验的残留，它没有任何对应的实现。）</li></ul>
+  <h2>三、真正联网的只有三件事</h2>
+  <p>除了下面三项，应用不会主动发起任何网络请求。全部走 HTTPS，不使用明文 HTTP。</p>
+  <h3>1. 检查更新</h3>
+  <p>应用会向 <code>appcast.xml</code> 请求一次版本清单，用于判断有没有新版本。这个清单与本网站一起托管在 GitHub Pages。这个请求里<strong>不含授权码、不含设备标识、不含任何使用数据</strong>。它<strong>默认是关闭的</strong>：只有你在「通用」面板里主动打开自动检查（此后每天最多一次），或者手动点一次「检查更新」，才会发出这个请求。</p>
+  <p>托管方 GitHub 与任何网站服务器一样，会看到你的 IP 地址、请求时间和客户端标识。这是托管服务的常规访问日志，不是我们额外采集的。</p>
+  <h3>2. 校验授权</h3>
+  <p>只有在你输入授权码之后才会发生。请求发往商户 Lemon Squeezy 的授权接口（<code>api.lemonsqueezy.com/v1/licenses</code>）：</p>
+  <ul><li><strong>激活</strong>：发送授权码 + 上面那个随机设备标识；</li><li><strong>定期复核</strong>：激活成功后每 30 天复核一次，发送授权码 + Lemon Squeezy 返回的实例编号；</li><li><strong>取消激活</strong>：同样两项，用于释放名额，让你把授权换到另一台 Mac。</li></ul>
+  <p>我们<strong>特意</strong>做成离线优先：复核失败、断网、服务器故障都不会改变你的授权状态，只会记下一条错误；万一复核长期不通，还有 7 天宽限期照常使用。<strong>没激活之前，应用不会发出任何许可请求，也不需要填任何账号。</strong></p>
+  <p class="callout"><strong>当前状态：这一步还没有接通。</strong>商户通道尚未开通，应用内没有可用的激活入口，因此现在不会有任何许可请求发出。通道接通后，本节描述的行为才会生效。</p>
+  <h3>3. 打开购买页或官网</h3>
+  <p>点「购买」或「访问官网」时，地址会在你的默认浏览器里打开。付款在你的浏览器中完成，不经过应用。由于购买通道尚未接通，现在应用内没有可点的购买入口。</p>
+  <h2>四、你的数据存在哪里</h2>
+  <ul><li><strong>授权记录</strong>（授权码、实例编号、激活与复核时间）：macOS 系统钥匙串，服务名 <code>com.neeson.displaypilot.license</code>。不是明文 plist。</li><li><strong>应用设置</strong>（试用起始日期、界面偏好、热键绑定、自动化规则、护眼排程）：<code>~/Library/Preferences/com.neeson.displaypilot.plist</code>。</li><li><strong>清理隔离区与操作台账</strong>：<code>~/Library/Application Support/com.neeson.displaypilot/Clean/</code>。被清理的文件先移进这里的隔离区，30 天内可随时还原。</li><li><strong>系统权限</strong>：辅助功能授权由 macOS 管理，可在「系统设置 → 隐私与安全性 → 辅助功能」里随时撤销。</li></ul>
+  <p>删除方式：退出应用后，把上面两个目录／文件删掉即可；想要更彻底，再在钥匙串访问里删掉那一条记录。应用不在系统里安装任何后台服务或守护进程，卸载不留下常驻组件。</p>
+  <h2>五、第三方</h2>
+  <ul><li><strong>Lemon Squeezy</strong>（计划中的商户记录方）：将负责支付、发票与全球增值税。你在购买时提供的邮箱和支付信息由他们收集与保存，我们只能看到订单号、邮箱和授权码。<strong>截至本页更新日期，这条通道尚未接通，因此还没有任何一笔交易发生，也没有任何支付信息被收集。</strong></li><li><strong>GitHub</strong>：托管本网站、更新清单与安装包下载。作为托管方会按常规记录访问日志（IP、时间、请求路径）。</li></ul>
+  <p>除此之外，本应用与本站点<strong>没有</strong>任何分析服务、广告网络、社交插件或第三方字体。</p>
+  <h2>六、儿童</h2>
+  <p>DisplayPilot 是面向 Mac 用户的桌面工具，不面向儿童设计，也不会有意收集儿童的任何信息。</p>
+  <h2>七、政策变更</h2>
+  <p>如果未来的版本改变了联网行为（例如新增了云同步），这份政策会先更新，并在更新日志里写明改了什么。我们不会用「继续使用即视为同意」来悄悄扩大收集范围。购买通道接通时，本页与许可协议会同步更新，说明届时真正生效的行为。</p>
+  <h2>八、联系方式</h2>
+  <p>对这份政策有疑问，或想核对你被保存了哪些授权信息，请在<a href="https://github.com/huayanming/displaypilot/issues">GitHub 上开一条 issue</a>。</p>
+  <a class="back" href="index.html">← 返回首页</a>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与建议 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

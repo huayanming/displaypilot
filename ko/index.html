@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DisplayPilot — Mac 디스플레이에 없던 콘솔</title>
+<meta name="description" content="네이티브 macOS 디스플레이 콘솔. 프레임 단위로 전달되는 스크롤 스무딩, CoreGraphics 감마 테이블 소프트웨어 디밍, 패널 고유 곡선을 기준으로 한 색상 캘리브레이션, 그리고 격리 후 삭제하는 안전한 정리. 14일 무료 체험.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/ko/">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/">
+<link rel="alternate" hreflang="ja" href="https://huayanming.github.io/displaypilot/ja/">
+<link rel="alternate" hreflang="ko" href="https://huayanming.github.io/displaypilot/ko/">
+<link rel="alternate" hreflang="de" href="https://huayanming.github.io/displaypilot/de/">
+<link rel="alternate" hreflang="fr" href="https://huayanming.github.io/displaypilot/fr/">
+<link rel="alternate" hreflang="es" href="https://huayanming.github.io/displaypilot/es/">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="DisplayPilot — Mac 디스플레이에 없던 콘솔">
+<meta property="og:description" content="네이티브 macOS 디스플레이 콘솔. 프레임 단위로 전달되는 스크롤 스무딩, CoreGraphics 감마 테이블 소프트웨어 디밍, 패널 고유 곡선을 기준으로 한 색상 캘리브레이션, 그리고 격리 후 삭제하는 안전한 정리. 14일 무료 체험.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/ko/">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/display.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="주요 탐색">
+      <a href="#features">기능</a>
+      <a href="#price">가격</a>
+      <a href="support.html">지원</a>
+    </nav>
+    <details class="lang"><summary>한국어</summary><ul class="lang-menu" aria-label="언어"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/index.html" aria-current="true" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">다운로드</a>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <h1>스크롤, 밝기, 색상.</h1>
+      <p class="sub">모두 원하는 대로.</p>
+      <p class="lede">네이티브 macOS 디스플레이 콘솔. 휠 한 칸이 프레임 단위로 전달되는 연속 스크롤이 됩니다. 밝기는 CoreGraphics 감마 테이블을 거치므로 DDC/CI를 구현하지 않은 모니터에서도 동작합니다. 색상은 패널 고유 곡선을 기준으로 계산하고, 클릭 한 번으로 시스템에 돌려줍니다.</p>
+      <p class="hero-cta">
+        <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">macOS용 다운로드</a>
+        <a class="btn btn-ghost" href="#price">14일 무료 체험</a>
+      </p>
+      <p class="hero-spec">macOS 14 이상 · Apple 실리콘 및 Intel 유니버설 바이너리 · 계정 가입 불필요</p>
+      <figure class="hero-shot neu plate">
+        <img src="../img/display.webp" width="700" height="1552" alt="DisplayPilot의 '디스플레이' 패널. 위쪽에 모니터 모델과 링크 정보, 그 아래에 소프트웨어 디밍 슬라이더, 다시 그 아래에 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 삼각형이 표시되어 있습니다.">
+      </figure>
+    </div>
+  </section>
+  <section class="statement">
+    <div class="wrap">
+      <p class="big">시스템 설정의 스위치를 자리만 옮긴 것이 아닙니다. 시스템이 하지 않은 일입니다.</p>
+      <p class="small">프레임 단위로 전달되는 스크롤, 패널 펌웨어에 기대지 않는 디밍, 패널 고유 곡선을 기준으로 한 캘리브레이션, 그리고 '먼저 격리, 삭제는 그다음'이라는 정리 경로.</p>
+    </div>
+  </section>
+  <section class="features" id="features">
+    <div class="wrap">
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">01 · 스크롤 스무딩</p>
+          <h2 class="f-title">한 칸을 하나의 흐름으로</h2>
+          <p class="f-body">휠 한 칸은 더 이상 한 번의 점프가 아닙니다. 이벤트를 모았다가 화면 주사율에 맞춰 프레임마다 전달하며, 각 프레임은 <code>pending × (1 − e^(−dt/τ))</code>를 방출합니다. 감쇠가 프레임 수가 아니라 경과 시간으로 결정되므로 60Hz와 144Hz의 손맛이 같습니다. 오프라인 벤치마크에서 120Hz의 첫 프레임은 3포인트에서 9포인트로 좋아졌고, 90% 도달 시간은 158ms에서 133ms로 줄었습니다.</p>
+          <p class="f-note sunk neu neu-sink">터미널, 이미지 뷰어, 슬라이드처럼 휠을 정밀 입력이나 확대로 다루는 창은 기본적으로 시스템에 돌려줍니다. ⌘를 누른 채 스크롤하면 언제든 네이티브 스크롤로 돌아갑니다. 스무딩은 <strong>기본적으로 꺼져</strong> 있으며, 켜지 않으면 휠을 가로채지 않습니다. 화면에는 '감지 / 제스처 / 가로챔 / 전달' 네 가지 실시간 카운터가 있어, 새 마우스에서 문제가 생기면 어느 계층에서 막히는지 바로 보입니다.</p>
+        </div>
+        <figure class="f-media tall neu plate">
+          <img src="../img/scroll.webp" width="700" height="1552" loading="lazy" alt="스크롤 패널: 상단에 스크롤 스무딩 상태와 네 계층 실시간 카운터, 아래에 안전 모드 스위치와 21개 내장 앱별 예외 목록.">
+        </figure>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">02 · 소프트웨어 디밍</p>
+          <h2 class="f-title">패널 펌웨어에 기대지 않고 어둡게</h2>
+          <p class="f-body">밝기는 CoreGraphics 감마 테이블을 거치므로 DDC/CI를 구현하지 않은 모니터에서도 동작합니다. 쓸 때마다 되읽어 비교하고, 다르면 물러섰다가 최대 4번까지 재시도합니다. 해상도 변경이나 잠자기 해제 후에도 자동으로 다시 적용되므로 조용히 멈추지 않습니다.</p>
+          <p class="f-note sunk neu neu-sink">다시 적용할 때는 항상 패널의 <strong>원래 기준선</strong>에서 다시 계산하며 현재 곡선을 기준으로 삼지 않습니다. 그래서 반복해서 조절해도 오차가 쌓이지 않습니다 — 실측에서 중간 회색은 0.5020에서 0.3012로. 프로세스가 끝나면 macOS가 자동으로 되돌리고, 앱 실행에 의존하지 않는 복구 경로가 두 가지 있습니다(앱 내부와 <code>Scripts/restore-dimming.sh</code>).</p>
+        </div>
+        <figure class="f-media wide neu plate">
+          <img src="../img/display.webp" width="700" height="1552" loading="lazy" alt="'디스플레이' 패널 아래쪽: 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 커버리지.">
+          <figcaption>디밍과 캘리브레이션은 같은 감마 기준선을 공유하므로 두 경로가 서로를 오염시키지 않습니다.</figcaption>
+        </figure>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">03 · 색상 캘리브레이션</p>
+          <h2 class="f-title">패널 고유 곡선을 기준으로</h2>
+          <p class="f-body">대비는 중간 회색을 축으로, 감마는 중간 톤을, 색온도는 2700–9000 K를 아우르며 세 채널 모두 패널 고유 곡선 위에서 계산됩니다. 6500 K는 항등 변환으로 고정되어 있어 기본 상태는 디스플레이 본연의 모습 그대로입니다.</p>
+          <p class="f-note sunk neu neu-sink">물리 색역은 EDID에서 그대로 읽어 CIE xy 삼각형으로 그리고, sRGB와 Display P3 커버리지와 나란히 보여줍니다. 맞출 수 있는 부분은 맞추고, 패널이 물리적으로 도달할 수 없는 부분(고채도 빨강과 초록)은 <strong>도달할 수 없다고 그대로 표시</strong>하며 보이는 척하지 않습니다. 클릭 한 번으로 ColorSync에 돌려줍니다.</p>
+        </div>
+        <div class="f-media instrument card neu" role="group" aria-label="색상 캘리브레이션 실측값">
+          <p class="gauge sunk neu neu-sink"><span class="k">색온도</span><span class="v tid">6500</span><span class="u">K · 항등 변환으로 고정</span></p>
+          <p class="gauge sunk neu neu-sink"><span class="k">감마</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
+          <p class="gauge sunk neu neu-sink"><span class="k">색역</span><span class="v tid">104%</span><span class="u">sRGB · Display P3의 77%만</span></p>
+        </div>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">04 · 안전한 정리</p>
+          <h2 class="f-title">먼저 격리, 삭제는 그다음</h2>
+          <p class="f-body">다시 만드는 방법이 확정된 13종류의 산출물만 다룹니다. Xcode DerivedData, SwiftPM, CocoaPods, npm / pnpm / Yarn, Go, Gradle, Rust target, <code>__pycache__</code>, 크래시 리포트, Homebrew 캐시 같은 것들입니다. 삭제 대상은 먼저 격리로 옮기고 기본 30일 동안 보관하며 언제든 복원할 수 있습니다.</p>
+          <p class="f-note sunk neu neu-sink">영구 삭제는 기본적으로 존재하지 않습니다. 앱 전체에서 단 하나의 함수만 그것을 할 수 있고, 여섯 가지 조건이 동시에 성립할 때만 진행합니다 — 하나라도 어긋나면 중단합니다. 전체 디스크 접근을 요청하지 않으며, 시스템이 보호하는 디렉터리는 macOS 규칙대로 건너뜁니다. 자동화 규칙은 <strong>사전 스캔만 하고 삭제는 하지 못합니다</strong>.</p>
+        </div>
+        <figure class="f-media tall neu plate">
+          <img src="../img/storage.webp" width="700" height="1552" loading="lazy" alt="저장 공간 패널: 디스크 개요, 시스템 데이터 분석, 개인 폴더, 큰 파일 찾기와 정리 가능 항목. 아래쪽에 스캔은 읽기 전용이고 정리는 격리로 옮길 뿐이라고 적혀 있습니다.">
+        </figure>
+      </article>
+    </div>
+  </section>
+  <section class="trio">
+    <div class="wrap"><div class="trio-grid">
+      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>세션 복원</h3><p>디스플레이, 창, 오디오, 스크롤, 마우스, 눈 보호 설정을 14개 영역에 걸쳐 이름 있는 스냅샷으로 저장합니다. 복원 전에는 바뀔 내용을 먼저 나열하고 확인을 기다립니다. 어떤 영역을 쓸 수 없으면 그 영역만 건너뛰고 복원 전체를 실패시키지 않습니다.</p></article>
+      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>입력 소스와 하드웨어 채널</h3><p>디스플레이가 DDC/CI를 지원하면 HDMI / DisplayPort 전환에 OSD 버튼을 찾을 필요가 없고, 하드웨어 밝기·대비·볼륨도 같은 자리에 있습니다. 지원하지 않으면 'DDC 응답 없음'이라고 솔직히 표시하고 소프트웨어 채널로 계속 동작합니다 — 성공한 척하지 않습니다.</p></article>
+      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>손쉬운 사용</h3><p>22개 슬라이더와 22개 스위치 모두 손쉬운 사용 레이블을 제공하고 손쉬운 사용 트리에 나타납니다. 인터페이스 텍스트는 4.5:1 대비 기준에 맞춰 다시 만들었습니다(수정 전 최악은 2.65:1). 전역 단축키는 ⌃⌥↑ / ⌃⌥↓, ⇧를 더하면 ±1% 미세 조정입니다.</p></article>
+    </div></div>
+  </section>
+  <section class="price" id="price">
+    <div class="wrap">
+      <div class="sec-head"><h2>한 번 구매</h2><p>구독도, 계정도, 기기 수 계산도 없습니다.</p></div>
+      <div class="price-plate plate neu">
+        <p class="price-readout sunk neu neu-sink" aria-label="가격"><span class="num tid" data-price="num">US$14</span></p>
+        <p class="price-label">한 번 구매 · 구매일로부터 1년 업데이트 포함</p>
+        <ul class="ticks">
+          <li>14일 무료 체험, 모든 기능 사용 가능</li>
+          <li>구매 후 영구 사용, 1년 안의 새 버전은 무료</li>
+          <li>1년이 지나도 가진 버전은 계속 사용할 수 있습니다 — 갱신은 선택이며, 하지 않아도 동작에 영향이 없습니다</li>
+          <li>체험이 끝나면 일시 중지되는 것은 5개 확장 기능뿐입니다. 디스플레이 복원, 시스템 교정으로 되돌리기, 디스플레이 잠자기, 종료는 언제나 쓸 수 있고 네트워크 연결도 필요하지 않습니다</li>
+        </ul>
+        <div class="buy">
+          <a class="btn btn-primary" data-site="purchase" href="#price" hidden>구매 · US$14</a>
+          <p class="buy-status" data-buy-status="pending"><strong>구매 채널이 아직 열리지 않았습니다.</strong> 앱 내 라이선스, 활성화, 환불은 Lemon Squeezy가 판매자(merchant of record)로서 맡을 예정이지만 심사가 끝나지 않아 지금 사용할 수 있는 결제 창구가 없고, 앱 안에서도 활성화를 마칠 수 없습니다 — 이 페이지에 눌러도 아무 일이 없는 구매 버튼을 두지는 않겠습니다. 열리면 <a href="https://github.com/huayanming/displaypilot/releases">GitHub Releases</a> 릴리스 노트에 알리고 결제 링크를 가격 영역에 넣겠습니다. 그때까지는 14일 무료 체험을 이용해 주세요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="spec" id="spec">
+    <div class="wrap"><h2>시스템 요구 사항</h2><p class="spec-line">macOS 14 Sonoma 이상 · Apple 실리콘 및 Intel 유니버설 바이너리 · 서드파티 의존성 없음, 백그라운드 서비스 없음 · 손쉬운 사용 권한이 필요한 것은 스크롤 스무딩과 마우스 매핑뿐 · 오프라인에서도 동작</p></div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">개인정보 처리방침</a>
+      <a href="eula.html">라이선스</a>
+      <a href="support.html">지원</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">질문·피드백 · GitHub Issues</a>
+    </p>
+    <p class="foot-note">이 페이지에는 추적 스크립트도, 쿠키도, 서드파티 글꼴도 없으며 외부로 나가는 요청도 없습니다.</p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
