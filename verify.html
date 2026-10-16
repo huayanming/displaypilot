@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify it yourself — every claim, with the command to check it · DisplayPilot</title>
+<meta name="description" content="DisplayPilot is a new paid app with no reviews yet. Do not take our word: here is how to verify the signature, the notarization, the checksum, the offline activation and the absence of telemetry on your own Mac.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/verify.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/verify.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/verify.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/verify.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/verify.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Verify it yourself — every claim, with the command to check it">
+<meta property="og:description" content="DisplayPilot is a new paid app with no reviews yet. Do not take our word: here is how to verify the signature, the notarization, the checksum, the offline activation and the absence of telemetry on your own Mac.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/verify.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI not responding on macOS","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/verify.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guide-cleanup.html">Cleanup guide</a>
+      <a href="zh-Hans/verify.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/verify.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Verify it yourself</h1>
+<p class="summary">DisplayPilot is a new paid app with no reviews yet, so please do not take our word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 5.0.2 build.</p>
+
+<h2>1. Is it really ours, and did Apple notarize it?</h2>
+<pre><code>codesign -dv --verbose=2 /Applications/DisplayPilot.app
+  Authority=Developer ID Application: yanming hua (7P2P353LBW)
+  Format=app bundle with Mach-O universal (x86_64 arm64)
+  flags=0x10000(runtime)
+
+spctl -a -vv -t exec /Applications/DisplayPilot.app
+  accepted
+  source=Notarized Developer ID
+
+xcrun stapler validate /Applications/DisplayPilot.app
+  The validate action worked!</code></pre>
+<p>The binary is signed with our Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
+
+<h2>2. Did the download arrive intact?</h2>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-5.0.2.dmg
+  d88cc144cb25b57dce109a7ac4f2dd93b33856268449bc49b07d26c9ccd73bdf</code></pre>
+<p>The same value is published in the Homebrew cask, so there are two independent places to compare against:</p>
+<pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
+<p>If your value differs, <strong>do not run the file</strong>.</p>
+
+<h2>3. Does it phone home?</h2>
+<p>The app's own code contains exactly <strong>one</strong> endpoint: <code>/api/redeem</code> on our licence service. It is called only when you paste a <em>short</em> code — the long <code>DP-</code> code is verified entirely offline and never touches the network. Update checks are <strong>off by default</strong> (<code>SUEnableAutomaticChecks</code> and <code>SUAllowsAutomaticUpdates</code> are both <code>false</code>); if you switch them on, they fetch <code>appcast.xml</code> from our site and nothing else.</p>
+<p>Watch it yourself — open the app, leave it idle, then:</p>
+<pre><code>lsof -i -P | grep -i displaypilot</code></pre>
+<p>With update checks off it prints nothing. The app never sends usage data, crash reports or an identifier to us; there is no analytics code in it.</p>
+
+<h2>4. Does activation really work without a network?</h2>
+<p>Turn off Wi-Fi, paste a long <code>DP-</code> code into the licence field, and it activates. The key is embedded in the app: an Ed25519 public key verifies the code locally, and the code is not bound to a device.</p>
+
+<h2>5. What you cannot check this way</h2>
+<ul class="ticks">
+  <li><strong>Whether the cleanup logic is correct.</strong> It touches only 13 kinds of rebuildable artifacts and quarantines for 30 days first. We publish the reasoning and the checks in the <a href="https://github.com/huayanming/displaypilot">audit report</a> rather than asking you to trust the UI.</li>
+  <li><strong>Whether the display work is right for your panel.</strong> That is what the 14-day trial is for.</li>
+  <li><strong>Whether we are pleasant to deal with.</strong> No page can prove that. Email us and see.</li>
+</ul>
+<p class="small">If any command above does not produce the output shown, that is a bug in our documentation or in our build — tell us at <a href="support.html">Support</a> and we will fix it, publicly.</p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

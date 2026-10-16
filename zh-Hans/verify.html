@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自己验证——每条说法都附上可执行的检查命令 · DisplayPilot</title>
+<meta name="description" content="DisplayPilot 是还没有评价的新付费应用。别信我们的话：这一页告诉你如何在自己的 Mac 上验证签名、公证、校验和、离线激活，以及是否真的没有遥测。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/verify.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/verify.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/verify.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/verify.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/verify.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="自己验证——每条说法都附上可执行的检查命令">
+<meta property="og:description" content="DisplayPilot 是还没有评价的新付费应用。别信我们的话：这一页告诉你如何在自己的 Mac 上验证签名、公证、校验和、离线激活，以及是否真的没有遥测。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/verify.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接显示器 DDC/CI 无响应","about":"Display Data Channel Command Interface","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/verify.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guide-cleanup.html">清理指南</a>
+      <a href="../verify.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hant/verify.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>自己验证</h1>
+<p class="summary">DisplayPilot 是还没有评价的新付费应用，所以<strong>请不要信我们的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 5.0.2 版本。</p>
+
+<h2>一、它真的是我们的吗？Apple 公证过吗？</h2>
+<pre><code>codesign -dv --verbose=2 /Applications/DisplayPilot.app
+  Authority=Developer ID Application: yanming hua (7P2P353LBW)
+  Format=app bundle with Mach-O universal (x86_64 arm64)
+  flags=0x10000(runtime)
+
+spctl -a -vv -t exec /Applications/DisplayPilot.app
+  accepted
+  source=Notarized Developer ID
+
+xcrun stapler validate /Applications/DisplayPilot.app
+  The validate action worked!</code></pre>
+<p>这个二进制用我们的 Developer ID 签名，Apple 扫描并公证过，且公证凭据<strong>钉扎</strong>在应用内，因此离线也能验证。任何被改动过的副本都过不了这三项。</p>
+
+<h2>二、下载的东西完整吗？</h2>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-5.0.2.dmg
+  d88cc144cb25b57dce109a7ac4f2dd93b33856268449bc49b07d26c9ccd73bdf</code></pre>
+<p>同一个值也写在 Homebrew cask 里，所以你有<strong>两个独立的地方</strong>可以对照：</p>
+<pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
+<p>如果对不上，<strong>不要运行这个文件</strong>。</p>
+
+<h2>三、它会偷偷联网吗？</h2>
+<p>应用自己的代码里<strong>只有一个</strong>网络端点：许可服务的 <code>/api/redeem</code>。它只在粘贴<strong>短码</strong>时被调用——以 <code>DP-</code> 开头的长码完全离线校验，永不联网。自动检查更新<strong>默认关闭</strong>（<code>SUEnableAutomaticChecks</code> 与 <code>SUAllowsAutomaticUpdates</code> 都是 <code>false</code>）；你若手动打开，它只从我们站点取 <code>appcast.xml</code>，不取别的。</p>
+<p>你可以自己盯：打开应用、让它空闲，然后在终端里执行：</p>
+<pre><code>lsof -i -P | grep -i displaypilot</code></pre>
+<p>在关闭自动更新检查时，这条命令<strong>什么都不输出</strong>。应用不会向我们发送使用数据、崩溃报告或任何标识符；里面没有统计代码。</p>
+
+<h2>四、断网也能激活吗？</h2>
+<p>关掉 Wi-Fi，把长 <code>DP-</code> 码粘进授权框，它会激活。公钥内嵌在应用里：用 Ed25519 在本机验签，且激活码<strong>不绑定设备</strong>。</p>
+
+<h2>五、这一页验证不了什么</h2>
+<ul class="ticks">
+  <li><strong>清理逻辑对不对。</strong>它只处理 13 类有确定性重建方式的产物，先隔离 30 天。我们把推理与检查写在<a href="https://github.com/huayanming/displaypilot">审计报告</a>里，而不是让你相信界面。</li>
+  <li><strong>显示器那部分对你的面板是否合适。</strong>这正是 14 天试用存在的意义。</li>
+  <li><strong>我们好不好打交道。</strong>这没有哪一页能证明。发封邮件试试。</li>
+</ul>
+<p class="small">如果上面任何一条命令的输出与这里写的不一致，那是我们的文档或构建有问题——请到<a href="support.html">支持页</a>告诉我们，我们会公开修正。</p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
