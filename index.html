@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DisplayPilot">
 <meta property="og:title" content="DisplayPilot — The missing console for your Mac display">
-<meta property="og:description" content="A native macOS console for your display: frame-by-frame smooth scrolling, CoreGraphics gamma-table dimming, color calibration anchored to the panel's own curves, and cleanup that quarantines before it deletes. 14-day free trial.">
+<meta property="og:description" content="A native macOS console for your display: frame-by-frame smooth scrolling, CoreGraphics gamma-table dimming, color calibration anchored to the curve it reads when it first takes over, and cleanup that quarantines before it deletes. 14-day free trial.">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
@@ -71,7 +71,7 @@
     <div class="wrap">
       <h1>Scroll, brightness, color.</h1>
       <p class="sub">Dialed in exactly how you like them.</p>
-      <p class="lede">A native macOS console for your display. One wheel notch becomes a continuous scroll, delivered frame by frame. Brightness runs through the CoreGraphics gamma table, so it works even on monitors that never implemented DDC/CI. Color is computed against the panel's own curves — and handed back to the system with a single click.</p>
+      <p class="lede">A native macOS console for your display. One wheel notch becomes a continuous scroll, delivered frame by frame. Brightness runs through the CoreGraphics gamma table, so it works even on monitors that never implemented DDC/CI. Color is computed against the the curve read when the app first takes over — and handed back to the system with a single click.</p>
       <p class="hero-cta">
         <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download for macOS</a>
         <a class="btn btn-ghost" href="#price">14-day free trial</a>
@@ -116,7 +116,7 @@
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">03 · Color calibration</p>
-          <h2 class="f-title">Anchored to the panel's own curves</h2>
+          <h2 class="f-title">Anchored to the the curve read when the app first takes over</h2>
           <p class="f-body">Contrast pivots on mid gray, gamma works the midtones, and color temperature spans 2700–9000 K — all three computed from the panel's original curves. 6500 K is anchored as the identity transform, so the default state is exactly how your display already looks.</p>
           <p class="f-note sunk neu neu-sink">The physical gamut is read straight from the EDID and drawn as a CIE xy triangle, placed next to its coverage of sRGB and Display P3. What can align, aligns; the parts the panel physically cannot reach — high-saturation red and green — are <strong>labeled as out of reach</strong> instead of faked. One click hands calibration back to ColorSync.</p>
         </div>

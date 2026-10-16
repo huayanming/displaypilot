@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DisplayPilot">
 <meta property="og:title" content="DisplayPilot — La console qui manquait à votre écran Mac">
-<meta property="og:description" content="Une console macOS native pour votre écran : défilement fluide transmis image par image, gradation logicielle via la table gamma CoreGraphics, calibration des couleurs ancrée sur les courbes d'origine de la dalle, et un nettoyage qui met en quarantaine avant de supprimer. 14 jours d'essai gratuit.">
+<meta property="og:description" content="Une console macOS native pour votre écran : défilement fluide transmis image par image, gradation logicielle via la table gamma CoreGraphics, calibration des couleurs ancrée sur la courbe lue lors de la première prise de contrôle, et un nettoyage qui met en quarantaine avant de supprimer. 14 jours d'essai gratuit.">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/fr/">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_US">
@@ -58,7 +58,7 @@
     <div class="wrap">
       <h1>Défilement, luminosité, couleur.</h1>
       <p class="sub">Réglés exactement comme vous les aimez.</p>
-      <p class="lede">Une console macOS native pour votre écran. Un cran de molette devient un défilement continu, transmis image par image. La luminosité passe par la table gamma CoreGraphics : elle fonctionne donc même sur les moniteurs qui n'ont jamais implémenté DDC/CI. La couleur est calculée à partir des courbes d'origine de la dalle — et rendue au système en un clic.</p>
+      <p class="lede">Une console macOS native pour votre écran. Un cran de molette devient un défilement continu, transmis image par image. La luminosité passe par la table gamma CoreGraphics : elle fonctionne donc même sur les moniteurs qui n'ont jamais implémenté DDC/CI. La couleur est calculée à partir des courbe lue lors de la première prise de contrôle — et rendue au système en un clic.</p>
       <p class="hero-cta">
         <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Télécharger pour macOS</a>
         <a class="btn btn-ghost" href="#price">14 jours d'essai gratuit</a>
@@ -72,7 +72,7 @@
   <section class="statement">
     <div class="wrap">
       <p class="big">Ce n'est pas Réglages Système avec les interrupteurs déplacés. C'est le travail que le système n'a jamais fait.</p>
-      <p class="small">Un défilement transmis image par image, une gradation qui ne dépend pas du firmware de la dalle, une calibration ancrée sur les courbes d'origine de la dalle — et un nettoyage qui met en quarantaine avant de supprimer.</p>
+      <p class="small">Un défilement transmis image par image, une gradation qui ne dépend pas du firmware de la dalle, une calibration ancrée sur la courbe lue lors de la première prise de contrôle — et un nettoyage qui met en quarantaine avant de supprimer.</p>
     </div>
   </section>
   <section class="features" id="features">
@@ -103,8 +103,8 @@
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">03 · Calibration des couleurs</p>
-          <h2 class="f-title">Ancrée sur les courbes d'origine de la dalle</h2>
-          <p class="f-body">Le contraste pivote autour du gris moyen, le gamma travaille les tons moyens, et la température de couleur couvre 2700–9000 K — les trois canaux sont calculés sur les courbes d'origine de la dalle. 6500 K est ancré comme transformation identité : l'état par défaut correspond donc exactement à ce que votre écran affiche déjà.</p>
+          <h2 class="f-title">Ancrée sur les courbe lue lors de la première prise de contrôle</h2>
+          <p class="f-body">Le contraste pivote autour du gris moyen, le gamma travaille les tons moyens, et la température de couleur couvre 2700–9000 K — les trois canaux sont calculés sur les courbe lue lors de la première prise de contrôle. 6500 K est ancré comme transformation identité : l'état par défaut correspond donc exactement à ce que votre écran affiche déjà.</p>
           <p class="f-note sunk neu neu-sink">Le gamut physique est lu directement dans l'EDID et tracé sous forme de triangle CIE xy, à côté de sa couverture de sRGB et de Display P3. Ce qui peut s'aligner s'aligne ; les parties que la dalle ne peut physiquement pas atteindre — rouge et vert très saturés — sont <strong>signalées comme hors de portée</strong> au lieu d'être simulées. Un clic rend la calibration à ColorSync.</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="Mesures de calibration des couleurs">
