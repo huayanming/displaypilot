@@ -1,37 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  DisplayPilot 更新源（Sparkle 2 格式）。
-
-  ⚠️ 这个文件是 Scripts/appcast.sh 的输出形态的示例，不是手工维护的内容。
-  发布时由那个脚本生成（默认写到 build/appcast.xml），deploy-site.sh 会把它
-  覆盖到这里再上传。要改格式请改 Scripts/appcast.sh，不要只改这个文件。
-
-  生成方式:
-    ./Scripts/appcast.sh dist/DisplayPilot-5.0.0.dmg 5.0.0 \
-        build/appcast.xml https://你的下载域名/
-    ./Scripts/deploy-site.sh          # 自动同步 build/appcast.xml → Site/appcast.xml
-
-  下面保留一条 5.0.0 的示例，方便在脚本还没跑过之前也能看到最终长什么样。
-  REPLACE-WITH 开头的值是占位符，Sparkle 遇到未替换的签名会拒绝更新。
--->
-<rss version="2.0"
-     xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
-     xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>DisplayPilot</title>
-    <link>https://REPLACE-WITH-YOUR-DOMAIN/</link>
+    <link>https://github.com/huayanming/displaypilot/releases/download/v5.0.1/</link>
     <description>DisplayPilot 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>DisplayPilot 5.0.0</title>
-      <pubDate>Thu, 15 Oct 2026 09:41:06 +0000</pubDate>
-      <sparkle:version>5.0.0</sparkle:version>
-      <sparkle:shortVersionString>5.0.0</sparkle:shortVersionString>
+      <title>DisplayPilot 5.0.1</title>
+      <pubDate>Fri, 16 Oct 2026 02:20:30 +0000</pubDate>
+      <sparkle:version>5.0.1</sparkle:version>
+      <sparkle:shortVersionString>5.0.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://REPLACE-WITH-YOUR-DOMAIN/DisplayPilot-5.0.0.dmg"
-                 length="15000000"
-                 type="application/octet-stream"
-                 sparkle:edSignature="REPLACE-WITH-SIGN-UPDATE-OUTPUT" />
+      <enclosure url="https://github.com/huayanming/displaypilot/releases/download/v5.0.1/DisplayPilot-5.0.1.dmg" length="7439671" type="application/octet-stream" sparkle:edSignature="Vv0YFYSFXbGqE6MCbwqBAX9YRIOgbOBja18dNIEnlELfEw/KS14g6oDHFqNhL7LTQWETIv4HwbjG0BT/wao0Ag=="></enclosure>
     </item>
   </channel>
-</rss>
+</rss><!-- sparkle-signatures:
+edSignature: 7G21z4M+jtLzW++u4HMouMQcZNMLqalgziOSvcOhUCMWNa09lV7RMdTX5GNEzzvAzBnL7AA3VZ8IGIv982RFDQ==
+length: 1257
+-->
