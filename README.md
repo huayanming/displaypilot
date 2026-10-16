@@ -11,6 +11,10 @@
 
 > This repository is the **website and distribution channel** (GitHub Pages + Releases).
 > It also backs the Homebrew cask and the Sparkle update feed (`appcast.xml`).
+>
+> The app itself is **closed source**. This repository contains the site, the release
+> notes and the download links — not the application’s source code. Please do not
+> reuse the site’s text or images without asking.
 
 ![Display control](https://huayanming.github.io/displaypilot/img/display.webp)
 
