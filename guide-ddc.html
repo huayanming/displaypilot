@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DDC/CI not responding on macOS · DisplayPilot</title>
+<meta name="description" content="Why external display brightness and volume stop responding on a Mac, how to tell whether the display, the cable or the dock is at fault, and what actually works when DDC/CI is unavailable.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-ddc.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-ddc.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-ddc.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-ddc.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="DDC/CI not responding on macOS">
+<meta property="og:description" content="Why external display brightness stops responding on a Mac, how to isolate the cause, and what works when DDC/CI is unavailable.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-ddc.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI not responding on macOS","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-ddc.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="zh-Hans/guide-ddc.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page">
+<article class="doc">
+  <h1>DDC/CI not responding: why your Mac can't dim the external display</h1>
+  <p class="summary">The brightness keys reach the built-in screen but nothing happens on the monitor. The monitor's own buttons work fine. That asymmetry is the whole diagnosis — and it has five common causes, only two of which are the monitor's fault.</p>
+
+  <h2>What macOS is actually doing</h2>
+  <p>DDC/CI is a side channel carried over the video cable's I²C bus. macOS uses it to send small commands to the monitor: set brightness, set volume, switch input, read the panel's EDID and capabilities. It is <em>not</em> part of the picture signal, and it is fragile in ways the picture never is.</p>
+  <p>When the chain breaks, the picture stays perfect and only control dies. That is why “the monitor works, it's just the brightness” is such a common report.</p>
+
+  <h2>The five causes, in the order worth testing</h2>
+  <ol>
+    <li><strong>DDC/CI is switched off in the monitor's own OSD.</strong> Many panels ship with it disabled, and a factory reset can turn it back off. Look under a “Settings”, “OSD” or “Other” section. This is a one-minute check and it is the single most common cause.</li>
+    <li><strong>The dock or hub does not forward DDC.</strong> DDC travels on the auxiliary channel of a direct link. Chained hubs, DisplayLink-based docks and KVM switches frequently drop it while passing video through. Plug the display straight into the Mac to test.</li>
+    <li><strong>The adapter or cable is active, not passive.</strong> HDMI→DisplayPort, DisplayPort→HDMI and some USB-C→HDMI converters re-generate the signal and discard the side channel. A passive USB-C→DisplayPort cable is the most reliable connection.</li>
+    <li><strong>The display genuinely does not implement it.</strong> Some cheaper or older panels expose no DDC command set at all. Nothing will make them appear.</li>
+    <li><strong>macOS itself is inconsistent.</strong> The same dock that works on an Intel Mac can fail on Apple silicon, and support varies by macOS release. Re-test after a major OS update rather than assuming the verdict is permanent.</li>
+  </ol>
+
+  <h2>How to isolate it in two minutes</h2>
+  <p>Work outward from the display:</p>
+  <ul>
+    <li>Turn DDC/CI <strong>on</strong> in the monitor's OSD, then re-probe. The probe must succeed before any software can help.</li>
+    <li>Connect the monitor <strong>directly</strong> to the Mac with the cable it shipped with, leaving the dock out of the path. Probe again.</li>
+    <li>Try the other video port on the Mac. Ports on different controllers do not always behave alike.</li>
+  </ul>
+  <p>If a direct, passive connection with DDC/CI enabled in the OSD still fails, the display does not implement it. That is a hardware fact, not a configuration problem, and no application can change it.</p>
+
+  <h2>What still works when DDC/CI is gone</h2>
+  <p>The picture you see is produced by the GPU and then shaped by a <strong>gamma table</strong> before it reaches the panel. macOS exposes that table to applications. Writing a dimming curve into it darkens everything on screen without asking the monitor for anything — no DDC, no firmware, no special cable.</p>
+  <p>That is the fallback DisplayPilot uses, and it is honest about the trade-offs:</p>
+  <ul>
+    <li>it dims the <strong>image</strong>, so it works on any display that can show a picture;</li>
+    <li>it does <strong>not</strong> reduce backlight current, so it saves less power than hardware dimming on a laptop;</li>
+    <li>it cannot go below black, and it does not change contrast or colour temperature on its own;</li>
+    <li>it is <strong>ignored for HDR content</strong>, because HDR output bypasses the gamma stage. The app says so rather than pretending otherwise.</li>
+  </ul>
+  <p>Restoring is symmetric: the app recomputes from the panel's <em>original</em> curve rather than from the current one, so repeated adjustment cannot accumulate error, and quitting the app hands the display back to the system.</p>
+
+  <h2>When to fix the setup instead</h2>
+  <p>If DDC is unavailable only through your dock, the better answer is usually a passive cable or a different port — hardware brightness, volume and input switching all come back at once. Software dimming is the fallback, not the preference.</p>
+
+  <p class="callout"><strong>Test it on your own display in a minute.</strong> DisplayPilot probes DDC/CI, reports what the panel answers, and falls back to gamma-table dimming when it cannot. The 14-day trial is fully featured and needs no account.</p>
+  <p><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download for macOS</a> <a class="btn btn-ghost" data-site="purchase" href="https://displaypilot-license.huayanming2019.workers.dev/buy" hidden>Buy</a></p>
+
+  <a class="back" href="index.html">← Back to home</a>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

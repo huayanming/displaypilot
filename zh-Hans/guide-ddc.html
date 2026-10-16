@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 外接显示器 DDC/CI 无响应 · DisplayPilot</title>
+<meta name="description" content="为什么 Mac 调不动外接显示器的亮度和音量？显示器、线材、扩展坞各占多少责任，怎么两分钟定位，以及 DDC/CI 真的不可用时还能怎么做。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-ddc.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-ddc.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-ddc.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-ddc.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器 DDC/CI 无响应">
+<meta property="og:description" content="为什么 Mac 调不动外接显示器的亮度，怎么定位原因，以及 DDC/CI 不可用时还能怎么做。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-ddc.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接显示器 DDC/CI 无响应","about":"Display Data Channel Command Interface","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guide-ddc.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="../guide-ddc.html" hreflang="en" lang="en">English</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main" class="wrap page">
+<article class="doc">
+  <h1>DDC/CI 无响应：为什么 Mac 调不动外接显示器的亮度</h1>
+  <p class="summary">快捷键能调内置屏幕，显示器却纹丝不动；而显示器自己的按键一切正常。这个不对称本身就是诊断——它有五个常见原因，其中只有两个该怪显示器。</p>
+
+  <h2>macOS 到底在做什么</h2>
+  <p>DDC/CI 走的是视频线里 I²C 总线上的侧信道。macOS 用它向显示器发送很小的命令：设置亮度、设置音量、切换输入源、读取面板的 EDID 与能力。它<strong>不属于画面信号</strong>，也因此比画面脆弱得多。</p>
+  <p>链路一断，画面依旧完美，只有控制失效。所以「显示器好好的，就是亮度调不了」是极常见的反馈。</p>
+
+  <h2>五个原因，按值得排查的顺序</h2>
+  <ol>
+    <li><strong>显示器自己的 OSD 里把 DDC/CI 关了。</strong> 很多面板出厂就是关闭的，恢复出厂设置也可能把它关回去。去「设置 / OSD / 其他」里找。这是一分钟的检查，也是最常见的原因。</li>
+    <li><strong>扩展坞或 Hub 不转发 DDC。</strong> DDC 依赖直连链路的辅助通道。串联的 Hub、基于 DisplayLink 的扩展坞、KVM 切换器常常只把画面透传过去。把显示器<strong>直连</strong> Mac 再测一次。</li>
+    <li><strong>转接头或线材是「主动式」的。</strong> HDMI→DisplayPort、DisplayPort→HDMI 以及部分 USB-C→HDMI 转换器会重新生成信号，顺便丢掉侧信道。被动式 USB-C→DisplayPort 线最稳。</li>
+    <li><strong>显示器确实没有实现。</strong> 一些廉价或较老的面板不提供任何 DDC 命令集。这没有任何软件能改变。</li>
+    <li><strong>macOS 自身表现不一致。</strong> 同一个扩展坞在 Intel Mac 上能用、在 Apple 芯片上失效；不同系统版本的支持也不同。大版本升级后值得重测，别把一次失败当永久结论。</li>
+  </ol>
+
+  <h2>两分钟定位法</h2>
+  <p>从显示器往外查：</p>
+  <ul>
+    <li>先在显示器 OSD 里<strong>打开</strong> DDC/CI，再探测一次。探测必须成功，任何软件才谈得上帮忙。</li>
+    <li>用显示器原装线<strong>直连</strong> Mac，把扩展坞从链路里拿掉，再探测。</li>
+    <li>换 Mac 上的另一个视频口。不同控制器上的接口行为未必一致。</li>
+  </ul>
+  <p>如果「OSD 已开启 + 直连 + 被动线」仍然失败，那就是显示器没实现。这是硬件事实，不是配置问题。</p>
+
+  <h2>DDC/CI 真没有时，还有什么办法</h2>
+  <p>你看到的画面由 GPU 生成，再经过一张 <strong>伽马表</strong>整形，才送到面板。macOS 把这张表开放给应用程序。往表里写入一条压暗曲线，就能让屏幕上的一切变暗——不需要向显示器要任何东西：不需要 DDC，不需要固件，也不需要特殊线材。</p>
+  <p>这正是 DisplayPilot 的兜底方案，它把代价讲清楚：</p>
+  <ul>
+    <li>它压暗的是<strong>画面</strong>，所以只要能显示画面就能用；</li>
+    <li>它<strong>不降低背光电流</strong>，省电幅度不如笔记本上的硬件调光；</li>
+    <li>它压不到纯黑，也不会自己去改对比度或色温；</li>
+    <li>对 <strong>HDR 内容无效</strong>，因为 HDR 输出会绕过伽马环节。应用会直接说明，而不是假装能行。</li>
+  </ul>
+  <p>还原是对称的：每次都从面板的<em>原始曲线</em>重算，而不是在当前曲线上叠加，所以反复调节不会累积误差；退出应用即把显示器交还系统。</p>
+
+  <h2>什么时候该修环境而不是用软件</h2>
+  <p>如果只有经过扩展坞时 DDC 才失效，更好的答案是换被动线或换接口——硬件亮度、音量与输入源切换会一次性全部回来。软件调光是兜底，不是首选。</p>
+
+  <p class="callout"><strong>用一分钟在你的显示器上验证。</strong> DisplayPilot 会探测 DDC/CI、报告面板的回应，并在拿不到硬件控制时自动改用伽马表调光。14 天试用功能完整，不需要注册账号。</p>
+  <p><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载 macOS 版</a> <a class="btn btn-ghost" data-site="purchase" href="https://displaypilot-license.huayanming2019.workers.dev/buy" hidden>购买</a></p>
+
+  <a class="back" href="index.html">← 返回首页</a>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
