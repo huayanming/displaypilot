@@ -58,7 +58,7 @@
     <div class="wrap">
       <h1>Scrollen, Helligkeit, Farbe.</h1>
       <p class="sub">Genau so eingestellt, wie du es magst.</p>
-      <p class="lede">Eine native macOS-Konsole für dein Display. Aus einer Rastenstufe des Mausrads wird ein kontinuierliches Scrollen, Bild für Bild übergeben. Die Helligkeit läuft über die CoreGraphics-Gammatabelle und funktioniert damit auch auf Monitoren, die DDC/CI nie implementiert haben. Die Farbe wird anhand der ursprünglichen Kurven des Panels berechnet — und mit einem Klick an das System zurückgegeben.</p>
+      <p class="lede">Eine native macOS-Konsole für dein Display. Aus einer Rastenstufe des Mausrads wird ein kontinuierliches Scrollen, Bild für Bild übergeben. Die Helligkeit läuft über die CoreGraphics-Gammatabelle und funktioniert damit auch auf Monitoren, die DDC/CI nie implementiert haben. Die Farbe wird anhand der Kurve, die beim ersten Übernehmen gelesen wird berechnet — und mit einem Klick an das System zurückgegeben.</p>
       <p class="hero-cta">
         <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Für macOS laden</a>
         <a class="btn btn-ghost" href="#price">14 Tage kostenlos testen</a>
@@ -72,7 +72,7 @@
   <section class="statement">
     <div class="wrap">
       <p class="big">Das sind nicht die Systemeinstellungen mit umsortierten Schaltern. Das ist die Arbeit, die das System nie gemacht hat.</p>
-      <p class="small">Scrollen Bild für Bild, Dimmen ohne Abhängigkeit von der Panel-Firmware, Kalibrierung auf Basis der ursprünglichen Kurven des Panels — und ein Bereinigungspfad, der erst in Quarantäne verschiebt und dann löscht.</p>
+      <p class="small">Scrollen Bild für Bild, Dimmen ohne Abhängigkeit von der Panel-Firmware, Kalibrierung auf Basis der Kurve, die beim ersten Übernehmen gelesen wird — und ein Bereinigungspfad, der erst in Quarantäne verschiebt und dann löscht.</p>
     </div>
   </section>
   <section class="features" id="features">
@@ -104,7 +104,7 @@
         <div class="f-copy">
           <p class="f-eyebrow">03 · Farbkalibrierung</p>
           <h2 class="f-title">Verankert an den eigenen Kurven des Panels</h2>
-          <p class="f-body">Kontrast dreht sich um Mittelgrau, Gamma arbeitet in den Mitteltönen, und die Farbtemperatur reicht von 2700–9000 K — alle drei Kanäle werden auf den ursprünglichen Kurven des Panels berechnet. 6500 K ist als Identitätstransformation verankert, der Standardzustand entspricht also genau dem, wie dein Display ohnehin aussieht.</p>
+          <p class="f-body">Kontrast dreht sich um Mittelgrau, Gamma arbeitet in den Mitteltönen, und die Farbtemperatur reicht von 2700–9000 K — alle drei Kanäle werden auf den Kurve, die beim ersten Übernehmen gelesen wird berechnet. 6500 K ist als Identitätstransformation verankert, der Standardzustand entspricht also genau dem, wie dein Display ohnehin aussieht.</p>
           <p class="f-note sunk neu neu-sink">Der physische Farbraum wird direkt aus dem EDID gelesen und als CIE-xy-Dreieck gezeichnet, daneben die Abdeckung von sRGB und Display P3. Was sich ausrichten lässt, wird ausgerichtet; die Bereiche, die das Panel physisch nicht erreichen kann — hochgesättigtes Rot und Grün —, werden <strong>als unerreichbar gekennzeichnet</strong> statt vorgetäuscht. Ein Klick gibt die Kalibrierung an ColorSync zurück.</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="Gemessene Werte der Farbkalibrierung">

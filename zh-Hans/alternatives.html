@@ -69,7 +69,7 @@
 <tr><td>HiDPI 缩放 / 虚拟屏</td><td>不做</td><td>不做</td><td><strong>支持</strong></td><td>不做</td></tr>
 <tr><td>可重建文件的安全清理</td><td><strong>支持</strong>：13 类，先隔离 30 天</td><td>无</td><td>无</td><td>无</td></tr>
 <tr><td>平滑滚动</td><td><strong>支持</strong>：逐帧、按时间衰减</td><td>无</td><td>无</td><td>无</td></tr>
-<tr><td>以面板原始曲线为基准的校准</td><td><strong>支持</strong></td><td>无</td><td>部分（高级图像控制）</td><td>无</td></tr>
+<tr><td>以首次接管时读到的曲线为基准的校准</td><td><strong>支持</strong></td><td>无</td><td>部分（高级图像控制）</td><td>无</td></tr>
 <tr><td>激活方式</td><td>Ed25519 激活码，本地离线校验、不绑设备</td><td>不需要</td><td>许可文件</td><td>许可密钥</td></tr>
 <tr><td>遥测</td><td>完全没有</td><td>见其文档</td><td>见其文档</td><td>见其文档</td></tr>
 <tr><td>最低系统</td><td>macOS 14</td><td>见其文档</td><td>见其文档</td><td>macOS 11</td></tr>
@@ -89,7 +89,7 @@
 <ul class="ticks">
   <li><strong>带隔离区的清理。</strong>只处理 13 类有确定性重建方式的产物；先移入隔离区保留 30 天；永久删除默认关闭，且必须同时满足 6 个条件。</li>
   <li><strong>按时间衰减、而非按帧数的滚动。</strong>60Hz 与 144Hz 手感一致，且默认关闭，你开了才生效。</li>
-  <li><strong>以面板原始曲线为基准的校准。</strong>反复调节不累积误差，一键交回 ColorSync。</li>
+  <li><strong>以首次接管时读到的曲线为基准的校准。</strong>反复调节不累积误差，一键交回 ColorSync。</li>
   <li><strong>离线激活、不绑设备。</strong>以 <code>DP-</code> 开头的码用内置 Ed25519 公钥在本机校验——不联网，也不绑定设备。</li>
 </ul>
 
