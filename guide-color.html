@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>External display colours look washed out — and why tweaking it repeatedly makes it worse · DisplayPilot</title>
+<meta name="description" content="Software dimming and colour adjustment go through the gamma table. Compute each new value on top of the last and the error compounds. Here is the trap, and the one detail that avoids it.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-color.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-color.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-color.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-color.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-color.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="External display colours look washed out — and why tweaking it repeatedly makes it worse">
+<meta property="og:description" content="Software dimming and colour adjustment go through the gamma table. Compute each new value on top of the last and the error compounds. Here is the trap, and the one detail that avoids it.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-color.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI not responding on macOS","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-color.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guide-cleanup.html">Cleanup guide</a>
+      <a href="zh-Hans/guide-color.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-color.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>External display colours look washed out</h1>
+<p class="summary">Two different complaints get the same answer. “The picture looks flat after I dim it” and “I adjusted the colour and now it looks worse than before” are both about the gamma table — and the second one is a mistake that is genuinely easy to make, in our own code as much as anyone's.</p>
+
+<h2>Why dimming changes colour</h2>
+<p>When a panel does not implement DDC/CI, brightness has to be done in software, by rewriting the display's gamma ramp. That is a real change to the relationship between signal and output, so a dimmed image is not simply a darker version of the same picture — it can read as flatter or greyer. This is inherent to software dimming, not a bug in any particular app.</p>
+
+<h2>The trap: adjusting on top of your own adjustment</h2>
+<p>Here is where things go wrong. The natural way to write “set gamma to 2.3” is to read the current table, shape it, and write it back. Do that once and it is fine. Do it again — and the second adjustment is applied on top of the first — and the third on top of that. Every tweak compounds the last one, which is why people describe colours that “drift” and never quite come back.</p>
+<p>The fix is one line of discipline: <strong>capture the curve once, and always compute from that captured copy</strong>, never from the curve you last wrote. In our source the comment on that cache says it plainly: <em>“The display's pristine ramp, captured once and reused as the base for every transformation so repeated adjustments never compound.”</em> The hundredth adjustment produces the same result as the first.</p>
+
+<h2>The honest detail about that baseline</h2>
+<p>“Captured once” means exactly that: we read the display's transfer table the first time we take control of it, and use that as the base. On a Mac where nothing else is manipulating gamma, that <em>is</em> the panel's original ramp. If another gamma-controlling app is already running when we start, then what we captured is <strong>that app's curve</strong>, and our adjustments are computed relative to it. That is why the wording matters, and why we say it here rather than letting the shorter marketing phrase imply more.</p>
+
+<h2>Getting back to where you started</h2>
+<p>One command drops everything we applied and hands the display back to the system: it writes the captured curve back and forgets our state, so ColorSync is in charge again. In the app this is a button, and the panel reports “handed back to the system ColorSync calibration”.</p>
+
+<h2>What this is not</h2>
+<p>It is a perceptual adjustment, not a measurement-grade calibration. If your work depends on measured colour, no gamma-table tool — ours included — replaces a colorimeter and a profiled display. Our licence terms say the same thing in plain words rather than hiding it.</p>
+
+<h2>Related</h2>
+<p class="small"><a href="guide-wake.html">Brightness resets after sleep</a> · <a href="guide-ddc.html">DDC/CI not responding</a> · <a href="alternatives.html">Which Mac display app should you use?</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

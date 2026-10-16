@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>外接屏色彩发灰？以及为什么越调越偏 · DisplayPilot</title>
+<meta name="description" content="软件调光与色彩调整走的是伽马表。如果你把新值叠在上一次的结果上，误差就会累积。这一页讲清楚这个陷阱，以及避开它的那一个关键细节。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-color.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-color.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-color.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-color.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-color.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="外接屏色彩发灰？以及为什么越调越偏">
+<meta property="og:description" content="软件调光与色彩调整走的是伽马表。如果你把新值叠在上一次的结果上，误差就会累积。这一页讲清楚这个陷阱，以及避开它的那一个关键细节。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-color.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接显示器 DDC/CI 无响应","about":"Display Data Channel Command Interface","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guide-color.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guide-cleanup.html">清理指南</a>
+      <a href="../guide-color.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hant/guide-color.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>外接屏色彩发灰</h1>
+<p class="summary">两种不同的抱怨，答案其实是同一个。「调暗之后画面发灰」和「调了色彩之后反而更糟」，都跟伽马表有关——而后者是一个<strong>真的很容易犯</strong>的错误，我们自己的代码也不例外。</p>
+
+<h2>为什么调光会改变颜色</h2>
+<p>当面板没有实现 DDC/CI 时，亮度只能在软件层做：重写显示器的伽马表。这是对「信号与输出关系」的真实改动，所以调暗后的画面不是同一张图的暗版——它会显得更平、更灰。这是软件调光固有的代价，不是某个应用的 bug。</p>
+
+<h2>陷阱：在你自己的改动之上再改</h2>
+<p>问题出在这里。「把伽马设成 2.3」最自然的写法是：读出当前的表、按参数重塑、写回去。做一次没事。做第二次时，这次调整是<strong>叠在第一次的结果上</strong>的；第三次又叠在第二次上。每一次微调都在累积上一次的偏差——这就是人们说的「颜色越调越偏，怎么看都回不去」。</p>
+<p>解法只有一条纪律：<strong>把曲线读一次并留住，之后永远从这份留存副本换算</strong>，而不是从你上一次写进去的曲线出发。我们源码里那条缓存的注释写得很直白：<em>「面板的原始 ramp，只读取一次，作为一切变换的基准，因此反复调节不会累积。」</em> 第一百次调节的结果与第一次完全相同。</p>
+
+<h2>关于这个基准，一句诚实的话</h2>
+<p>「只读取一次」就是字面意思：我们在第一次接管某台显示器时读它的传递表，以此作为基准。在一台没有其它东西在改伽马的 Mac 上，这<strong>确实就是</strong>面板的原始曲线。但如果在我们启动时，已经有另一个控制伽马的应用在运行，那么我们捕获到的是<strong>那个应用的曲线</strong>，我们的换算就是相对它做的。所以我们在这里把话说清楚，而不是让更简短的市场用语暗示更多。</p>
+
+<h2>怎么回到你原来的状态</h2>
+<p>一条命令丢掉我们写入的全部内容并把显示器交还系统：把捕获到的曲线写回去、清掉我们自己的状态，于是 ColorSync 重新接管。在应用里这是一个按钮，操作后面板会显示「已交回系统 ColorSync 校准」。</p>
+
+<h2>它不是什么</h2>
+<p>它是<strong>观感调整</strong>，不是计量级校色。如果你的工作依赖可测量的颜色，那么任何伽马表工具——包括我们——都替代不了一台色度计和一台做过配置文件的显示器。这句话我们也写在许可条款里，而不是藏起来。</p>
+
+<h2>相关</h2>
+<p class="small"><a href="guide-wake.html">休眠后亮度被重置</a> · <a href="guide-ddc.html">DDC/CI 无响应</a> · <a href="alternatives.html">该用哪个 Mac 显示器工具？</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
