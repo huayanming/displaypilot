@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>休眠之后外接显示器亮度被重置——为什么，以及什么办法真的有效 · DisplayPilot</title>
+<meta name="description" content="显示器从休眠回来时亮度不对，而 macOS 里没有任何地方能把它设回来。这一页讲清楚：这个值为什么会丢、为什么想当然的修法会失败、以及什么才是有效的。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-wake.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-wake.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-wake.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="休眠之后外接显示器亮度被重置——为什么，以及什么办法真的有效">
+<meta property="og:description" content="显示器从休眠回来时亮度不对，而 macOS 里没有任何地方能把它设回来。这一页讲清楚：这个值为什么会丢、为什么想当然的修法会失败、以及什么才是有效的。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接显示器 DDC/CI 无响应","about":"Display Data Channel Command Interface","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guide-cleanup.html">清理指南</a>
+      <a href="../guide-wake.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hant/guide-wake.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>休眠之后，外接显示器亮度被重置</h1>
+<p class="summary">你把显示器调暗，合上盖子，回来一看又是亮的。或者你改了分辨率、拔插了线，同样的事情发生。系统设置里没有任何地方能把它设回去——因为<strong>系统自己也没有保存这个值</strong>。</p>
+
+<h2>到底发生了什么</h2>
+<p>在第三方显示器上，亮度与对比度存在显示器内部，通过 DDC/CI 访问；如果这块面板没有实现 DDC/CI，那么唯一还能控制的就是 CoreGraphics 伽马表。无论哪条路，<strong>macOS 都不会保存这个值</strong>。从休眠唤醒、改分辨率、重新插拔，都意味着显示器被重新配置，你设过的东西就这么没了——面板回到它自己的默认状态。</p>
+
+<h2>为什么想当然的修法没用</h2>
+<p>最自然的修法是：监听唤醒通知，然后把值写回去。这<strong>会失败</strong>，原因很具体——<strong>面板在唤醒之后需要一点时间才会回应 DDC/CI</strong>。你在通知到达的瞬间就写，这次写入会被直接丢掉。这就是为什么很多自己写的小脚本「有时候灵、有时候不灵」。</p>
+<p>可靠的做法是：等一等（我们等 2.5 秒），再写；如果没写进去，就重试。我们的重试节奏是 1 秒、2 秒、4 秒。而且第一次尝试时面板可能根本还没出现在总线上——这不是错误，这是正常的先后顺序。</p>
+<p class="small">这不是推测：它是我们源码里 <code>SelfHealEngine.wakeDelay</code> 上的注释，也是这个功能存在的原因。</p>
+
+<h2>今天就能用的办法</h2>
+<ul class="ticks">
+  <li><strong>在显示器自己的 OSD 里设置。</strong>由面板自己保存的值，能扛过休眠、分辨率变化和重启。</li>
+  <li><strong>用一个处理了唤醒路径的免费工具。</strong><strong>MonitorControl</strong> 做 DDC 亮度与音量，而且开源——如果你只要亮度和音量，就用它，不要给我们付钱。这话我们也写在<a href="alternatives.html">对比页</a>里。</li>
+  <li><strong>或者让应用替你写回。</strong>DisplayPilot 会监听唤醒与显示器重配置，等待、把记住的硬件状态写回去，失败就重试。你可以关掉自动重放，只留一个「立即重放一次」按钮，把控制权握在自己手上。</li>
+</ul>
+
+<h2>如果亮度完全回不来</h2>
+<p>那是另一个故障——可能是面板没有实现 DDC/CI，也可能是线材或接口不传它。区分办法在<a href="guide-ddc.html">《DDC/CI 无响应》</a>里。</p>
+
+<h2>相关</h2>
+<p class="small"><a href="guide-ddc.html">DDC/CI 无响应：区分显示器、线材与接口</a> · <a href="alternatives.html">该用哪个 Mac 显示器工具？一份诚实对比</a> · <a href="verify.html">自己验证我们的说法</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

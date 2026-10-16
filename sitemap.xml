@@ -44,4 +44,7 @@
   <url><loc>https://huayanming.github.io/displaypilot/verify.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://huayanming.github.io/displaypilot/zh-Hans/verify.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://huayanming.github.io/displaypilot/zh-Hant/verify.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://huayanming.github.io/displaypilot/guide-wake.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://huayanming.github.io/displaypilot/zh-Hant/guide-wake.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

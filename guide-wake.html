@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>External display brightness resets after sleep — why, and what actually fixes it · DisplayPilot</title>
+<meta name="description" content="Your monitor comes back from sleep at the wrong brightness and there is nothing in macOS to set it back. Here is why the value disappears, why the obvious fix fails, and what works.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-wake.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-wake.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-wake.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-wake.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="External display brightness resets after sleep — why, and what actually fixes it">
+<meta property="og:description" content="Your monitor comes back from sleep at the wrong brightness and there is nothing in macOS to set it back. Here is why the value disappears, why the obvious fix fails, and what works.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-wake.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI not responding on macOS","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-wake.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guide-cleanup.html">Cleanup guide</a>
+      <a href="zh-Hans/guide-wake.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-wake.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>External display brightness resets after sleep</h1>
+<p class="summary">You dim the monitor, close the lid, come back — and it is bright again. Or you switch resolution, or unplug the cable, and the same thing happens. Nothing in System Settings puts it back, because nothing in the system owns that value.</p>
+
+<h2>What is actually happening</h2>
+<p>On a third-party panel, brightness and contrast live in the monitor itself, reached over DDC/CI; when a panel does not implement DDC/CI, the only thing anything can control is the CoreGraphics gamma table. Either way the value is <strong>not stored by macOS</strong>. Waking from sleep, changing resolution or reconnecting a display all mean the display is reconfigured, and whatever you had set is simply gone — the panel falls back to its own default.</p>
+
+<h2>Why the obvious fix does not work</h2>
+<p>The obvious fix is to watch for the wake notification and write the value back. That fails, and the reason is specific: <strong>a panel needs a moment after wake before it answers DDC/CI at all</strong>. Replay the instant the notification arrives and the write is thrown away — which is why so many homemade wake scripts appear to work sometimes and not others.</p>
+<p>What a reliable implementation does instead is wait (we use 2.5 seconds), then write, and if the write does not take, retry. Our retry ladder is 1 s, then 2 s, then 4 s. The panel is also allowed to be genuinely absent from the bus for the first try — that is not an error, it is the normal order of events.</p>
+<p class="small">This is not theory: it is the comment on <code>SelfHealEngine.wakeDelay</code> in our source, and the reason the feature exists at all.</p>
+
+<h2>What works today</h2>
+<ul class="ticks">
+  <li><strong>Set it in the monitor's own OSD.</strong> Values stored by the panel itself survive sleep, resolution changes and reboots.</li>
+  <li><strong>Use a free tool that handles the wake path.</strong> <strong>MonitorControl</strong> does DDC brightness and volume and is open source — if all you want is brightness and volume, use it and do not pay anyone. We say so on our <a href="alternatives.html">comparison page</a> too.</li>
+  <li><strong>Or let an app replay the value for you.</strong> DisplayPilot watches for wake and screen reconfiguration, waits, writes the remembered hardware state back, and retries. You can turn the automatic replay off and keep a manual “replay now” button if you would rather stay in control.</li>
+</ul>
+
+<h2>If brightness does not come back at all</h2>
+<p>That is a different fault — the panel may not implement DDC/CI, or the cable or the port may not carry it. The way to tell them apart is in <a href="guide-ddc.html">DDC/CI not responding</a>.</p>
+
+<h2>Related</h2>
+<p class="small"><a href="guide-ddc.html">DDC/CI not responding: isolating display, cable or port</a> · <a href="alternatives.html">Which Mac display app should you use? An honest comparison</a> · <a href="verify.html">Verify our claims yourself</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>
