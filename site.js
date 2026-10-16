@@ -49,14 +49,24 @@
   //    否则下单页读不到来源，整条漏斗的渠道归因就断在「点购买」这一步。
   //    规则与下单页一致：小写字母数字、-、_，最长 32 字符，不合规一律丢弃
   //    （只记「直接访问」，绝不把来路不明的字符串透传下去）。
-  function campaignSource() {
-    try {
-      var v = new URLSearchParams(location.search).get("src");
-      return v && /^[a-z0-9][a-z0-9_-]{0,31}$/i.test(v.trim()) ? v.trim().toLowerCase() : null;
-    } catch (err) {
-      return null;
+  var SRC_KEY = "dp-src";
+function validSrc(v) {
+  return v && /^[a-z0-9][a-z0-9_-]{0,31}$/i.test(v.trim()) ? v.trim().toLowerCase() : null;
+}
+// 站内导航会丢掉查询串：拿到合规 src 就存进 sessionStorage（仅本标签页、关掉即清、无标识），
+// 之后没有 ?src= 的页面用它兜底。
+function campaignSource() {
+  try {
+    var fromUrl = validSrc(new URLSearchParams(location.search).get("src"));
+    if (fromUrl) {
+      try { sessionStorage.setItem(SRC_KEY, fromUrl); } catch (e) { /* 隐私模式 */ }
+      return fromUrl;
     }
+    return validSrc(sessionStorage.getItem(SRC_KEY));
+  } catch (err) {
+    return null;
   }
+}
   if (SITE.purchase) {
     var src = campaignSource();
     var purchaseUrl = src
