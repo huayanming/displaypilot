@@ -17,8 +17,8 @@
     purchase: "https://displaypilot-license.huayanming2019.workers.dev/buy",
     // 价格：全站唯一常量。key 是页面的 <html lang>，default 覆盖其余语言。
     pricing: {
-      "default": { num: "US$14", unit: "" },
-      "en":      { num: "$14",   unit: "" },
+      "default": { num: "≈US$14", unit: "" },
+      "en":      { num: "≈$14",   unit: "" },
       "zh-Hans": { num: "99",    unit: "元" }
       // 要做区域定价，在这里加一行即可（运行时立即对 8 个语言页生效），例如：
       // , "ja": { num: "¥2,000", unit: "" }
