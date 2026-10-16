@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>隱私政策 · DisplayPilot</title>
-<meta name="description" content="DisplayPilot 不做遙測、不做埋點、不上傳顯示器資料。這份政策逐條寫明應用程式在本機讀取什麼，以及真正連網的只有哪幾件事。">
+  <meta name="description" content="DisplayPilot 不做遙測、不做埋點、從不上傳你的顯示器資料。這份政策逐條說明應用程式在本機讀取什麼，以及它唯一會發起的網路請求。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/privacy.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/privacy.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
@@ -56,10 +56,10 @@
   <p class="summary">一句話：<strong>DisplayPilot 不做遙測、不做埋點、不做使用統計。</strong>應用程式裡沒有接任何統計 SDK，也沒有一條會把你「怎麼用它」送出去的請求。下面把它在本機讀取什麼、真正連網的只有哪幾件事，逐條寫清楚。</p>
   <h2>一、我們蒐集什麼</h2>
   <p><strong>不蒐集任何使用資料。</strong>沒有埋點、沒有事件回報、沒有當機記錄回報、沒有裝置指紋、沒有廣告識別碼、沒有使用者輪廓分析。</p>
-  <p>唯一一次由我們主動發起、並且會帶上識別資訊的連網行為，是<strong>你主動輸入授權碼之後的授權檢查</strong>。它送出的內容只有兩項：</p>
-  <ul><li><strong>授權碼</strong>（license key）——你自己在購買郵件裡收到、並手動輸入的那串字元；</li><li><strong>一個隨機產生的裝置識別碼</strong>——首次啟用時由應用程式在本機用 UUID 產生，存放在系統鑰匙圈裡。它<strong>不包含</strong>硬體序號、MAC 位址、顯示器 EDID、機器名稱、Apple ID 或任何帳號資訊。</li></ul>
-  <p>這個隨機識別碼的唯一用途，是讓商户知道「這台 Mac 已經佔用了一個授權名額」，以免同一組授權碼被無限台機器同時使用。它無法反查到你本人，也無法反查到你的裝置型號。</p>
-  <p class="callout"><strong>目前狀態：授權檢查還沒有生效。</strong>上面這段描述的是應用程式的既定行為；購買與啟用接的是 Lemon Squeezy，截至本頁更新日期商户通道尚未接通，應用程式內還沒有可用的啟用入口。所以在通道接通之前，<strong>這條請求根本不會送出</strong>——不是「送了但不記錄」，是還沒有這一步。</p>
+  <p>唯一與授權相關的網路請求，是<strong>短碼的一次性領取</strong>（<code>DP-XXXX-XXXX-XXXX</code>）。它送出的內容只有兩項：</p>
+  <ul><li><strong>短碼</strong>——付款後下單頁顯示的那 12 位字元；</li><li><strong>隨機產生的裝置識別碼</strong>——首次啟動時在本機產生的 UUID，存放在 macOS 鑰匙圈。它<strong>不含</strong>硬體序號、MAC 位址、顯示器 EDID、機器名稱、Apple ID 或任何帳號資訊。</li></ul>
+  <p>該請求只是讓發碼服務把短碼換成該訂單對應的長簽章碼。以 <code>DP-</code> 開頭的長碼之後完全<strong>離線</strong>驗證——現在與將來都不會再發任何請求。那個隨機識別碼無法回溯到你本人，也無法回溯到你的機型。</p>
+  <p class="callout"><strong>目前狀態：購買通道已開通。</strong>付款透過我們自建的收單與發碼服務以加密貨幣完成。<code>DP-</code> 啟動碼離線驗證、從不聯絡伺服器；只有領取短碼會發一次請求，且發往我們自己的服務，不經過第三方。</p>
   <h2>二、我們不蒐集什麼</h2>
   <p>下面這些資料應用程式<strong>會用到、但只在你本機記憶體裡處理，永遠不上傳</strong>：</p>
   <ul><li>顯示器型號、廠商 ID、型號 ID、EDID 全文與物理色域；</li><li>解析度、更新率、目前伽瑪表、亮度與色溫數值；</li><li>磁碟容量、快取目錄大小、掃描結果與清理紀錄；</li><li>視窗標題與視窗位置（視窗佈局與工作階段回復需要，要你授權輔助使用後才讀得到）；</li><li>滾輪事件與快速鍵按鍵（捲動平滑、滑鼠映射需要）。</li></ul>
@@ -71,22 +71,22 @@
   <p>應用程式會向 <code>appcast.xml</code> 請求一次版本清單，用來判斷有沒有新版本。這份清單與本網站一起託管在 GitHub Pages。這個請求裡<strong>不含授權碼、不含裝置識別碼、不含任何使用資料</strong>。它<strong>預設是關閉的</strong>：只有你在「一般」面板裡主動開啟自動檢查（此後每天最多一次），或者手動點一次「檢查更新」，才會送出這個請求。</p>
   <p>託管方 GitHub 與任何網站伺服器一樣，會看到你的 IP 位址、請求時間與用戶端識別碼。這是託管服務的例行存取記錄，不是我們額外蒐集的。</p>
   <h3>2. 檢查授權</h3>
-  <p>只有在你輸入授權碼之後才會發生。請求送往商户 Lemon Squeezy 的授權介面（<code>api.lemonsqueezy.com/v1/licenses</code>）：</p>
-  <ul><li><strong>啟用</strong>：送出授權碼 + 上面那個隨機裝置識別碼；</li><li><strong>定期複查</strong>：啟用成功後每 30 天複查一次，送出授權碼 + Lemon Squeezy 回傳的執行個體編號；</li><li><strong>取消啟用</strong>：同樣兩項，用於釋放名額，讓你把授權換到另一台 Mac。</li></ul>
+  <p>只有在你啟動時才會發生。長簽章碼（<code>DP-…</code>）用內建公鑰<strong>在本機離線</strong>驗證——啟動時與之後都不會有任何請求離開你的 Mac。短碼（<code>DP-XXXX-XXXX-XXXX</code>）只在領取時與我們自己的發碼服務交換一次：</p>
+  <ul><li><strong>領取短碼</strong>：傳送短碼與上面說的隨機裝置識別碼，並取回長簽章碼；</li><li><strong>長簽章碼</strong>：用內建公鑰離線驗證。無帳號、無伺服器、無定期回連——不會因為你離線而失效。</li></ul>
   <p>我們<strong>刻意</strong>做成離線優先：複查失敗、斷網、伺服器故障都不會改變你的授權狀態，只會記下一筆錯誤；萬一複查長期不通，還有 7 天寬限期照常使用。<strong>還沒啟用之前，應用程式不會送出任何授權請求，也不需要填任何帳號。</strong></p>
-  <p class="callout"><strong>目前狀態：這一步還沒有接通。</strong>商户通道尚未開通，應用程式內沒有可用的啟用入口，因此現在不會有任何授權請求送出。通道接通後，本節描述的行為才會生效。</p>
+  <p class="callout"><strong>目前狀態：這一步已生效。</strong>長 <code>DP-</code> 碼完全不需要網路。上面說的短碼領取是應用程式唯一的授權請求，且發往我們自己的服務。<strong>在你啟動之前，應用程式不會發出任何授權請求，也不需要帳號。</strong></p>
   <h3>3. 開啟購買頁或官網</h3>
-  <p>點「購買」或「前往官網」時，網址會在你的預設瀏覽器裡開啟。付款在你的瀏覽器中完成，不經過應用程式。由於購買通道尚未接通，現在應用程式內沒有可點的購買入口。</p>
+  <p>點「購買」或「前往官網」時，網址會在你的預設瀏覽器裡開啟。付款在你的瀏覽器中完成，不經過應用程式。購買入口是由發碼服務提供的下單頁，使用你已有的瀏覽器，不安裝任何東西。</p>
   <h2>四、你的資料存在哪裡</h2>
   <ul><li><strong>授權紀錄</strong>（授權碼、執行個體編號、啟用與複查時間）：macOS 系統鑰匙圈，服務名稱 <code>com.neeson.displaypilot.license</code>。不是明文 plist。</li><li><strong>應用程式設定</strong>（試用起始日期、介面偏好、快速鍵綁定、自動化規則、護眼排程）：<code>~/Library/Preferences/com.neeson.displaypilot.plist</code>。</li><li><strong>清理隔離區與操作台帳</strong>：<code>~/Library/Application Support/com.neeson.displaypilot/Clean/</code>。被清理的檔案先移進這裡的隔離區，30 天內可隨時還原。</li><li><strong>系統權限</strong>：輔助使用授權由 macOS 管理，可在「系統設定 → 隱私權與安全性 → 輔助使用」裡隨時撤銷。</li></ul>
   <p>刪除方式：結束應用程式後，把上面兩個目錄／檔案刪掉即可；想要更徹底，再在鑰匙圈存取裡刪掉那一筆紀錄。應用程式不在系統裡安裝任何背景服務或常駐程式，解除安裝不留下常駐元件。</p>
   <h2>五、第三方</h2>
-  <ul><li><strong>Lemon Squeezy</strong>（計畫中的商户記錄方）：將負責付款、發票與全球加值稅。你在購買時提供的電子郵件與付款資訊由他們蒐集與保存，我們只能看到訂單編號、電子郵件與授權碼。<strong>截至本頁更新日期，這條通道尚未接通，因此還沒有任何一筆交易發生，也沒有任何付款資訊被蒐集。</strong></li><li><strong>GitHub</strong>：託管本網站、更新清單與安裝檔下載。作為託管方會依例記錄存取記錄（IP、時間、請求路徑）。</li></ul>
+  <ul><li><strong>我們的發碼服務</strong>（Cloudflare Workers）：提供下單頁、把你的付款與鏈上記錄比對、簽發啟動碼，並處理短碼領取。它能看到訂單號、鏈上交易雜湊與金額、以及隨機裝置識別碼；它<strong>看不到</strong>你的姓名、電子郵件或帳號。</li><li><strong>公共區塊鏈 API</strong>（例如 TronGrid 與公共 RPC 端點）：發碼服務讀取公開鏈上資料以確認你的轉帳，不會向它們傳送個人資料。</li><li><strong>GitHub</strong>：託管本網站、更新來源與下載包。作為託管方，它會保留一般存取日誌（IP、時間、請求路徑）。</li></ul>
   <p>除此之外，本應用程式與本站<strong>沒有</strong>任何分析服務、廣告聯播網、社交外掛或第三方字型。</p>
   <h2>六、兒童</h2>
   <p>DisplayPilot 是面向 Mac 使用者的桌面工具，不針對兒童設計，也不會有意蒐集兒童的任何資訊。</p>
   <h2>七、政策變更</h2>
-  <p>如果未來的版本改變了連網行為（例如新增雲端同步），這份政策會先更新，並在更新記錄裡寫明改了什麼。我們不會用「繼續使用即視為同意」來悄悄擴大蒐集範圍。購買通道接通時，本頁與授權合約會同步更新，說明屆時真正生效的行為。</p>
+  <p>如果未來的版本改變了應用程式的連網行為（例如新增雲端同步），這份政策會先更新，並在更新記錄裡寫明改了什麼。我們不會用「繼續使用即視為同意」來悄悄擴大蒐集範圍。</p>
   <h2>八、聯絡方式</h2>
   <p>對這份政策有疑問，或想核對你被保存了哪些授權資訊，請在<a href="https://github.com/huayanming/displaypilot/issues">GitHub 上開一條 issue</a>。</p>
   <a class="back" href="index.html">← 返回首頁</a>

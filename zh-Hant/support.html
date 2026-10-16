@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>支援 · DisplayPilot</title>
-<meta name="description" content="DisplayPilot 支援與常見問題：DDC 無回應、與 Mos 衝突、還原顯示器原始狀態、試用到期後的功能、購買通道目前狀態、清理安全性，以及如何回報問題。">
+  <meta name="description" content="DisplayPilot 支援與常見問題：DDC 無回應、與 Mos 衝突、還原顯示器、試用結束後還能用什麼、如何購買與啟動，以及清理有多安全。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/support.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/support.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/support.html">
@@ -70,9 +70,9 @@ sudo shutdown -r now</code></pre><strong>只刪使用者層級不夠</strong> �
   <h3>4. 試用結束後哪些功能還能用？</h3>
   <p>試用期（14 天）內功能完整。試用結束後<strong>只暫停 5 項增強功能</strong>：捲動平滑、滑鼠按鍵映射、護眼排程、自動化規則、工作階段儲存與回復。</p>
   <p><strong>復原類操作永遠可用，且不依賴連網</strong>：還原此顯示器、交回系統校正、顯示器休眠、結束、授權頁面、關於頁面、解除安裝/重置入口。換句話說，欠費不會把你鎖在一塊無法復原的螢幕前。</p>
-  <h3>5. 現在能購買或啟用嗎？</h3>
-  <p class="callout"><strong>還不能。</strong>購買、啟用與退款計畫由 Lemon Squeezy 作為商户記錄方承擔，但商户通道尚未接通，所以<strong>現在沒有可用的付款入口，應用程式內也無法完成啟用</strong>。在通道接通之前：試用期內功能完整；試用到期後只暫停上面那 5 項增強功能，復原類操作始終可用。通道接通的訊息會寫進 <a href="https://github.com/huayanming/displaypilot/releases">GitHub Releases</a> 的發行說明。</p>
-  <p>通道接通之後，換新 Mac 的流程是這樣：在新 Mac 上開啟「一般 → 授權」，輸入購買郵件裡的授權碼並啟用；如果提示名額已滿，在舊 Mac 的同一頁面點「取消啟用」釋放名額，再回到新 Mac 啟用 —— 取消啟用只移除本機授權，不影響你的購買。可同時啟用的台數由授權服務端決定，購買頁會寫明。</p>
+  <h3>5. 現在可以購買/啟動嗎？</h3>
+  <p class="callout"><strong>可以。</strong>購買通道已開通，使用加密貨幣收款。在<a href="https://displaypilot-license.huayanming2019.workers.dev/buy">下單頁</a>選擇鏈與代幣，按頁面顯示的精確金額轉帳，鏈上確認後（通常幾分鐘）該頁會立即顯示啟動碼。你也可以把碼儲存為檔案、寄給自己，或之後用永久取碼連結 / 6 位查詢碼重新開啟。</p>
+  <p>換新 Mac：開啟「一般 → 授權」，貼上你購買時拿到的碼即可啟動——啟動是離線驗證，無需連網。同一張碼可用於你本人擁有或控制的 Mac；<code>DP-</code> 碼不含伺服器端強制的裝置上限，請按「一位使用者一份授權」使用。</p>
   <h3>6. 清理功能會不會刪錯東西？</h3>
   <p>設計上就是把「刪錯」的機率壓到最低：</p>
   <ul><li>只處理 <strong>13 類有確定性重建方式的產物</strong>（Xcode DerivedData、SwiftPM、CocoaPods、npm/pnpm/Yarn、Go、Gradle、<code>__pycache__</code>、Rust target、當機報告、Homebrew 快取等）；</li><li><strong>永不參與清理</strong>：文件、桌面、下載項目、圖片、影片、音樂、偏好設定、Application Support、鑰匙圈、郵件、訊息、Safari；</li><li>刪除前<strong>先移入隔離區</strong>，預設保留 30 天，隨時可還原；</li><li>永久刪除預設不存在：全應用程式只有一個函式能永久刪除，必須同時滿足 6 個條件，任何一條不過就中止；</li><li>自動化規則<strong>只能預先掃描，不能刪除</strong>。</li></ul>
@@ -84,7 +84,7 @@ sudo shutdown -r now</code></pre><strong>只刪使用者層級不夠</strong> �
   <ol><li>開啟<strong>「應用程式 → 工具程式 → 控制台」</strong>；</li><li>左側選「當機報告」（Crash Reports）；</li><li>找到 DisplayPilot 的項目，右鍵 → 在 Finder 中顯示；</li><li>把對應時間點的 <code>.ips</code> 檔案拖進那條 issue 作為附件。</li></ol>
   <p>記錄的常見位置是 <code>~/Library/Logs/DiagnosticReports/</code>。</p>
   <h2>我們做不到的事</h2>
-  <ul><li>不能在不支援 DDC/CI 的顯示器上提供硬體亮度/音量/輸入來源；</li><li>不能保證軟體調光與硬體調光的觀感完全一致；</li><li>不能替你操作 macOS 的顯示排列，復原需要按上面的步驟執行；</li><li>現在也無法辦理退款 —— 不是因為不願意，而是<strong>購買通道尚未接通，還沒有產生任何一筆交易</strong>。通道接通後，退款由 Lemon Squeezy 作為商户記錄方執行。</li></ul>
+  <ul><li>不能在不支援 DDC/CI 的顯示器上提供硬體亮度/音量/輸入來源；</li><li>不能保證軟體調光與硬體調光的觀感完全一致；</li><li>不能替你操作 macOS 的顯示排列，復原必須按上面的步驟來；</li><li>無法在鏈上撤銷加密貨幣付款。如果軟體在你這裡無法正常工作、我們又修不好，請在購買後 14 天內聯絡我們，我們會按原幣別退款（完整退款政策見<a href="eula.html">授權合約</a>）。</li></ul>
   <a class="back" href="index.html">← 返回首頁</a>
 </article>
 </main>

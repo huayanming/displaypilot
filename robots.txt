@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://huayanming.github.io/displaypilot/sitemap.xml
