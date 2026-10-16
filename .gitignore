@@ -1,2 +1,7 @@
 DisplayPilot-*.dmg
 DisplayPilot-*.zip
+# 大陆可达的下载镜像：只允许这个目录里的产物入库。
+# github.com 在大陆被墙、workers.dev 的 DNS 被污染，而 github.io 与 jsDelivr 都可达，
+# 所以发布时把 DMG 复制到 Site/dl/ 一起发（见 Docs/operations.md 第 6 节）。
+!dl/
+!dl/*.dmg
