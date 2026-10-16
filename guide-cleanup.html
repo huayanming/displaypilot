@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cleaning macOS developer caches without losing anything · DisplayPilot</title>
+<meta name="description" content="Which developer caches on macOS are safe to delete, which only look like caches, the exact paths, the terminal commands, and why quarantining beats deleting.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-cleanup.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-cleanup.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-cleanup.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-cleanup.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Cleaning macOS developer caches without losing anything">
+<meta property="og:description" content="Which developer caches are safe to delete, which only look like caches, and the exact paths.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-cleanup.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Cleaning macOS developer caches without losing anything","about":"Developer caches on macOS","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-cleanup.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guide-ddc.html">DDC guide</a>
+      <a href="zh-Hans/guide-cleanup.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page">
+<article class="doc">
+  <h1>Cleaning developer caches on macOS without losing anything you need</h1>
+  <p class="summary">Every build tool keeps a cache. On a working machine they add up to tens of gigabytes. The rule that makes cleaning safe is narrow, and it is worth stating before any command: <strong>delete only what the tool can rebuild from scratch.</strong></p>
+
+  <h2>The 13 things you can delete without losing data</h2>
+  <div class="table-wrap"><table class="clean-table">
+    <thead><tr><th>Category</th><th>Path</th><th>What rebuilding costs</th></tr></thead>
+    <tbody>
+      <tr><td>Xcode build cache</td><td><code>~/Library/Developer/Xcode/DerivedData</code></td><td>The next build is a full build</td></tr>
+      <tr><td>Xcode intermediates</td><td><code>DerivedData/*/Build/Intermediates.noindex</code></td><td>Same, but index data survives</td></tr>
+      <tr><td>SwiftPM cache</td><td><code>~/Library/Caches/org.swift.swiftpm</code></td><td>Dependencies are re-resolved</td></tr>
+      <tr><td>CocoaPods cache</td><td><code>~/Library/Caches/CocoaPods</code></td><td>Pods are re-downloaded</td></tr>
+      <tr><td>npm download cache</td><td><code>~/.npm/_cacache</code></td><td>Packages are re-downloaded</td></tr>
+      <tr><td>pnpm store</td><td><code>~/Library/pnpm/store</code></td><td>Every package, for every project, again</td></tr>
+      <tr><td>Yarn cache</td><td><code>~/Library/Caches/Yarn</code></td><td>Packages are re-downloaded</td></tr>
+      <tr><td>Go build cache</td><td><code>~/Library/Caches/go-build</code></td><td>Every package is recompiled</td></tr>
+      <tr><td>Gradle cache</td><td><code>~/.gradle/caches</code></td><td>Dependencies and plugins are re-downloaded</td></tr>
+      <tr><td>Python bytecode</td><td>any <code>__pycache__</code></td><td>Recompiled on the next import</td></tr>
+      <tr><td>Rust build output</td><td>any <code>target/</code></td><td>A full <code>cargo build</code> again</td></tr>
+      <tr><td>Crash and hang reports</td><td><code>~/Library/Logs/DiagnosticReports</code></td><td>Nothing — they are diagnostic output</td></tr>
+      <tr><td>Homebrew download cache</td><td><code>~/Library/Caches/Homebrew</code></td><td>Formulae are re-downloaded</td></tr>
+    </tbody>
+  </table></div>
+  <p>Notice what every row has in common: the tool can regenerate it without asking you for anything. That is the whole test.</p>
+
+  <h2>What looks like a cache and is not</h2>
+  <ul>
+    <li><strong><code>~/Library/Developer/Xcode/Archives</code></strong> — your shipped builds and their dSYMs. Deleting these can cost you the ability to symbolicate a crash report from a version that is already in customers' hands.</li>
+    <li><strong><code>…/Xcode/iOS DeviceSupport</code></strong> — re-downloaded the next time you connect the device. Safe, but it is the difference between debugging now and debugging after a multi-gigabyte download.</li>
+    <li><strong><code>…/Xcode/UserData</code></strong> — code snippets, breakpoints, key bindings. Configuration, not cache.</li>
+    <li><strong><code>~/Library/Application Support/MobileSync/Backup</code></strong> — local iPhone/iPad backups. This is user data.</li>
+    <li><strong><code>~/Library/Containers</code> and <code>~/Library/Group Containers</code></strong> — application data.</li>
+    <li><strong>Docker or OrbStack volumes</strong> — container data, not build output.</li>
+    <li><strong><code>/Library/Caches</code></strong> — system-wide, needs admin rights, and can break running software.</li>
+  </ul>
+
+  <h2>Doing it by hand</h2>
+  <p>Measure first, delete second:</p>
+  <pre><code>du -sh ~/Library/Developer/Xcode/DerivedData 2>/dev/null
+du -sh ~/Library/Caches/go-build ~/.gradle/caches ~/.npm/_cacache 2>/dev/null</code></pre>
+  <p>Then remove only what you actually need the space from:</p>
+  <pre><code>rm -rf ~/Library/Developer/Xcode/DerivedData/*
+rm -rf ~/Library/Caches/go-build/*</code></pre>
+  <p>Two cautions nobody mentions until they bite: quit Xcode before removing DerivedData (a running build will keep writing into it), and never delete a cache while its tool is running.</p>
+
+  <h2>Why we quarantine before we delete</h2>
+  <p>A cache is safe to delete <em>in principle</em>. The interesting failures are the ones where the rule is slightly wrong for your setup: a project pinned to an old cache, a tool that keeps state in there, an archive you had forgotten was an archive.</p>
+  <p>So the app never deletes on the first pass. It measures, moves the payload into a quarantine folder, and starts a 30-day clock. If something breaks inside that window, one click restores it. Permanent deletion happens only after the window, is off by default, and requires six conditions to hold at once — fail any one and it aborts.</p>
+
+  <h2>What to expect</h2>
+  <p>For an actively used iOS project, DerivedData is usually the single biggest item (5–50 GB). Node and Rust caches are commonly 1–10 GB each; Gradle and Go a few GB. If your total is under a gigabyte, cleaning is not your disk problem — the Storage panel will show you what actually is.</p>
+
+  <p class="callout"><strong>See where your space actually went first.</strong> DisplayPilot's Storage panel breaks the disk down by category, tells you which of the 13 groups are worth cleaning, and quarantines everything for 30 days before it removes anything. 14-day trial, every feature, no account.</p>
+  <p><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download for macOS</a> <a class="btn btn-ghost" data-site="purchase" href="https://displaypilot-license.huayanming2019.workers.dev/buy" hidden>Buy</a></p>
+
+  <a class="back" href="index.html">← Back to home</a>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

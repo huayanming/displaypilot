@@ -343,3 +343,11 @@ footer { padding: 3rem 0 4rem; text-align: center; }
 @media (prefers-reduced-motion: reduce) {
   .lang > summary::after { transition: none; }
 }
+
+/* ── 文档表格（清理指南的分类表）：窄屏可横向滚动 ── */
+.doc .table-wrap { margin-top: .9rem; overflow-x: auto; }
+.doc table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.doc th, .doc td { text-align: left; padding: .55rem .65rem; border-bottom: 1px solid var(--ridge); vertical-align: top; }
+.doc thead th { color: var(--ink-strong); font-weight: 620; border-bottom-width: 2px; }
+.doc td code { white-space: nowrap; }
+@media (max-width: 620px) { .doc table { min-width: 520px; } }
