@@ -59,8 +59,9 @@ brew install --cask huayanming/tap/displaypilot
 3. 你主动点击链接时打开网页
 
 「报告问题」生成的内容只留在你本机，必须由你手动发送。
-逐条的代码依据与复现方式见 [对外承诺台账](https://github.com/huayanming/displaypilot/blob/main/claims.md)
-（本地路径 `Docs/claims.md`）。
+
+以上每一条都有对应的代码依据，并登记在随源码维护的**对外承诺台账**（`Docs/claims.md`）里，
+附一键复现命令。改代码动了对应实现就必须同步更新台账——我们不希望官网说的话和程序做的事出现偏差。
 
 ## 已知边界（说清楚比含糊好）
 
