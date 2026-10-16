@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Mac display app should you use? An honest comparison · DisplayPilot</title>
+<meta name="description" content="An honest comparison of DisplayPilot, MonitorControl, BetterDisplay and Lunar: what each costs, what each does better, and when a different app is the better choice.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/alternatives.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/alternatives.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/alternatives.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/alternatives.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/alternatives.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Which Mac display app should you use? An honest comparison">
+<meta property="og:description" content="An honest comparison of DisplayPilot, MonitorControl, BetterDisplay and Lunar: what each costs, what each does better, and when a different app is the better choice.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/alternatives.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI not responding on macOS","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/alternatives.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guide-cleanup.html">Cleanup guide</a>
+      <a href="zh-Hans/alternatives.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/alternatives.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Which Mac display app should you use?</h1>
+<p class="summary">There are several good apps for controlling an external display on macOS. This page compares the four you are most likely to find, states what each one does better than ours, and tells you plainly when <strong>a different app is the better choice for you</strong>. Every fact below is taken from that project's own documentation (checked 19 October 2026).</p>
+
+<h2>The one-line answer</h2>
+<ul class="ticks">
+  <li><strong>You want free and open source?</strong> Use <strong>MonitorControl</strong>. It is completely free and does DDC brightness, contrast and volume — plus gamma-table software dimming.</li>
+  <li><strong>You need HiDPI scaling, virtual screens or XDR/HDR extra brightness?</strong> Use <strong>BetterDisplay</strong>. It does far more than display control, and we do not do those things at all.</li>
+  <li><strong>You want an established brightness app with a free tier?</strong> Look at <strong>Lunar</strong> — free version, or a $23 lifetime Pro licence.</li>
+  <li><strong>You also want safe cleanup, frame-by-frame smooth scrolling, and a one-time purchase with offline activation and no telemetry?</strong> That is what <strong>DisplayPilot</strong> is for.</li>
+</ul>
+
+<h2>At a glance</h2>
+<div class="price-plate plate neu">
+<table class="alt-table">
+<tr><th></th><th>DisplayPilot</th><th>MonitorControl</th><th>BetterDisplay</th><th>Lunar</th></tr>
+<tr><td>Price</td><td>¥99 / US$14 one-time</td><td><strong>Free</strong></td><td>Pro $21, perpetual</td><td>Free tier · Pro $23 lifetime</td></tr>
+<tr><td>Open source</td><td>No</td><td><strong>Yes</strong></td><td>No</td><td>Partly (source on GitHub)</td></tr>
+<tr><td>Trial</td><td>14 days, all features</td><td>n/a</td><td>14 days</td><td>14 days</td></tr>
+<tr><td>DDC brightness / volume</td><td>Yes, when the panel implements it</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Gamma-table software dimming</td><td>Yes</td><td>Yes</td><td>Yes (image adjustments)</td><td>Yes</td></tr>
+<tr><td>HiDPI scaling / virtual screens</td><td>No</td><td>No</td><td><strong>Yes</strong></td><td>No</td></tr>
+<tr><td>Safe cleanup of rebuildable files</td><td><strong>Yes</strong> — 13 types, 30-day quarantine</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Smooth scrolling</td><td><strong>Yes</strong> — frame-by-frame, time-based decay</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Calibration anchored to panel-original curves</td><td><strong>Yes</strong></td><td>No</td><td>Partly (advanced image controls)</td><td>No</td></tr>
+<tr><td>Activation</td><td>Ed25519 code, verified offline, device-free</td><td>n/a</td><td>Licence file</td><td>Licence key</td></tr>
+<tr><td>Telemetry</td><td>None at all</td><td>see their docs</td><td>see their docs</td><td>see their docs</td></tr>
+<tr><td>Minimum macOS</td><td>14</td><td>see their docs</td><td>see their docs</td><td>11</td></tr>
+</table>
+</div>
+<p class="small">"see their docs" means we did not verify it ourselves and will not guess. Entries for other apps come from their own pages and may change — always check the vendor's current page.</p>
+
+<h2>When DisplayPilot is the wrong choice</h2>
+<ul class="ticks">
+  <li><strong>You are on macOS 13 or older.</strong> DisplayPilot requires macOS 14. The apps above may not.</li>
+  <li><strong>Your display answers DDC/CI and brightness is all you want.</strong> A free app does that; paying us would be wasteful.</li>
+  <li><strong>You need HiDPI or virtual screens.</strong> BetterDisplay is built around exactly that; we are not.</li>
+  <li><strong>You will not use the cleanup, the scrolling or the calibration.</strong> Then you are paying for features you do not want.</li>
+</ul>
+
+<h2>What DisplayPilot does that the others do not</h2>
+<ul class="ticks">
+  <li><strong>Cleanup with a quarantine.</strong> Only 13 kinds of artifacts that have a deterministic rebuild path are touched; everything moves to quarantine for 30 days first; permanent deletion is off by default and requires six conditions to hold.</li>
+  <li><strong>Scrolling that is time-based, not frame-based.</strong> 60 Hz and 144 Hz feel the same, and it ships off until you turn it on.</li>
+  <li><strong>Calibration against the panel's original curves.</strong> Repeated adjustment does not accumulate error, and one click hands control back to ColorSync.</li>
+  <li><strong>Offline activation, no device binding.</strong> A <code>DP-</code> code is verified on your Mac with an embedded Ed25519 public key — no server call, and the licence is not tied to a device.</li>
+</ul>
+
+<h2>Sources</h2>
+<p class="small">MonitorControl (GitHub README: "Completely FREE", DDC and gamma-table support) · BetterDisplay (betterdisplay.pro and its GitHub README: Pro licence $21, "perpetual, not a subscription", 14-day trial, HiDPI/virtual screens/XDR) · Lunar (lunar.fyi: free tier, Pro lifetime $23, 14-day trial, macOS 11+).<br>
+These were checked on 19 October 2026. If any of them is out of date or unfair, tell us and we will correct it — <a href="support.html">Support</a>.</p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

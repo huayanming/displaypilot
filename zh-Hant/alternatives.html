@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 外接顯示器工具怎麼選？一次說清 · DisplayPilot</title>
+<meta name="description" content="DisplayPilot、MonitorControl、BetterDisplay、Lunar 的誠實對比：各自多少錢、各自強在哪、以及什麼情況下你應該選別人。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/alternatives.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/alternatives.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/alternatives.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/alternatives.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/alternatives.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接顯示器工具怎麼選？一次說清">
+<meta property="og:description" content="DisplayPilot、MonitorControl、BetterDisplay、Lunar 的誠實對比：各自多少錢、各自強在哪、以及什麼情況下你應該選別人。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/alternatives.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接顯示器 DDC/CI 無回應","about":"Display Data Channel Command Interface","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/alternatives.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主導覽">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">價格</a>
+      <a href="support.html">支援</a>
+      <a href="guide-cleanup.html">清理指南</a>
+      <a href="../alternatives.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hans/alternatives.html" hreflang="zh-Hans" lang="zh-Hans">简体</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Mac 外接顯示器工具怎麼選？</h1>
+<p class="summary">macOS 上控制外接顯示器的好工具不止一個。這一頁對比你最可能查到的四個，<strong>明確寫出各自比我們強在哪</strong>，並且直說<strong>什麼情況下你應該選別人</strong>。下面每一條都來自那個專案自己的文件（2026 年 10 月 19 日核對）。</p>
+
+<h2>一句話答案</h2>
+<ul class="ticks">
+  <li><strong>想要免費開源？</strong>用 <strong>MonitorControl</strong>。完全免費，做 DDC 亮度/對比度/音量，<strong>也做伽馬表軟體調光</strong>。</li>
+  <li><strong>需要 HiDPI 縮放、虛擬螢幕或 XDR/HDR 增亮？</strong>用 <strong>BetterDisplay</strong>。它做的事比「顯示器控制」多得多，而這些我們完全不提供。</li>
+  <li><strong>想要老牌亮度工具、有免費版？</strong>看 <strong>Lunar</strong>——免費版，或 23 美元終身 Pro。</li>
+  <li><strong>同時還想要安全清理、逐幀平滑捲動、以及一次買斷 + 離線啟用、零遙測？</strong>那才是 <strong>DisplayPilot</strong> 的定位。</li>
+</ul>
+
+<h2>一張表看清</h2>
+<div class="price-plate plate neu">
+<table class="alt-table">
+<tr><th></th><th>DisplayPilot</th><th>MonitorControl</th><th>BetterDisplay</th><th>Lunar</th></tr>
+<tr><td>價格</td><td>¥99 / US$14 買斷</td><td><strong>免費</strong></td><td>Pro $21，永久</td><td>免費版 · Pro $23 終身</td></tr>
+<tr><td>開源</td><td>否</td><td><strong>是</strong></td><td>否</td><td>部分（GitHub 有原始碼）</td></tr>
+<tr><td>試用</td><td>14 天，功能完整</td><td>不需要</td><td>14 天</td><td>14 天</td></tr>
+<tr><td>DDC 亮度 / 音量</td><td>面板支援時可用</td><td>支援</td><td>支援</td><td>支援</td></tr>
+<tr><td>伽馬表軟體調光</td><td>支援</td><td>支援</td><td>支援（影像調節）</td><td>支援</td></tr>
+<tr><td>HiDPI 縮放 / 虛擬螢幕</td><td>不做</td><td>不做</td><td><strong>支援</strong></td><td>不做</td></tr>
+<tr><td>可重建檔案的安全清理</td><td><strong>支援</strong>：13 類，先隔離 30 天</td><td>無</td><td>無</td><td>無</td></tr>
+<tr><td>平滑捲動</td><td><strong>支援</strong>：逐幀、按時間衰減</td><td>無</td><td>無</td><td>無</td></tr>
+<tr><td>以面板原始曲線為基準的校正</td><td><strong>支援</strong></td><td>無</td><td>部分（進階影像控制）</td><td>無</td></tr>
+<tr><td>啟用方式</td><td>Ed25519 啟動碼，本機離線驗證、不綁裝置</td><td>不需要</td><td>授權檔案</td><td>授權金鑰</td></tr>
+<tr><td>遙測</td><td>完全沒有</td><td>見其文件</td><td>見其文件</td><td>見其文件</td></tr>
+<tr><td>最低系統</td><td>macOS 14</td><td>見其文件</td><td>見其文件</td><td>macOS 11</td></tr>
+</table>
+</div>
+<p class="small">「見其文件」= 我們沒有自己核實過，所以不猜。其他應用的資訊來自它們自己的頁面，可能變化——請以廠商目前頁面為準。</p>
+
+<h2>什麼情況下不該買 DisplayPilot</h2>
+<ul class="ticks">
+  <li><strong>你在 macOS 13 或更早。</strong>我們要求 macOS 14；上面幾個可能不要求。</li>
+  <li><strong>你的顯示器 DDC/CI 正常，你只想要亮度調整。</strong>免費工具就能做，花錢買我們才是浪費。</li>
+  <li><strong>你需要 HiDPI 或虛擬螢幕。</strong>BetterDisplay 就是為這個做的，我們不是。</li>
+  <li><strong>你根本用不到清理、捲動或校正。</strong>那就是在為不需要的功能付錢。</li>
+</ul>
+
+<h2>我們比它們多做的四件事</h2>
+<ul class="ticks">
+  <li><strong>帶隔離區的清理。</strong>只處理 13 類有確定性重建方式的產物；先移入隔離區保留 30 天；永久刪除預設關閉，且必須同時滿足 6 個條件。</li>
+  <li><strong>按時間衰減、而非按幀數的捲動。</strong>60Hz 與 144Hz 手感一致，且預設關閉，你開了才生效。</li>
+  <li><strong>以面板原始曲線為基準的校正。</strong>反覆調節不累積誤差，一鍵交回 ColorSync。</li>
+  <li><strong>離線啟用、不綁裝置。</strong>以 <code>DP-</code> 開頭的碼用內建 Ed25519 公鑰在本機驗證——不連網，也不綁定裝置。</li>
+</ul>
+
+<h2>來源</h2>
+<p class="small">MonitorControl（GitHub README：完全免費、支援 DDC 與伽馬表）· BetterDisplay（betterdisplay.pro 與其 GitHub README：Pro 授權 $21、永久而非訂閱、14 天試用、HiDPI/虛擬螢幕/XDR）· Lunar（lunar.fyi：免費版、Pro 終身 $23、14 天試用、macOS 11+）。<br>
+以上於 2026 年 10 月 19 日核對。若有過期或不公之處，告訴我們，我們會改——<a href="support.html">支援</a>。</p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">問題與回饋 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

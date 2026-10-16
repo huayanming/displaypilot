@@ -363,3 +363,9 @@ footer { padding: 3rem 0 4rem; text-align: center; }
 .direct-pay .qr-row a { display: block; }
 .direct-pay img { width: min(200px, 42vw); height: auto; background: #fff; border-radius: .7rem; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 .direct-pay .qr-cap { font-size: .82rem; opacity: .75; margin: .35rem 0 0; }
+/* ── 对比页表格 ── */
+.alt-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.alt-table th, .alt-table td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--ridge); vertical-align: top; }
+.alt-table th { font-weight: 700; }
+.alt-table tr > td:first-child { white-space: nowrap; opacity: .78; }
+@media (max-width: 700px) { .alt-table { font-size: .78rem; } .alt-table th, .alt-table td { padding: .4rem .35rem; } }
