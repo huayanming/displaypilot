@@ -87,6 +87,10 @@ xcrun stapler validate /Applications/DisplayPilot.app
 </ul>
 <p class="small">If any command above does not produce the output shown, that is a bug in our documentation or in our build — tell us at <a href="support.html">Support</a> and we will fix it, publicly.</p>
 <p class="small"><a href="audit.html">How we audit this product (and what we got wrong)</a></p>
+<h2>The scrolling numbers on the front page</h2>
+<p>The front page quotes a measured improvement in scroll response. That measurement comes from the app's own offline benchmark, which you can run yourself — it drives the interpolator frame by frame with a fixed timestep, without intercepting any real input, and prints the response shape:</p>
+<pre><code>DisplayPilot --scroll-selftest</code></pre>
+<p>On our test panel (120&nbsp;Hz) the first frame went from 3 to 9 points and time-to-90% from 158&nbsp;ms to 133&nbsp;ms. Those numbers describe the <em>algorithm's</em> response, not your hardware, so expect your own run to differ.</p>
 </article>
 </main>
 <footer class="doc-foot">

@@ -87,6 +87,10 @@ xcrun stapler validate /Applications/DisplayPilot.app
 </ul>
 <p class="small">如果上面任何一条命令的输出与这里写的不一致，那是我们的文档或构建有问题——请到<a href="support.html">支持页</a>告诉我们，我们会公开修正。</p>
 <p class="small"><a href="audit.html">我们怎么审查自己的产品（以及我们错在哪）</a></p>
+<h2>首页上的那个滚动数字</h2>
+<p>首页引用了一组实测的滚动响应改善。它来自应用自带的离线基准，你可以自己跑——它用固定的时间步逐帧驱动插值器，不拦截任何真实输入，然后把响应形状打印出来：</p>
+<pre><code>DisplayPilot --scroll-selftest</code></pre>
+<p>在我们的测试面板（120&nbsp;Hz）上，首帧从 3 点提升到 9 点，90% 用时从 158&nbsp;ms 降到 133&nbsp;ms。这些数字描述的是<em>算法</em>的响应，不是你的硬件，所以你自己跑出来的会不一样。</p>
 </article>
 </main>
 <footer class="doc-foot">

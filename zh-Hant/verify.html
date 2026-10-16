@@ -87,6 +87,10 @@ xcrun stapler validate /Applications/DisplayPilot.app
 </ul>
 <p class="small">如果上面任何一條命令的輸出與這裡寫的不一致，那是我們的文件或建置有問題——請到<a href="support.html">支援頁</a>告訴我們，我們會公開修正。</p>
 <p class="small"><a href="audit.html">我們怎麼審查自己的產品（以及我們錯在哪）</a></p>
+<h2>首頁上的那個捲動數字</h2>
+<p>首頁引用了一組實測的捲動回應改善。它來自應用程式自帶的離線基準，你可以自己跑——它用固定的時間步逐幀驅動插值器，不攔截任何真實輸入，然後把回應形狀印出來：</p>
+<pre><code>DisplayPilot --scroll-selftest</code></pre>
+<p>在我們的測試面板（120&nbsp;Hz）上，首幀從 3 點提升到 9 點，90% 用時從 158&nbsp;ms 降到 133&nbsp;ms。這些數字描述的是<em>演算法</em>的回應，不是你的硬體，所以你自己跑出來的會不一樣。</p>
 </article>
 </main>
 <footer class="doc-foot">
