@@ -2,103 +2,10 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>支持 · DisplayPilot</title>
-  <meta name="description" content="DisplayPilot 支持与常见问题：DDC 无应答、与 Mos 冲突、恢复显示器、试用结束后还能用什么、如何购买与激活，以及清理有多安全。">
-<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/support.html">
-<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/support.html">
-<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/support.html">
-<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/support.html">
-<link rel="alternate" hreflang="ja" href="https://huayanming.github.io/displaypilot/ja/support.html">
-<link rel="alternate" hreflang="ko" href="https://huayanming.github.io/displaypilot/ko/support.html">
-<link rel="alternate" hreflang="de" href="https://huayanming.github.io/displaypilot/de/support.html">
-<link rel="alternate" hreflang="fr" href="https://huayanming.github.io/displaypilot/fr/support.html">
-<link rel="alternate" hreflang="es" href="https://huayanming.github.io/displaypilot/es/support.html">
-<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/support.html">
-<meta name="theme-color" content="#E2DED9">
-<meta name="color-scheme" content="light">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DisplayPilot">
-<meta property="og:title" content="支持 · DisplayPilot">
-<meta property="og:description" content="DisplayPilot 支持与常见问题：DDC 无应答、与 Mos 冲突、恢复显示器原始状态、试用到期后的功能、购买通道当前状态、清理安全性，以及怎么报告问题。">
-<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/support.html">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:locale:alternate" content="en_US">
-<meta property="og:locale:alternate" content="zh_TW">
-<meta property="og:locale:alternate" content="ja_JP">
-<meta property="og:locale:alternate" content="ko_KR">
-<meta property="og:locale:alternate" content="de_DE">
-<meta property="og:locale:alternate" content="fr_FR">
-<meta property="og:locale:alternate" content="es_ES">
-<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/display.webp">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../img/icon.png" type="image/png">
-<link rel="stylesheet" href="../style.css">
+<title>DisplayPilot 支持</title>
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/support.html">
+<meta http-equiv="refresh" content="0; url=https://huayanming.github.io/displaypilot/support.html">
+<meta name="robots" content="noindex">
 </head>
-<body>
-<a class="skip" href="#main">跳到主要内容</a>
-<header class="nav">
-  <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
-    <nav class="nav-links" aria-label="主导航">
-      <a href="index.html#features">功能</a>
-      <a href="index.html#price">价格</a>
-      <a href="support.html">支持</a>
-    </nav>
-    <details class="lang"><summary>简体中文</summary><ul class="lang-menu" aria-label="语言"><li><a href="../support.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/support.html" aria-current="true" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/support.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/support.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/support.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/support.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/support.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/support.html" hreflang="es" lang="es">Español</a></li></ul></details>
-    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
-  </div>
-</header>
-<main id="main">
-<article class="doc">
-  <h1>支持</h1>
-  <p class="updated">最后更新：2026 年 10 月 16 日</p>
-  <p class="summary">遇到问题先看下面的常见问题。需要提问时，请用应用内<strong>「通用 → 关于 → 报告问题」</strong>生成诊断信息，自己看一遍之后，连同问题描述一起发到 <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a> —— 这是目前唯一的支持渠道。应用<strong>不会自动收集或上传任何内容</strong>。</p>
-  <h2>常见问题</h2>
-  <h3>1. 为什么我的显示器 DDC 无应答？</h3>
-  <p>因为这块面板没有实现 DDC/CI（显示器控制命令集）。这不是应用的问题：有些显示器、电视、扩展坞与转接器根本不响应这类命令，我们用于测试的 UP32R7-A 就是其中之一。</p>
-  <p>此时硬件亮度、硬件音量与输入源切换不可用；应用会明确标注「DDC 无应答」，并自动把亮度交给<strong>软件调光</strong>（通过 CoreGraphics 伽马表压暗画面）。软件调光一样能把屏幕调暗，但它不改变面板背光电流，所以省电幅度与硬件调光不同。</p>
-  <h3>2. 平滑滚动和 Mos / Mac Mouse Fix 冲突怎么办？</h3>
-  <p>这类工具都是通过拦截滚轮事件来做平滑的，<strong>同时开启会互相吞掉对方的滚轮</strong>。应用会在启动与运行中检测同类工具并提示冲突。处理办法（任选其一）：</p>
-  <ul><li>只保留一个平滑工具；</li><li>在「滚动」面板里把本应用的滚动平滑关掉，或反过来关掉另一个工具；</li><li>保留两者时，用「安全模式」：按住 ⌘ 滚动会临时交回系统；看图、PPT、地图这类把滚轮当缩放的窗口也会自动交回系统。</li></ul>
-  <h3>3. 怎么恢复显示器的原始状态？</h3>
-  <p>从轻到重，按顺序试：</p>
-  <ol><li><strong>应用内还原</strong>：「显示」面板底部 →「还原此显示器」或「交回系统校准」。菜单栏图标里也能找到。</li><li><strong>不依赖应用</strong>：在终端运行 <code>bash Scripts/restore-dimming.sh</code>。它把亮度、色温、预设写回中性值，<strong>不需要应用正在运行</strong>。</li><li><strong>显示排列卡住 / 外接显示器不识别</strong>：需要管理员密码。删除系统级显示配置后重启：<pre><code>sudo rm /Library/Preferences/com.apple.windowserver.displays.plist
-rm -f ~/Library/Preferences/ByHost/com.apple.windowserver.displays.*.plist
-sudo shutdown -r now</code></pre><strong>只删用户级不够</strong> —— 真正存显示排列的是系统级那个文件；删完必须重启。</li><li><strong>完全进不了系统</strong>：关机 → 长按电源键 → 选项 → 终端，运行 <code>emergency-restore-display.sh</code>（在安装目录的 Scripts 下）。</li></ol>
-  <p>这些恢复路径是刻意做成不依赖应用的。我们曾在测试中把显示器弄黑过，所以「能恢复」是产品的硬性要求，不是附赠功能。</p>
-  <h3>4. 试用结束后哪些功能还能用？</h3>
-  <p>试用期（14 天）内功能完整。试用结束后<strong>只暂停 5 项增强功能</strong>：滚动平滑、鼠标按键映射、护眼排程、自动化规则、会话保存与恢复。</p>
-  <p><strong>恢复类操作永远可用，且不依赖联网</strong>：还原此显示器、交回系统校准、显示器休眠、退出、许可页面、关于页面、卸载/重置入口。换句话说，欠费不会把你锁在一块无法恢复的屏幕前。</p>
-  <h3>5. 现在可以购买/激活吗？</h3>
-  <p class="callout"><strong>可以。</strong>购买通道已开通，使用加密货币收款。在<a href="https://displaypilot-license.huayanming2019.workers.dev/buy">下单页</a>选择链与代币，按页面显示的精确金额转账，链上确认后（通常几分钟）该页会立即显示激活码。你也可以把码保存为文件、发给自己，或之后用永久取码链接 / 6 位查询码重新打开。</p>
-  <p>换新 Mac：打开「通用 → 许可」，粘贴你购买时拿到的码即可激活——激活是离线校验，无需联网。同一张码可用于你本人拥有或控制的 Mac；<code>DP-</code> 码不含服务端强制的设备上限，请按「一位用户一份授权」使用。</p>
-  <h3>6. 清理功能会不会删错东西？</h3>
-  <p>设计上就是把「删错」的概率压到最低：</p>
-  <ul><li>只处理 <strong>13 类有确定性重建方式的产物</strong>（Xcode DerivedData、SwiftPM、CocoaPods、npm/pnpm/Yarn、Go、Gradle、<code>__pycache__</code>、Rust target、崩溃报告、Homebrew 缓存等）；</li><li><strong>永不参与清理</strong>：文稿、桌面、下载、图片、影片、音乐、偏好设置、Application Support、钥匙串、邮件、信息、Safari；</li><li>删除前<strong>先移入隔离区</strong>，默认保留 30 天，随时可还原；</li><li>永久删除默认不存在：全应用只有一个函数能永久删除，必须同时满足 6 个条件，任何一条不过就中止；</li><li>自动化规则<strong>只能预扫描，不能删除</strong>。</li></ul>
-  <h3>7. 你们会自动收集我的信息吗？</h3>
-  <p><strong>不会。</strong>应用不做遥测、不做埋点、不上传使用数据，也不自动上传崩溃日志。「报告问题」生成的内容只在你本机，必须由你手动复制或发送。真正联网的只有三件事：检查更新（默认关闭）、校验授权（通道接通并激活之后才有），以及你主动点击时打开网页。详见<a href="privacy.html">隐私政策</a>。</p>
-  <h2>怎么报告问题</h2>
-  <ol><li>打开「通用 → 关于 → 报告问题」，点一下生成诊断信息；</li><li><strong>自己看一遍</strong>内容（它会移除序列号、用户名、文件路径与授权码，但你仍应确认）；</li><li>点「复制到剪贴板」，再到 <a href="https://github.com/huayanming/displaypilot/issues/new">GitHub 上新建一条 issue</a>，把内容与问题描述一起贴进去。</li></ol>
-  <h3>附上崩溃日志（如果应用崩溃过）</h3>
-  <ol><li>打开<strong>「应用程序 → 实用工具 → 控制台」</strong>；</li><li>左侧选「崩溃报告」（Crash Reports）；</li><li>找到 DisplayPilot 的条目，右键 → 在访达中显示；</li><li>把对应时间点的 <code>.ips</code> 文件拖进那条 issue 作为附件。</li></ol>
-  <p>日志的常见位置是 <code>~/Library/Logs/DiagnosticReports/</code>。</p>
-  <h2>我们做不到的事</h2>
-  <ul><li>不能在不支持 DDC/CI 的显示器上提供硬件亮度/音量/输入源；</li><li>不能保证软件调光与硬件调光的观感完全一致；</li><li>不能替你操作 macOS 的显示排列，恢复必须按上面的步骤来；</li><li>无法在链上撤销加密货币付款。如果软件在你这里无法正常工作、我们又修不好，请在购买后 14 天内联系我们，我们会按原币种退款（完整退款政策见<a href="eula.html">许可协议</a>）。</li></ul>
-  <a class="back" href="index.html">← 返回首页</a>
-</article>
-</main>
-<footer class="doc-foot">
-  <div class="wrap">
-    <p class="foot-links">
-      <a href="privacy.html">隐私政策</a>
-      <a href="eula.html">许可协议</a>
-      <a href="support.html">支持</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">问题与建议 · GitHub Issues</a>
-    </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
-  </div>
-</footer>
-<script src="../site.js" defer></script>
-</body>
+<body><p>正在跳转到 <a href="https://huayanming.github.io/displaypilot/support.html">https://huayanming.github.io/displaypilot/support.html</a> …</p></body>
 </html>

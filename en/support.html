@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · DisplayPilot</title>
+  <meta name="description" content="DisplayPilot support and FAQ: DDC not responding, conflicts with Mos, restoring your display, what still works after the trial, how to buy and activate, and how safe cleanup is.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/en/support.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/support.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/en/support.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/support.html">
+<link rel="alternate" hreflang="ja" href="https://huayanming.github.io/displaypilot/ja/support.html">
+<link rel="alternate" hreflang="ko" href="https://huayanming.github.io/displaypilot/ko/support.html">
+<link rel="alternate" hreflang="de" href="https://huayanming.github.io/displaypilot/de/support.html">
+<link rel="alternate" hreflang="fr" href="https://huayanming.github.io/displaypilot/fr/support.html">
+<link rel="alternate" hreflang="es" href="https://huayanming.github.io/displaypilot/es/support.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/support.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Support · DisplayPilot">
+<meta property="og:description" content="DisplayPilot support and FAQ: DDC not responding, conflicts with Mos, restoring your display's original state, what still works after the trial, the current status of checkout, and how safe cleanup is.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/en/support.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/display.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <details class="lang"><summary>English</summary><ul class="lang-menu" aria-label="Language"><li><a href="../support.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../en/support.html" aria-current="true" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hant/support.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/support.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/support.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/support.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/support.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/support.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main">
+<article class="doc">
+  <h1>Support</h1>
+  <p class="updated">Last updated: October 16, 2026</p>
+  <p class="summary">Check the FAQ below first. If you need to ask, use <strong>General → About → Report a Problem</strong> in the app to generate diagnostic information, read it through yourself, and post it together with a description of the issue on <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a> — that is currently the only support channel. The app <strong>never collects or uploads anything automatically</strong>.</p>
+  <h2>Frequently asked questions</h2>
+  <h3>1. Why does my display say “DDC not responding”?</h3>
+  <p>Because that panel doesn't implement DDC/CI (the display control command set). This is not a problem with the app: some displays, TVs, docks, and adapters simply don't respond to these commands, and the UP32R7-A we use for testing is one of them.</p>
+  <p>When that happens, hardware brightness, hardware volume, and input switching are unavailable. The app clearly reports “DDC not responding” and automatically hands brightness to <strong>software dimming</strong> (darkening the image through the CoreGraphics gamma table). Software dimming still darkens the screen, but it doesn't change the panel's backlight current, so power savings differ from hardware dimming.</p>
+  <h3>2. What if smooth scrolling conflicts with Mos or Mac Mouse Fix?</h3>
+  <p>Tools like these all smooth scrolling by intercepting scroll-wheel events, and <strong>running two at once means each swallows the other's wheel input</strong>. The app detects similar tools at launch and while running, and warns about the conflict. To resolve it, pick one:</p>
+  <ul><li>keep only one smoothing tool;</li><li>turn off scroll smoothing in this app's Scrolling panel, or turn off the other tool;</li><li>keep both and use <strong>safe mode</strong>: holding ⌘ while scrolling temporarily hands control back to the system, and windows that treat the wheel as a zoom control (image viewers, slide decks, maps) are handed back automatically.</li></ul>
+  <h3>3. How do I restore my display's original state?</h3>
+  <p>From lightest to heaviest, work through these in order:</p>
+  <ol><li><strong>In-app restore</strong>: Display panel, at the bottom → “Restore this display” or “Hand back to system calibration”. Both are also in the menu bar icon's menu.</li><li><strong>Without the app</strong>: in Terminal, run <code>bash Scripts/restore-dimming.sh</code>. It writes brightness, color temperature, and presets back to neutral values and <strong>does not need the app to be running</strong>.</li><li><strong>Stuck display arrangement / external display not detected</strong>: this needs an administrator password. Delete the system-level display configuration and restart: <pre><code>sudo rm /Library/Preferences/com.apple.windowserver.displays.plist
+rm -f ~/Library/Preferences/ByHost/com.apple.windowserver.displays.*.plist
+sudo shutdown -r now</code></pre> <strong>Deleting only the user-level file is not enough</strong> — the display arrangement actually lives in the system-level file, and you must restart afterwards.</li><li><strong>If you can't get into the system at all</strong>: power off → hold the power button → Options → Terminal, and run <code>emergency-restore-display.sh</code> (in the Scripts folder of the installation directory).</li></ol>
+  <p>These recovery paths are deliberately built not to depend on the app. We have managed to black out a display during testing ourselves, so “you can always recover” is a hard product requirement, not a bonus feature.</p>
+  <h3>4. What still works after the trial ends?</h3>
+  <p>During the 14-day trial, every feature is available. After the trial ends, <strong>only 5 enhancement features pause</strong>: scroll smoothing, mouse button mapping, eye-care scheduling, automation rules, and session save/restore.</p>
+  <p><strong>Recovery operations always remain available and never depend on a network connection</strong>: restore this display, hand back to system calibration, display sleep, quit, the license page, the About page, and the uninstall/reset entry point. In other words, an expired trial will never lock you in front of a screen you can't restore.</p>
+  <h3>5. Can I buy or activate now?</h3>
+  <p class="callout"><strong>Yes.</strong> Checkout is live and takes cryptocurrency. On the <a href="https://displaypilot-license.huayanming2019.workers.dev/buy">order page</a>, pick a chain and token, pay the exact amount shown, and the activation code appears on that page as soon as the transfer confirms (usually within minutes). You can also save the code to a file, send it to yourself, or re-open it later with the permanent link or the 6-character query code.</p>
+  <p>To move to a new Mac: open General → License, paste the code from your purchase, and activate — activation is verified offline, so it works with no network. The same code can be used on the Macs you own or control; a <code>DP-</code> code carries no server-enforced device limit, so please keep to one license per user.</p>
+  <h3>6. Can cleanup delete the wrong thing?</h3>
+  <p>The design goal is to make “deleted the wrong thing” as unlikely as possible:</p>
+  <ul><li>it only handles <strong>13 categories of artifacts with a deterministic rebuild path</strong> (Xcode DerivedData, SwiftPM, CocoaPods, npm/pnpm/Yarn, Go, Gradle, <code>__pycache__</code>, Rust target, crash reports, Homebrew caches, and so on);</li><li><strong>never part of cleanup</strong>: Documents, Desktop, Downloads, Pictures, Movies, Music, preferences, Application Support, the Keychain, Mail, Messages, Safari;</li><li>before deleting, files are <strong>moved into quarantine first</strong>, kept for 30 days by default, and restorable at any time;</li><li>permanent deletion is off by default: exactly one function in the whole app can permanently delete, and it requires six conditions to hold at once — fail any one and it aborts;</li><li>automation rules can <strong>pre-scan, never delete</strong>.</li></ul>
+  <h3>7. Do you collect information about me automatically?</h3>
+  <p><strong>No.</strong> The app has no telemetry, no analytics, and does not upload usage data or crash logs automatically. What “Report a Problem” generates stays on your Mac and must be copied or sent by you by hand. Only three things reach the network: checking for updates (off by default), verifying a license (only once checkout is live and you have activated), and opening a web page when you click it yourself. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+  <h2>How to report a problem</h2>
+  <ol><li>Open General → About → Report a Problem and click to generate diagnostic information;</li><li><strong>read it through yourself</strong> (it removes serial numbers, user names, file paths, and license keys, but you should still check);</li><li>click “Copy to Clipboard”, then <a href="https://github.com/huayanming/displaypilot/issues/new">open a new issue on GitHub</a> and paste it in along with a description of the problem.</li></ol>
+  <h3>Attaching a crash log (if the app has crashed)</h3>
+  <ol><li>open <strong>Applications → Utilities → Console</strong>;</li><li>select “Crash Reports” in the left sidebar;</li><li>find the DisplayPilot entry, right-click → Reveal in Finder;</li><li>drag the <code>.ips</code> file from the relevant time into that issue as an attachment.</li></ol>
+  <p>The usual location for logs is <code>~/Library/Logs/DiagnosticReports/</code>.</p>
+  <h2>What we can't do</h2>
+  <ul><li>we can't provide hardware brightness, volume, or input switching on a display that doesn't support DDC/CI;</li><li>we can't guarantee that software dimming looks identical to hardware dimming;</li><li>we can't operate macOS display arrangement for you — recovery has to follow the steps above;</li><li>we can't reverse a cryptocurrency payment on-chain. If the Software doesn't work for you and we can't fix it, contact us within 14 days of purchase and we will refund you in the same currency (see the <a href="eula.html">license</a> for the full refund policy).</li></ul>
+  <a class="back" href="index.html">← Back to home</a>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
