@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>macOS 開發者快取清理：哪些能刪、哪些刪了就出事 · DisplayPilot</title>
+<meta name="description" content="macOS 上哪些開發者快取可以安全刪除、哪些只是「看起來像快取」、確切路徑與終端機指令，以及為什麼先隔離再刪除比直接刪更穩妥。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-cleanup.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-cleanup.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-cleanup.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-cleanup.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-cleanup.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="macOS 開發者快取清理：哪些能刪、哪些刪了就出事">
+<meta property="og:description" content="哪些開發者快取可以安全刪除、哪些只是看起來像快取，以及確切路徑。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-cleanup.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"macOS 開發者快取清理：哪些能刪、哪些刪了就出事","about":"macOS 開發者快取","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-cleanup.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳至主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主要導覽">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">價格</a>
+      <a href="support.html">支援</a>
+      <a href="guide-ddc.html">DDC 排查</a>
+      <a href="../guide-cleanup.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hans/guide-cleanup.html" hreflang="zh-Hans" lang="zh-Hans">简体</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page">
+<article class="doc">
+  <h1>macOS 開發者快取清理：哪些能刪、哪些刪了就出事</h1>
+  <p class="summary">每個建置工具都會留下快取。在一台常用機器上，它們加起來往往有數十 GB。讓清理變得安全的規則只有一條，而且值得在任何指令之前先講清楚：<strong>只刪工具能從零重建的東西。</strong></p>
+
+  <h2>這 13 類可以放心刪（不會丟資料）</h2>
+  <div class="table-wrap"><table class="clean-table">
+    <thead><tr><th>類別</th><th>路徑</th><th>重建的代價</th></tr></thead>
+    <tbody>
+      <tr><td>Xcode 編譯快取</td><td><code>~/Library/Developer/Xcode/DerivedData</code></td><td>下一次是全量編譯</td></tr>
+      <tr><td>Xcode 中間產物</td><td><code>DerivedData/*/Build/Intermediates.noindex</code></td><td>同上，但索引資料保留</td></tr>
+      <tr><td>SwiftPM 快取</td><td><code>~/Library/Caches/org.swift.swiftpm</code></td><td>重新解析相依項目</td></tr>
+      <tr><td>CocoaPods 快取</td><td><code>~/Library/Caches/CocoaPods</code></td><td>重新下載 Pod</td></tr>
+      <tr><td>npm 下載快取</td><td><code>~/.npm/_cacache</code></td><td>重新下載套件</td></tr>
+      <tr><td>pnpm 倉庫</td><td><code>~/Library/pnpm/store</code></td><td>每個專案、每個套件全部重下</td></tr>
+      <tr><td>Yarn 快取</td><td><code>~/Library/Caches/Yarn</code></td><td>重新下載套件</td></tr>
+      <tr><td>Go 建置快取</td><td><code>~/Library/Caches/go-build</code></td><td>所有套件重新編譯</td></tr>
+      <tr><td>Gradle 快取</td><td><code>~/.gradle/caches</code></td><td>重新下載相依項目與外掛</td></tr>
+      <tr><td>Python 位元碼</td><td>任意 <code>__pycache__</code></td><td>下次 import 時重新編譯</td></tr>
+      <tr><td>Rust 建置產物</td><td>任意 <code>target/</code></td><td>重新完整 <code>cargo build</code></td></tr>
+      <tr><td>當機與卡死報告</td><td><code>~/Library/Logs/DiagnosticReports</code></td><td>沒有代價，它們只是診斷輸出</td></tr>
+      <tr><td>Homebrew 下載快取</td><td><code>~/Library/Caches/Homebrew</code></td><td>重新下載 formula</td></tr>
+    </tbody>
+  </table></div>
+  <p>注意每一列的共同點：工具不需要問你任何事就能把它重新產生出來。這就是全部的判準。</p>
+
+  <h2>看起來像快取、其實不是的東西</h2>
+  <ul>
+    <li><strong><code>~/Library/Developer/Xcode/Archives</code></strong> —— 你發佈過的建置與它們的 dSYM。刪掉可能意味著：使用者手上那個版本的當機報告，你再也符號化不了。</li>
+    <li><strong><code>…/Xcode/iOS DeviceSupport</code></strong> —— 下次接上裝置會重新下載。安全，但代價是「現在就能除錯」變成「下載好幾 GB 之後再除錯」。</li>
+    <li><strong><code>…/Xcode/UserData</code></strong> —— 程式碼片段、中斷點、快速鍵綁定。這是設定，不是快取。</li>
+    <li><strong><code>~/Library/Application Support/MobileSync/Backup</code></strong> —— iPhone / iPad 本機備份，使用者資料。</li>
+    <li><strong><code>~/Library/Containers</code> 與 <code>~/Library/Group Containers</code></strong> —— 應用程式資料。</li>
+    <li><strong>Docker / OrbStack 卷宗</strong> —— 容器資料，不是建置產物。</li>
+    <li><strong><code>/Library/Caches</code></strong> —— 系統層級，需要管理員權限，刪了可能讓正在執行的程式出問題。</li>
+  </ul>
+
+  <h2>手動清理怎麼做</h2>
+  <p>先量，再刪：</p>
+  <pre><code>du -sh ~/Library/Developer/Xcode/DerivedData 2>/dev/null
+du -sh ~/Library/Caches/go-build ~/.gradle/caches ~/.npm/_cacache 2>/dev/null</code></pre>
+  <p>然後只刪你確實要騰出空間的那幾個：</p>
+  <pre><code>rm -rf ~/Library/Developer/Xcode/DerivedData/*
+rm -rf ~/Library/Caches/go-build/*</code></pre>
+  <p>兩個沒人提醒、但一定會踩的坑：刪 DerivedData 之前先結束 Xcode（正在編譯會持續往裡寫）；任何快取在對應工具執行期間都不要刪。</p>
+
+  <h2>為什麼我們「先隔離，再刪除」</h2>
+  <p>快取<em>原則上</em>可以隨便刪。真正會出事的，是那條規則在你的環境裡恰好不成立的情況：某個專案釘住了舊快取、某個工具把狀態也放在裡面、某個你以為不是封存的封存檔。</p>
+  <p>所以應用程式第一遍從不刪除。它先測量，把內容移進隔離區，然後開始 30 天倒數。這段時間裡一旦有東西壞了，一鍵還原。視窗過去之後才會真正刪除，而且永久刪除預設關閉，必須同時滿足六個條件——差一個就中止。</p>
+
+  <h2>實際能清出多少</h2>
+  <p>對一個經常使用的 iOS 專案，DerivedData 通常單項最大（5–50 GB）。Node 與 Rust 快取常在 1–10 GB；Gradle 和 Go 一般幾 GB。如果你的總計不到 1 GB，那清理並不是你的磁碟問題——儲存面板會告訴你真正佔空間的是什麼。</p>
+
+  <p class="callout"><strong>先看清空間去哪了。</strong> DisplayPilot 的儲存面板依類別拆解磁碟佔用、指出這 13 類裡哪些值得清，並且一律先隔離 30 天再刪除。14 天試用功能完整，不需要註冊帳號。</p>
+  <p><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載 macOS 版</a> <a class="btn btn-ghost" data-site="purchase" href="https://displaypilot-license.huayanming2019.workers.dev/buy" hidden>購買</a></p>
+
+  <a class="back" href="index.html">← 返回首頁</a>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">問題與回饋 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

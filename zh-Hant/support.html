@@ -80,6 +80,7 @@ sudo shutdown -r now</code></pre><strong>只刪使用者層級不夠</strong> �
   <p>換新 Mac：開啟「一般 → 授權」，貼上你購買時拿到的碼即可啟動——啟動是離線驗證，無需連網。同一張碼可用於你本人擁有或控制的 Mac；<code>DP-</code> 碼不含伺服器端強制的裝置上限，請按「一位使用者一份授權」使用。</p>
   <h3>6. 清理功能會不會刪錯東西？</h3>
   <p>設計上就是把「刪錯」的機率壓到最低：</p>
+  <p>這 13 類裡哪些真的可以安全刪除、確切路徑，以及重建的代價：<a href="guide-cleanup.html">macOS 開發者快取清理：哪些能刪、哪些刪了就出事</a>。</p>
   <ul><li>只處理 <strong>13 類有確定性重建方式的產物</strong>（Xcode DerivedData、SwiftPM、CocoaPods、npm/pnpm/Yarn、Go、Gradle、<code>__pycache__</code>、Rust target、當機報告、Homebrew 快取等）；</li><li><strong>永不參與清理</strong>：文件、桌面、下載項目、圖片、影片、音樂、偏好設定、Application Support、鑰匙圈、郵件、訊息、Safari；</li><li>刪除前<strong>先移入隔離區</strong>，預設保留 30 天，隨時可還原；</li><li>永久刪除預設不存在：全應用程式只有一個函式能永久刪除，必須同時滿足 6 個條件，任何一條不過就中止；</li><li>自動化規則<strong>只能預先掃描，不能刪除</strong>。</li></ul>
   <h3>7. 你們會自動蒐集我的資訊嗎？</h3>
   <p><strong>不會。</strong>應用程式不做遙測、不做埋點、不上傳使用資料，也不自動上傳當機記錄。「回報問題」產生的內容只在你本機，必須由你手動複製或傳送。真正連網的只有三件事：檢查更新（預設關閉）、檢查授權（通道接通並啟用之後才有），以及你主動點擊時開啟網頁。詳見<a href="privacy.html">隱私政策</a>。</p>
