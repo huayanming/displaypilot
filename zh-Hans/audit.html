@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我们怎么审查自己的产品，以及我们错在哪 · DisplayPilot</title>
+<meta name="description" content="DisplayPilot 自查的全部发现——包括两次是我们自己的假警报，以及一条被代码推翻的隐私说法。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/audit.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/audit.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/audit.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/audit.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/audit.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="我们怎么审查自己的产品，以及我们错在哪">
+<meta property="og:description" content="DisplayPilot 自查的全部发现——包括两次是我们自己的假警报，以及一条被代码推翻的隐私说法。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/audit.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接显示器 DDC/CI 无响应","about":"Display Data Channel Command Interface","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/audit.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guide-cleanup.html">清理指南</a>
+      <a href="../audit.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hant/audit.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>我们怎么审查自己的产品</h1>
+<p class="summary">DisplayPilot 由一个人开发，是没有评价的付费产品。与其让你相信我们，不如把<strong>真实的记录</strong>摆出来：我们怎么找问题，以及找到了什么——其中<strong>两次是我们在检查方法上犯错，而不是产品出错</strong>。</p>
+
+<h2>方法</h2>
+<ul class="ticks">
+  <li><strong>四个角度。</strong>每个功能按四种方式读一遍：它与系统其余部分的连接点、每条失败分支上会发生什么、我们对它的说法与代码是否一致、以及行为在语义上是否<strong>正确</strong>（而不只是看起来合理）。</li>
+  <li><strong>先怀疑检查器。</strong>检查失败时，更可能出错的是检查本身。下面就有好几条正是如此。</li>
+  <li><strong>检查必须能在植入缺陷时失败。</strong>每一道自动检查都被验证过：故意改坏一处，确认它变红。<strong>不会失败的检查只是装饰。</strong></li>
+  <li><strong>检查必须报告它量了什么。</strong>最安静的失效方式是「什么都没匹配到，于是打印全部通过」。我们的每道检查都会打印它看了多少项，并且有一道元检查断言这些数字不会下降。</li>
+</ul>
+
+<h2>我们找到了什么（节选）</h2>
+<p><em>错在哪 → 代价 → 怎么修。</em></p>
+<ul class="ticks">
+  <li><strong>隐私页写着我们看不到你的邮箱，而代码把它明文存储、且长期保留。</strong>这是最糟的一类错误——一句被代码推翻的公开说法。页面与存储都已修正，而这条说法现在本身就是自动检查与代码比对的对象之一。</li>
+  <li><strong>我们标价 US$14，实际收 ¥99</strong>，按汇率约 US$14.82——等于把自己的价格说低了 5.9%。已改为与实际收款一致。</li>
+  <li><strong>发布验证器会在两个主机都坏掉时报成功。</strong>它只比对内容哈希，于是两个一模一样的 404 也算「一致」。现在它同时要求真实的 200 响应。</li>
+  <li><strong>许可页的一句话描述了一个我们从未使用的支付渠道</strong>，而且不像我们激活码的输入仍会被送到第三方接口。该接口已被完全移除：激活只在这台 Mac 上发生。</li>
+  <li><strong>每个 Release 页面上都有一个指向从未发布文件的链接。</strong>正文里的「技术细节」指向 404。文件现在已发布，链接形式也一并修好。</li>
+  <li><strong>钱路的最后一环在本项目里从未被测过。</strong>签发激活码依赖登录钥匙串里的签名私钥；若那把私钥被重新生成，<strong>新签发的每一枚码都会被所有已安装的应用拒绝，而且无声无息</strong>。现在我们跑一个 2 秒检查，比对钥匙串公钥与应用内嵌公钥。</li>
+  <li><strong>钱可能到了却没人知道。</strong>未匹配的转账只写日志、从不通知。现在会触发通知。</li>
+  <li><strong>译文缺格式符会导致崩溃。</strong>译文漏一个 %d 或 %@ 会运行时崩溃或显示错值；现在的检查会比对格式符，而不只是覆盖率。</li>
+</ul>
+
+<h2>我们在「检查本身」上错在哪</h2>
+<ul class="ticks">
+  <li><strong>一个看起来没签名的构建。</strong>我们自己的脚本报「没有签名」，因为某次 codesign 调用不打印 Authority 链。构建是好的，检查不是。</li>
+  <li><strong>424 个「缺失」的文件其实一个都不缺。</strong>一个链接检查器不会解析上级目录路径，把几百个正常链接报成断链。</li>
+  <li><strong>一道「通过了」却什么都没量的守卫。</strong>某道检查在量测静默失败时报告「全部通过」——正是它被写出来要防的那种失效。</li>
+</ul>
+
+<h2>现在跑什么</h2>
+<p>在发布任何东西之前，会先跑 <strong>14 道自动检查</strong>，然后是完整测试套件与编译。它们覆盖：应用的说法与代码是否一致、本地化、价格、站点页面与元数据、隐私与许可文本、发布文案，以及站点的<strong>每一个站内链接与资源</strong>（包括大小写——因为 macOS 大小写不敏感，而 Web 敏感）。任何一道失败都会中止发布。</p>
+<p>完整清单与各自对应的命令在<a href="https://github.com/huayanming/displaypilot">项目仓库</a>里。如果你在这个网站上发现任何我们的代码支撑不了的说法，那是一个值得报告的 bug——<a href="support.html">告诉我们</a>，我们会公开修正。</p>
+<p class="small"><a href="verify.html">自己验证我们的构建说法</a> · <a href="alternatives.html">什么情况下我们不是对的选择</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

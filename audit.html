@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we audit this product, and what we got wrong · DisplayPilot</title>
+<meta name="description" content="Every finding from our own audit of DisplayPilot — including the two that were our own false alarms, and the privacy claim our code contradicted.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/audit.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/audit.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/audit.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/audit.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/audit.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="How we audit this product, and what we got wrong">
+<meta property="og:description" content="Every finding from our own audit of DisplayPilot — including the two that were our own false alarms, and the privacy claim our code contradicted.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/audit.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI not responding on macOS","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/audit.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guide-cleanup.html">Cleanup guide</a>
+      <a href="zh-Hans/audit.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/audit.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>How we audit this product</h1>
+<p class="summary">DisplayPilot is made by one person, and it is a paid product with no reviews. Rather than asking you to take our word, here is the actual record: how we look for problems, and the ones we found — including two that turned out to be <strong>our own mistakes in the checking, not in the product</strong>.</p>
+
+<h2>The method</h2>
+<ul class="ticks">
+  <li><strong>Four angles.</strong> Every feature is read four ways: where it connects to the rest of the system, what happens on every failure branch, whether the claims we make about it match the code, and whether the behaviour is semantically right rather than merely plausible.</li>
+  <li><strong>Suspect the checker first.</strong> When a check fails, the more likely cause is the check. Several of the entries below are exactly that.</li>
+  <li><strong>A check must fail on a planted defect.</strong> Every automated check is verified by deliberately breaking something and confirming it goes red. A check that cannot fail is decoration.</li>
+  <li><strong>Checks report what they measured.</strong> The quietest failure mode is a check that matches nothing and then prints “all good”. Each of ours prints how many items it looked at, and a meta-check asserts those counts never drop.</li>
+</ul>
+
+<h2>What we found (a sample)</h2>
+<p><em>Wrong → what it cost → the fix.</em></p>
+<ul class="ticks">
+  <li><strong>Our privacy page said we cannot see your email. Our code stored it in plain text, indefinitely.</strong> That is the worst kind of error — a public claim the code contradicted. The page and the storage were both fixed, and the claim is now one of the things an automated check compares against the code.</li>
+  <li><strong>We advertised US$14 while charging ¥99</strong>, which was worth about US$14.82 — we had understated our own price by 5.9%. The claim was corrected to match what is actually collected.</li>
+  <li><strong>Our publishing verifier could report success when both hosts were broken.</strong> It compared content hashes only, so two identical 404 pages counted as “consistent”. It now checks for a real 200 response as well.</li>
+  <li><strong>A licence-page sentence described a payment provider we never used</strong>, and anything that did not look like our own code was still being sent to a third-party endpoint. The endpoint was removed entirely: activation now happens only on your Mac.</li>
+  <li><strong>A release link pointed at a file that had never been published.</strong> Every release page carried a “technical details” link to a 404. The file is published now, and the link form was fixed too.</li>
+  <li><strong>The last step of the money path had never been tested in this project.</strong> Issuing a licence depends on a signing key in the login keychain; if that key were ever regenerated, every newly issued code would be rejected by every installed app, silently. We now run a two-second check that compares the keychain key against the key embedded in the app.</li>
+  <li><strong>Payments could arrive without anyone knowing.</strong> Unmatched transfers were written to a log and never announced. They now trigger a notification.</li>
+  <li><strong>Translation gaps could crash the app.</strong> A translation missing a format specifier (a %d or an %@) crashes or shows a wrong value at runtime; the checks now compare specifiers, not just coverage.</li>
+</ul>
+
+<h2>Where we were wrong about the checking itself</h2>
+<ul class="ticks">
+  <li><strong>A build that looked unsigned.</strong> Our own script reported “no signature”, because one codesign invocation does not print the authority chain. The build was fine; the check was not.</li>
+  <li><strong>424 “missing” files that were not missing.</strong> A link checker could not resolve parent-directory paths and reported hundreds of normal links as broken.</li>
+  <li><strong>A guard that passed while measuring nothing.</strong> One check reported “all good” when the measurement had silently failed — the exact failure mode it was written to catch.</li>
+</ul>
+
+<h2>What runs now</h2>
+<p>Before anything is published, <strong>14 automated checks</strong> run, followed by the full test suite and a compile. They cover the app’s claims against its code, the localisation, the prices, the site’s pages and metadata, the privacy and licence texts, the launch copy, and every internal link and asset on the site (including case, which matters because macOS is case-insensitive and the web is not). Any one of them failing stops the release.</p>
+<p>The complete list, with the command for each, is in the <a href="https://github.com/huayanming/displaypilot">project repository</a>. If you find a claim on this site that our code does not support, that is a bug worth reporting — <a href="support.html">tell us</a> and we will fix it publicly.</p>
+<p class="small"><a href="verify.html">Check our build claims yourself</a> · <a href="alternatives.html">Where we are not the right choice</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>
