@@ -38,4 +38,7 @@
   <url><loc>https://huayanming.github.io/displaypilot/es/eula.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
   <url><loc>https://huayanming.github.io/displaypilot/es/privacy.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
   <url><loc>https://huayanming.github.io/displaypilot/es/support.html</loc><lastmod>2026-10-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://huayanming.github.io/displaypilot/alternatives.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://huayanming.github.io/displaypilot/zh-Hans/alternatives.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://huayanming.github.io/displaypilot/zh-Hant/alternatives.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
