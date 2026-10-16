@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>外接屏文字發虛——系統設定裡看不見的那個 HiDPI 模式 · DisplayPilot</title>
+<meta name="description" content="Mac 外接屏文字發虛，多數時候不是面板的問題，而是模式的問題。同一個解析度往往存在兩份：一份做了 HiDPI 縮放，一份是 1:1 原生。這一頁講怎麼分辨、怎麼切換。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-hidpi.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-hidpi.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-hidpi.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-hidpi.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-hidpi.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="外接屏文字發虛——系統設定裡看不見的那個 HiDPI 模式">
+<meta property="og:description" content="Mac 外接屏文字發虛，多數時候不是面板的問題，而是模式的問題。同一個解析度往往存在兩份：一份做了 HiDPI 縮放，一份是 1:1 原生。這一頁講怎麼分辨、怎麼切換。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-hidpi.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接顯示器 DDC/CI 無回應","about":"Display Data Channel Command Interface","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-hidpi.html"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主導覽">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">價格</a>
+      <a href="support.html">支援</a>
+      <a href="guide-cleanup.html">清理指南</a>
+      <a href="../guide-hidpi.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hans/guide-hidpi.html" hreflang="zh-Hans" lang="zh-Hans">简体</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>外接屏文字發虛</h1>
+<p class="summary">在 Mac 上，外接屏文字發虛<strong>多數時候不是面板的問題，而是模式的問題</strong>。同一個標稱解析度往往存在兩份——一份做了 HiDPI 縮放，一份是 1:1 原生——其中一份在文字上明顯更差。</p>
+
+<h2>同一個解析度，兩種模式</h2>
+<p>下面這份清單來自一台 32 吋 4K 面板（UP32R7-A，DisplayPort）在 Mac 上的實際輸出（用 <code>--list-modes</code>）：</p>
+<pre><code>UP32R7-A  （目前 3008 × 1692 · HiDPI · 120 Hz）
+原生   3840 × 2160
+HiDPI  3360 × 1890
+原生   3360 × 1890
+HiDPI  3200 × 1800
+原生   3200 × 1800
+HiDPI  3008 × 1692
+原生   3008 × 1692
+HiDPI  2560 × 1440
+原生   2560 × 1440</code></pre>
+<p>注意 3360×1890、3200×1800、3008×1692、2560×1440 <strong>各出現了兩次</strong>。標著 <em>HiDPI</em> 的那條走 2 倍緩衝區再縮放；標著 <em>原生</em> 的那條讓面板就在這個像素數上工作——對一塊 3840×2160 的面板來說是<strong>非整數縮放</strong>，這正是文字發虛的來源。</p>
+
+<h2>該怎麼做</h2>
+<ul class="ticks">
+  <li><strong>挑縮放解析度時優先選 HiDPI 那條。</strong>在上面這份清單裡，選「3008 × 1692 · HiDPI」而不是「3008 × 1692 · 原生」。桌面大小一樣，文字更銳利。</li>
+  <li><strong>系統設定裡找不到想要的模式，不代表它不存在</strong>：macOS 藏起了很多。我們的應用會列出顯示器<strong>真正上報的全部模式</strong>——包括被系統隱藏的 HiDPI 變體——並可以切過去（終端裡是 <code>--list-modes</code> 與 <code>--set-resolution</code>，介面裡是顯示面板）。</li>
+  <li><strong>如果面板本身像素密度就低，那沒有軟體能救。</strong>34 吋 3440×1440 大約是 110 PPI，27 吋 4K 約 163 PPI；在同樣的桌面大小下，前者永遠更軟。</li>
+  <li><strong>如果你需要 macOS 根本不提供的解析度</strong>——自訂時序、虛擬螢幕、面板沒上報的縮放——用 <strong>BetterDisplay</strong>。那正是它擅長的，我們不提供。這句話我們也寫在<a href="alternatives.html">對比頁</a>裡。</li>
+</ul>
+
+<h2>為什麼我們能說得這麼具體</h2>
+<p>因為應用裡本來就有這個診斷：當目前模式是 1:1、而同樣尺寸存在 HiDPI 變體時，它會指出來並列出那個變體。這個檢查之所以存在，是因為「大面板跑在 1:1」是導致文字讀起來吃力的常見原因，而修好它通常只差一次模式切換。</p>
+
+<h2>相關</h2>
+<p class="small"><a href="guide-ddc.html">DDC/CI 無回應</a> · <a href="guide-wake.html">休眠後亮度被重置</a> · <a href="guide-color.html">色彩發灰、越調越偏</a> · <a href="alternatives.html">該用哪個 Mac 顯示器工具？</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">問題與回饋 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
