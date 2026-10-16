@@ -44,9 +44,26 @@
   }
 
   // 3) 购买：接通了才露出按钮；没接通就只留诚实的状态说明。
+  //
+  //    归因：投放链接带 ?src=chiphell 落到本页时，必须把它一路带到下单页，
+  //    否则下单页读不到来源，整条漏斗的渠道归因就断在「点购买」这一步。
+  //    规则与下单页一致：小写字母数字、-、_，最长 32 字符，不合规一律丢弃
+  //    （只记「直接访问」，绝不把来路不明的字符串透传下去）。
+  function campaignSource() {
+    try {
+      var v = new URLSearchParams(location.search).get("src");
+      return v && /^[a-z0-9][a-z0-9_-]{0,31}$/i.test(v.trim()) ? v.trim().toLowerCase() : null;
+    } catch (err) {
+      return null;
+    }
+  }
   if (SITE.purchase) {
+    var src = campaignSource();
+    var purchaseUrl = src
+      ? SITE.purchase + (SITE.purchase.indexOf("?") === -1 ? "?" : "&") + "src=" + encodeURIComponent(src)
+      : SITE.purchase;
     all('[data-site="purchase"]').forEach(function (a) {
-      a.href = SITE.purchase; a.target = "_blank"; a.rel = "noopener"; a.hidden = false;
+      a.href = purchaseUrl; a.target = "_blank"; a.rel = "noopener"; a.hidden = false;
     });
     all('[data-buy-status="pending"]').forEach(function (n) { n.hidden = true; });
   }
