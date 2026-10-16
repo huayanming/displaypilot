@@ -30,12 +30,12 @@
 <meta property="og:locale:alternate" content="de_DE">
 <meta property="og:locale:alternate" content="fr_FR">
 <meta property="og:locale:alternate" content="es_ES">
-<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og.png">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-ko.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="DisplayPilot — the missing console for your Mac display">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og.png">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-ko.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
 </head>
@@ -65,7 +65,7 @@
       </p>
       <p class="hero-spec">macOS 14 이상 · Apple 실리콘 및 Intel 유니버설 바이너리 · 계정 가입 불필요</p>
       <figure class="hero-shot neu plate">
-        <img src="../img/display.webp" width="1090" height="2416" alt="DisplayPilot의 '디스플레이' 패널. 위쪽에 모니터 모델과 링크 정보, 그 아래에 소프트웨어 디밍 슬라이더, 다시 그 아래에 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 삼각형이 표시되어 있습니다.">
+        <img src="img/display.webp" width="1090" height="2416" alt="DisplayPilot의 '디스플레이' 패널. 위쪽에 모니터 모델과 링크 정보, 그 아래에 소프트웨어 디밍 슬라이더, 다시 그 아래에 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 삼각형이 표시되어 있습니다.">
       </figure>
     </div>
   </section>
@@ -85,7 +85,7 @@
           <p class="f-note sunk neu neu-sink">터미널, 이미지 뷰어, 슬라이드처럼 휠을 정밀 입력이나 확대로 다루는 창은 기본적으로 시스템에 돌려줍니다. ⌘를 누른 채 스크롤하면 언제든 네이티브 스크롤로 돌아갑니다. 스무딩은 <strong>기본적으로 꺼져</strong> 있으며, 켜지 않으면 휠을 가로채지 않습니다. 화면에는 '감지 / 제스처 / 가로챔 / 전달' 네 가지 실시간 카운터가 있어, 새 마우스에서 문제가 생기면 어느 계층에서 막히는지 바로 보입니다.</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/scroll.webp" width="700" height="1552" loading="lazy" alt="스크롤 패널: 상단에 스크롤 스무딩 상태와 네 계층 실시간 카운터, 아래에 안전 모드 스위치와 21개 내장 앱별 예외 목록.">
+          <img src="img/scroll.webp" width="700" height="1552" loading="lazy" alt="스크롤 패널: 상단에 스크롤 스무딩 상태와 네 계층 실시간 카운터, 아래에 안전 모드 스위치와 21개 내장 앱별 예외 목록.">
         </figure>
       </article>
       <article class="feature">
@@ -96,7 +96,7 @@
           <p class="f-note sunk neu neu-sink">다시 적용할 때는 항상 패널의 <strong>원래 기준선</strong>에서 다시 계산하며 현재 곡선을 기준으로 삼지 않습니다. 그래서 반복해서 조절해도 오차가 쌓이지 않습니다 — 실측에서 중간 회색은 0.5020에서 0.3012로. 프로세스가 끝나면 macOS가 자동으로 되돌리고, 앱 실행에 의존하지 않는 복구 경로가 두 가지 있습니다(앱 내부와 <code>Scripts/restore-dimming.sh</code>).</p>
         </div>
         <figure class="f-media wide neu plate">
-          <img src="../img/display.webp" width="1090" height="2416" loading="lazy" alt="'디스플레이' 패널 아래쪽: 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 커버리지.">
+          <img src="img/display.webp" width="1090" height="2416" loading="lazy" alt="'디스플레이' 패널 아래쪽: 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 커버리지.">
           <figcaption>디밍과 캘리브레이션은 같은 감마 기준선을 공유하므로 두 경로가 서로를 오염시키지 않습니다.</figcaption>
         </figure>
       </article>
@@ -121,7 +121,7 @@
           <p class="f-note sunk neu neu-sink">영구 삭제는 기본적으로 존재하지 않습니다. 앱 전체에서 단 하나의 함수만 그것을 할 수 있고, 여섯 가지 조건이 동시에 성립할 때만 진행합니다 — 하나라도 어긋나면 중단합니다. 전체 디스크 접근을 요청하지 않으며, 시스템이 보호하는 디렉터리는 macOS 규칙대로 건너뜁니다. 자동화 규칙은 <strong>사전 스캔만 하고 삭제는 하지 못합니다</strong>.</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/storage.webp" width="700" height="1552" loading="lazy" alt="저장 공간 패널: 디스크 개요, 시스템 데이터 분석, 개인 폴더, 큰 파일 찾기와 정리 가능 항목. 아래쪽에 스캔은 읽기 전용이고 정리는 격리로 옮길 뿐이라고 적혀 있습니다.">
+          <img src="img/storage.webp" width="700" height="1552" loading="lazy" alt="저장 공간 패널: 디스크 개요, 시스템 데이터 분석, 개인 폴더, 큰 파일 찾기와 정리 가능 항목. 아래쪽에 스캔은 읽기 전용이고 정리는 격리로 옮길 뿐이라고 적혀 있습니다.">
         </figure>
       </article>
     </div>
