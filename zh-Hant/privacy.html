@@ -85,7 +85,7 @@
   <ul><li><strong>授權紀錄</strong>（授權碼、執行個體編號、啟用與複查時間）：macOS 系統鑰匙圈，服務名稱 <code>com.neeson.displaypilot.license</code>。不是明文 plist。</li><li><strong>應用程式設定</strong>（試用起始日期、介面偏好、快速鍵綁定、自動化規則、護眼排程）：<code>~/Library/Preferences/com.neeson.displaypilot.plist</code>。</li><li><strong>清理隔離區與操作台帳</strong>：<code>~/Library/Application Support/com.neeson.displaypilot/Clean/</code>。被清理的檔案先移進這裡的隔離區，30 天內可隨時還原。</li><li><strong>系統權限</strong>：輔助使用授權由 macOS 管理，可在「系統設定 → 隱私權與安全性 → 輔助使用」裡隨時撤銷。</li></ul>
   <p>刪除方式：結束應用程式後，把上面兩個目錄／檔案刪掉即可；想要更徹底，再在鑰匙圈存取裡刪掉那一筆紀錄。應用程式不在系統裡安裝任何背景服務或常駐程式，解除安裝不留下常駐元件。</p>
   <h2>五、第三方</h2>
-  <ul><li><strong>我們的發碼服務</strong>（Cloudflare Workers）：提供下單頁、把你的付款與鏈上記錄比對、簽發啟動碼，並處理短碼領取。它能看到訂單號、鏈上交易雜湊與金額、以及隨機裝置識別碼；它<strong>看不到</strong>你的姓名、電子郵件或帳號。</li><li><strong>公共區塊鏈 API</strong>（例如 TronGrid 與公共 RPC 端點）：發碼服務讀取公開鏈上資料以確認你的轉帳，不會向它們傳送個人資料。</li><li><strong>GitHub</strong>：託管本網站、更新來源與下載包。作為託管方，它會保留一般存取日誌（IP、時間、請求路徑）。</li></ul>
+  <ul><li><strong>我們的發碼服務</strong>（Cloudflare Workers）：提供下單頁、把你的付款與鏈上記錄比對、簽發啟動碼，並處理短碼領取。它能看到訂單號、鏈上交易雜湊與金額、以及隨機裝置識別碼；它<strong>看不到</strong>你的姓名或帳號，也不會為你建立輪廓。如果你透過會收集電子郵件的通路購買，或使用取碼表單，它還會處理該電子郵件地址：郵件隨訂單記錄一起保存（訂單記錄我們一直保留，取碼才能長期可用），用於重新發碼；同時保存其截斷的 SHA-256 雜湊並寫進已簽名的啟動碼，使取碼表單無需比對原始位址即可對應到你的訂單。</li><li><strong>公共區塊鏈 API</strong>（例如 TronGrid 與公共 RPC 端點）：發碼服務讀取公開鏈上資料以確認你的轉帳，不會向它們傳送個人資料。</li><li><strong>GitHub</strong>：託管本網站、更新來源與下載包。作為託管方，它會保留一般存取日誌（IP、時間、請求路徑）。</li></ul>
   <p>除此之外，本應用程式與本站<strong>沒有</strong>任何分析服務、廣告聯播網、社交外掛或第三方字型。</p>
   <h2>六、兒童</h2>
   <p>DisplayPilot 是面向 Mac 使用者的桌面工具，不針對兒童設計，也不會有意蒐集兒童的任何資訊。</p>

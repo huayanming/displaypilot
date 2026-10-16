@@ -85,7 +85,7 @@
   <ul><li><strong>授权记录</strong>（授权码、实例编号、激活与复核时间）：macOS 系统钥匙串，服务名 <code>com.neeson.displaypilot.license</code>。不是明文 plist。</li><li><strong>应用设置</strong>（试用起始日期、界面偏好、热键绑定、自动化规则、护眼排程）：<code>~/Library/Preferences/com.neeson.displaypilot.plist</code>。</li><li><strong>清理隔离区与操作台账</strong>：<code>~/Library/Application Support/com.neeson.displaypilot/Clean/</code>。被清理的文件先移进这里的隔离区，30 天内可随时还原。</li><li><strong>系统权限</strong>：辅助功能授权由 macOS 管理，可在「系统设置 → 隐私与安全性 → 辅助功能」里随时撤销。</li></ul>
   <p>删除方式：退出应用后，把上面两个目录／文件删掉即可；想要更彻底，再在钥匙串访问里删掉那一条记录。应用不在系统里安装任何后台服务或守护进程，卸载不留下常驻组件。</p>
   <h2>五、第三方</h2>
-  <ul><li><strong>我们的发码服务</strong>（Cloudflare Workers）：提供下单页、把你的付款与链上记录比对、签发激活码，并处理短码领取。它能看到订单号、链上交易哈希与金额、以及随机设备标识；它<strong>看不到</strong>你的姓名、邮箱或账号。</li><li><strong>公共区块链 API</strong>（例如 TronGrid 与公共 RPC 端点）：发码服务读取公开链上数据以确认你的转账，不会向它们发送个人数据。</li><li><strong>GitHub</strong>：托管本网站、更新源与下载包。作为托管方，它会保留常规访问日志（IP、时间、请求路径）。</li></ul>
+  <ul><li><strong>我们的发码服务</strong>（Cloudflare Workers）：提供下单页、把你的付款与链上记录比对、签发激活码，并处理短码领取。它能看到订单号、链上交易哈希与金额、以及随机设备标识；它<strong>看不到</strong>你的姓名或账号，也不会为你建立画像。如果你通过会收集邮箱的渠道购买，或使用取码表单，它还会处理该邮箱地址：邮箱随订单记录一起保存（订单记录我们一直保留，取码才能长期可用），用于重新发码；同时保存其截断的 SHA-256 哈希并写进已签名的激活码，使取码表单无需比对原始地址即可匹配到你的订单。</li><li><strong>公共区块链 API</strong>（例如 TronGrid 与公共 RPC 端点）：发码服务读取公开链上数据以确认你的转账，不会向它们发送个人数据。</li><li><strong>GitHub</strong>：托管本网站、更新源与下载包。作为托管方，它会保留常规访问日志（IP、时间、请求路径）。</li></ul>
   <p>除此之外，本应用与本站点<strong>没有</strong>任何分析服务、广告网络、社交插件或第三方字体。</p>
   <h2>六、儿童</h2>
   <p>DisplayPilot 是面向 Mac 用户的桌面工具，不面向儿童设计，也不会有意收集儿童的任何信息。</p>
