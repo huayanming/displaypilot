@@ -291,6 +291,12 @@ footer { padding: 3rem 0 4rem; text-align: center; }
   .doc .summary, .doc .callout { padding: 1rem 1.1rem; }
 }
 
+/* 导航是 sticky（.nav），所以任何锚点目标都会被它盖住。
+   5rem 按桌面导航（约 60–70px）留足，且宁可偏大——偏大只是多显示一点上文，
+   偏小则标题正好藏在导航底下。用 [id] 而不是逐个 :target，
+   这样以后新加的锚点自动生效。 */
+[id] { scroll-margin-top: 5rem; }
+
 /* ── 动效偏好 ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
