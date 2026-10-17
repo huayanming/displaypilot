@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scheduled night dimming on macOS, and the trap that walks your screen to black · DisplayPilot</title>
+<meta name="description" content="Dimming a display on a schedule looks trivial until you write the scheduler. One design choice makes the panel darker every time the check runs - and the screen ends up black.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-night.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-night.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-night.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-night.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-night.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Scheduled night dimming on macOS, and the trap that walks your screen to black">
+<meta property="og:description" content="Dimming a display on a schedule looks trivial until you write the scheduler. One design choice makes the panel darker every time the check runs - and the screen ends up black.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-night.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Scheduled night dimming on macOS, and the trap that walks your screen to black","about":"Scheduled display dimming on macOS","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-night.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guides.html">Guides</a>
+      <a href="zh-Hans/guide-night.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-night.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Scheduled night dimming on macOS, and the trap that walks your screen to black</h1>
+<p class="summary">Dimming a display on a schedule sounds like a two-line feature: check the clock, set the brightness. The trap is in the word <strong>set</strong>. If the value you apply is derived from the value that is <em>already there</em>, then every check makes the screen a little darker — and by morning it is black.</p>
+
+<h2>The feature, as users see it</h2>
+<p>A day is split into windows — a work window, an evening window, a night window — and each one carries its own <strong>white point and brightness</strong>. Nothing is global; changing what happens at 21:00 does not disturb what happens at 14:00.</p>
+<p>Times are stored as <strong>minutes since local midnight</strong>. That has a pleasant consequence: an end time earlier than the start time simply wraps past midnight, so "night, 20:00 to 08:00" needs <em>no special case at all</em>. It is the same arithmetic as any other window.</p>
+
+<h2>Trap 1 — the multiplier that compounds</h2>
+<p>Here is the mistake that looks completely reasonable:</p>
+<pre><code>let current = display.brightness
+let dimmed  = current * 0.6      // wrong
+apply(dimmed)</code></pre>
+<p>Run that on a 60-second heartbeat and the panel is multiplied by 0.6 over and over: 0.6, 0.36, 0.22, 0.13 … <strong>The display walks itself to black</strong>, and the user reports that the app "breaks my screen overnight".</p>
+<p>The fix is to make the value <strong>absolute</strong> — a fraction of full scale, not a multiple of the live value:</p>
+<pre><code>let target = 0.6               // fraction of full scale
+apply(target)</code></pre>
+<p>Now applying it twice is the same as applying it once. In one word: the scheduler is <strong>idempotent</strong>. A scheduler whose repeated evaluation is not a no-op is not idempotent — and it will drift.</p>
+
+<h2>Trap 2 — the heartbeat that stops while you drag a slider</h2>
+<p>The second trap is quieter. A timer scheduled on the default run-loop mode <strong>does not fire while the user is dragging a slider</strong>, because the drag holds the run loop in the event-tracking mode. So the check that was supposed to land at 21:00 quietly does not.</p>
+<p>Registering the heartbeat in <code>.common</code> mode instead means it still lands while the user is interacting — which is exactly when they are most likely to notice.</p>
+
+<h2>Trap 3 — a fade that restarts itself</h2>
+<p>Once the value is absolute, a second question follows: what happens when the scheduler decides on the same band twice? If each decision <em>restarts</em> the fade, the screen visibly pulses every minute. The answer is that a band already in force is a <strong>no-op</strong>, so the heartbeat never restarts a transition that is already heading to the right place. There is a separate "apply now" path for when the user explicitly asks.</p>
+
+<h2>And it has to be reversible</h2>
+<p>Turning the schedule off <strong>hands the display back to the state it held before the schedule was on</strong> — not to some default. If the user had set 80%, they get 80% back, not 100%.</p>
+
+<h2>Two smaller decisions worth naming</h2>
+<ul class="ticks"><li>The fade is tuned to be <strong>long enough to read as a transition, short enough not to feel sluggish</strong> — a real trade-off, stated rather than hidden.</li><li>Breaks (a pomodoro-style timer) can dim or overlay the screen. The state machine has a <strong>one-click skip</strong> that ends the break early and returns to work, because a break you cannot skip is a break people disable entirely.</li></ul>
+
+<h2>Honest limits</h2>
+<ul class="ticks"><li>This dims the <strong>picture</strong>, not the backlight. At low levels blacks stop being true black.</li><li>Changing the white point is <strong>software warmth</strong>, not hardware calibration. For accurate colour you need a colorimeter.</li><li>It is the same mechanism class as Night Shift and f.lux — we are not claiming anything more advanced than that.</li></ul>
+
+<h2>Related</h2>
+<p class="small"><a href="guides.html">All guides</a> · <a href="guide-brightness.html">How to change external display brightness</a> · <a href="guide-color.html">Colours look washed out</a> · <a href="guide-ddc.html">DDC/CI not responding</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

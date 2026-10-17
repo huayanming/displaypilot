@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 上按時段調暗螢幕，以及那個會把螢幕一路調成全黑的陷阱 · DisplayPilot</title>
+<meta name="description" content="按時段調暗螢幕看起來很簡單，直到你真的去寫這個排程器。有一個設計選擇會讓面板每複查一次就更暗一點——最後螢幕變成全黑。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-night.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-night.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-night.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-night.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-night.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 上按時段調暗螢幕，以及那個會把螢幕一路調成全黑的陷阱">
+<meta property="og:description" content="按時段調暗螢幕看起來很簡單，直到你真的去寫這個排程器。有一個設計選擇會讓面板每複查一次就更暗一點——最後螢幕變成全黑。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-night.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 上按時段調暗螢幕，以及那個會把螢幕一路調成全黑的陷阱","about":"Scheduled display dimming on macOS","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-night.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">價格</a>
+      <a href="support.html">支援</a>
+      <a href="guides.html">指南</a>
+      <a href="../guide-night.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hans/guide-night.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Mac 上按時段調暗螢幕，以及那個會把螢幕一路調成全黑的陷阱</h1>
+<p class="summary">按時段調暗螢幕聽起來是兩行程式的事：看錶、設亮度。陷阱在「<strong>設</strong>」這個字上。如果你要設的值是從<strong>目前已有的值</strong>推算出來的，那麼<strong>每複查一次螢幕就更暗一點</strong>——到早上它就全黑了。</p>
+
+<h2>這個功能，從使用者角度看</h2>
+<p>一天被分成幾個時段——工作時段、傍晚時段、夜間時段——<strong>每一段各自帶白點與亮度</strong>。沒有全域開關；改 21:00 的行為不會影響 14:00。</p>
+<p>時間以<strong>距本地午夜的分鐘數</strong>儲存。這帶來一個漂亮的結果：<strong>結束時間早於開始時間就自動跨越午夜</strong>，所以「夜間 20:00 到 08:00」<strong>完全不需要特例</strong>——它和別的時段是同一套算術。</p>
+
+<h2>陷阱一——會自己越乘越小的「倍數」</h2>
+<p>下面這種寫法看起來完全合理：</p>
+<pre><code>let current = display.brightness
+let dimmed  = current * 0.6      // 錯的
+apply(dimmed)</code></pre>
+<p>把它掛在 60 秒一次的心跳上，面板就會被反覆乘以 0.6：0.6、0.36、0.22、0.13……<strong>螢幕會自己走向全黑</strong>，而使用者的說法是「這個應用程式一夜之間把我螢幕弄壞了」。</p>
+<p>解法是把值做成<strong>絕對量</strong>——<strong>按滿量程的比例，而不是即時值的倍數</strong>：</p>
+<pre><code>let target = 0.6               // 滿量程的比例
+apply(target)</code></pre>
+<p>現在套用兩次和套用一次的結果相同。用一個詞說：這個排程器是<strong>幂等</strong>的。<strong>反覆求值不等於空操作的排程器，不是幂等的</strong>——而它會漂移。</p>
+
+<h2>陷阱二——你拖滑桿時，心跳不跳了</h2>
+<p>第二個陷阱更安靜。掛在預設 run loop 模式上的計時器，<strong>在使用者拖動滑桿時不會觸發</strong>——因為拖動會把 run loop 按在事件追蹤模式裡。於是那個本該在 21:00 落下的複查，<strong>悄無聲息地沒落下</strong>。</p>
+<p>把心跳註冊在 <code>.common</code> 模式下，它就仍然會落下——而那恰恰是使用者最容易注意到的時刻。</p>
+
+<h2>陷阱三——會自我重啟的淡入淡出</h2>
+<p>值變成絕對量之後，緊接著的問題是：排程器<strong>對同一個時段做了兩次決定</strong>會怎樣？如果每次決定都<strong>重啟</strong>淡入淡出，螢幕就會每分鐘可見地脈衝一次。正確答案是：<strong>已經生效的時段是空操作</strong>，所以心跳不會重啟一段已經在往正確目標走的過渡。</p>
+
+<h2>而且必須可逆</h2>
+<p>關掉排程時，<strong>把面板交還給開啟排程之前的狀態</strong>——不是交還給某個預設值。使用者原本設的是 80%，就拿回 80%，而不是 100%。</p>
+
+<h2>兩個更小、但值得點名的決定</h2>
+<ul class="ticks"><li>淡入淡出的時長調到「<strong>長到讀得出是一次過渡，短到不覺得遲鈍</strong>」——一個真實的取捨，說出來而不是藏起來。</li><li>休息（番茄鐘式計時）可以調暗或遮罩螢幕。狀態機帶<strong>一鍵跳過</strong>，可以提前結束休息回到工作。</li></ul>
+
+<h2>誠實的邊界</h2>
+<ul class="ticks"><li>它調暗的是<strong>畫面</strong>，不是背光。低亮度下黑位不再是真的黑。</li><li>改白點是<strong>軟體色溫</strong>，不是硬體校準。要準確的顏色得上色度計。</li><li>它與 Night Shift、f.lux 屬於<strong>同一類機制</strong>——我們不聲稱比這更高級。</li></ul>
+
+<h2>相關</h2>
+<p class="small"><a href="guides.html">全部指南</a> · <a href="guide-brightness.html">外接顯示器亮度怎麼調</a> · <a href="guide-color.html">色彩發灰</a> · <a href="guide-ddc.html">DDC/CI 無回應</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私權政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
