@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to control external display brightness on a Mac · DisplayPilot</title>
+<meta name="description" content="The brightness keys only work on the built-in screen. Here are the three ways to change an external display, in the order worth trying, and what to do when none of them work.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-brightness.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-brightness.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-brightness.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-brightness.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-brightness.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="How to control external display brightness on a Mac">
+<meta property="og:description" content="The brightness keys only work on the built-in screen. Here are the three ways to change an external display, in the order worth trying, and what to do when none of them work.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-brightness.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How to control external display brightness on a Mac","about":"External display brightness on macOS","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-brightness.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guides.html">Guides</a>
+      <a href="zh-Hans/guide-brightness.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-brightness.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>How to control external display brightness on a Mac</h1>
+<p class="summary">The brightness keys on a Mac change the <strong>built-in</strong> screen only; they have no way to reach a monitor on the other end of a cable. There are three ways to change an external panel instead, and they are worth trying <strong>in this order</strong> — because each one works on a smaller set of displays than the one before it.</p>
+
+<h2>1. The monitor’s own buttons or on-screen menu</h2>
+<p>Always the first thing to try, because it cannot fail for software reasons. Nearly every panel has a physical joystick or a row of buttons, and the menu behind it changes the <strong>real</strong> backlight.</p>
+<p>Two caveats worth knowing. Many monitors forget the setting when they lose power, so it comes back bright after a power cut. And on some panels that same menu has a <em>DDC/CI enable</em> switch — if that is off, none of the software options below can work at all, which is why it is worth a look while you are in there.</p>
+
+<h2>2. DDC/CI — the cable that can carry commands back to the panel</h2>
+<p>DDC/CI is a channel that travels the same cable as the picture and lets the computer send brightness, contrast and input-selection commands <strong>to the monitor’s own firmware</strong>. When it works, it is the best answer, because you are changing the backlight rather than the picture.</p>
+<p>It needs three things to line up:</p>
+<ul class="ticks"><li><strong>The panel must implement it.</strong> Some do not, and a few implement it badly.</li><li><strong>The connection must carry it.</strong> DisplayPort and HDMI usually do; USB-C docks and KVM switches are where it most often gets dropped.</li><li><strong>It must be enabled.</strong> The monitor’s own menu often has a DDC/CI switch, and it is not always on.</li></ul>
+<p>On macOS, the built-in brightness keys do not use DDC/CI — that is why they ignore external displays. A utility has to send the commands itself.</p>
+
+<h2>3. The gamma table — when the panel will not answer at all</h2>
+<p>If DDC/CI is not available, there is still one lever macOS gives you: the display transfer table (the gamma table). Read it once, scale it, hand it back, and the whole output dims — no DDC/CI support required, because it is the same mechanism Night Shift uses.</p>
+<p><strong>The trade-off is real,</strong> and worth stating plainly: this dims the <em>picture</em>, not the <em>backlight</em>. Blacks stop being true black at low levels, and it does nothing for colour accuracy. It is a fallback, not an equivalent.</p>
+
+<h2>If none of the three works</h2>
+<ul class="ticks"><li>Check the monitor’s own menu for a <strong>DDC/CI</strong> switch and turn it on.</li><li>Try a <strong>different cable and a different port</strong> — this is the single most common fix, because docks and KVMs are where DDC/CI is dropped.</li><li>Test with the display connected <strong>directly</strong>, with no hub in between.</li><li>See <a href="guide-ddc.html">DDC/CI not responding</a> for the full isolation order.</li></ul>
+
+<h2>What our app does about it</h2>
+<p>DisplayPilot tries DDC/CI first and falls back to the gamma table when a display does not answer, so the same control works across a mix of panels — and it tells you which path a given display is on, rather than pretending they are the same thing. When it dims through the gamma table it anchors to <strong>the curve read when it first takes over</strong>, and hands the original table back when you turn it off.</p>
+
+<h2>Related</h2>
+<p class="small"><a href="guides.html">All guides</a> · <a href="guide-ddc.html">DDC/CI not responding</a> · <a href="guide-color.html">Colours look washed out</a> · <a href="guide-scroll.html">Scrolling feels jerky</a> · <a href="alternatives.html">Which app should you use?</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

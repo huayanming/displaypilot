@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 外接显示器的亮度怎么调 · DisplayPilot</title>
+<meta name="description" content="亮度键只对内置屏有效。这里按「值得依次尝试」的顺序列出三种办法，并说明三种都不行时该怎么办。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-brightness.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-brightness.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-brightness.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-brightness.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-brightness.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器的亮度怎么调">
+<meta property="og:description" content="亮度键只对内置屏有效。这里按「值得依次尝试」的顺序列出三种办法，并说明三种都不行时该怎么办。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-brightness.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接显示器的亮度怎么调","about":"External display brightness on macOS","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guide-brightness.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+      <a href="../guide-brightness.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hant/guide-brightness.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Mac 外接显示器的亮度怎么调</h1>
+<p class="summary">Mac 上的亮度键只改<strong>内置屏</strong>；它没有办法去动另一头连着线的显示器。要改外接面板，有三种办法，<strong>值得按这个顺序试</strong>——因为越往后，能覆盖的显示器越少。</p>
+
+<h2>一、显示器自己的按钮或屏幕菜单</h2>
+<p>永远先试这个，因为它<strong>不会因为软件原因失败</strong>。几乎所有面板都有一个摇杆或一排按钮，菜单背后改的是<strong>真正的背光</strong>。</p>
+<p>两点值得知道：很多显示器<strong>断电后会忘记设置</strong>，所以停电之后它又亮回来了；另外有些面板的这个菜单里有一个 <strong>DDC/CI 开关</strong>——如果它是关的，下面两种软件办法<strong>一个都用不了</strong>，所以既然进来了，就顺手看一眼。</p>
+
+<h2>二、DDC/CI——能顺着线把命令送回面板的那条通道</h2>
+<p>DDC/CI 走的是和画面同一条线，它让电脑把亮度、对比度、切换输入源这些命令<strong>发给显示器自己的固件</strong>。它可用时是最好的答案，因为你改的是<strong>背光</strong>，而不是画面。</p>
+<p>它需要三件事同时对：</p>
+<ul class="ticks"><li><strong>面板要实现它</strong>。有些根本不实现，还有些实现得很糟。</li><li><strong>连接方式要能承载它</strong>。DisplayPort 与 HDMI 通常可以；<strong>USB-C 扩展坞和 KVM 切换器</strong>是最常把它丢掉的地方。</li><li><strong>它要处于开启状态</strong>。显示器自己的菜单里往往有 DDC/CI 开关，而它不一定是开着的。</li></ul>
+<p>在 macOS 上，<strong>系统自带的亮度键并不走 DDC/CI</strong>——这就是它们对外接显示器无动于衷的原因。要发这些命令，得由工具自己发。</p>
+
+<h2>三、伽马表——当面板完全不回应时</h2>
+<p>如果 DDC/CI 用不了，macOS 还留着一根杠杆：显示器的传输表（伽马表）。读一次、按比例缩放、交还回去，整个输出就变暗了——<strong>不需要面板支持 DDC/CI</strong>，因为这就是 Night Shift 用的同一个机制。</p>
+<p><strong>代价是真实的</strong>，值得直说：它调暗的是*画面*，不是*背光*。低亮度下黑色不再是真的黑，对色彩准确性也没有帮助。它是<strong>兜底</strong>，不是等价替代。</p>
+
+<h2>如果三种都不行</h2>
+<ul class="ticks"><li>去显示器自己的菜单里找 <strong>DDC/CI</strong> 开关，把它打开。</li><li><strong>换一根线、换一个口</strong>——这是最常见的一招，因为扩展坞和 KVM 正是丢掉 DDC/CI 的地方。</li><li>把显示器<strong>直连</strong>试试，中间不要有 hub。</li><li>完整的排查顺序见 <a href="guide-ddc.html">DDC/CI 无响应</a>。</li></ul>
+
+<h2>我们的应用是怎么处理的</h2>
+<p>DisplayPilot 先试 DDC/CI，显示器不回应时改用伽马表，所以同一套控制在混合面板之间都能用——而且它会<strong>告诉</strong>你当前这块屏走的是哪条路，而不是假装两者等价。走伽马表时，它以<strong>首次接管时读到的曲线</strong>为基准，关掉时把原始表交还回去。</p>
+
+<h2>相关</h2>
+<p class="small"><a href="guides.html">全部指南</a> · <a href="guide-ddc.html">DDC/CI 无响应</a> · <a href="guide-color.html">色彩发灰</a> · <a href="guide-scroll.html">滚轮卡顿</a> · <a href="alternatives.html">该用哪个工具？</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
