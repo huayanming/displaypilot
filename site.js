@@ -102,3 +102,32 @@ function campaignSource() {
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 })();
+
+
+/* 我已付款上报：个人收款码没有回调，买家点一下才能让店主知道。 */
+(function () {
+  var ENDPOINT = 'https://displaypilot-license.huayanming2019.workers.dev/api/paid';
+  document.addEventListener('click', function (event) {
+    var btn = event.target.closest ? event.target.closest('[data-paid-report]') : null;
+    if (!btn || btn.getAttribute('data-busy') === '1') return;
+    event.preventDefault();
+    btn.setAttribute('data-busy', '1');
+    var original = btn.textContent;
+    var channel = btn.getAttribute('data-paid-report') || 'unknown';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ channel: channel })
+    }).then(function (r) { return r.json(); }).then(function (data) {
+      if (data && data.ok) {
+        btn.textContent = '已通知店主 · ' + data.orderId;
+      } else {
+        btn.textContent = original + ' (' + 'failed' + ')';
+        btn.removeAttribute('data-busy');
+      }
+    }).catch(function () {
+      btn.textContent = original + ' (' + 'failed' + ')';
+      btn.removeAttribute('data-busy');
+    });
+  });
+})();
