@@ -6,7 +6,7 @@
 
 | 守卫 | 保护什么 | 验证时植入的缺陷 | 观察到的报错 |
 |---|---|---|---|
-| `check-app-claims.py` | 应用行为承诺（1716 项） | 在 Commerce.swift 里插入一处 URLSession 调用（白名单外） | 「出现了网络调用，但它不在白名单里（承诺是全应用只有兑换短码联网）」 |
+| `check-app-claims.py` | 应用行为承诺（1705 项） | 在 Commerce.swift 里插入一处 URLSession 调用（白名单外） | 「出现了网络调用，但它不在白名单里（承诺是全应用只有兑换短码联网）」 |
 | `check-localization.py` | 界面字符串覆盖与格式符一致（1276 条/语言） | 删掉 en.lproj 最后一条翻译 | 缺 1 条 |
 | `check-versions.py` | 版本号单一来源（12 处引用） | 把 Site/site.js 的 5.0.2 改成 5.0.3 | 版本引用不一致 |
 | `check-pricing.py` | 价格单一来源（14 处引用） | 把 zh-Hans/index.html 的价格 99 改成 98 | 价格引用不一致 |
