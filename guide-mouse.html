@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac mouse acceleration: turning it off so it sticks · DisplayPilot</title>
+<meta name="description" content="The usual advice writes one preference and asks you to log out. macOS has two layers, and measured on macOS 26 they disagree: the live pointer parameter read 0.6875 while the preference read 3.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-mouse.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-mouse.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-mouse.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-mouse.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-mouse.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac mouse acceleration: turning it off so it sticks">
+<meta property="og:description" content="The usual advice writes one preference and asks you to log out. macOS has two layers, and measured on macOS 26 they disagree: the live pointer parameter read 0.6875 while the preference read 3.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-mouse.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac mouse acceleration: turning it off so it sticks","about":"Mouse acceleration on macOS","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-mouse.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guides.html">Guides</a>
+      <a href="zh-Hans/guide-mouse.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-mouse.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Mac mouse acceleration: turning it off so it sticks</h1>
+<p class="summary">The advice you find everywhere is a <code>defaults write</code> plus a logout. That moves <strong>one of two layers</strong> — and on macOS 26 the two disagree: the live pointer parameter read <strong>0.6875</strong> while the preference read <strong>3</strong>. That is why acceleration comes back.</p>
+
+<h2>Two layers, and they do not have to agree</h2>
+<p>There is a <strong>live</strong> value that the system is using right now, and a <strong>persisted</strong> preference that gets restored at login. They are separate stores. Writing the preference alone means your change lands at the next login — until then, whatever holds the live value wins.</p>
+<p>This is not a theory. Measured on macOS 26, with the Tracking Speed slider in the middle:</p>
+<pre><code>live  HIDPointerAcceleration                        0.6875
+pref  defaults read -g com.apple.mouse.scaling      3
+live  HIDMouseAcceleration (generic key)           196608   = 3.0 in 16.16 fixed point
+pref  defaults read -g com.apple.scrollwheel.scaling 0.3125
+live  HIDScrollAcceleration (generic key)          20480    = 0.3125</code></pre>
+<p>Two different numbers for the same slider, because they are two different things. The generic key is the one that matches the preference exactly.</p>
+
+<h2>The API name that half the internet uses does not exist</h2>
+<p>Plenty of guides — and, in our case, an actual work brief — name <code>IOHIDSetPointerAcceleration</code>. That symbol does not exist on any shipping macOS: it is missing from the SDK headers, absent from the <code>.tbd</code> stubs, and <code>dlsym</code> on the loaded IOKit image returns NULL.</p>
+<p>What does exist, declared in <code>&lt;IOKit/hidsystem/IOHIDLib.h&gt;</code>, is a different set:</p>
+<ul class="ticks"><li><code>IOHIDSetMouseAcceleration</code> / <code>IOHIDGetMouseAcceleration</code> → <code>HIDPointerAcceleration</code></li><li><code>IOHIDSetScrollAcceleration</code> / <code>IOHIDGetScrollAcceleration</code> → <code>HIDScrollAcceleration</code></li><li><code>IOHIDSetAccelerationWithKey</code> / <code>IOHIDCopyCFTypeParameter</code> / <code>IOHIDSetCFTypeParameter</code></li></ul>
+<p>Those first four are marked deprecated as of 10.12 but still answer — and, crucially, <strong>none of them is the Tracking Speed slider</strong>. They are a different parameter that happens to live next door.</p>
+
+<h2>So what actually works</h2>
+<p>The live path for a tracking-speed control is the <strong>generic</strong> pair — <code>IOHIDCopyCFTypeParameter</code> and <code>IOHIDSetCFTypeParameter</code> — with the keys <code>HIDMouseAcceleration</code> and <code>HIDScrollAcceleration</code>. Both are public and neither is deprecated.</p>
+<p>Measured behaviour: writing <code>2.0</code> and reading it back returned <code>2.0</code>; restoring <code>3.0</code> read back <code>3.0</code>. The write takes effect immediately and is reversible.</p>
+<p>Because the preference is what survives a reboot, a tool has to write <strong>both</strong>: the preference for after the next login, the parameter for right now.</p>
+<p>Two more details worth knowing: HID parameters are <strong>16.16 fixed point</strong>, so <code>3.0</code> is stored as <code>196608</code>; and <code>-1</code> is the documented sentinel that means "disable pointer acceleration" rather than "very slow".</p>
+
+<h2>Scrolling is a separate axis</h2>
+<p>Turning off mouse acceleration does nothing for the wheel. Scroll acceleration lives in its own parameter — <code>HIDScrollAcceleration</code>, twin to <code>com.apple.scrollwheel.scaling</code> — which is why a page about "mouse acceleration" can leave you with a pointer that feels right and a wheel that still leaps.</p>
+
+<h2>How to check what is actually in force</h2>
+<p>Do not trust a success message; read the value back. Open the parameter port on the <code>IOHIDSystem</code> service, copy the key, and compare it with the preference. If the two disagree, the layer you wrote is not the layer that is deciding.</p>
+<p>There is also a per-service property, <code>HIDUseLinearScalingMouseAcceleration</code>, which Apple’s own header says WindowServer sets for linear tracking. It can be set on the pointer services, but the public client may be refused — so treat it as best effort, not as the mechanism.</p>
+
+<h2>Honest limits</h2>
+<p>This is a system-wide input parameter. Applications that read raw HID, and games that do their own look handling, can bypass acceleration entirely and will not be affected either way. And nothing here changes how a trackpad behaves, because a trackpad is not reporting through the same path.</p>
+
+<h2>Related</h2>
+<p class="small"><a href="guides.html">All guides</a> · <a href="guide-scroll.html">Mouse-wheel scrolling feels jerky</a> · <a href="guide-ddc.html">DDC/CI not responding</a> · <a href="alternatives.html">Which app should you use?</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

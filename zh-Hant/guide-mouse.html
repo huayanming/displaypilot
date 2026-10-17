@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 滑鼠加速：怎樣關掉它，而且關得住 · DisplayPilot</title>
+<meta name="description" content="網路上流傳的做法只改一個偏好，然後讓你重新登入。但 macOS 上有兩層，而且在 macOS 26 上實測它們並不一致：即時指標參數讀到 0.6875，而偏好讀到 3。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-mouse.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-mouse.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-mouse.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-mouse.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-mouse.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 滑鼠加速：怎樣關掉它，而且關得住">
+<meta property="og:description" content="網路上流傳的做法只改一個偏好，然後讓你重新登入。但 macOS 上有兩層，而且在 macOS 26 上實測它們並不一致：即時指標參數讀到 0.6875，而偏好讀到 3。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-mouse.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 滑鼠加速：怎樣關掉它，而且關得住","about":"Mouse acceleration on macOS","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-mouse.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">價格</a>
+      <a href="support.html">支援</a>
+      <a href="guides.html">指南</a>
+      <a href="../guide-mouse.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hans/guide-mouse.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Mac 滑鼠加速：怎樣關掉它，而且關得住</h1>
+<p class="summary">到處都能搜到的做法是 <code>defaults write</code> 加一次重新登入。它只動了<strong>兩層裡的一層</strong>——而在 macOS 26 上這兩層並不一致：即時指標參數讀到 <strong>0.6875</strong>，偏好卻讀到 <strong>3</strong>。這就是加速「又回來」的原因。</p>
+
+<h2>兩層，而且它們不一定要一致</h2>
+<p>有一層是系統<strong>此刻正在用</strong>的即時值，另一層是登入時會被回復的<strong>持久化偏好</strong>。它們是兩個獨立的儲存。只寫偏好，意味著你的改動要等到下次登入才生效——在那之前，誰握著即時值，誰說了算。</p>
+<p>這不是推測。在 macOS 26 上、把「跟蹤速度」放在中間位置實測：</p>
+<pre><code>即時  HIDPointerAcceleration                        0.6875
+偏好  defaults read -g com.apple.mouse.scaling      3
+即時  HIDMouseAcceleration（通用鍵）                196608   = 16.16 定點下的 3.0
+偏好  defaults read -g com.apple.scrollwheel.scaling 0.3125
+即時  HIDScrollAcceleration（通用鍵）               20480    = 0.3125</code></pre>
+<p>同一個滑桿讀出兩個數字，因為它們是兩樣東西。而那個「通用鍵」才和偏好<strong>精確相等</strong>。</p>
+
+<h2>半個網際網路都在用的那個 API 名，並不存在</h2>
+<p>很多教學——包括我們拿到的任務說明——都寫著 <code>IOHIDSetPointerAcceleration</code>。這個符號在任何在售的 macOS 上都不存在：SDK 標頭裡沒有、<code>.tbd</code> 裡沒有，對已載入的 IOKit 映像做 <code>dlsym</code> 回傳 NULL。</p>
+<p><code>&lt;IOKit/hidsystem/IOHIDLib.h&gt;</code> 裡真正宣告的是另一組：</p>
+<ul class="ticks"><li><code>IOHIDSetMouseAcceleration</code> / <code>IOHIDGetMouseAcceleration</code> → <code>HIDPointerAcceleration</code></li><li><code>IOHIDSetScrollAcceleration</code> / <code>IOHIDGetScrollAcceleration</code> → <code>HIDScrollAcceleration</code></li><li><code>IOHIDSetAccelerationWithKey</code> / <code>IOHIDCopyCFTypeParameter</code> / <code>IOHIDSetCFTypeParameter</code></li></ul>
+<p>前四個在 10.12 起標記為棄用，但仍然回應——而且關鍵在於：<strong>它們都不是「跟蹤速度」滑桿</strong>。它們是隔壁的另一個參數。</p>
+
+<h2>那麼真正管用的是哪條路</h2>
+<p>要控制跟蹤速度，即時路徑是<strong>通用</strong>的那一對：<code>IOHIDCopyCFTypeParameter</code> 與 <code>IOHIDSetCFTypeParameter</code>，鍵用 <code>HIDMouseAcceleration</code> 與 <code>HIDScrollAcceleration</code>。兩者都是公開的，且都沒有被標記棄用。</p>
+<p>實測行為：寫入 <code>2.0</code> 再讀回得到 <code>2.0</code>；回復 <code>3.0</code> 讀回 <code>3.0</code>。寫入立即生效，而且可逆。</p>
+<p>因為偏好才是重開機後活下來的那一層，工具必須<strong>兩個都寫</strong>：偏好負責下次登入之後，參數負責此刻。</p>
+<p>另有兩個值得知道的細節：HID 參數是 <strong>16.16 定點</strong>，所以 <code>3.0</code> 存成 <code>196608</code>；而 <code>-1</code> 是有文件的哨兵值，意思是「<strong>關閉指標加速</strong>」，不是「很慢」。</p>
+
+<h2>滾動是另一根軸</h2>
+<p>關掉滑鼠加速並不會改變滾輪。滾動加速有自己的參數——<code>HIDScrollAcceleration</code>，與 <code>com.apple.scrollwheel.scaling</code> 互為孿生——所以一篇只講「滑鼠加速」的頁面，可能讓你得到一個手感正常的指標，和一個仍然一跳一跳的滾輪。</p>
+
+<h2>怎麼核對現在到底哪層在生效</h2>
+<p>別信「設定成功」的提示，把值讀回來。在 <code>IOHIDSystem</code> 服務上開啟參數埠、取出該鍵，再和偏好比對。如果兩個數不一致，說明你寫的不是那個正在做決定的那一層。</p>
+<p>另外還有一個按服務的屬性 <code>HIDUseLinearScalingMouseAcceleration</code>——Apple 自己的標頭說 WindowServer 會為線性跟蹤設定它。它可以被寫到指標服務上，但公開客戶端可能被拒絕，所以把它當作「盡力而為」，而不是當作機制本身。</p>
+
+<h2>誠實的邊界</h2>
+<p>這是一個系統級的輸入參數。直接讀原始 HID 的應用程式、以及自己做視角處理的遊戲，可以完全繞開加速，改與不改都不受影響。這裡也不會改變觸控板的行為——因為觸控板根本不是從同一條路報上來的。</p>
+
+<h2>相關</h2>
+<p class="small"><a href="guides.html">全部指南</a> · <a href="guide-scroll.html">滑鼠滾輪一格一格地跳</a> · <a href="guide-ddc.html">DDC/CI 無回應</a> · <a href="alternatives.html">該用哪個工具？</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私權政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
