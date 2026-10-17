@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一个 Mac 应用要跟 DDC/CI 说话，得做对什么 — DisplayPilot</title>
+<meta name="description" content="一个能用的 DDC/CI 实现：I2C 地址 0x37/0x51、为什么 EDID 只能读浅层、为什么显示器需要「一拍」、为什么必须用 dlsym 解析私有符号。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/dev-ddc.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器 DDC/CI 无响应">
+<meta property="og:description" content="为什么 Mac 调不动外接显示器的亮度，怎么定位原因，以及 DDC/CI 不可用时还能怎么做。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/dev-ddc.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/dev-ddc.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/dev-ddc.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/dev-ddc.html">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "一个 Mac 应用要跟 DDC/CI 说话，得做对什么", "description": "一个能用的 DDC/CI 实现：I2C 地址 0x37/0x51、为什么 EDID 只能读浅层、为什么显示器需要「一拍」、为什么必须用 dlsym 解析私有符号。", "url": "https://huayanming.github.io/displaypilot/zh-Hans/dev-ddc.html", "inLanguage": "zh-Hans"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">写给开发者</p>
+  <h1>一个 Mac 应用要跟 DDC/CI 说话，得做对什么</h1>
+  <p class="lede">DDC/CI 名声不好，说它不可靠。其中一部分是硬件的问题，
+  另一部分是——把一根两线总线当成函数调用时发生的事。</p>
+
+  <h2>地址，以及为什么 EDID 只能读浅层</h2>
+  <p>DDC/CI 在 I2C 芯片 <strong>0x37</strong>、子地址 <strong>0x51</strong>。
+  EDID 在 <strong>0x50</strong> 应答。EDID 的偏移寄存器<strong>只有一个字节</strong>，
+  所以只有基块和第一个扩展块够得着——更深的必须<strong>拒绝</strong>，而不是猜。</p>
+
+  <h2>显示器需要「一拍」</h2>
+  <p>显示器需要一点时间才能把回复组好。发完请求立刻读回答案，
+  在相当多的面板上什么也拿不到。</p>
+
+  <h2>一个请求，不是两个</h2>
+  <p>写入和读取<strong>共用一个请求</strong>，这样驱动才能保持总线时序。
+  把它们拆成两个事务，代码看起来更整洁，真机上表现更糟。</p>
+
+  <h2>别在一块不理你的面板上花掉十次超时</h2>
+  <p>把每一个已知的 VCP 功能码都探一遍，听起来很周全。
+  但它也意味着：一块完全不支持 DDC/CI 的面板，要先花掉十次超时，
+  才能得到「读一次亮度」立刻就能告诉你的结论。<strong>用亮度做探路器。</strong></p>
+
+  <h2>绝不要硬链接一个你的 Mac 可能没有的符号</h2>
+  <p>Intel 那条路需要一个 IOKit 伞形头文件并不导出的用户态 I2C API。
+  直接引用那个符号，会让 App <strong>在 dyld 里就失败</strong>——
+  在任何缺这个符号的 Mac 上，它<strong>根本起不来</strong>。
+  用 <strong>dlsym</strong> 解析它，就把这件事变成了优雅降级到「没有 DDC」，
+  而不是在第一个窗口出现之前崩溃。</p>
+
+  <h2>两条总线，一个接口</h2>
+  <p>Intel Mac 通过 IOFramebuffer 的 I2C 接口走到 DDC；Apple Silicon 走 AV service。
+  Intel 路径上的请求是同步的，所以不需要加锁——但上层代码不能假设这一点永远成立。</p>
+
+  <h2>诚实的边界</h2>
+  <ul>
+    <li>不是每块面板都应答 DDC/CI。当它不应答时，唯一诚实的回退是软件调光，
+      那改的是<strong>画面</strong>不是<strong>背光</strong>。</li>
+    <li>以上都不是标准。它只是<strong>某一个能用实现</strong>的做法，
+      把理由写出来，好让别人能对着源码核对。</li>
+    <li>VCP 功能码因面板而异。成功读到其中一个，不能说明下一个也读得到。</li>
+  </ul>
+
+  <h2>相关</h2>
+  <ul>
+    <li><a href="guide-ddc.html">DDC/CI 没反应（面向用户的版本）</a></li>
+    <li><a href="guide-layers.html">哪一层在把屏幕调暗</a></li>
+    <li><a href="guide-gamma.html">伽马表到底做了什么</a></li>
+    <li><a href="../verify.html">怎么自己核对</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
