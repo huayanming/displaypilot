@@ -22,7 +22,7 @@
 |---|---|---|
 | `check-conventions.py` | 文件≤400 行、界面字符串、本地化覆盖 | 137 个文件达标 |
 | `check-localization.py` | 每个界面中文字符串必须 7 个语言都有译文 | 1273 条 × 7 语言全通过 |
-| `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1573 项** |
+| `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1584 项** |
 | `check-versions.py` | 版本单一来源（`VERSION`）与 12 处引用一致（`--online` 另查远程） | 5.0.2 / 12 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
 | `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 85 页 / 85 条 URL |
@@ -254,6 +254,8 @@
 | 212 | **发版前的便利性升级：按住看原样** | 界面/痛点 | ① 起因：用户亲历「调了色温，忘了原来什么样，也不知道怎么回去」。先摸清现状——App 已有自动化规则、全局热键、菜单栏、预设、护眼、滚轮、鼠标、屏幕测试、诊断，**不是功能少，是缺少「撤销感知」**；② 新增 AppModel.previewingOriginal + AppModel+Preview.swift 的 setPreviewOriginal：按住时把全中性 GammaParams 推到伽马表，松开恢复；**刻意不走 update(_:)，因为那条路会 persist —— 一次误操作不该把用户调好的参数存成中性**；③ 菜单栏加「按住看原样」按钮（onLongPressGesture 的 pressing 回调，按下即生效）；④ 新增文案已补 7 语 Localizable.strings（zh-Hant/en/ja/ko/de/fr/es）；⑤ 编译通过、门禁 16 项全绿；文件均未超 400 行（224/398/17/78） | 菜单栏 → 按住「按住看原样」 |
 | 213 | **5.1.0 正式发布：公证通过、GitHub Release 上线** | 发版 | ① 用官方 ship.sh 一条龙（门禁→编译→回归→清理安全→签名+公证+staple→Gatekeeper 终验），**运行期间零重建**，票据未作废；② 公证 Accepted、staple validate worked、Gatekeeper **accepted / Notarized Developer ID / yanming hua (7P2P353LBW)**；包内容断言：版本 5.1.0、架构 x86_64+arm64、签名与票据齐全；③ 产物 DMG 7,458,408 字节，sha256 e63e591e；DMG 本身也公证 + staple + validate；④ GitHub Release v5.1.0 已建，asset digest 与本地 sha256 一致，302→200 实测 content-length 7,458,408；⑤ **一处未完成**：Sparkle appcast 需要 EdDSA 私钥重签，但钥匙串里该条目工具取不到（sign_update 报 key not found，generate_appcast 报 -25300）。**没有私钥就重签会破坏所有老用户的自动更新**，所以 appcast 已回滚到 5.0.2，保持可用的旧状态；**新版下载与安装不受影响，只影响「应用内自动更新」提示** | https://github.com/huayanming/displaypilot/releases/tag/v5.1.0 |
 | 214 | **根因解决：appcast 已用真私钥重签，5.1.0 自动更新恢复** | 发版/根因 | ① 第 213 条留下的「appcast 无法重签」不是密钥丢失，而是**键名不同**：钥匙串那条记录的 svce=https://sparkle-project.org 但 **acct=com.neeson.displaypilot**，而 Sparkle 默认找 acct=ed25519 → 所以 sign_update/generate_appcast 都报 key not found；② 核对公私钥：钥匙串注释里的公钥 McspuBYOoQe64V+se3Ydjrk4bzTdEI3Ych5WgsukKZQ= 与 App 的 SUPublicEDKey **完全一致**，确认是同一对密钥，没有误用他人的；③ 用 security find-generic-password -a com.neeson.displaypilot -w 取出私钥到 /tmp（600），用官方 generate_appcast --ed-key-file 重新生成 appcast（版本 5.1.0 · length 7458408 · edSignature 由工具写入），**签完立即删除私钥文件并清理临时目录**（已复查不存在）；④ 线上实测 sparkle:version = 5.1.0、length = 7458408；门禁原本因 DMG 哈希被密钥扫描器误判而红，已把审计里的哈希缩短为 8 位；⑤ 教训：**「工具说找不到」不等于「东西不存在」** —— 先看记录的完整属性，再判断是丢了还是键名不同 | security find-generic-password -s https://sparkle-project.org |
+| 215 | **性能：把 persist() 从每帧一次改成停手后一次** | 性能/卡顿 | ① 先测再改：ps 显示 CPU 12.6% 是**启动以来的平均值**，不是稳态；top 两次采样瞬时 **0.1%** —— 所以「卡顿」不是 CPU 空转；内存 footprint **188 MB**、**峰值 677 MB**；② 阅读代码定位真凶：scheduleApply 是 16ms 一次，applyToSelected 里同步调 persist() → **拖动滑块时每秒 60 次磁盘 I/O，且都在主线程**；紧随其后还会写 statusMessage，而 AppModel 有 129 个 @Published，一次写入让整棵视图树重绘；③ 改为 schedulePersist()：停手 0.5 秒后写一次，参数本身仍每帧生效（视觉无延迟）；另加 flushPendingPersist() 供退出前补写；④ 编译通过、门禁 16 项全绿；**未测量修改后的拖动手感 —— 那需要真人拖滑块，我无法替代** | 拖动亮度滑块观察是否有卡顿 |
+| 216 | **根因：门禁脚本按进程名 pkill，把用户正在用的 App 关掉了十几次** | 工具/伤害用户 | ① 用户反馈「你总是给我软件关闭」。查 ps 确认 App 确实不在运行，而 App 代码里没有任何自行退出逻辑；② 真凶在 Scripts/smoke-test.sh：pkill -x DisplayPilot 按**进程名**杀全部同名进程，而 check.sh 与 ship.sh 都会跑它 —— 我这一轮跑了十几次门禁，就杀了十几次；③ 修法：改为按**可执行文件路径**匹配（只杀 build/ 下那一份），并加守卫——检测到 /Applications 里那份在跑就 **SKIP 并 exit 0**（不判失败、不杀），只有 ship.sh 显式设 SMOKE_ALLOW_KILL=1 时才允许杀；④ 验证：改完后连跑门禁，**用户 App 存活**（同一 pid 持续运行），门禁仍 16 项全绿；⑤ 教训：测试脚本的杀伤范围必须是它自己创建的东西，按进程名杀最容易伤到用户 | bash Scripts/smoke-test.sh（同时在用 App，应打印 SKIP） |
 
 ## 3. 仍然开着的项（诚实清单）
 
@@ -300,7 +302,7 @@ bash Scripts/check.sh                      # 16 道守卫 + 编译 + 回归（�
 python3 Scripts/check-pricing.py --online  # 价格：含实时汇率下的实收 vs 广告价
 python3 Scripts/check-versions.py --online # 版本：含 brew tap 与 GitHub release
 python3 Scripts/check-eula.py              # EULA：结构 + 各语言完整度
-python3 Scripts/check-app-claims.py        # 应用侧否定式承诺（1573 项）
+python3 Scripts/check-app-claims.py        # 应用侧否定式承诺（1584 项）
 
 cd Server && npm test                      # 服务端 190 项
 ./Scripts/release.sh --package-only 9.9.9  # 应失败：产物版本断言（安全，不产出任何东西）
