@@ -25,7 +25,7 @@
 | `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1518 项** |
 | `check-versions.py` | 版本单一来源（`VERSION`）与 12 处引用一致（`--online` 另查远程） | 5.0.2 / 12 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
-| `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 73 页 / 73 条 URL |
+| `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 74 页 / 74 条 URL |
 | `check-privacy.py` | 被撤回的隐私说法不得回归、邮箱披露必须存在 | 8 语言 × 3 项 = 24 |
 | `check-eula.py` | 10 大节齐全、不再引用不存在的功能、英文本优先条款、退款路径指向真实功能 | 8 语言；**并持续显示各语言完整度** |
 | `check-launch-posts.py` | 文案数字从代码现读比对、每条链接带 `?src=`、撤回说法、硬编码价格 | 17 项（数字主张 9 · 归因链接 6 · 撤回说法 2） |
@@ -204,6 +204,7 @@
 | 162 | **内容素材库其实已经用完了，我差点又写一页薄的** | 内容 | ① 按计划转向「站点内容」，先读素材库；发现里面那条「对比页加同名区分」**早就做完了**，却还挂在待办里；② 再核对 EyeCare 那批事实是否已被使用：guide-night.html 已有三个陷阱（乘数复利、拖动滑杆时心跳停摆、淡入淡出自我重启）+ 可逆性 + 诚实边界——**全部用过了**；③ 于是**没有新写页面**：写一页没有源码依据的薄页，比不写更坏；④ 把素材库标记为「已清空（第 109 轮）」并写明下一步必须**先读源码** | 见 content-backlog.md |
 | 163 | **写第一页面向开发者的内容：DDC/CI 到底难在哪** | 获客/内容 | ① 素材全部来自 Sources/DisplayPilot/Core/DDC.swift 的注释：I2C 0x37/0x51、EDID 0x50 且偏移寄存器只有一个字节（只能读基块与第一个扩展块）、显示器需要「一拍」才能组好回复、读写共用一个请求以保持总线时序、亮度作为探路器避免十次超时、用 dlsym 而不是硬引用（硬引用会在 dyld 里崩、App 起不来）、Intel 走 IOFramebuffer 的 I2C 而 Apple Silicon 走 AV service；② 它是**新受众**：已有的 guide-ddc.html 面向用户，这一页面向开发者，两者互链；③ **三道我自己的守卫依次抓到我**：ld_headline_guard（JSON-LD 的 headline 还是旧的）、孤岛守卫（只有 1 条入链）、报告数字守卫（站点页数从 71 变 72）——全部修好后 exit 0；④ 站点从 71 页/71 条 URL 变为 **72 页/72 条 URL** | curl -sL …/dev-ddc.html |
 | 164 | **写「两个 App 抢同一个显示设置」：一个没人写、但每个 Mac 用户都遇到过的问题** | 获客/内容 | ① 素材来自 Sources/DisplayPilot/Core/ConflictArbitration.swift：匹配先按**小写化的 bundle-id 前缀**、再按精确的本地化名称；之所以要前缀，是因为厂商会同时装一个菜单栏 App **加若干辅助进程**，而辅助进程往往没有可用的名字；② 页面把一个很好的原则原样写出来：**「一条永不触发的警告，好过一条误报到无关进程上的警告」**——并补了一句实话：会被人学会忽略的冲突警告，比没有警告更糟；③ **headline 守卫连续两轮抓到我**：我复制 dev-ddc.html 做骨架后，JSON-LD 的 headline 还是旧页的；上一轮用正则替换没生效，这轮改成**字符串替换**才修好——两次都是同一种错；④ 站点 72 → **73 页 / 73 条 sitemap**，报告页数同步更新，门禁 exit 0 | curl -sL …/guide-conflict.html |
+| 165 | **写「亮度到底在哪一层」：hardware / software / unavailable / unknown** | 获客/内容 | ① 素材来自 Sources/DisplayPilot/Core/DDCSelfHeal.swift 的真实常量：SelfHealChannel 四个状态、wakeDelay = 2.5 秒、retryDelays = [1, 2, 4]；② 页面把「unknown 与 unavailable 不能合并」和「退避阶梯必须可测试（注入 writer 与 sleeper）」讲成两条工程判断，并写明软件调光会**抬起黑位**这一诚实边界；③ **这次 JSON-LD 从零生成**，不再复制上一页的骨架——那个连续两轮咬我的 headline 错就此消失，门禁**一次通过** ✓；④ 站点 73 → **74 页 / 74 条 sitemap** | curl -sL …/guide-layers.html |
 
 ## 3. 仍然开着的项（诚实清单）
 
