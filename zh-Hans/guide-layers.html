@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>哪一层在把你的屏幕调暗：硬件、软件，还是都不是 — DisplayPilot</title>
+<meta name="description" content="亮度的四种状态——硬件、软件、不可用、未知——为什么后两者不能合并，以及真实的回退需要哪些延时：唤醒后 2.5 秒，然后 1、2、4 秒。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-layers.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器 DDC/CI 无响应">
+<meta property="og:description" content="为什么 Mac 调不动外接显示器的亮度，怎么定位原因，以及 DDC/CI 不可用时还能怎么做。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-layers.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-layers.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-layers.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-layers.html">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "哪一层在把你的屏幕调暗：硬件、软件，还是都不是", "description": "亮度的四种状态——硬件、软件、不可用、未知——为什么后两者不能合并，以及真实的回退需要哪些延时：唤醒后 2.5 秒，然后 1、2、4 秒。", "url": "https://huayanming.github.io/displaypilot/zh-Hans/guide-layers.html", "inLanguage": "zh-Hans"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">说明</p>
+  <h1>哪一层在把你的屏幕调暗：硬件、软件，还是都不是</h1>
+  <p class="lede">两个 App 都可以显示「亮度 40%」，画面却可以完全不同。
+  原因是亮度由<strong>不同的层</strong>承载，而其中只有一层碰得到背光。</p>
+
+  <h2>四种状态</h2>
+  <p>一个能用的实现必须把这四种状态<strong>显式建模</strong>，因为整件事的关键就是
+  「从硬件往下跳到软件」。它们不能互相替换：</p>
+  <ul>
+    <li><strong>硬件</strong>——面板自己的背光通过 DDC/CI 应答。这是真正的亮度：
+      像素背后的光变少了，黑还是黑。</li>
+    <li><strong>软件</strong>——改写伽马表。画面变暗，背光没变。
+      在 contrast 为 1 时它是纯缩放，黑仍然是黑；一旦对比度低于 1 就不是了——
+      对比度那一项绕 0.5 旋转，把斜坡底部推到零以上，
+      <strong>而那个才是让黑变成深灰的原因，不是调光本身</strong>。</li>
+    <li><strong>不可用</strong>——什么都不行。诚实的做法是直接说出来，
+      而不是假装一个滑块在起作用。</li>
+    <li><strong>未知</strong>——还没探测过。它和「不可用」是两回事，这是有意的：
+      一个是「我们问了，面板说不」，另一个是「我们还没问」。</li>
+  </ul>
+
+  <h2>为什么「未知」不能等于「不可用」</h2>
+  <p>把这两者合并，就是 App 在一块**它从未试过**的显示器上，
+  提前告诉你「不支持」。分开它们只需要源码里的一个词，却能避免一次错误诊断。</p>
+
+  <h2>那些延时是设计的一部分</h2>
+  <p>回退不是「重试一次」。面板在唤醒之后需要一段时间才能重新应答 DDC/CI——
+  <strong>在通知刚落地的那一刻重放，正是朴素唤醒处理会失败的原因</strong>。
+  一个真正的实现在唤醒后等 <strong>2.5 秒</strong>，然后按 <strong>1、2、4 秒</strong>退避重试。</p>
+
+  <h2>为什么这道阶梯要保持可测试</h2>
+  <p>重试阶梯不依赖窗口工具包，也不依赖任何具体的 DDC 类型：
+  <strong>调用方把写入器和 sleeper 注入进来</strong>。
+  这正是它能在「面板完全不支持 DDC/CI」的机器上被跑到的原因——
+  而那恰恰是唯一一类否则永远走不到这段代码的机器。</p>
+
+  <h2>诚实的边界</h2>
+  <ul>
+    <li>软件调光不是「一样但更便宜」。它改的是画面，而且在低值时会明显地把黑位抬起来。</li>
+    <li>这些具体延时是<strong>某一个实现</strong>对着自己的硬件量出来的。它们不是规范，面板各不相同。</li>
+    <li>硬件控制也不是永远更好：在一块应答很慢的面板上，混合方案可能比干净的软件调光更糟。</li>
+  </ul>
+
+  <h2>相关</h2>
+  <ul>
+    <li><a href="guide-gamma.html">伽马表到底做了什么</a></li>
+    <li><a href="guide-wake.html">唤醒后亮度自己重置</a></li>
+    <li><a href="guide-conflict.html">两个 App 抢同一个设置</a></li>
+    <li><a href="../dev-ddc.html">写给开发者：一个实现要做对什么（英文）</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
