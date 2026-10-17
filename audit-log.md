@@ -25,7 +25,7 @@
 | `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1806 项** |
 | `check-versions.py` | 版本单一来源（`VERSION`）与 12 处引用一致（`--online` 另查远程） | 5.0.2 / 12 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
-| `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 81 页 / 81 条 URL |
+| `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 89 页 / 89 条 URL |
 | `check-privacy.py` | 被撤回的隐私说法不得回归、邮箱披露必须存在 | 8 语言 × 3 项 = 24 |
 | `check-eula.py` | 10 大节齐全、不再引用不存在的功能、英文本优先条款、退款路径指向真实功能 | 8 语言；**并持续显示各语言完整度** |
 | `check-launch-posts.py` | 文案数字从代码现读比对、每条链接带 `?src=`、撤回说法、硬编码价格 | 17 项（数字主张 9 · 归因链接 6 · 撤回说法 2） |
