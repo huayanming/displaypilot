@@ -25,7 +25,7 @@
 | `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1518 项** |
 | `check-versions.py` | 版本单一来源（`VERSION`）与 12 处引用一致（`--online` 另查远程） | 5.0.2 / 12 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
-| `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 78 页 / 78 条 URL |
+| `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 79 页 / 79 条 URL |
 | `check-privacy.py` | 被撤回的隐私说法不得回归、邮箱披露必须存在 | 8 语言 × 3 项 = 24 |
 | `check-eula.py` | 10 大节齐全、不再引用不存在的功能、英文本优先条款、退款路径指向真实功能 | 8 语言；**并持续显示各语言完整度** |
 | `check-launch-posts.py` | 文案数字从代码现读比对、每条链接带 `?src=`、撤回说法、硬编码价格 | 17 项（数字主张 9 · 归因链接 6 · 撤回说法 2） |
@@ -220,6 +220,7 @@
 | 178 | **首次核查分享卡片配置：全部正确；但发现守卫同款盲区** | 质量/守卫 | ① 查 og/twitter 标签覆盖：77/78 页有全套（og:title/description/image/url/type/site_name、twitter:card/image），唯一缺的是 **404.html**，而它本来就不在 sitemap 里——**覆盖是 100% 的**；② 8 张本地化分享图（de/en/es/fr/ja/ko/zh-Hans/zh-Hant）**全部存在**，每张 15–17 万字节；③ 但上一轮加的 src_ref_guard **会跳过 http(s)**，而 og:image / og:url / canonical 全是绝对 URL——分享图丢了、canonical 指错了，站内看不出来，只有别人分享时才暴露；④ 加 own_url_guard 覆盖这一类；**证明**：把首页 og:image 改成 og-missing.png → exit 1 且精确报出 ✓，还原逐字节一致 ✓；门禁 exit 0 ✓ | python3 Scripts/check-site-links.py |
 | 179 | **复查买家路径：全部正常；而我的探针错了两次** | 营收/验证 | ① 线上全量核查 **32 项全过 / 0 失败**；首页 16 条本地链接**全部 200**；② 购买流程实际在 Worker 上：首页按钮直接指向 displaypilot-license.huayanming2019.workers.dev/buy，**返回 200**；Site/ 里本来就没有 buy.html / claim.html / success.html，所以那些 404 是**正确的**；③ **我的探针错了两次**：先假设路径是 .html（实际是无扩展名的 Worker 路由），后又在 bash 里写了带花括号的字符串切片，被 JS 当成模板插值；两次都是**先怀疑工具、后怀疑站点**才找到的；④ 结论：钱这条路是通的，问题仍然只有一个——**没有人来** | bash Scripts/audit-live.sh |
 | 180 | **新写的六个深度页只有英文，而中文是最大的市场** | 获客/内容 | ① 把最贴近真实搜索的「是不是这次更新的锅」译成简体中文，**自己写，不用机器翻译**——内容与原版一一对应：方向即证据、正常必须是正面确认、只读冻结快照、双语日志是一个问题、名字未知不猜；② 过程中被3 个检查依次拦下：**hreflang 守卫**（我从 zh-Hans/guide-ddc.html 抄的骨架自带四向 hreflang，指向的却是 guide-ddc 的各语言版本 → 回指不对称）、**孤岛守卫**（中文页只有 1 条入链）、**链接守卫**（页内 guide-conflict.html 在中文目录下不存在，应为 ../）；③ 还有一个我自己搞错的：报告里把页数写多了一个，而守卫数的是 **sitemap 条数**——「页面数」和「sitemap 条数」在这一页上不是同一个数；④ 全部修好后门禁 exit 0；sitemap 增加一条，中文读者第一次能读到这批新内容 | curl -sL …/zh-Hans/guide-update.html |
+| 181 | **第二篇深度页中文化：两个 App 抢同一个设置** | 获客/内容 | ① 选这一篇的理由：它是最贴近日常的一篇——「亮度自己会变」是真实会发生的事，而「后写的赢、没有任何仲裁协议」这句话能直接解释用户的困惑；② 上一轮踩过的坑预先避开了：hreflang 先按整行清空再写三向、同时给英文版补上回指、跨语言链接一律用 ../、报告页数按 sitemap 条数累加；③ 仍然被孤岛守卫拦了一次（中文侧只有 1 条入链），从中文 DDC 页补第二条后通过，现在中文侧共有 4 页链到它；④ 门禁 exit 0，sitemap 增至 79 条 | curl -sL …/zh-Hans/guide-conflict.html |
 
 ## 3. 仍然开着的项（诚实清单）
 

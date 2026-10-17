@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>两个 App 抢同一个显示设置时，会发生什么 — DisplayPilot</title>
+<meta name="description" content="为什么亮度会自己变：按 bundle-id 前缀识别对手、为什么辅助进程让按名字匹配失效、以及为什么「宁可漏报也不误报」。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-conflict.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器 DDC/CI 无响应">
+<meta property="og:description" content="为什么 Mac 调不动外接显示器的亮度，怎么定位原因，以及 DDC/CI 不可用时还能怎么做。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-conflict.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-conflict.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-conflict.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-conflict.html">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "两个 App 抢同一个显示设置时，会发生什么", "description": "为什么亮度会自己变：按 bundle-id 前缀识别对手、为什么辅助进程让按名字匹配失效、以及为什么「宁可漏报也不误报」。", "url": "https://huayanming.github.io/displaypilot/zh-Hans/guide-conflict.html", "inLanguage": "zh-Hans"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">排查</p>
+  <h1>两个 App 抢同一个显示设置时，会发生什么</h1>
+  <p class="lede">亮度自己会变。你设好的颜色，一小时后不对了。设置里什么都没动——
+  因为另一件工具正在往同一个地方写，而双方都不知道。</p>
+
+  <h2>第二个工具可以写的地方不止一处</h2>
+  <p>显示状态不是一个值，而是<strong>一组各自独立的领域</strong>。每一个都可能被另一个工具悄悄写入：
+  一个菜单栏 App、一个辅助进程、一段脚本。双方都以为这块归自己管。</p>
+
+  <h2>识别对方才是难的部分</h2>
+  <p>按显示名称匹配并不可靠。厂商常常同时装一个菜单栏 App <em>和</em>若干辅助进程，
+  而辅助进程往往<strong>根本没有可用的名字</strong>。所以可靠的信号是
+  <strong>bundle identifier 的前缀</strong>；对于 bundle id 没有公开文档的工具，
+  再用精确的本地化名称做第二轮匹配。</p>
+
+  <h2>为什么「漏掉」比「误报」好</h2>
+  <p>两轮都没匹配上的工具会<strong>保持未被发现</strong>，这是有意为之：
+  <strong>一条永不触发的警告，好过一条误报到无关进程上的警告。</strong>
+  一条你学会忽略的冲突警告，比没有警告更糟。</p>
+
+  <h2>该怎么做</h2>
+  <ul>
+    <li>如果两个 App 都声称管亮度，选一个，关掉另一个。它们之间<strong>没有任何仲裁协议</strong>——
+      后写的赢，而谁在后写取决于时序。</li>
+    <li>去查<strong>辅助进程</strong>，不要只看菜单栏里那个 App。真正写入的常常是辅助进程。</li>
+    <li>如果漂移发生在<strong>唤醒之后</strong>或显示器重连之后，那多半不是冲突，
+      而是一块需要一点时间才能重新应答的面板。</li>
+  </ul>
+
+  <h2>诚实的边界</h2>
+  <ul>
+    <li>这一页讲的是<strong>某一个实现</strong>如何发现对手。它不是一个标准，
+      也看不见 bundle id 和名称都没匹配上的工具。</li>
+    <li>「后写的赢」是描述，不是保证。两个工具交错写入，可能得到一个<strong>双方都没想要</strong>的状态。</li>
+  </ul>
+
+  <h2>相关</h2>
+  <ul>
+    <li><a href="guide-wake.html">唤醒后亮度自己重置</a></li>
+    <li><a href="guide-update.html">是不是这次更新的锅</a></li>
+    <li><a href="../dev-ddc.html">写给开发者：一个实现要做对什么（英文）</a></li>
+    <li><a href="../guides.html">全部指南</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
