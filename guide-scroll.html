@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mouse-wheel scrolling feels jerky on macOS — and the three traps in fixing it · DisplayPilot</title>
+<meta name="description" content="macOS gives a mouse wheel to apps as discrete clicks while a trackpad gets continuous gestures. Smoothing the wheel means re-emitting those clicks frame by frame — and that is where three real traps live.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-scroll.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-scroll.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-scroll.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-scroll.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-scroll.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mouse-wheel scrolling feels jerky on macOS — and the three traps in fixing it">
+<meta property="og:description" content="macOS gives a mouse wheel to apps as discrete clicks while a trackpad gets continuous gestures. Smoothing the wheel means re-emitting those clicks frame by frame — and that is where three real traps live.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-scroll.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Mouse-wheel scrolling feels jerky on macOS","about":"Mouse wheel scrolling on macOS","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-scroll.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guide-cleanup.html">Cleanup guide</a>
+      <a href="zh-Hans" hreflang="zh-Hans/guide-scroll.html" lang="zh-Hans/guide-scroll.html">中文</a>
+      <a href="zh-Hant" hreflang="zh-Hant/guide-scroll.html" lang="zh-Hant/guide-scroll.html">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Mouse-wheel scrolling feels jerky on macOS</h1>
+<p class="summary">macOS hands a mouse wheel to applications as a sequence of <strong>discrete clicks</strong>, while a trackpad gets continuous gestures. Making the wheel feel smooth means intercepting those clicks and re-emitting them frame by frame — and that is where three real traps live.</p>
+
+<h2>What macOS actually does with a wheel</h2>
+<p>A trackpad reports a <strong>continuous gesture</strong> — the system receives a stream of positions and knows the finger is still moving. A mouse wheel reports <strong>discrete clicks</strong>. One notch is one event, with a line count attached, and macOS hands it to the app and forgets about it.</p>
+<p>So a wheel does not "scroll badly" because something is broken. It jumps because that is what it was asked to do: one notch, one jump. Applications that smooth wheel input do it themselves; most do not.</p>
+
+<h2>The mechanism that actually fixes it</h2>
+<p>There are three steps, and all three matter:</p>
+<ul class="ticks"><li><strong>Intercept before the app sees it.</strong> A <code>CGEventTap</code> receives the wheel event first, so it can be swallowed and replaced.</li><li><strong>Accumulate, do not consume.</strong> The engine keeps the unspent remainder of the notch and hands out a fraction of it per frame.</li><li><strong>Emit on the display clock.</strong> A <code>CVDisplayLink</code> fires in step with the panel refresh, so the deltas arrive with the frames rather than in a burst.</li></ul>
+<p>This is the architecture the open-source MOS popularised, and it is the right one — our scroll engine mirrors it rather than inventing a worse wheel.</p>
+
+<h2>Trap 1 — not every wheel notch means "scroll"</h2>
+<p>This is the one that bites. In Photos, Maps, Keynote, Numbers, and most spreadsheets, one wheel notch is not a scroll at all — it is a <strong>zoom step</strong> or a page turn.</p>
+<p>Smoothed, that step keeps arriving long after you let go. A photo jumps from 80% to 200%. A slide show skips a dozen pages. Users then work around it with per-app whitelists — which is exactly the manual labour a feature like this is supposed to remove.</p>
+<p>So before reshaping an event, the engine asks one question: <strong>scroll or zoom?</strong> Zoom-semantic events are passed straight through, untouched. The same goes for applications whose wheel is already line-precise — shaping them again makes them worse, not better.</p>
+
+<h2>Trap 2 — the display link that quietly becomes a zombie</h2>
+<p><code>CVDisplayLink</code> does not always survive the night. After a display wake, or a reconfiguration (a cable, a KVM, a resolution change), it can stop delivering callbacks <strong>while still reporting that it is running</strong>.</p>
+<p>If nothing checks, the visible symptom is scroll that simply stops animating — and, from the outside, an app that "randomly broke". The fix is unglamorous: assume the link can die, detect it, and rebuild it.</p>
+
+<h2>Trap 3 — two tools fighting over the same wheel</h2>
+<p>Two event taps at the same level both consume the wheel. Each engine sees the other’s swallowed events as missing input and its own re-emitted events as new input. The two interpolators then chase each other, and the result is scrolling that stutters, doubles, or stops outright.</p>
+<p>Users reasonably conclude that the newest tool broke their scrolling. Naming the conflict — "another scroll utility is running" — is far more useful than leaving someone to debug it blind.</p>
+
+<h2>If scrolling is bad right now, check these first</h2>
+<ul class="ticks"><li>Is a <strong>second</strong> smoothing tool running? Two at once is worse than none.</li>
+<li>Does the app in question use <strong>precise, line-based</strong> deltas? Reshaping those adds latency for nothing.</li>
+<li>Did it start after a <strong>sleep, wake, or cable change</strong>? That points at the display link, not at the app.</li>
+<li>Is it <em>one</em> app or <em>all</em> of them? One app usually means a semantic mismatch (trap 1); all of them points at the tap itself.</li></ul>
+
+<h2>Honest limits</h2>
+<p>Smoothing is reshaping input, not creating it. It adds a small amount of latency by construction, and it cannot make an app that ignores point-precise deltas behave. Where a wheel is already behaving correctly, the right answer is to leave it alone — which is why the semantic and precise-input checks exist at all.</p>
+
+<h2>Related</h2>
+<p class="small"><a href="guide-ddc.html">DDC/CI not responding</a> · <a href="guide-wake.html">Brightness resets after sleep</a> · <a href="guide-hidpi.html">Text looks blurry</a> · <a href="guide-color.html">Colours look washed out</a> · <a href="alternatives.html">Which app should you use?</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 滑鼠滾輪一格一格地跳——以及修好它路上的三個坑 · DisplayPilot</title>
+<meta name="description" content="macOS 把滑鼠滾輪當作一串離散的「格」交給應用程式，而觸控板拿到的是連續手勢。要讓滾輪變順暢，就得把這些格逐幀重新投遞——三個真實的坑就藏在這裡。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-scroll.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-scroll.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-scroll.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-scroll.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-scroll.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 滑鼠滾輪一格一格地跳——以及修好它路上的三個坑">
+<meta property="og:description" content="macOS 把滑鼠滾輪當作一串離散的「格」交給應用程式，而觸控板拿到的是連續手勢。要讓滾輪變順暢，就得把這些格逐幀重新投遞——三個真實的坑就藏在這裡。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-scroll.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 滑鼠滾輪一格一格地跳","about":"Mouse wheel scrolling on macOS","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-scroll.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主導航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">價格</a>
+      <a href="support.html">支援</a>
+      <a href="guide-cleanup.html">清理指南</a>
+      <a href="../guide-scroll.html" hreflang="en" lang="en">English</a>
+      <a href="../zh-Hans/guide-scroll.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Mac 滑鼠滾輪一格一格地跳</h1>
+<p class="summary">macOS 把滑鼠滾輪當作一串<strong>離散的「格」</strong>交給應用程式，而觸控板拿到的是連續手勢。要讓滾輪變順暢，就得把這些格攔截下來、逐幀重新投遞——三個真實的坑就藏在這裡。</p>
+
+<h2>macOS 拿到滾輪後到底做了什麼</h2>
+<p>觸控板上報的是<strong>連續手勢</strong>——系統收到一串位置，並且知道手指還在動。滑鼠滾輪上報的是<strong>離散的「格」</strong>：一格就是一個事件，附帶一個行數，macOS 把它交給應用程式，然後就不管了。</p>
+<p>所以滾輪「一格一格地跳」，不是哪裡壞了，而是它本來就被這樣要求：一格，一跳。會平滑滾輪的應用程式是自己做的；大多不做。</p>
+
+<h2>真正有效的機制</h2>
+<p>三步，缺一不可：</p>
+<ul class="ticks"><li><strong>在應用程式看到之前攔截。</strong>用 <code>CGEventTap</code> 先拿到滾輪事件，這樣才能把它吞掉並替換。</li><li><strong>累積，而不是一次性消費。</strong>引擎保留這一格還沒用掉的餘量，逐幀一點點送出去。</li><li><strong>跟著顯示器的時鐘送。</strong>用 <code>CVDisplayLink</code> 與面板更新率同步，增量就跟着幀到達，而不是成串地衝出去。</li></ul>
+<p>這正是開源專案 MOS 普及開來的架構，也是正確的做法——我們的滾動引擎是照它實作的，而不是另發明一個更差的滾輪。</p>
+
+<h2>坑一——並不是每一格都意味著「滾動」</h2>
+<p>這一條最咬人。在「照片」「地圖」「Keynote」「Numbers」以及大多數試算表裡，一格滾輪根本不是滾動，而是<strong>縮放的一步</strong>或<strong>翻一頁</strong>。</p>
+<p>一旦平滑化，這一格會在你鬆手很久之後還在到達：照片從 80% 跳到 200%，簡報一次翻過十幾頁。使用者於是用「按應用程式加白名單」來繞開——而這恰恰是這類功能本該替人省掉的手工活。</p>
+<p>所以在改造一個事件之前，引擎先問一個問題：<strong>這是滾動還是縮放？</strong>縮放語意的事件原樣放行，不做任何加工。對滾輪本來就是「按行精確」的應用程式同理——再加工只會更差，不會更好。</p>
+
+<h2>坑二——悄悄變成殭屍的顯示時鐘</h2>
+<p><code>CVDisplayLink</code> 並不總能活過一夜。顯示器喚醒之後，或者發生重新配置（換線、過 KVM、改解析度），它可能<strong>停止投遞回呼，卻仍然聲稱自己在執行</strong>。</p>
+<p>如果沒人檢查，外面看到的現象就是滾動突然不動畫了——以及「這應用程式莫名其妙壞了」。修法並不漂亮：假定這個時鐘會死，偵測它，然後重建它。</p>
+
+<h2>坑三——兩個工具搶同一個滾輪</h2>
+<p>同一層上的兩個事件監聽器都會消費滾輪。每個引擎都把對方吞掉的事件當成「輸入丟了」，又把自己重新發出的事件當成「新輸入」。兩個插值器於是互相追，結果就是滾動卡頓、翻倍，或者干脆停擺。</p>
+<p>使用者很自然地得出結論：新裝的那個工具搞壞了我的滾動。<strong>把衝突說出來</strong>（「偵測到另一個滾動工具在執行」）遠比讓人盲目排查有用。</p>
+
+<h2>如果現在滾動就很難受，先查這幾條</h2>
+<ul class="ticks"><li>是不是有<strong>第二個</strong>平滑工具在跑？兩個同時跑比一個都不跑更糟。</li>
+<li>那個應用程式用的是不是<strong>按行精確</strong>的增量？對它們再加工只會白白增加延遲。</li>
+<li>是不是<strong>睡眠、喚醒或換線之後</strong>才開始的？那指向顯示時鐘，不指向應用程式。</li>
+<li>是<strong>某一個</strong>應用程式，還是<strong>所有</strong>應用程式？只有一個通常是語意不匹配（坑一）；所有應用程式都這樣，問題在監聽器本身。</li></ul>
+
+<h2>誠實的邊界</h2>
+<p>平滑是<strong>改造輸入</strong>，不是創造輸入。它天然會帶來一點延遲，也無法讓一個本來就忽略精確增量的應用程式變好。當滾輪本來就已經正常時，正確答案是<strong>別去動它</strong>——這也正是上面那些語意與「按行精確」判斷存在的原因。</p>
+
+<h2>相關</h2>
+<p class="small"><a href="guide-ddc.html">DDC/CI 無回應</a> · <a href="guide-wake.html">休眠後亮度被重置</a> · <a href="guide-hidpi.html">文字發虛</a> · <a href="guide-color.html">色彩發灰</a> · <a href="alternatives.html">該用哪個工具？</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私權政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
