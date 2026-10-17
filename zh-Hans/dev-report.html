@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>诊断报告里装了什么、不装什么，以及我们怎么证明 — DisplayPilot</title>
+<meta name="description" content="支持报告应当引用一份冻结快照，绝不含显示序列号、绝不含凭据、绝不含你的家目录路径——而且脱敏必须能在没有显示器、窗口或网络的情况下被证明。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/dev-report.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器 DDC/CI 无响应">
+<meta property="og:description" content="为什么 Mac 调不动外接显示器的亮度，怎么定位原因，以及 DDC/CI 不可用时还能怎么做。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/dev-report.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/dev-report.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/dev-report.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/dev-report.html">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "诊断报告里装了什么、不装什么，以及我们怎么证明", "description": "支持报告应当引用一份冻结快照，绝不含显示序列号、绝不含凭据、绝不含你的家目录路径——而且脱敏必须能在没有显示器、窗口或网络的情况下被证明。", "url": "https://huayanming.github.io/displaypilot/zh-Hans/dev-report.html", "inLanguage": "zh-Hans"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">隐私 / 可核对</p>
+  <h1>诊断报告里装了什么、不装什么，以及我们怎么证明</h1>
+  <p class="lede">「无遥测」这句话很好说。而你主动发出的那份支持报告，
+  是数据唯一一次离开你机器的时刻——所以这里必须是<strong>可以被核对</strong>的，而不是让你相信。</p>
+
+  <h2>它引用的是冻结快照</h2>
+  <p>报告由你按下按钮那一刻拍下的一份快照组装而成。它<strong>刻意不回读活状态</strong>——
+  因为你看到问题的那一刻和你上报的那一刻之间，活状态可能已经变了。
+  报告里的每一个值都是普通值，整个构造器是一个<strong>纯函数</strong>。</p>
+
+  <h2>它包含什么</h2>
+  <ul>
+    <li>显示型号、连接方式、分辨率。<strong>绝不含序列号</strong>——就是面板标题上已经显示给你的那些字段。</li>
+    <li>DDC 状态的一句话，用词与界面完全一致。</li>
+    <li>macOS 暴露了几个 DDC 控制端点，以及面板应答过的 VCP 功能标签。</li>
+    <li>滚动引擎的状态，做成现成的「标签 / 值」两列。</li>
+    <li>一条最新在前的短时间线——只保留最前面几条。</li>
+  </ul>
+
+  <h2>离开之前会被去掉什么</h2>
+  <ul>
+    <li><strong>显示序列号与 EDID 字符串序列号。</strong>它们标识一台物理设备，
+      而它们绝不该活在一个你可能贴到公开 issue 里的文件中。</li>
+    <li><strong>任何凭据</strong>——实际就是许可证密钥。</li>
+    <li><strong>你的家目录路径</strong>，否则它经过的每条路径都会泄露你的账户名。</li>
+  </ul>
+
+  <h2>为什么「纯函数」这件事重要</h2>
+  <p>因为这样一来脱敏变得<strong>可证明</strong>。报告构造器只接收普通值、返回文本；
+  它不需要显示器、不需要窗口、也不需要网络。这就是自检能在<strong>一台没接显示器的机器上</strong>
+  断言脱敏契约的原因——否则要测它，你就得接上<strong>那台你正想保密序列号的硬件</strong>。</p>
+
+  <h2>诚实的边界</h2>
+  <ul>
+    <li>一份脱敏后的报告仍可能含有我们没想到的识别信息。如果你发现了，那是一个值得上报的 bug。</li>
+    <li>「无遥测」描述的是这个 App，不是你使用第三方服务的记录。你把报告贴到论坛，那个论坛就看得见它。</li>
+    <li>脱敏覆盖的是构造器<strong>已知</strong>的字段。它是对已知字段的契约，不是对每一个可能字符串的保证。</li>
+  </ul>
+
+  <h2>相关</h2>
+  <ul>
+    <li><a href="privacy.html">隐私政策</a></li>
+    <li><a href="../verify.html">怎么自己核对</a></li>
+    <li><a href="../audit.html">我们怎么检查自己</a></li>
+    <li><a href="dev-ddc.html">写给开发者：一个实现要做对什么</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
