@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was it the update? Direction is the evidence — DisplayPilot</title>
+<meta name="description" content="How to tell whether an update caused your display problem: why direction matters, why "ok" must be a positive confirmation rather than missing data, and why a diagnosis should read a frozen snapshot instead of live state.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-update.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="DDC/CI not responding on macOS">
+<meta property="og:description" content="Why external display brightness stops responding on a Mac, how to isolate the cause, and what works when DDC/CI is unavailable.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-update.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Was it the update? Direction is the evidence", "description": "How to tell whether an update caused your display problem: why direction matters, why \"ok\" must be a positive confirmation rather than missing data, and why a diagnosis should read a frozen snapshot instead of live state.", "url": "https://huayanming.github.io/displaypilot/guide-update.html"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html">Features</a>
+      <a href="index.html">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guides.html">Guides</a>
+      <a href="zh-Hans/guide-ddc.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-ddc.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">Troubleshooting</p>
+  <h1>Was it the update? Direction is the evidence</h1>
+  <p class="lede">Something worked yesterday and does not today. The honest answer is not “it is probably the
+  update” — it is to look at which came first.</p>
+
+  <h2>Direction matters</h2>
+  <p>A failure that <strong>follows</strong> an update is the classic “after updating” story. A failure that
+  <strong>precedes</strong> the update cannot be blamed on it, no matter how tempting that is. Before you attribute
+  anything, put the two timestamps side by side. In practice that one comparison removes a large share of
+  wrong accusations — in both directions.</p>
+
+  <h2>“OK” must be a positive confirmation</h2>
+  <p>There is a trap in how a diagnosis reports success. If “ok” means <em>we found no problem</em>, then a rule
+  that never ran looks exactly like a healthy machine. The three states should be:</p>
+  <ul>
+    <li><strong>ok</strong> — we checked, and it is explicitly fine. Not an absence of data.</li>
+    <li><strong>notice</strong> — worth a look, not a defect.</li>
+    <li><strong>warning</strong> — a concrete problem.</li>
+  </ul>
+  <p>Keeping “ok” positive is what stops an empty result from reading like a clean bill of health.</p>
+
+  <h2>Read a snapshot, not live state</h2>
+  <p>A conclusion should come from a <strong>frozen snapshot</strong> of everything the rules are allowed to read.
+  If a rule can reach into live state while it runs, the answer depends on what changed halfway through the
+  analysis — and the same machine can produce two different conclusions minutes apart with nothing having happened
+  in between. Plain values in, one conclusion out.</p>
+
+  <h2>Two subtle counting bugs</h2>
+  <ul>
+    <li>The same warning recorded under two languages is <strong>one problem</strong>, not two. Group on a stable
+      kind when the record carries one; otherwise a bilingual log looks like double the trouble.</li>
+    <li>A name that cannot be parsed is <strong>unknown</strong>, never a guessed name. A wrong attribution is
+      worse than an empty one, because it sends you looking in the wrong place.</li>
+  </ul>
+
+  <h2>What to do in practice</h2>
+  <ul>
+    <li>Write down the exact time the problem started <em>before</em> you try fixes — every later action destroys
+      the evidence.</li>
+    <li>Compare it against update times, not against your memory of them.</li>
+    <li>If the problem predates the update, stop trying to roll back and look at what else changed: a cable, a
+      dock, a display, a macOS point release.</li>
+  </ul>
+
+  <h2>Honest limits</h2>
+  <ul>
+    <li>Timestamps only order events. They do not prove causation — a failure after an update can still come from
+      a loose cable that happened to move at the same time.</li>
+    <li>A snapshot makes a conclusion reproducible, not correct. A rule with a bad threshold will reproduce the
+      same wrong answer perfectly.</li>
+  </ul>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="guide-ddc.html">DDC/CI not responding</a></li>
+    <li><a href="guide-conflict.html">Two apps fighting over the same setting</a></li>
+    <li><a href="audit.html">How we test what we ship</a></li>
+    <li><a href="verify.html">How to check any of this yourself</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
