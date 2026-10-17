@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
-IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
-  <channel>
-    <title>DisplayPilot</title>
-    <link>https://huayanming.github.io/displaypilot/dl/</link>
-    <description>DisplayPilot 软件更新</description>
-    <language>zh-Hans</language>
-    <item>
-      <title>DisplayPilot 5.0.2</title>
-      <pubDate>Fri, 16 Oct 2026 05:58:32 +0000</pubDate>
-      <sparkle:version>5.0.2</sparkle:version>
-      <sparkle:shortVersionString>5.0.2</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.0.2.dmg" length="7384177" type="application/octet-stream" sparkle:edSignature="fJqAY9HluvdjBzDFI3uJwYzLgvv9BqonzyLToPcjaGOatYmJUOER58zsK+k0ZrwvLhWHHxnkM3Guomqwpo5sDg=="></enclosure>
-    </item>
-  </channel>
-</rss><!-- sparkle-signatures:
-edSignature: btY9VjmAQxtsz5U8mZ5jlH4mpjYF8/QADQxIWIMV1P4dmq0RfA7UwHTwq78SggOtoUmGh4MEUzwulbKS+TZTAQ==
-length: 1257
--->
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>DisplayPilot</title>
+        <item>
+            <title>5.1.0</title>
+            <pubDate>Sat, 17 Oct 2026 17:42:30 +0800</pubDate>
+            <link>https://huayanming.github.io/displaypilot/</link>
+            <sparkle:version>5.1.0</sparkle:version>
+            <sparkle:shortVersionString>5.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.1.0.dmg" length="7458408" type="application/octet-stream" sparkle:edSignature="riQ5ILgat96NlArZ/NZzSUDjuM61GVUoeq5+p6UAJYZTT6kxKCE+AT7fNejZlcTXqXRIt4MpcdgQWFcf1BaRDA=="/>
+        </item>
+    </channel>
+</rss>
