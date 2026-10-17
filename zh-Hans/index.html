@@ -38,7 +38,7 @@
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"5.1.5","url":"https://huayanming.github.io/displaypilot/zh-Hans/","inLanguage":"zh-Hans","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.1.5.dmg","offers":{"@type":"Offer","price":"99","priceCurrency":"CNY","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 显示器控制，DDC 不可用时用伽马表调光","以首次接管时读到的曲线为基准的色彩校准","逐帧投递的平滑滚动","先隔离再删除的开发者缓存清理"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"滚轮、亮度、色彩"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"5.2.0","url":"https://huayanming.github.io/displaypilot/zh-Hans/","inLanguage":"zh-Hans","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.2.0.dmg","offers":{"@type":"Offer","price":"99","priceCurrency":"CNY","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 显示器控制，DDC 不可用时用伽马表调光","以首次接管时读到的曲线为基准的色彩校准","逐帧投递的平滑滚动","先隔离再删除的开发者缓存清理"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"滚轮、亮度、色彩"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要内容</a>
@@ -85,7 +85,7 @@
           <p class="f-eyebrow">01 · 丝滑滚动</p>
           <h2 class="f-title">一格滚轮，拆成一段</h2>
           <p class="f-body">滚轮的一格不再是一次跳变。事件先被攒起来，再挂在屏幕刷新上逐帧投递，每帧投出 <code>pending × (1 − e^(−dt/τ))</code>。因为按时间衰减、不按帧数，60Hz 与 144Hz 的手感一致：离线基准里，120Hz 的首帧从 3 点提到 9 点，90% 用时从 158ms 缩到 133ms。</p>
-          <p class="f-note sunk neu neu-sink">终端、看图、PPT 这类把滚轮当精确输入或缩放的窗口默认交回系统；按住 ⌘ 随时回到原生滚动；平滑<strong>默认关闭</strong>，不打开就不会接管你的滚轮。界面上留着「看到 / 手势 / 拦截 / 投递」四个实时计数，换了鼠标出问题，一眼看得出卡在哪一层。</p>
+          <p class="f-note sunk neu neu-sink">终端、看图、PPT 这类把滚轮当精确输入或缩放的窗口默认交回系统；按住 ⌘ 随时回到原生滚动；平滑<strong>默认关闭</strong>，未启用时不会接管滚轮事件。界面上留着「看到 / 手势 / 拦截 / 投递」四个实时计数，换了鼠标出问题，一眼看得出卡在哪一层。</p>
         </div>
         <figure class="f-media tall neu plate">
           <img src="img/scroll.webp" width="700" height="1552" loading="lazy" alt="滚动面板：顶部显示滚动平滑状态与四层实时计数，下面是安全模式开关和 21 条内置缩放应用库。">
