@@ -52,7 +52,9 @@
     <li><strong>hardware</strong> — the panel's own backlight answers DDC/CI. This is real brightness: the light
       behind the pixels goes down, and blacks stay black.</li>
     <li><strong>software</strong> — the gamma table is rewritten. The picture gets darker, the backlight does not.
-      Near the bottom of the range the black level lifts: what should be black becomes dark grey.</li>
+      At contrast 1 it is a pure scale, so true black stays black. Once contrast drops below 1 it is not:
+      the contrast term pivots around 0.5, which pushes the bottom of the ramp above zero — and that, not the
+      dimming itself, is what turns black into dark grey.</li>
     <li><strong>unavailable</strong> — nothing works. The honest thing is to say so rather than pretend a slider
       is doing something.</li>
     <li><strong>unknown</strong> — not yet probed. Distinct from unavailable on purpose: one means “we asked and
