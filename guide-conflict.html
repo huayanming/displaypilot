@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When two apps fight over the same display setting — DisplayPilot</title>
+<meta name="description" content="Why your brightness changes on its own: detection by bundle-id prefix, why helper processes break name matching, and why a warning that never fires beats one that fires on the wrong process.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-conflict.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="DDC/CI not responding on macOS">
+<meta property="og:description" content="Why external display brightness stops responding on a Mac, how to isolate the cause, and what works when DDC/CI is unavailable.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-conflict.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"When two apps fight over the same display setting","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-ddc.html"}</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html">Features</a>
+      <a href="index.html">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guides.html">Guides</a>
+      <a href="zh-Hans/guide-ddc.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-ddc.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">Troubleshooting</p>
+  <h1>When two apps fight over the same display setting</h1>
+  <p class="lede">Your brightness drifts. Your colour looks wrong an hour after you set it. Nothing in your
+  settings changed — because a second tool is writing to the same place, and neither side knows.</p>
+
+  <h2>The places a second tool can write</h2>
+  <p>Display state is not one value. It is a handful of separate domains, and each one is somewhere another
+  utility can quietly write: a menu-bar app, a helper process, a script. Both of you believe you own it.</p>
+
+  <h2>Detecting the other app is the hard part</h2>
+  <p>Matching by display name is unreliable. Vendors ship a menu-bar app <em>plus</em> helper processes, and the
+  helpers often carry no useful name at all. So the reliable signal is the <strong>bundle identifier prefix</strong>,
+  with an exact localised name as a second pass for tools whose bundle id is undocumented.</p>
+
+  <h2>Why a miss is better than a false alarm</h2>
+  <p>A tool that matches neither test stays undetected, and that is deliberate: <strong>a warning that never
+  fires is better than one that fires on an unrelated process.</strong> A conflict warning you learn to ignore is
+  worse than no warning at all.</p>
+
+  <h2>What to do about it</h2>
+  <ul>
+    <li>If two apps both claim brightness, pick one and disable the other. There is no arbitration protocol
+      between them — the last writer wins, and which that is depends on timing.</li>
+    <li>Check for helper processes, not just the app in your menu bar. The helper is often the one writing.</li>
+    <li>If the drift happens after sleep or a display reconnect, it is probably not a conflict at all but a
+      panel that needs a moment before it answers again.</li>
+  </ul>
+
+  <h2>Honest limits</h2>
+  <ul>
+    <li>This page describes how one implementation detects rivals. It is not a standard, and it cannot see a
+      tool whose bundle id and name both fail to match.</li>
+    <li>“Last writer wins” is a description, not a guarantee. Two tools writing in an interleaved order can
+      produce a state neither of them intended.</li>
+  </ul>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="guide-wake.html">Brightness resets after sleep</a></li>
+    <li><a href="dev-ddc.html">For developers: what an implementation has to get right</a></li>
+    <li><a href="guides.html">All guides</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"When two apps fight over the same display setting","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-ddc.html"}</script>
+</body>
+</html>
