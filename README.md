@@ -207,24 +207,7 @@ macOS 26 上伽马表由**窗口服务器持有**，设置它的进程一旦退�
 ## 目录结构
 
 ```text
-Package.swift                     SwiftPM 清单（macOS 14+，无依赖）
-Sources/DisplayPilot/
-  App/DisplayPilotApp.swift       @main；CLI 或 GUI 分流、菜单栏场景、退出还原
-  App/CLI.swift                   无头命令，经分布式通知驱动运行中的 App
-  Core/DDC.swift                  IOAVService 私有 API 封装与 VCP 读写
-  Core/GammaController.swift      伽马表基准、变换、重连重放
-  Core/DisplayCatalog.swift       显示器枚举、模式列表、分辨率切换
-  Core/AudioController.swift      显示器音频端点（DP/HDMI）音量
-  Core/HotKeyManager.swift        Carbon 全局热键
-  Model/AppModel.swift            状态与编排
-  UI/Theme.swift                  配色、量规、徽标、输出电平表
-  UI/Components.swift             带刻度的推子、通道条、按键排
-  UI/MainView.swift               主面板
-  UI/MenuBarView.swift            菜单栏面板
-Scripts/build-app.sh              构建 + 打包 + 签名
-Scripts/make-icon.py              Pillow 渲染图标（仪表盘主题）
-Scripts/smoke-test.sh             端到端自检
-Tools/ddc-probe.swift             独立 DDC/CI 诊断工具
+（源码目录不公开）
 ```
 
 ---
