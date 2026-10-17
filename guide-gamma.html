@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What a gamma table actually does when you dim a display — DisplayPilot</title>
+<meta name="description" content="The five operations between a slider and your panel — gamma, a contrast pivot at 0.5, a scale, a per-channel gain, a clamp — and the three traps around them: compounding, a table that silently drops, and a warm tint that brightens.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="DDC/CI not responding on macOS">
+<meta property="og:description" content="Why external display brightness stops responding on a Mac, how to isolate the cause, and what works when DDC/CI is unavailable.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-gamma.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "What a gamma table actually does when you dim a display", "description": "The five operations between a slider and your panel — gamma, a contrast pivot at 0.5, a scale, a per-channel gain, a clamp — and the three traps around them: compounding, a table that silently drops, and a warm tint that brightens.", "url": "https://huayanming.github.io/displaypilot/guide-gamma.html"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html">Features</a>
+      <a href="index.html">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guides.html">Guides</a>
+      <a href="zh-Hans/guide-ddc.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-ddc.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">Explainer</p>
+  <h1>What a gamma table actually does when you dim a display</h1>
+  <p class="lede">A brightness slider is not one operation. Between the slider and the panel there are five, and
+  the order matters more than the values.</p>
+
+  <h2>The five operations, in order</h2>
+  <p>For every entry in the display's ramp, one sample at a time:</p>
+  <pre><code>x = pow(raw, 1/gamma)
+x = (x - 0.5) * contrast + 0.5
+x = x * brightness
+x = x * tint
+x = clamp(x, 0, 1)</code></pre>
+  <p>Read the second line carefully: <strong>contrast pivots around 0.5, not around zero.</strong> At contrast 1 it
+  is the identity and the line vanishes. Below 1 it pulls the whole ramp toward the midpoint — which means the
+  bottom of the ramp is lifted off zero. That single term, not the dimming, is what turns true black into dark
+  grey.</p>
+
+  <h2>Trap 1 — repeated adjustments compound</h2>
+  <p>If each adjustment shapes the <em>current</em> table, the second one shapes a table that is already shaped.
+  The fix is to capture the display's pristine ramp once and always shape <em>that</em>. It is the same class of
+  bug as a scheduler that multiplies an already-dimmed value: it looks fine on the first call and drifts forever
+  after.</p>
+
+  <h2>Trap 2 — the table can silently drop</h2>
+  <p>A wake, a resolution change or a GPU reset can discard the table without telling anyone. You must not assume
+  the write stuck: read the table back, compare one interior sample against what you asked for, and retry with
+  backoff. A tolerance is needed because the round trip is not bit-exact.</p>
+
+  <h2>Trap 3 — a warm tint must never brighten the panel</h2>
+  <p>Warming the picture means raising red and lowering blue. Done naively the peak goes above 1 and the display
+  gets brighter than it was. The constraint is one line: <strong>normalise the peak down to 1.</strong> A colour
+  change should never be a brightness change.</p>
+
+  <h2>Reference white</h2>
+  <p>Every tint is expressed relative to one reference white, so that the reference temperature is a true identity
+  transform and an untouched display stays untouched. Pick that anchor carelessly and “no change” quietly becomes
+  “slightly warmer”.</p>
+
+  <h2>Honest limits</h2>
+  <ul>
+    <li>All of the above still only changes the picture, never the backlight. It works on every display, including
+      panels that ignore DDC/CI, but it cannot make the panel itself darker.</li>
+    <li>The specific constants here are one implementation's choices. The ordering and the three traps are the
+      transferable part; the numbers are not.</li>
+    <li>A read-back with a tolerance can still accept a wrong table that happens to match at the sampled point.
+      One sample is cheap, not exhaustive.</li>
+  </ul>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="guide-layers.html">Which layer is dimming your screen</a></li>
+    <li><a href="guide-color.html">Colour looks washed out</a></li>
+    <li><a href="guide-night.html">Scheduled dimming, and the trap that walks your screen down to black</a></li>
+    <li><a href="audit.html">How we test what we ship</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
