@@ -18,6 +18,28 @@
 
 ![Display control](https://huayanming.github.io/displaypilot/img/display.webp)
 
+## Deep dives
+
+Written from the implementation, not from a feature list. Each one can be checked against what the app does.
+
+| Page | What it is about |
+|---|---|
+| [All guides](https://huayanming.github.io/displaypilot/guides.html?src=github) | Organised by symptom |
+| [What an implementation has to get right](https://huayanming.github.io/displaypilot/dev-ddc.html?src=github) | I2C addresses, why EDID reads are shallow, why a monitor needs a beat, why symbols are resolved with dlsym |
+| [Which layer is dimming your screen](https://huayanming.github.io/displaypilot/guide-layers.html?src=github) | hardware / software / unavailable / unknown, and why the last two are not the same |
+| [What a gamma table actually does](https://huayanming.github.io/displaypilot/guide-gamma.html?src=github) | The five operations, the contrast pivot at 0.5, and three traps |
+| [A test you cannot read is just a colourful screen](https://huayanming.github.io/displaypilot/guide-test.html?src=github) | Five full-screen patterns, and why a test tool must never trap you |
+| [Two apps fighting over the same setting](https://huayanming.github.io/displaypilot/guide-conflict.html?src=github) | Bundle-id prefix matching, and why a miss beats a false alarm |
+| [Was it the update?](https://huayanming.github.io/displaypilot/guide-update.html?src=github) | Direction is the evidence, and why "ok" must be a positive confirmation |
+
+## How this project is checked
+
+Sixteen offline guards and 208 tests, and every guard is proved to fail on a planted defect.
+Both records are public:
+
+- [The audit log](https://huayanming.github.io/displaypilot/audit-log.md?src=github) — every round, including the ones where this project was wrong.
+- [Each guard failing on purpose](https://huayanming.github.io/displaypilot/guard-proofs.md?src=github) — so the checks are not decorative.
+
 ## What it solves
 
 | | |
