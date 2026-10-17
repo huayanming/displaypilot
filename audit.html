@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we check ourselves · DisplayPilot</title>
+<meta name="description" content="Every claim on this site is checked by an automated script that reads the source of truth.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/audit.html">
+<link rel="stylesheet" href="../style.css">
+</head><body>
+<main class="wrap">
+  <h1>How we check ourselves</h1>
+  <p>Every claim on this site is checked by an automated script that reads the source of truth.</p>
+  <p><strong>16 automated checks</strong></p>
+  <ul>
+      <li><code>check-app-claims</code> — 应用侧否定式承诺：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明</li>
+      <li><code>check-audit-report</code> — 审计报告与文档副本一致、守卫项数等于实测</li>
+      <li><code>check-channel-tags</code> — 渠道标签引用：文档里出现的标签必须真实存在</li>
+      <li><code>check-conventions</code> — 命名与结构约定、单文件行数上限、中文字面量必须进本地化</li>
+      <li><code>check-eula</code> — EULA 八语结构、功能引用、英文本优先</li>
+      <li><code>check-guard-coverage</code> — 每道守卫都有对应证明</li>
+      <li><code>check-launch-posts</code> — 发布文案里的数字与代码事实一致</li>
+      <li><code>check-localization</code> — 七语键集一致、格式符一致、引用一致</li>
+      <li><code>check-pricing</code> — 定价口径在各处一致</li>
+      <li><code>check-privacy</code> — 隐私声明与实际数据行为一致</li>
+      <li><code>check-shell-scripts</code> — 脚本的严格模式与危险命令防护</li>
+      <li><code>check-site-claims</code> — 站点上的数字主张必须等于代码事实</li>
+      <li><code>check-site-links</code> — 站内链接、锚点、hreflang 全部可达</li>
+      <li><code>check-site-seo</code> — 标题、描述、canonical、sitemap 完整</li>
+      <li><code>check-typos</code> — 中英文错别字与标点</li>
+      <li><code>check-versions</code> — 版本号在站点、更新源、下载文件名三处一致</li>
+  </ul>
+  <p class="muted">These checks run before every release. A failing check blocks the build.</p>
+  <p><a href="../index.html">← DisplayPilot</a></p>
+</main></body></html>

@@ -1,14 +1,22 @@
 # DisplayPilot · 显示器控制
+A native macOS display console. One-time purchase, no account, no telemetry.
 
-一台 Mac Studio（M1 Max）外接显示器 UP32R7-A 的专用控制软件。原生 SwiftUI + AppKit，
-菜单栏常驻，窗口是一块「校准台」式面板。
+## 产品规格
 
-![控制台面板](Docs/panel.png)
+| 项目 | 值 |
+|---|---|
+| 试用 | 14 天免费试用 |
+| 系统要求 | macOS 14 或更高 |
+| 价格 | ¥99 一次买断 |
+| 清理隔离区 | 保留 30 天 |
+| 可重建产物 | 13 类有确定性重建方式 |
+| 永久删除 | 必须同时满足 6 个条件 |
+| 下载 | DisplayPilot-5.2.9.dmg |
 
-左侧导轨共 **14 个板块**：显示 / 滚动 / 护眼 / 工具 / 音频 / 鼠标 / 窗口 / 会话 /
-存储 / 时间线 / 健康 / 诊断 / 自动化 / 通用（「会话」为 3.0.0 之后新增）。
+## 下载
 
----
+- macOS 应用：`DisplayPilot-5.2.9.dmg`（Release 页）
+- 更新源：`appcast.xml`
 
 ## 先说结论：你这块显示器不支持 DDC/CI
 
