@@ -62,7 +62,7 @@ brew install --cask huayanming/tap/displaypilot
 
 **Direct download**
 
-Get `DisplayPilot-5.1.3.dmg` from [Releases](https://github.com/huayanming/displaypilot/releases/latest),
+Get `DisplayPilot-5.1.5.dmg` from [Releases](https://github.com/huayanming/displaypilot/releases/latest),
 or download it from the [website](https://huayanming.github.io/displaypilot/?src=github).
 
 - Requires **macOS 14 or later**
@@ -131,7 +131,7 @@ licences" panel lists every third-party component and its licence.
 | **平滑滚动** | 逐帧投递，按经过时间衰减，60Hz 与 144Hz 手感一致（需要辅助功能权限） |
 | **安全清理** | 只处理 **13 类有确定性重建方式**的产物；**先移入隔离区保留 30 天**，永久删除默认关闭，且必须同时满足 6 个条件 |
 
-**安装**：`brew install --cask huayanming/tap/displaypilot`，或从 [Releases](https://github.com/huayanming/displaypilot/releases/latest) 取 `DisplayPilot-5.1.3.dmg`。要求 **macOS 14 或更高**，已用 Developer ID 签名并通过 Apple 公证，通用二进制。
+**安装**：`brew install --cask huayanming/tap/displaypilot`，或从 [Releases](https://github.com/huayanming/displaypilot/releases/latest) 取 `DisplayPilot-5.1.5.dmg`。要求 **macOS 14 或更高**，已用 Developer ID 签名并通过 Apple 公证，通用二进制。
 
 **价格**：**14 天免费试用，功能完整**，不需要注册账号；一次性买断 **¥99 / US$14**，没有订阅。激活码为 Ed25519 签名、**本地离线验证**：激活后不联网，也不绑定设备。
 
