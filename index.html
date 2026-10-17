@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DisplayPilot — The missing console for your Mac display</title>
-<meta name="description" content="A native macOS console for your display: smooth scrolling, gamma-table dimming, panel-anchored calibration, and quarantine-first cleanup. 14-day trial.Crypto payment is accepted; the activation code is issued automatically once the transfer confirms on chain.">
+<meta name="description" content="A native macOS console for your display: frame-by-frame scrolling, gamma-table dimming, calibration anchored to the curve it reads, and quarantine-first cleanup.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DisplayPilot">
 <meta property="og:title" content="DisplayPilot — The missing console for your Mac display">
-<meta property="og:description" content="A native macOS console for your display: frame-by-frame smooth scrolling, CoreGraphics gamma-table dimming, color calibration anchored to the curve it reads when it first takes over, and cleanup that quarantines before it deletes. 14-day free trial.">
+<meta property="og:description" content="A native macOS console for your display: frame-by-frame scrolling, CoreGraphics gamma-table dimming, calibration anchored to the curve it reads when it first takes over, and cleanup that quarantines before it deletes. 14-day free trial.">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
@@ -38,64 +38,113 @@
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.v532.png">
 <link rel="icon" href="img/icon.png" type="image/png">
 <link rel="stylesheet" href="style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"5.7.1","url":"https://huayanming.github.io/displaypilot/","inLanguage":"en","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg","offers":{"@type":"Offer","price":"14","priceCurrency":"USD","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["DDC/CI display control with gamma-table fallback","Colour calibration anchored to the panel's original curves","Frame-by-frame smooth scrolling","Quarantine-first developer cache cleanup"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"Scroll, brightness, color."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"5.7.1","url":"https://huayanming.github.io/displaypilot/","inLanguage":"en","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg","offers":{"@type":"Offer","price":"14","priceCurrency":"USD","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["DDC/CI display control with gamma-table fallback","Colour calibration anchored to the curve read at takeover","Frame-by-frame smooth scrolling","Menu-bar switchboard for displays and system actions","Quarantine-first developer cache cleanup"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"Scroll, brightness, color."}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
-    <nav class="nav-links" aria-label="Primary"><a href="./features.html">All features</a>
-      <a href="#features">Features</a>
-      <a href="#price">Pricing</a>
-      <a href="support.html">Support</a>
+    <nav class="nav-links" aria-label="Primary"><a href="index.html#features">Features</a>
+      <a href="index.html#console">The console</a>
+      <a href="index.html#controls">Controls</a>
+      <a href="index.html#price">Pricing</a>
       <a href="guides.html">Guides</a>
+      <a href="support.html">Support</a>
     </nav>
-    <details class="lang"><summary>English</summary><ul class="lang-menu" aria-label="Language"><li><a href="index.html" aria-current="true" hreflang="en" lang="en">English</a></li><li><a href="zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <details class="lang"><summary>English</summary><ul class="lang-menu" aria-label="Language"><li><a href="index.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
     <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
   </div>
 </header>
 <main id="main">
-  <section class="hero">
-    <div class="wrap">
-      <h1>Scroll, brightness, color.</h1>
-      <p class="sub">Dialed in exactly how you like them.</p>
-      <p class="lede">A native macOS console for your display. One wheel notch becomes a continuous scroll, delivered frame by frame. Brightness runs through the CoreGraphics gamma table, so it works even on monitors that never implemented DDC/CI. Color is computed against the curve read when the app first takes over — and handed back to the system with a single click.</p>
-      <p class="hero-cta">
-        <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download for macOS</a>
-        <a class="btn btn-ghost" href="#price">14-day free trial</a>
-      </p>
-      <p class="hero-spec">macOS 14 or later · Universal binary for Apple silicon and Intel · No account required · One-time purchase, no subscription</p>
-      <figure class="hero-shot neu plate">
-        <img src="img/display.en.v533.webp" width="1090" height="2416" alt="DisplayPilot's Display panel: monitor model and link information at the top, the software dimming slider below it, then the contrast, gamma, and color temperature sliders for color calibration, and the color gamut triangle read from the EDID.">
-      </figure>
+
+  <!-- Hero: the app's own instrument language, rebuilt in CSS -->
+  <section class="hero hero-v2">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span>Native macOS console</p>
+        <h1>Scroll, brightness, color.</h1>
+        <p class="sub">Dialed in exactly how you like them.</p>
+        <p class="lede">A native macOS console for your display. One wheel notch becomes a continuous scroll, delivered frame by frame. Brightness runs through the CoreGraphics gamma table, so it works even on monitors that never implemented DDC/CI. Color is computed against the curve read when the app first takes over — and handed back to the system with a single click.</p>
+        <p class="hero-cta">
+          <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download for macOS</a>
+          <a class="btn btn-ghost" href="#price">14-day free trial</a>
+        </p>
+        <ul class="hero-spec">
+          <li>macOS 14 or later</li>
+          <li>Apple silicon &amp; Intel</li>
+          <li>No account</li>
+          <li>One-time purchase</li>
+        </ul>
+      </div>
+      <div class="hero-console">
+        <div class="console-tray">
+          <div class="console-screen" aria-hidden="true">
+            <div class="cs-bar"><span class="cs-dot"></span><span class="cs-title">Display 1</span><span class="cs-tag">120 Hz · HiDPI</span></div>
+            <div class="cs-block">
+              <span class="cs-label">Master brightness</span>
+              <p class="cs-readout"><span class="num">100</span><span class="unit">%</span></p>
+              <div class="cs-track"><span class="cs-fill"></span><span class="cs-knob"></span></div>
+            </div>
+            <div class="cs-gauges">
+              <p class="cs-gauge"><span class="k">Color temperature</span><span class="v">6500<em>K</em></span></p>
+              <p class="cs-gauge"><span class="k">Gamma</span><span class="v">2.2</span></p>
+              <p class="cs-gauge"><span class="k">Gamut</span><span class="v">104<em>% sRGB</em></span></p>
+            </div>
+            <svg class="cs-gamut" viewBox="0 0 220 150" role="presentation" focusable="false">
+              <path class="cs-gamut-srgb" d="M116 121 L60 58 L183 74 Z" />
+              <path class="cs-gamut-p3" d="M128 132 L44 62 L196 80 Z" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="206" y2="132" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="18" y2="14" />
+            </svg>
+          </div>
+        </div>
+        <p class="console-caption">Example readouts from the Display panel.</p>
+      </div>
     </div>
   </section>
-  <section class="statement">
+
+  <section class="statement statement-v2">
     <div class="wrap">
       <p class="big">This isn't System Settings with the switches rearranged. It's the work the system never did.</p>
-      <p class="small">Frame-by-frame scrolling, dimming that doesn't depend on panel firmware, calibration anchored to the panel's original curves — and a cleanup path that quarantines before it deletes.</p>
+      <p class="small">Frame-by-frame scrolling, dimming that doesn't depend on panel firmware, calibration anchored to the curve the app reads at takeover — and a cleanup path that quarantines before it deletes.</p>
     </div>
   </section>
+
   <section class="features" id="features">
     <div class="wrap">
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">01 · Smooth scrolling</p>
           <h2 class="f-title">One notch, split into a stroke</h2>
-          <p class="f-body">A wheel notch stops being a single jump. Events are accumulated, then delivered on every display refresh — each frame emitting <code>pending × (1 − e^(−dt/τ))</code>. Because the decay is driven by elapsed time rather than by frame count, 60 Hz and 144 Hz feel the same. In our offline benchmark, the first frame at 120 Hz improved from 3 points to 9, and time-to-90% fell from 158 ms to 133 ms.</p>
+          <p class="f-body">A wheel notch stops being a single jump. Events are accumulated, then delivered on every display refresh — each frame emitting <code>pending × (1 − e^(−dt/τ))</code>. Because the decay is driven by elapsed time rather than by frame count, the response shape is set by time, not refresh rate; total conservation is measured at 60, 120 and 144 Hz. In our offline benchmark, the first frame at 120 Hz improved from 3 points to 9, and time-to-90% fell from 150 ms to 133 ms.</p>
           <p class="f-note sunk neu neu-sink">Windows that treat the wheel as a precision input or a zoom control — terminals, image viewers, slide decks — are handed back to the system by default. Hold ⌘ at any time to return to native scrolling. Smoothing ships <strong>off</strong>: it never takes over your wheel unless you turn it on. The interface keeps four live counters — seen, gesture, intercepted, delivered — so when a new mouse misbehaves, you can see exactly which layer is dropping it.</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="img/scroll.en.v533.webp" width="1090" height="2416" loading="lazy" alt="The Scrolling panel: smoothing status and four live counters at the top, the safe-mode switch below, and a library of 21 built-in per-app exceptions.">
+          <img src="img/scroll.en.v533.webp" width="1090" height="2416" loading="lazy" alt="The Scrolling panel: smoothing status and four live counters at the top, the safe-mode switch below, and a library of built-in per-app exceptions.">
+          <figcaption>Smoothing is a switch, not a takeover. Every layer reports what it did.</figcaption>
         </figure>
       </article>
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">02 · Software dimming</p>
           <h2 class="f-title">Dim without touching panel firmware</h2>
-          <p class="f-body">Brightness runs through the CoreGraphics gamma table, so it works even on monitors that don't implement DDC/CI. Every write is read back and compared; when they disagree the app backs off and retries, up to four times. Resolution changes and wake-from-sleep replay the curve automatically, so it never silently stops working.</p>
-          <p class="f-note sunk neu neu-sink">Replays always recompute from the panel's <strong>original baseline</strong> rather than from the current curve, so repeated adjustment can't accumulate error — measured, the mid-gray point moved from 0.5020 to 0.3012. macOS restores the display when the process exits, and there are two recovery paths that don't require the app to be running: one inside the app, and <code>Scripts/restore-dimming.sh</code>.</p>
+          <p class="f-body">Brightness runs through the CoreGraphics gamma table, so it works even on monitors that don't implement DDC/CI. After a resolution change or wake, the app rewrites the curve and checks one interior sample against the intent; on a mismatch it retries, up to four attempts in total. Resolution changes and wake-from-sleep replay the curve automatically, so it never silently stops working.</p>
+          <p class="f-note sunk neu neu-sink">Replays always recompute from the baseline captured at takeover rather than from the current curve, so repeated adjustment can't accumulate error. At 60% brightness the mid-gray point moves from 0.5020 to 0.3012 — exact scaling, not an accumulated delta. macOS restores the display when the process exits, and there are two further recovery paths: one inside the app, and <code>Scripts/restore-dimming.sh</code>.</p>
+        </div>
+        <div class="f-media instrument card neu" role="group" aria-label="Measured color calibration readings">
+          <p class="gauge sunk neu neu-sink"><span class="k">Color temperature</span><span class="v tid">6500</span><span class="u">K · anchored as the identity transform</span></p>
+          <p class="gauge sunk neu neu-sink"><span class="k">Gamma</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
+          <p class="gauge sunk neu neu-sink"><span class="k">Gamut</span><span class="v tid">104%</span><span class="u">sRGB · covers only 77% of Display P3</span></p>
+          <p class="instrument-note">Measured on our test panel and read back from the gamma table.</p>
+        </div>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">03 · Color calibration</p>
+          <h2 class="f-title">Anchored to the curve read when the app first takes over</h2>
+          <p class="f-body">Contrast pivots on mid gray, gamma works the midtones, and color temperature spans 2700–9000 K — all three computed from the curve the app reads when it first takes over. 6500 K is anchored as the identity transform, so the default state is exactly how your display already looks.</p>
+          <p class="f-note sunk neu neu-sink">The physical gamut is read straight from the EDID and drawn as a CIE xy triangle, placed next to its coverage of sRGB and Display P3. What can align, aligns; the parts the panel physically cannot reach — high-saturation red and green — are <strong>labeled as out of reach</strong> instead of faked. One click hands calibration back to ColorSync.</p>
         </div>
         <figure class="f-media wide neu plate">
           <img src="img/display.en.v533.webp" width="1090" height="2416" loading="lazy" alt="The lower half of the Display panel: the contrast, gamma, and color temperature sliders for color calibration, plus the gamut coverage read from the EDID.">
@@ -104,47 +153,169 @@
       </article>
       <article class="feature">
         <div class="f-copy">
-          <p class="f-eyebrow">03 · Color calibration</p>
-          <h2 class="f-title">Anchored to the curve read when the app first takes over</h2>
-          <p class="f-body">Contrast pivots on mid gray, gamma works the midtones, and color temperature spans 2700–9000 K — all three computed from the panel's original curves. 6500 K is anchored as the identity transform, so the default state is exactly how your display already looks.</p>
-          <p class="f-note sunk neu neu-sink">The physical gamut is read straight from the EDID and drawn as a CIE xy triangle, placed next to its coverage of sRGB and Display P3. What can align, aligns; the parts the panel physically cannot reach — high-saturation red and green — are <strong>labeled as out of reach</strong> instead of faked. One click hands calibration back to ColorSync.</p>
-        </div>
-        <div class="f-media instrument card neu" role="group" aria-label="Measured color calibration readings">
-          <p class="gauge sunk neu neu-sink"><span class="k">Color temperature</span><span class="v tid">6500</span><span class="u">K · anchored as the identity transform</span></p>
-          <p class="gauge sunk neu neu-sink"><span class="k">Gamma</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
-          <p class="gauge sunk neu neu-sink"><span class="k">Gamut</span><span class="v tid">104%</span><span class="u">sRGB · covers only 77% of Display P3</span></p>
-        </div>
-      </article>
-      <article class="feature">
-        <div class="f-copy">
           <p class="f-eyebrow">04 · Safe cleanup</p>
           <h2 class="f-title">Quarantine first. Delete later.</h2>
-          <p class="f-body">It only touches 13 categories of artifacts that have a deterministic way to be rebuilt: Xcode DerivedData, SwiftPM, CocoaPods, npm / pnpm / Yarn, Go, Gradle, Rust target, <code>__pycache__</code>, crash reports, Homebrew caches, and the like. Anything removed is moved into quarantine first, kept for 30 days by default, and restorable at any time.</p>
+          <p class="f-body">It only touches 13 categories of artifacts that have a deterministic way to be rebuilt: Xcode DerivedData, SwiftPM, CocoaPods, npm / pnpm / Yarn, Go, Gradle, Rust target, <code>__pycache__</code>, crash reports, Homebrew caches, and the like. Anything removed is moved into quarantine first. It stays restorable, and permanent deletion is only offered after 30 days.</p>
           <p class="f-note sunk neu neu-sink">Permanent deletion is off by default. Exactly one function in the whole app can do it, and it proceeds only when six conditions hold at once — fail any one and it aborts. The app doesn't request Full Disk Access; system-protected directories are skipped per macOS rules. Automation rules can <strong>pre-scan, never delete</strong>.</p>
         </div>
         <figure class="f-media tall neu plate">
           <img src="img/storage.en.v533.webp" width="1090" height="2416" loading="lazy" alt="The Storage panel: disk overview, a breakdown of system data, personal folders, large-file discovery, and cleanable items — with a note at the bottom that scanning is read-only and cleanup only moves files to quarantine.">
+          <figcaption>Scanning is read-only. Nothing moves until you ask it to.</figcaption>
         </figure>
       </article>
     </div>
   </section>
-  <section class="trio" id="all-features">
-    <h2 class="sec-head">Every feature</h2>
-    <p class="statement">Every tab is built out. Each card below is a real panel section.</p>
-    <div class="trio-grid"><article class="tcard card neu"><h3>Display</h3><p>monitor · master dimming · colour calibration · presets · timing</p></article><article class="tcard card neu"><h3>Scroll</h3><p>always-on · smoothing · switches · feel · direction · exclusions</p></article><article class="tcard card neu"><h3>Eye care</h3><p>eye care · schedule · pomodoro · notes</p></article><article class="tcard card neu"><h3>Tools</h3><p>screen test · reference card · quick switches</p></article><article class="tcard card neu"><h3>Audio</h3><p>output devices · volume and mute · follow power · hardware volume</p></article><article class="tcard card neu"><h3>Mouse</h3><p>mouse · pointer · button mapping · wheel · per-display</p></article><article class="tcard card neu"><h3>Windows</h3><p>windows · layout actions · hotkeys · saved layouts</p></article><article class="tcard card neu"><h3>Sessions</h3><p>sessions · snapshot · archive · confirm · result</p></article><article class="tcard card neu"><h3>Storage</h3><p>disk overview · system data · home folders · large files</p></article><article class="tcard card neu"><h3>Timeline</h3><p>timeline · filters · events</p></article><article class="tcard card neu"><h3>Health</h3><p>overall health · permission audit · config drift · conflicts</p></article><article class="tcard card neu"><h3>Diagnostics</h3><p>capability snapshot · scroll statistics · environment</p></article><article class="tcard card neu"><h3>Automation</h3><p>automation · rules</p></article><article class="tcard card neu"><h3>General</h3><p>hotkeys · backup and migration · about</p></article></div>
-  </section>
-  
 
-  <section class="trio">
-    <div class="wrap"><div class="trio-grid">
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>Session restore</h3><p>Save your displays, windows, audio, scrolling, mouse, and eye-care settings as a named snapshot, restored domain by domain. Before restoring, it lists exactly what will change and waits for confirmation. If a domain is unavailable it skips that domain instead of failing the whole restore.</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>Inputs and the hardware channel</h3><p>When the display speaks DDC/CI, switching HDMI / DisplayPort no longer means reaching for the OSD buttons, and hardware brightness, contrast, and volume sit in the same panel. When it doesn't, the app says “DDC not responding” and keeps working through the software channel — it doesn't pretend to succeed.</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>Accessibility</h3><p>Every slider and switch exposes an accessibility label and appears in the accessibility tree, and interface text was reworked to a 4.5:1 contrast baseline (the worst case was 2.65:1 before). Global hotkeys: ⌃⌥↑ / ⌃⌥↓, with ⇧ for ±1% fine-tuning.</p></article>
-    </div></div>
+  <section class="catalog" id="console">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Inside the console</h2>
+        <p>Every tab is built out, and every card below it is a real panel section — not a placeholder behind a coming-soon label.</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="catalog-group">
+          <h3>Display &amp; color</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>Display</dt><dd>Monitor and link identity, master brightness, colour calibration, DDC hardware, input source, scene presets, picture and timing.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>Input &amp; motion</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>Scroll</dt><dd>Frame-by-frame smoothing with feel, direction, per-app exclusions and live counters.</dd></div>
+            <div class="catalog-item"><dt>Mouse</dt><dd>Pointer acceleration, button mapping, wheel behaviour, and a pointer speed remembered per display.</dd></div>
+            <div class="catalog-item"><dt>Windows</dt><dd>Layout actions, window shortcuts, and saved layouts you can re-apply — including from automation.</dd></div>
+            <div class="catalog-item"><dt>Audio</dt><dd>Output device, volume and mute, hardware volume on the display, and muting when the display sleeps.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>Care &amp; capture</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>Eye care</dt><dd>A schedule, a pomodoro and a note field; colour temperature and brightness follow the time of day.</dd></div>
+            <div class="catalog-item"><dt>Tools</dt><dd>Full-screen panel self-tests, a reference comparison card, and the quick-switch panel.</dd></div>
+            <div class="catalog-item"><dt>Sessions</dt><dd>Snapshot displays, windows, audio, scrolling, mouse and eye care — then restore domain by domain after confirmation.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>System &amp; insight</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>Storage</dt><dd>Disk overview, System Data breakdown, home folders, large-file discovery and quarantine-first cleanable items.</dd></div>
+            <div class="catalog-item"><dt>Timeline</dt><dd>Every change and conflict the app notices, filterable by kind and by time.</dd></div>
+            <div class="catalog-item"><dt>Health</dt><dd>Overall health, permission audit, configuration drift and cross-domain conflicts.</dd></div>
+            <div class="catalog-item"><dt>Diagnostics</dt><dd>Capability snapshot, scroll runtime statistics, environment overview, and a redacted report you can export.</dd></div>
+            <div class="catalog-item"><dt>Automation</dt><dd>Rules that fire on a time window, a display connection or the frontmost app; actions change settings, never delete.</dd></div>
+            <div class="catalog-item"><dt>General</dt><dd>Shortcuts, settings backup and migration, updates, about, and the licence panel.</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="catalog-foot">The complete, table-level list lives on <a href="features.html">the full feature list</a>.</p>
+    </div>
   </section>
+
+  <section class="controls" id="controls">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>The menu bar is a switchboard</h2>
+        <p>Click the menu-bar icon and the things you reach for are already there — no window, no tab hunt. State switches show their real state; one-shot actions say so.</p>
+      </div>
+      <div class="controls-grid">
+        <div class="switchboard">
+          <div class="sb-head"><span class="sb-brand">DisplayPilot</span><span class="sb-hint">menu bar</span></div>
+          <div class="sb-sliders">
+            <p class="sb-slider"><span class="k">Brightness</span><span class="cs-track"><span class="cs-fill" style="width:72%"></span><span class="cs-knob" style="left:72%"></span></span></p>
+            <p class="sb-slider"><span class="k">Volume</span><span class="cs-track"><span class="cs-fill" style="width:44%"></span><span class="cs-knob" style="left:44%"></span></span></p>
+          </div>
+          <div class="sb-grid">
+            <p class="sb-item"><span class="sb-name">Screenshot</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Screen recording</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Lock screen</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Sleep</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Clear clipboard</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Empty Trash</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Screen saver</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Hide windows</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Play / Pause</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Eject disks</span><span class="sb-kind">action</span></p>
+            <p class="sb-item"><span class="sb-name">Screen clean</span><span class="sb-kind">action</span></p>
+            <p class="sb-item on"><span class="sb-name">Show hidden files</span><span class="sb-state">on</span></p>
+            <p class="sb-item"><span class="sb-name">Hide Dock</span><span class="sb-state">off</span></p>
+            <p class="sb-item on"><span class="sb-name">Keep display awake</span><span class="sb-state">on</span></p>
+          </div>
+        </div>
+        <div class="control-copy">
+          <div class="control-item">
+            <h3>Audio follows the display</h3>
+            <p>Switch the output, mute it, or change hardware volume on the panel itself when it speaks DDC/CI. When the display sleeps, the app can mute the system output and restore the previous state on wake.</p>
+          </div>
+          <div class="control-item">
+            <h3>The pointer knows which screen it is on</h3>
+            <p>A 4K panel and a 1080p panel need different pointer speeds. The app remembers one per display and applies it when you cross screens. Acceleration, wheel behaviour and button mapping are set once, globally.</p>
+          </div>
+          <div class="control-item">
+            <h3>Windows land where you put them</h3>
+            <p>Layout actions, window shortcuts and saved layouts. Automation can apply a saved layout when an external display connects or disconnects, so a laptop-plus-monitor desk and a docked desk keep their own geometry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insight" id="insight">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>It keeps the receipt</h2>
+        <p>Most display tools change something and forget. This one records what changed, checks what drifted, and tells you before it acts.</p>
+      </div>
+      <div class="insight-grid">
+        <article class="insight-card wide">
+          <h3>Sessions</h3>
+          <p>Save displays, windows, audio, scrolling, mouse and eye care as a named snapshot. Before restoring, it lists exactly what will change and waits for confirmation. If a domain is unavailable it skips that domain instead of failing the whole restore.</p>
+          <p class="insight-meta">Restored domain by domain, never as one blind roll of the dice.</p>
+        </article>
+        <article class="insight-card">
+          <h3>Timeline</h3>
+          <p>Every change, conflict and recovery path, filterable by kind and time. When something misbehaves after a cable change, the record is already there.</p>
+        </article>
+        <article class="insight-card">
+          <h3>Health</h3>
+          <p>Permission audit, configuration drift and cross-domain conflicts, graded in one place — permission items link to the system setting, drift offers a one-click restore, and conflicts explain which tool is writing what.</p>
+        </article>
+        <article class="insight-card">
+          <h3>Automation &amp; diagnostics</h3>
+          <p>Rules fire on a time window, on a display connecting or disconnecting, or when an app comes to the front; they change settings and can never delete anything. Diagnostics takes a capability snapshot and exports a report with serial numbers, licence codes, paths and user names removed.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Built to be checked</h2>
+        <p>The app is sold on claims that can be verified. Here is what it actually does with your data — and how to check that yourself.</p>
+      </div>
+      <div class="trust-grid">
+        <ul class="proof-list">
+          <li><strong>Offline verification.</strong> A long <code>DP-</code> code is verified with Ed25519 against a public key inside the app. The only request at activation is the one-time device registration described next; after that every launch is verified locally, and update checks stay off unless you enable them.</li>
+          <li><strong>One registration, then silence.</strong> On first activation only, the app sends an irreversible SHA-256 digest, computed locally from the board identifier and the model identifier, to our own licensing service — that is how a long <code>DP-</code> code can be limited to 5 Macs. No serial number, plaintext model string, MAC address, display EDID, account or usage data is sent.</li>
+          <li><strong>No telemetry.</strong> No analytics, no cookies, no third-party fonts, no background service. This page makes no outbound requests.</li>
+          <li><strong>The checks ship with the app.</strong> Self-tests are part of the binary, and the audit page lists what each one asserts. If a claim here ever stops being true, one of them goes red.</li>
+        </ul>
+        <div class="audit-plate">
+          <p class="audit-title">Run it yourself</p>
+          <p class="audit-row"><code>--license-selftest</code><span>licence state machine and its degradation edges</span></p>
+          <p class="audit-row"><code>--scroll-selftest</code><span>interpolation, frame timing and total conservation</span></p>
+          <p class="audit-row"><code>--cli-selftest</code><span>argument fuzzing, redaction, open-source notices</span></p>
+          <p class="audit-row"><code>--switch-probe</code><span>read-only availability and state for every switch</span></p>
+          <p class="audit-links"><a href="verify.html">Verify a licence yourself</a> · <a href="audit.html">What the checks cover</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="price" id="price">
     <div class="wrap" id="buy">
-      <div class="sec-head"><h2>Buy once.</h2><p>No subscription, no account, no per-device math.</p></div>
+      <div class="sec-head center"><h2>Buy once.</h2><p>No subscription, no account, no per-device math.</p></div>
       <div class="price-plate plate neu">
         <p class="price-readout sunk neu neu-sink"><span class="num tid" data-price="num">≈$14</span></p>
         <p class="price-label">One-time purchase · includes one year of updates from the date of purchase</p>
@@ -161,8 +332,8 @@
           <p class="small"><strong>Before paying, add WeChat <code>neeson1987</code></strong> and send the payment screenshot — we will deliver the activation code directly.</p>
 <p class="mt-6"><button class="btn" type="button" data-paid-report="wechat">I've paid — notify the seller</button></p>
 <div class="qr-row">
-                <a class="qr-card" href="https://huayanming.github.io/displaypilot/img/pay-alipay-qr.png" target="_blank" rel="noopener"><img src="https://huayanming.github.io/displaypilot/img/pay-alipay-qr.png" alt="支付宝收款码" width="640" height="640" loading="lazy"><span class="qr-cap">支付宝</span></a>
-                <a class="qr-card" href="https://huayanming.github.io/displaypilot/img/pay-wechat-qr.png" target="_blank" rel="noopener"><img src="https://huayanming.github.io/displaypilot/img/pay-wechat-qr.png" alt="微信支付收款码" width="640" height="640" loading="lazy"><span class="qr-cap">微信支付</span></a>
+                <a class="qr-card" href="https://huayanming.github.io/displaypilot/img/pay-alipay-qr.png" target="_blank" rel="noopener"><img src="https://huayanming.github.io/displaypilot/img/pay-alipay-qr.png" alt="Alipay payment QR code" width="640" height="640" loading="lazy"><span class="qr-cap">Alipay</span></a>
+                <a class="qr-card" href="https://huayanming.github.io/displaypilot/img/pay-wechat-qr.png" target="_blank" rel="noopener"><img src="https://huayanming.github.io/displaypilot/img/pay-wechat-qr.png" alt="WeChat Pay payment QR code" width="640" height="640" loading="lazy"><span class="qr-cap">WeChat Pay</span></a>
               </div>
 <p class="small"><strong>Crypto payment:</strong> TRON, Ethereum, Solana or Bitcoin — the activation code is issued automatically once the transfer confirms on chain, with no manual step. The checkout page shows the receiving address.</p>
 
@@ -177,22 +348,29 @@
       </div>
     </div>
   </section>
+
   <section class="spec" id="spec">
-    <div class="wrap"><h2>System requirements</h2><p class="spec-line">macOS 14 Sonoma or later · Universal binary for Apple silicon and Intel · No third-party dependencies, no background service · Only scroll smoothing and mouse mapping require Accessibility permission · Works offline</p></div>
+    <div class="wrap"><h2>System requirements</h2><p class="spec-line">macOS 14 Sonoma or later · Universal binary for Apple silicon and Intel · No package-manager dependencies; the only bundled third-party component is Sparkle (MIT), used for update checks that are off by default · Accessibility is used by scroll smoothing, mouse mapping, window management and window restore; everything else works without it · Works offline after activation</p></div>
   </section>
 
 </main>
-<footer>
+<footer class="foot-v2">
   <div class="wrap">
-    <p class="foot-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="eula.html">License</a>
-      <a href="support.html">Support</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
-          <a href="verify.html">Verify it yourself</a>
-      <a href="alternatives.html">Compare the options</a>
-</p>
-    <p class="foot-note">This page has no trackers, no cookies, no third-party fonts, and makes no outbound requests.</p>
+    <div class="foot-grid">
+      <div class="foot-col">
+        <p class="foot-title">Product</p>
+        <p class="foot-links"><a href="#features">Features</a><a href="#console">The console</a><a href="#controls">Controls</a><a href="#price">Pricing</a><a href="#trust">Verification</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">Resources</p>
+        <p class="foot-links"><a href="guides.html">Guides</a><a href="features.html">Full feature list</a><a href="verify.html">Verify it yourself</a><a href="alternatives.html">Compare the options</a><a href="audit.html">Transparency</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">Support</p>
+        <p class="foot-links"><a href="support.html">Support</a><a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a><a href="privacy.html">Privacy Policy</a><a href="eula.html">License</a></p>
+      </div>
+    </div>
+    <p class="foot-note">This page has no trackers, no cookies, no third-party fonts, and makes no third-party requests.</p>
     <p class="foot-copy">© 2026 DisplayPilot</p>
   </div>
 </footer>

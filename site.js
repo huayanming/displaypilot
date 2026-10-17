@@ -120,7 +120,10 @@ function campaignSource() {
       body: JSON.stringify({ channel: channel })
     }).then(function (r) { return r.json(); }).then(function (data) {
       if (data && data.ok) {
-        btn.textContent = '已通知店主 · ' + data.orderId;
+        btn.setAttribute('role', 'status');
+        btn.setAttribute('aria-live', 'polite');
+        var zh = (document.documentElement.lang || '').indexOf('zh') === 0;
+        btn.textContent = (zh ? '已通知店主 · ' : 'Seller notified · ') + data.orderId;
       } else {
         btn.textContent = original + ' (' + 'failed' + ')';
         btn.removeAttribute('data-busy');

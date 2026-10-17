@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DisplayPilot — La consola que le faltaba a tu pantalla del Mac</title>
-<meta name="description" content="Consola nativa de macOS para tu pantalla: desplazamiento fluido, atenuación por gamma, calibración anclada al panel y limpieza con cuarentena. 14 días gratis.Se acepta pago con criptomoneda; el código se emite automáticamente al confirmarse en la cadena.">
+<meta name="description" content="Consola nativa de macOS para tu pantalla: desplazamiento fotograma a fotograma, atenuado por tabla gamma y calibración anclada en la curva. 14 días de prueba.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/es/">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DisplayPilot">
 <meta property="og:title" content="DisplayPilot — La consola que le faltaba a tu pantalla del Mac">
-<meta property="og:description" content="Una consola nativa de macOS para tu pantalla: desplazamiento suave entregado fotograma a fotograma, atenuado por software con la tabla gamma de CoreGraphics, calibración de color anclada en la curva que lee al tomar el control por primera vez y una limpieza que pone en cuarentena antes de borrar. 14 días de prueba gratuita.">
+<meta property="og:description" content="Una consola nativa de macOS para tu pantalla: desplazamiento fotograma a fotograma, atenuado por software con la tabla gamma de CoreGraphics, calibración anclada en la curva que se lee al tomar el control por primera vez y una limpieza que pone en cuarentena antes de borrar. 14 días de prueba gratuita.">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/es/">
 <meta property="og:locale" content="es_ES">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,69 +33,117 @@
 <meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-es.v532.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DisplayPilot — the missing console for your Mac display">
+<meta property="og:image:alt" content="DisplayPilot — la consola que le faltaba a tu pantalla del Mac">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-es.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"Desplazamiento, brillo, color.","inLanguage":"es","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/es/index.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"5.7.1","url":"https://huayanming.github.io/displaypilot/es/","inLanguage":"es","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg","offers":{"@type":"Offer","price":"14","priceCurrency":"USD","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["Control de pantalla DDC/CI con respaldo gamma","Calibración de color anclada en la curva leída al tomar el control","Desplazamiento fotograma a fotograma","Panel de la barra de menús para pantallas y acciones del sistema","Limpieza de cachés con cuarentena primero"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"Desplazamiento, brillo, color."}</script>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido principal</a>
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
-    <nav class="nav-links" aria-label="Navegación principal"><a href="./features.html">Todas las funciones</a>
-      <a href="#features">Funciones</a>
-      <a href="#price">Precio</a>
+    <nav class="nav-links" aria-label="Navegación principal"><a href="index.html#features">Funciones</a>
+      <a href="index.html#console">La consola</a>
+      <a href="index.html#controls">Controles</a>
+      <a href="index.html#price">Precio</a>
+      <a href="../guides.html">Guías</a>
       <a href="support.html">Soporte</a>
-          <a href="../guides.html" hreflang="en" lang="en">Guías (EN)</a>
-</nav>
-    <details class="lang"><summary>Español</summary><ul class="lang-menu" aria-label="Idioma"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" aria-current="true" hreflang="es" lang="es">Español</a></li></ul></details>
+    </nav>
+    <details class="lang"><summary>Español</summary><ul class="lang-menu" aria-label="Idioma"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="index.html" hreflang="es" lang="es" aria-current="true">Español</a></li></ul></details>
     <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Descargar</a>
   </div>
 </header>
 <main id="main">
-  <section class="hero">
-    <div class="wrap">
-      <h1>Desplazamiento, brillo, color.</h1>
-      <p class="sub">Ajustados exactamente como te gustan.</p>
-      <p class="lede">Una consola nativa de macOS para tu pantalla. Un paso de la rueda se convierte en un desplazamiento continuo, entregado fotograma a fotograma. El brillo pasa por la tabla gamma de CoreGraphics, así que funciona incluso en monitores que nunca implementaron DDC/CI. El color se calcula con las curva que lee al tomar el control por primera vez — y se devuelve al sistema con un solo clic.</p>
-      <p class="hero-cta">
-        <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Descargar para macOS</a>
-        <a class="btn btn-ghost" href="#price">14 días de prueba gratuita</a>
-      </p>
-      <p class="hero-spec">macOS 14 o posterior · Binario universal para Apple silicon e Intel · No requiere cuenta · Compra única, sin suscripción</p>
-      <figure class="hero-shot neu plate">
-        <img src="../img/display.en.v533.webp" width="1090" height="2416" alt="El panel «Pantalla» de DisplayPilot: arriba el modelo del monitor y la información del enlace, debajo el control de atenuado por software, luego los controles de contraste, gamma y temperatura de color de la calibración, y el triángulo de gamut leído del EDID.">
-      </figure>
+
+  <section class="hero hero-v2">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span>Consola nativa de macOS</p>
+        <h1>Desplazamiento, brillo, color.</h1>
+        <p class="sub">Ajustados exactamente como te gustan.</p>
+        <p class="lede">Una consola nativa de macOS para tu pantalla. Un paso de la rueda se convierte en un desplazamiento continuo, entregado fotograma a fotograma. El brillo pasa por la tabla gamma de CoreGraphics, así que funciona incluso en monitores que nunca implementaron DDC/CI. El color se calcula con la curva que se lee al tomar el control por primera vez — y se devuelve al sistema con un solo clic.</p>
+        <p class="hero-cta">
+          <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Descargar para macOS</a>
+          <a class="btn btn-ghost" href="#price">14 días de prueba gratuita</a>
+        </p>
+        <ul class="hero-spec">
+          <li>macOS 14 o posterior</li>
+          <li>Apple silicon e Intel</li>
+          <li>Sin cuenta</li>
+          <li>Compra única</li>
+        </ul>
+      </div>
+      <div class="hero-console">
+        <div class="console-tray">
+          <div class="console-screen" aria-hidden="true">
+            <div class="cs-bar"><span class="cs-dot"></span><span class="cs-title">Display 1</span><span class="cs-tag">120 Hz · HiDPI</span></div>
+            <div class="cs-block">
+              <span class="cs-label">Brillo principal</span>
+              <p class="cs-readout"><span class="num">100</span><span class="unit">%</span></p>
+              <div class="cs-track"><span class="cs-fill"></span><span class="cs-knob"></span></div>
+            </div>
+            <div class="cs-gauges">
+              <p class="cs-gauge"><span class="k">Temperatura de color</span><span class="v">6500<em>K</em></span></p>
+              <p class="cs-gauge"><span class="k">Gamma</span><span class="v">2,2</span></p>
+              <p class="cs-gauge"><span class="k">Gamut</span><span class="v">104<em>% sRGB</em></span></p>
+            </div>
+            <svg class="cs-gamut" viewBox="0 0 220 150" role="presentation" focusable="false">
+              <path class="cs-gamut-srgb" d="M116 121 L60 58 L183 74 Z" />
+              <path class="cs-gamut-p3" d="M128 132 L44 62 L196 80 Z" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="206" y2="132" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="18" y2="14" />
+            </svg>
+          </div>
+        </div>
+        <p class="console-caption">Lecturas de ejemplo del panel «Pantalla».</p>
+      </div>
     </div>
   </section>
-  <section class="statement">
+
+  <section class="statement statement-v2">
     <div class="wrap">
       <p class="big">No son los Ajustes del Sistema con los interruptores cambiados de sitio. Es el trabajo que el sistema nunca hizo.</p>
-      <p class="small">Desplazamiento fotograma a fotograma, atenuado que no depende del firmware del panel, calibración anclada en la curva que lee al tomar el control por primera vez y una ruta de limpieza que pone en cuarentena antes de borrar.</p>
+      <p class="small">Desplazamiento fotograma a fotograma, atenuado que no depende del firmware del panel, calibración anclada en la curva que se lee al tomar el control por primera vez y una ruta de limpieza que pone en cuarentena antes de borrar.</p>
     </div>
   </section>
+
   <section class="features" id="features">
     <div class="wrap">
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">01 · Suavizado de desplazamiento</p>
           <h2 class="f-title">Un paso, convertido en un solo trazo</h2>
-          <p class="f-body">Un paso de la rueda ya no es un salto único. Los eventos se acumulan y se entregan en cada refresco de pantalla: cada fotograma emite <code>pending × (1 − e^(−dt/τ))</code>. Como la atenuación depende del tiempo transcurrido y no del número de fotogramas, 60 Hz y 144 Hz se sienten igual. En nuestra prueba offline, el primer fotograma a 120 Hz pasó de 3 a 9 puntos, y el tiempo hasta el 90 % bajó de 158 ms a 133 ms.</p>
+          <p class="f-body">Un paso de la rueda ya no es un salto único. Los eventos se acumulan y se entregan en cada refresco de pantalla: cada fotograma emite <code>pending × (1 − e^(−dt/τ))</code>. Como la atenuación depende del tiempo transcurrido y no del número de fotogramas, la forma de la respuesta la fija el tiempo, no la frecuencia de refresco; la conservación total se mide a 60, 120 y 144 Hz. En nuestra prueba offline, el primer fotograma a 120 Hz pasó de 3 a 9 puntos, y el tiempo hasta el 90 % bajó de 150 ms a 133 ms.</p>
           <p class="f-note sunk neu neu-sink">Las ventanas que tratan la rueda como entrada de precisión o zoom —terminales, visores de imágenes, presentaciones— se devuelven al sistema de forma predeterminada. Mantén ⌘ en cualquier momento para volver al desplazamiento nativo. El suavizado viene <strong>desactivado</strong>: nunca toma el control de tu rueda si no lo activas. La interfaz muestra cuatro contadores en vivo —vistos, gesto, interceptados, entregados— para que, con un ratón nuevo, veas de inmediato en qué capa se atasca.</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/scroll.en.v533.webp" width="1090" height="2416" loading="lazy" alt="El panel «Desplazamiento»: arriba el estado del suavizado y cuatro contadores en vivo, debajo el interruptor del modo seguro y una biblioteca de 21 excepciones por app integradas.">
+          <img src="../img/scroll.en.v533.webp" width="1090" height="2416" loading="lazy" alt="El panel «Desplazamiento»: arriba el estado del suavizado y cuatro contadores en vivo, debajo el interruptor del modo seguro y una biblioteca de exclusiones por app integradas.">
+          <figcaption>El suavizado es un interruptor, no una toma de control. Cada capa informa de lo que hizo.</figcaption>
         </figure>
       </article>
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">02 · Atenuado por software</p>
           <h2 class="f-title">Oscurecer sin depender del firmware del panel</h2>
-          <p class="f-body">El brillo pasa por la tabla gamma de CoreGraphics, así que funciona incluso en monitores que no implementan DDC/CI. Cada escritura se relee y se compara; si no coincide, la app retrocede y reintenta, hasta cuatro veces. Los cambios de resolución y el despertar de la suspensión reaplican la curva automáticamente, así que nunca deja de funcionar en silencio.</p>
-          <p class="f-note sunk neu neu-sink">La reaplicación siempre recalcula desde la <strong>base original</strong> del panel, no desde la curva actual, así que los ajustes repetidos no acumulan error: medido, el gris medio pasó de 0,5020 a 0,3012. Al salir del proceso, macOS restaura la pantalla, y hay dos vías de recuperación que no dependen de que la app esté en marcha: una dentro de la app y <code>Scripts/restore-dimming.sh</code>.</p>
+          <p class="f-body">El brillo pasa por la tabla gamma de CoreGraphics, así que funciona incluso en monitores que no implementan DDC/CI. Tras un cambio de resolución o un desperta, la app reescribe la curva y comprueba una muestra interior contra la intención; si no coincide, reintenta, hasta cuatro intentos en total. Los cambios de resolución y el despertar de la suspensión reaplican la curva automáticamente, así que nunca deja de funcionar en silencio.</p>
+          <p class="f-note sunk neu neu-sink">La reaplicación parte siempre de la base capturada al tomar el control, no de la curva actual, así que los ajustes repetidos no acumulan error. Al 60 % de brillo, el gris medio pasa de 0,5020 a 0,3012: escala exacta, no una diferencia acumulada. Al salir del proceso, macOS restaura la pantalla, y hay dos vías de recuperación que no dependen de que la app esté en marcha: una dentro de la app y <code>Scripts/restore-dimming.sh</code>.</p>
+        </div>
+        <div class="f-media instrument card neu" role="group" aria-label="Lecturas medidas de calibración de color">
+          <p class="gauge sunk neu neu-sink"><span class="k">Temperatura de color</span><span class="v tid">6500</span><span class="u">K · anclada como transformación identidad</span></p>
+          <p class="gauge sunk neu neu-sink"><span class="k">Gamma</span><span class="v tid">2,2</span><span class="u">· sRGB IEC61966-2.1</span></p>
+          <p class="gauge sunk neu neu-sink"><span class="k">Gamut</span><span class="v tid">104 %</span><span class="u">sRGB · solo cubre el 77 % de Display P3</span></p>
+          <p class="instrument-note">Medido en nuestro panel de prueba y leído de la tabla gamma.</p>
+        </div>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">03 · Calibración de color</p>
+          <h2 class="f-title">Anclada en la curva que se lee al tomar el control por primera vez</h2>
+          <p class="f-body">El contraste pivota sobre el gris medio, el gamma trabaja los medios tonos y la temperatura de color abarca 2700–9000 K: los tres se calculan a partir de la curva que la app lee al tomar el control por primera vez. 6500 K está anclado como transformación identidad, así que el estado predeterminado es exactamente como ya se ve tu pantalla.</p>
+          <p class="f-note sunk neu neu-sink">El gamut físico se lee directamente del EDID y se dibuja como triángulo CIE xy, junto a su cobertura de sRGB y Display P3. Lo que puede alinearse se alinea; las partes que el panel físicamente no puede alcanzar —rojo y verde muy saturados— se <strong>señalan como fuera de alcance</strong> en lugar de simularse. Un clic devuelve la calibración a ColorSync.</p>
         </div>
         <figure class="f-media wide neu plate">
           <img src="../img/display.en.v533.webp" width="1090" height="2416" loading="lazy" alt="La mitad inferior del panel «Pantalla»: los controles de contraste, gamma y temperatura de color de la calibración, y la cobertura de gamut leída del EDID.">
@@ -104,47 +152,169 @@
       </article>
       <article class="feature">
         <div class="f-copy">
-          <p class="f-eyebrow">03 · Calibración de color</p>
-          <h2 class="f-title">Anclada en las curva que lee al tomar el control por primera vez</h2>
-          <p class="f-body">El contraste pivota sobre el gris medio, el gamma trabaja los medios tonos y la temperatura de color abarca 2700–9000 K: los tres canales se calculan sobre las curva que lee al tomar el control por primera vez. 6500 K está anclado como transformación identidad, así que el estado predeterminado es exactamente como ya se ve tu pantalla.</p>
-          <p class="f-note sunk neu neu-sink">El gamut físico se lee directamente del EDID y se dibuja como triángulo CIE xy, junto a su cobertura de sRGB y Display P3. Lo que puede alinearse se alinea; las partes que el panel físicamente no puede alcanzar —rojo y verde muy saturados— se <strong>señalan como fuera de alcance</strong> en lugar de simularse. Un clic devuelve la calibración a ColorSync.</p>
-        </div>
-        <div class="f-media instrument card neu" role="group" aria-label="Lecturas medidas de calibración de color">
-          <p class="gauge sunk neu neu-sink"><span class="k">Temperatura de color</span><span class="v tid">6500</span><span class="u">K · anclada como transformación identidad</span></p>
-          <p class="gauge sunk neu neu-sink"><span class="k">Gamma</span><span class="v tid">2,2</span><span class="u">· sRGB IEC61966-2.1</span></p>
-          <p class="gauge sunk neu neu-sink"><span class="k">Gamut</span><span class="v tid">104 %</span><span class="u">sRGB · solo cubre el 77 % de Display P3</span></p>
-        </div>
-      </article>
-      <article class="feature">
-        <div class="f-copy">
           <p class="f-eyebrow">04 · Limpieza segura</p>
           <h2 class="f-title">Primero cuarentena. Borrar, después.</h2>
-          <p class="f-body">Solo se tocan 13 categorías de artefactos con una forma determinista de reconstruirse: Xcode DerivedData, SwiftPM, CocoaPods, npm / pnpm / Yarn, Go, Gradle, Rust target, <code>__pycache__</code>, informes de fallos, cachés de Homebrew y similares. Todo lo que se elimina se mueve primero a cuarentena, se conserva 30 días de forma predeterminada y puede restaurarse en cualquier momento.</p>
-          <p class="f-note sunk neu neu-sink">El borrado permanente no existe de forma predeterminada. Una sola función en toda la app puede hacerlo, y solo continúa si se cumplen seis condiciones a la vez: falla una y se detiene. La app no pide acceso completo al disco; los directorios protegidos por el sistema se omiten según las reglas de macOS. Las reglas de automatización pueden <strong>preanalizar, nunca borrar</strong>.</p>
+          <p class="f-body">Solo se tocan 13 categorías de artefactos con una forma determinista de reconstruirse: Xcode DerivedData, SwiftPM, CocoaPods, npm / pnpm / Yarn, Go, Gradle, Rust target, <code>__pycache__</code>, informes de fallos, cachés de Homebrew y similares. Todo lo que se elimina se mueve primero a cuarentena. Sigue siendo restaurable, y el borrado permanente solo se ofrece a los 30 días.</p>
+          <p class="f-note sunk neu neu-sink">El borrado permanente está desactivado de forma predeterminada. Una sola función en toda la app puede hacerlo, y solo continúa si se cumplen seis condiciones a la vez: falla una y se detiene. La app no pide acceso completo al disco; los directorios protegidos por el sistema se omiten según las reglas de macOS. Las reglas de automatización pueden <strong>preanalizar, nunca borrar</strong>.</p>
         </div>
         <figure class="f-media tall neu plate">
           <img src="../img/storage.en.v533.webp" width="1090" height="2416" loading="lazy" alt="El panel «Almacenamiento»: resumen del disco, desglose de los datos del sistema, carpetas personales, localización de archivos grandes y elementos limpiables, con una nota al pie de que el análisis es de solo lectura y la limpieza solo mueve a cuarentena.">
+          <figcaption>El análisis es de solo lectura. Nada se mueve hasta que lo pidas.</figcaption>
         </figure>
       </article>
     </div>
   </section>
-  <section class="trio" id="all-features">
-    <h2 class="sec-head">Todas las funciones</h2>
-    <p class="statement">Cada pestaña está completa.</p>
-    <div class="trio-grid"><article class="tcard card neu"><h3>Display</h3><p>monitor · master dimming · colour calibration · presets · timing</p></article><article class="tcard card neu"><h3>Scroll</h3><p>always-on · smoothing · switches · feel · direction · exclusions</p></article><article class="tcard card neu"><h3>Eye care</h3><p>eye care · schedule · pomodoro · notes</p></article><article class="tcard card neu"><h3>Tools</h3><p>screen test · reference card · quick switches</p></article><article class="tcard card neu"><h3>Audio</h3><p>output devices · volume and mute · follow power · hardware volume</p></article><article class="tcard card neu"><h3>Mouse</h3><p>mouse · pointer · button mapping · wheel · per-display</p></article><article class="tcard card neu"><h3>Windows</h3><p>windows · layout actions · hotkeys · saved layouts</p></article><article class="tcard card neu"><h3>Sessions</h3><p>sessions · snapshot · archive · confirm · result</p></article><article class="tcard card neu"><h3>Storage</h3><p>disk overview · system data · home folders · large files</p></article><article class="tcard card neu"><h3>Timeline</h3><p>timeline · filters · events</p></article><article class="tcard card neu"><h3>Health</h3><p>overall health · permission audit · config drift · conflicts</p></article><article class="tcard card neu"><h3>Diagnostics</h3><p>capability snapshot · scroll statistics · environment</p></article><article class="tcard card neu"><h3>Automation</h3><p>automation · rules</p></article><article class="tcard card neu"><h3>General</h3><p>hotkeys · backup and migration · about</p></article></div>
-  </section>
-  
 
-  <section class="trio">
-    <div class="wrap"><div class="trio-grid">
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>Restauración de sesión</h3><p>Guarda pantallas, ventanas, audio, desplazamiento, ratón y cuidado visual como una instantánea con nombre, restaurada dominio por dominio. Antes de restaurar, la app enumera exactamente qué va a cambiar y espera confirmación. Si un dominio no está disponible, se omite solo ese dominio en lugar de fallar toda la restauración.</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>Entradas y canal de hardware</h3><p>Cuando la pantalla habla DDC/CI, cambiar HDMI / DisplayPort ya no obliga a buscar los botones del OSD, y el brillo, el contraste y el volumen de hardware están en el mismo panel. Cuando no, la app dice con honestidad «DDC no responde» y sigue funcionando por el canal de software: no finge haberlo logrado.</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>Accesibilidad</h3><p>Cada control deslizante y cada interruptor expone etiquetas de accesibilidad y aparecen en el árbol de accesibilidad; los textos de la interfaz se rehicieron con una base de contraste de 4,5:1 (el peor caso era 2,65:1 antes). Atajos globales: ⌃⌥↑ / ⌃⌥↓, con ⇧ para un ajuste fino de ±1 %.</p></article>
-    </div></div>
+  <section class="catalog" id="console">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Dentro de la consola</h2>
+        <p>Cada pestaña está completa, y cada tarjeta de abajo es una sección real del panel, no un marcador tras una etiqueta de «próximamente».</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="catalog-group">
+          <h3>Pantalla y color</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>Pantalla</dt><dd>Identidad del monitor y del enlace, brillo principal, calibración de color, hardware DDC, fuente de entrada, preajustes de escena, imagen y sincronización.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>Entrada y movimiento</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>Desplazamiento</dt><dd>Suavizado fotograma a fotograma con sensación, dirección, exclusiones por app y contadores en vivo.</dd></div>
+            <div class="catalog-item"><dt>Ratón</dt><dd>Aceleración del puntero, asignación de teclas, comportamiento de la rueda y una velocidad de puntero recordada por pantalla.</dd></div>
+            <div class="catalog-item"><dt>Ventanas</dt><dd>Acciones de distribución, atajos de ventana y distribuciones guardadas que puedes volver a aplicar, incluso desde la automatización.</dd></div>
+            <div class="catalog-item"><dt>Audio</dt><dd>Dispositivo de salida, volumen y silencio, volumen de hardware de la pantalla y silencio cuando la pantalla entra en reposo.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>Cuidado y captura</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>Cuidado ocular</dt><dd>Una programación, un pomodoro y un campo de notas; la temperatura de color sigue la hora del día.</dd></div>
+            <div class="catalog-item"><dt>Herramientas</dt><dd>Un autodiagnóstico de pantalla a pantalla completa, una tarjeta de comparación y el panel de interruptores rápidos.</dd></div>
+            <div class="catalog-item"><dt>Sesiones</dt><dd>Instantánea de pantallas, ventanas, audio, desplazamiento, ratón y cuidado ocular; luego restauración dominio por dominio tras confirmar.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>Sistema y análisis</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>Almacenamiento</dt><dd>Resumen del disco, desglose de datos del sistema, carpeta personal, archivos grandes y elementos limpiables.</dd></div>
+            <div class="catalog-item"><dt>Cronología</dt><dd>Cada cambio y conflicto que advierte la app, filtrable por tipo y por momento.</dd></div>
+            <div class="catalog-item"><dt>Estado</dt><dd>Estado general, auditoría de permisos, deriva de configuración y conflictos entre dominios.</dd></div>
+            <div class="catalog-item"><dt>Diagnóstico</dt><dd>Instantánea de capacidades, estadísticas de ejecución del desplazamiento, resumen del entorno y un informe censurado que puedes exportar.</dd></div>
+            <div class="catalog-item"><dt>Automatización</dt><dd>Reglas que se activan por franja horaria, por conexión de pantalla o por la app en primer plano; las acciones cambian ajustes, nunca borran.</dd></div>
+            <div class="catalog-item"><dt>General</dt><dd>Atajos, copia de seguridad y migración de ajustes, actualizaciones, Acerca de y el panel de licencia.</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="catalog-foot">La lista completa, a nivel de tabla, está en <a href="features.html">la lista completa de funciones</a>.</p>
+    </div>
   </section>
-  <section class="price" id="price">
+
+  <section class="controls" id="controls">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>La barra de menús es un panel de control</h2>
+        <p>Haz clic en el icono de la barra de menús y lo que buscas ya está ahí: sin ventanas, sin cazar pestañas. Los interruptores de estado muestran su estado real; las acciones puntuales lo dicen.</p>
+      </div>
+      <div class="controls-grid">
+        <div class="switchboard">
+          <div class="sb-head"><span class="sb-brand">DisplayPilot</span><span class="sb-hint">barra de menús</span></div>
+          <div class="sb-sliders">
+            <p class="sb-slider"><span class="k">Brillo</span><span class="cs-track"><span class="cs-fill" style="width:72%"></span><span class="cs-knob" style="left:72%"></span></span></p>
+            <p class="sb-slider"><span class="k">Volumen</span><span class="cs-track"><span class="cs-fill" style="width:44%"></span><span class="cs-knob" style="left:44%"></span></span></p>
+          </div>
+          <div class="sb-grid">
+            <p class="sb-item"><span class="sb-name">Captura de pantalla</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Grabación de pantalla</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Bloquear pantalla</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Reposo</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Vaciar portapapeles</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Vaciar la papelera</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Protector de pantalla</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Ocultar ventanas</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Reproducir / Pausar</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Expulsar discos</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item"><span class="sb-name">Limpieza de pantalla</span><span class="sb-kind">acción</span></p>
+            <p class="sb-item on"><span class="sb-name">Mostrar archivos ocultos</span><span class="sb-state">activado</span></p>
+            <p class="sb-item"><span class="sb-name">Ocultar Dock</span><span class="sb-state">desactivado</span></p>
+            <p class="sb-item on"><span class="sb-name">Mantener pantalla activa</span><span class="sb-state">activado</span></p>
+          </div>
+        </div>
+        <div class="control-copy">
+          <div class="control-item">
+            <h3>El audio sigue a la pantalla</h3>
+            <p>Cambiar la salida, silenciarla o ajustar el volumen de hardware en el propio panel cuando habla DDC/CI. Cuando la pantalla entra en reposo, la app puede silenciar la salida del sistema y restaurar el estado anterior al despertar.</p>
+          </div>
+          <div class="control-item">
+            <h3>El puntero sabe en qué pantalla está</h3>
+            <p>Un panel 4K y uno 1080p necesitan velocidades de puntero distintas. La app recuerda una por pantalla y la aplica al cambiar de pantalla. La aceleración, el comportamiento de la rueda y la asignación de botones se ajustan una vez, de forma global.</p>
+          </div>
+          <div class="control-item">
+            <h3>Las ventanas quedan donde las pones</h3>
+            <p>Acciones de distribución, atajos de ventana y distribuciones guardadas. La automatización puede aplicar una distribución guardada cuando una pantalla externa se conecta o se desconecta, así que un escritorio con portátil y monitor y uno con base de acoplamiento conservan su propia geometría.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insight" id="insight">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Todo queda registrado.</h2>
+        <p>La mayoría de las herramientas de pantalla cambian algo y lo olvidan. Esta anota qué cambió, comprueba qué se desvió y te avisa antes de actuar.</p>
+      </div>
+      <div class="insight-grid">
+        <article class="insight-card wide">
+          <h3>Sesiones</h3>
+          <p>Guarda pantallas, ventanas, audio, desplazamiento, ratón y cuidado ocular como una instantánea con nombre. Antes de restaurar, la app enumera exactamente qué va a cambiar y espera confirmación. Si un dominio no está disponible, se omite ese dominio en vez de fallar toda la restauración.</p>
+          <p class="insight-meta">Restaurado dominio por dominio, nunca de un solo golpe a ciegas.</p>
+        </article>
+        <article class="insight-card">
+          <h3>Cronología</h3>
+          <p>Cada cambio, conflicto y vía de recuperación, filtrable por tipo y por momento. Cuando algo falla tras cambiar un cable, el registro ya está ahí.</p>
+        </article>
+        <article class="insight-card">
+          <h3>Estado</h3>
+          <p>Auditoría de permisos, deriva de configuración y conflictos entre dominios, valorados en un solo lugar: los permisos enlazan al ajuste del sistema, la deriva ofrece restauración en un clic y los conflictos explican qué herramienta escribe qué.</p>
+        </article>
+        <article class="insight-card">
+          <h3>Automatización y diagnóstico</h3>
+          <p>Las reglas se activan por franja horaria, al conectar o desconectar una pantalla o cuando una app pasa a primer plano; cambian ajustes y nunca pueden borrar nada. El diagnóstico toma una instantánea de capacidades y exporta un informe sin números de serie, códigos de licencia, rutas ni nombres de usuario.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Diseñado para que lo compruebes</h2>
+        <p>La app se vende con afirmaciones que se pueden verificar. Esto es lo que hace realmente con tus datos, y cómo comprobarlo tú mismo.</p>
+      </div>
+      <div class="trust-grid">
+        <ul class="proof-list">
+          <li><strong>Verificación sin conexión.</strong> Un código largo <code>DP-</code> se verifica con Ed25519 contra una clave pública dentro de la app. La única petición al activar es el registro del dispositivo que se describe a continuación; después, cada inicio se verifica en local, y las comprobaciones de actualización siguen desactivadas salvo que las actives.</li>
+          <li><strong>Un registro y después, silencio.</strong> Solo en la primera activación, la app envía un resumen SHA-256 irreversible, calculado en local a partir del identificador de placa y del identificador de modelo, a nuestro propio servicio de licencias: así un código largo <code>DP-</code> puede limitarse a 5 Macs. No se envía número de serie, modelo en texto plano, dirección MAC, EDID de pantalla, cuenta ni datos de uso.</li>
+          <li><strong>Sin telemetría.</strong> Sin analítica, sin cookies, sin fuentes de terceros, sin servicio en segundo plano. Esta página no hace peticiones salientes.</li>
+          <li><strong>Las comprobaciones vienen con la app.</strong> Las autopruebas forman parte del binario, y la página de auditoría enumera qué verifica cada una. Si alguna afirmación de esta página dejara de ser cierta, una de ellas se pondría en rojo.</li>
+        </ul>
+        <div class="audit-plate">
+          <p class="audit-title">Ejecútalo tú mismo</p>
+          <p class="audit-row"><code>--license-selftest</code><span>máquina de estados de licencia y sus bordes de degradación</span></p>
+          <p class="audit-row"><code>--scroll-selftest</code><span>interpolación, cadencia de fotogramas y conservación total</span></p>
+          <p class="audit-row"><code>--cli-selftest</code><span>fuzzing de argumentos, censura, avisos de código abierto</span></p>
+          <p class="audit-row"><code>--switch-probe</code><span>disponibilidad y estado de solo lectura de cada interruptor</span></p>
+          <p class="audit-links"><a href="../verify.html">Verifica una licencia tú mismo</a> · <a href="../audit.html">Qué cubren las comprobaciones</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="price" id="price">
     <div class="wrap" id="buy">
-      <div class="sec-head"><h2>Pago único.</h2><p>Sin suscripción, sin cuenta y sin cálculos por dispositivo.</p></div>
+      <div class="sec-head center"><h2>Pago único.</h2><p>Sin suscripción, sin cuenta y sin cálculos por dispositivo.</p></div>
       <div class="price-plate plate neu">
         <p class="price-readout sunk neu neu-sink"><span class="num tid" data-price="num">≈US$14</span></p>
         <p class="price-label">Pago único · incluye un año de actualizaciones desde la fecha de compra</p>
@@ -177,19 +347,28 @@
       </div>
     </div>
   </section>
+
   <section class="spec" id="spec">
-    <div class="wrap"><h2>Requisitos del sistema</h2><p class="spec-line">macOS 14 Sonoma o posterior · Binario universal para Apple silicon e Intel · Sin dependencias de terceros ni servicio en segundo plano · Solo el suavizado de desplazamiento y la asignación del ratón necesitan permiso de accesibilidad · Funciona sin conexión</p></div>
+    <div class="wrap"><h2>Requisitos del sistema</h2><p class="spec-line">macOS 14 Sonoma o posterior · Binario universal para Apple silicon e Intel · Sin dependencias de gestores de paquetes; el único componente de terceros incluido es Sparkle (MIT), usado para buscar actualizaciones, que están desactivadas de forma predeterminada · El permiso de accesibilidad lo usan el suavizado de desplazamiento, la asignación del ratón, la gestión y la restauración de ventanas; todo lo demás funciona sin él · Funciona sin conexión tras la activación</p></div>
   </section>
 
 </main>
-<footer>
+<footer class="foot-v2">
   <div class="wrap">
-    <p class="foot-links">
-      <a href="privacy.html">Privacidad</a>
-      <a href="eula.html">Licencia</a>
-      <a href="support.html">Soporte</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">Preguntas y comentarios · GitHub Issues</a>
-    </p>
+    <div class="foot-grid">
+      <div class="foot-col">
+        <p class="foot-title">Producto</p>
+        <p class="foot-links"><a href="#features">Funciones</a><a href="#console">La consola</a><a href="#controls">Controles</a><a href="#price">Precio</a><a href="#trust">Verificación</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">Recursos</p>
+        <p class="foot-links"><a href="../guides.html">Guías</a><a href="features.html">Lista completa de funciones</a><a href="../verify.html">Compruébalo tú mismo</a><a href="../alternatives.html">Comparar las opciones</a><a href="../audit.html">Transparencia</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">Soporte</p>
+        <p class="foot-links"><a href="support.html">Soporte</a><a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a><a href="privacy.html">Privacidad</a><a href="eula.html">Licencia</a></p>
+      </div>
+    </div>
     <p class="foot-note">Esta página no tiene rastreadores, ni cookies, ni fuentes de terceros, y no envía ninguna petición saliente.</p>
     <p class="foot-copy">© 2026 DisplayPilot</p>
   </div>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DisplayPilot — Mac のディスプレイに、足りなかったコンソール</title>
-<meta name="description" content="ネイティブな macOS ディスプレイコンソール。フレームごとに届くスクロール スムージング、CoreGraphics ガンマテーブルによるソフトウェア調光、初回の引き継ぎ時に読み取ったカーブを基準にしたカラーキャリブレーション、そして隔離してから削除する安全なクリーンアップ。14 日間の無料トライアル。暗号資産での支払いに対応し、オンチェーン確認後に自動でコードを発行。">
+<meta name="description" content="Mac のディスプレイのためのネイティブ コンソール。1 ノッチをフレーム単位のスクロールに変え、CoreGraphics ガンマテーブルで調光し、初めて引き継いだときに読み取ったカーブを基準に色を合わせ、隔離してから削除します。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/ja/">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DisplayPilot">
 <meta property="og:title" content="DisplayPilot — Mac のディスプレイに、足りなかったコンソール">
-<meta property="og:description" content="ネイティブな macOS ディスプレイコンソール。フレームごとに届くスクロール スムージング、CoreGraphics ガンマテーブルによるソフトウェア調光、初回の引き継ぎ時に読み取ったカーブを基準にしたカラーキャリブレーション、そして隔離してから削除する安全なクリーンアップ。14 日間の無料トライアル。">
+<meta property="og:description" content="Mac のディスプレイのためのネイティブ コンソール。フレーム単位のスクロール、CoreGraphics ガンマテーブルによる調光、初めて引き継いだときに読み取ったカーブを基準にしたキャリブレーション、隔離してから削除するクリーンアップ。14 日間の無料トライアル。">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/ja/">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,118 +33,289 @@
 <meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-ja.v532.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DisplayPilot — the missing console for your Mac display">
+<meta property="og:image:alt" content="DisplayPilot — Mac のディスプレイに、足りなかったコンソール">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-ja.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"スクロール、明るさ、色。","inLanguage":"ja","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/ja/index.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"5.7.1","url":"https://huayanming.github.io/displaypilot/ja/","inLanguage":"ja","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg","offers":{"@type":"Offer","price":"14","priceCurrency":"USD","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["DDC/CI によるディスプレイ制御と、ガンマテーブルへのフォールバック","引き継ぎ時に読み取ったカーブを基準にした色調整","フレーム単位のスクロール スムージング","ディスプレイとシステム操作のためのメニューバー操作盤","隔離してから削除する開発者キャッシュのクリーンアップ"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"スクロール、明るさ、色。"}</script>
 </head>
 <body>
 <a class="skip" href="#main">メイン コンテンツへスキップ</a>
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
-    <nav class="nav-links" aria-label="メイン ナビゲーション"><a href="./features.html">全機能</a>
-      <a href="#features">機能</a>
-      <a href="#price">価格</a>
+    <nav class="nav-links" aria-label="メイン ナビゲーション"><a href="index.html#features">機能</a>
+      <a href="index.html#console">コンソール</a>
+      <a href="index.html#controls">コントロール</a>
+      <a href="index.html#price">価格</a>
+      <a href="../guides.html">ガイド</a>
       <a href="support.html">サポート</a>
-          <a href="../guides.html" hreflang="en" lang="en">ガイド (EN)</a>
-</nav>
-    <details class="lang"><summary>日本語</summary><ul class="lang-menu" aria-label="言語"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/index.html" aria-current="true" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    </nav>
+    <details class="lang"><summary>日本語</summary><ul class="lang-menu" aria-label="言語"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="index.html" hreflang="ja" lang="ja" aria-current="true">日本語</a></li><li><a href="../ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
     <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">ダウンロード</a>
   </div>
 </header>
 <main id="main">
-  <section class="hero">
-    <div class="wrap">
-      <h1>スクロール、明るさ、色。</h1>
-      <p class="sub">すべて、あなたの好みどおりに。</p>
-      <p class="lede">ネイティブな macOS ディスプレイコンソール。ホイール 1 ノッチが、フレームごとに届く連続スクロールになります。明るさは CoreGraphics ガンマテーブルを通すので、DDC/CI を実装していないモニターでも効きます。色は初回の引き継ぎ時に読み取ったカーブを基準に計算し、ワンクリックでシステムに返せます。</p>
-      <p class="hero-cta">
-        <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">macOS 版をダウンロード</a>
-        <a class="btn btn-ghost" href="#price">14 日間 無料トライアル</a>
-      </p>
-      <p class="hero-spec">macOS 14 以降 · Apple シリコン / Intel 対応ユニバーサルバイナリ · アカウント登録不要 · 買い切り、サブスクなし</p>
-      <figure class="hero-shot neu plate">
-        <img src="../img/display.ja.v533.webp" width="1800" height="2470" alt="DisplayPilot の「ディスプレイ」パネル。上部にモニターのモデルとリンク情報、その下にソフトウェア調光のスライダー、さらに下にカラー キャリブレーションのコントラスト、ガンマ、色温度の 3 本のスライダーと、EDID から読み取った色域の三角形が表示されています。">
-      </figure>
+
+  <!-- Hero: アプリの計器表現を CSS で組み直したもの -->
+  <section class="hero hero-v2">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span>ネイティブ macOS コンソール</p>
+        <h1>スクロール、明るさ、色。</h1>
+        <p class="sub">すべて、あなたの好みどおりに。</p>
+        <p class="lede">Mac のディスプレイのためのネイティブ コンソールです。ホイール 1 ノッチが、フレームごとに届く連続スクロールに変わります。明るさは CoreGraphics ガンマテーブルを通すので、DDC/CI を実装していないモニターでも効きます。色は、アプリが初めて引き継いだときに読み取ったカーブを基準に計算し、ワンクリックでシステムに返します。</p>
+        <p class="hero-cta">
+          <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">macOS 版をダウンロード</a>
+          <a class="btn btn-ghost" href="#price">14 日間 無料トライアル</a>
+        </p>
+        <ul class="hero-spec">
+          <li>macOS 14 以降</li>
+          <li>Apple シリコン &amp; Intel</li>
+          <li>アカウント不要</li>
+          <li>買い切り</li>
+        </ul>
+      </div>
+      <div class="hero-console">
+        <div class="console-tray">
+          <div class="console-screen" aria-hidden="true">
+            <div class="cs-bar"><span class="cs-dot"></span><span class="cs-title">ディスプレイ 1</span><span class="cs-tag">120 Hz · HiDPI</span></div>
+            <div class="cs-block">
+              <span class="cs-label">マスター明るさ</span>
+              <p class="cs-readout"><span class="num">100</span><span class="unit">%</span></p>
+              <div class="cs-track"><span class="cs-fill"></span><span class="cs-knob"></span></div>
+            </div>
+            <div class="cs-gauges">
+              <p class="cs-gauge"><span class="k">色温度</span><span class="v">6500<em>K</em></span></p>
+              <p class="cs-gauge"><span class="k">ガンマ</span><span class="v">2.2</span></p>
+              <p class="cs-gauge"><span class="k">色域</span><span class="v">104<em>% sRGB</em></span></p>
+            </div>
+            <svg class="cs-gamut" viewBox="0 0 220 150" role="presentation" focusable="false">
+              <path class="cs-gamut-srgb" d="M116 121 L60 58 L183 74 Z" />
+              <path class="cs-gamut-p3" d="M128 132 L44 62 L196 80 Z" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="206" y2="132" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="18" y2="14" />
+            </svg>
+          </div>
+        </div>
+        <p class="console-caption">ディスプレイ パネルの表示例です。</p>
+      </div>
     </div>
   </section>
-  <section class="statement">
+
+  <section class="statement statement-v2">
     <div class="wrap">
       <p class="big">システム設定のスイッチを並べ替えたものではありません。システムがやらなかった仕事です。</p>
-      <p class="small">フレームごとに届くスクロール、パネルのファームウェアに依存しない調光、初回の引き継ぎ時に読み取ったカーブを基準にしたキャリブレーション、そして「まず隔離、削除はそのあと」というクリーンアップの道筋。</p>
+      <p class="small">フレームごとに届くスクロール、パネルのファームウェアに依存しない調光、アプリが引き継ぎ時に読み取ったカーブを基準にしたキャリブレーション、そして隔離してから削除するクリーンアップ。</p>
     </div>
   </section>
+
   <section class="features" id="features">
     <div class="wrap">
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">01 · スクロール スムージング</p>
           <h2 class="f-title">1 ノッチを、ひと続きの動きに</h2>
-          <p class="f-body">ホイール 1 ノッチは、もう一度のジャンプではありません。イベントをいったん溜め、画面のリフレッシュごとに届けます。各フレームで送出するのは <code>pending × (1 − e^(−dt/τ))</code>。減衰がフレーム数ではなく経過時間で決まるので、60Hz と 144Hz で同じ手触りになります。オフラインのベンチマークでは、120Hz の初回フレームが 3 ポイントから 9 ポイントに向上し、90% 到達時間は 158ms から 133ms に短縮しました。</p>
-          <p class="f-note sunk neu neu-sink">ターミナルや画像ビューア、スライドのようにホイールを精密入力やズームとして扱うウィンドウは、初期状態でシステムに返します。⌘ を押しながらならいつでもネイティブ スクロールに戻れます。スムージングは<strong>初期状態でオフ</strong>。オンにしない限りホイールを乗っ取りません。画面上には「検出 / ジェスチャ / 横取り / 送出」の 4 つのリアルタイム カウンターがあり、新しいマウスで問題が出たとき、どの層で止まっているかが一目で分かります。</p>
+          <p class="f-body">ホイール 1 ノッチは、もう一度のジャンプではありません。イベントをいったん溜め、画面のリフレッシュごとに届けます。各フレームで送出するのは <code>pending × (1 − e^(−dt/τ))</code>。減衰はフレーム数ではなく経過時間で決まるので、応答の形はリフレッシュレートではなく時間で決まります。総量の保存は 60 / 120 / 144 Hz すべてで実測済みです。オフラインのベンチマークでは、120 Hz の初回フレームが 3 ポイントから 9 ポイントに、90% 到達時間は 150 ms から 133 ms に短縮しました。</p>
+          <p class="f-note sunk neu neu-sink">ターミナル、画像ビューア、スライドのように、ホイールを精密入力やズームとして扱うウインドウは、初期状態でシステムに返します。⌘ を押している間はいつでもネイティブ スクロールに戻れます。スムージングは<strong>初期状態でオフ</strong>。オンにしない限り、ホイールを乗っ取りません。画面には「検出 / ジェスチャ / 横取り / 送出」の 4 つのカウンターがあり、新しいマウスで問題が出たとき、どの層で落ちているかが分かります。</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/scroll.ja.v533.webp" width="1800" height="2470" loading="lazy" alt="スクロール パネル。上部にスクロール スムージングの状態と 4 層のリアルタイム カウンター、その下にセーフ モードのスイッチと 21 件の組み込みアプリ別例外ライブラリ。">
+          <img src="../img/scroll.ja.v533.webp" width="1090" height="2416" loading="lazy" alt="スクロール パネル。上部にスムージングの状態と 4 つのリアルタイム カウンター、その下にセーフ モードのスイッチ、組み込みのアプリ別例外。">
+          <figcaption>スムージングはスイッチであって、乗っ取りではありません。各層が何をしたかを報告します。</figcaption>
         </figure>
       </article>
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">02 · ソフトウェア調光</p>
-          <h2 class="f-title">パネルのファームウェアに頼らず暗くする</h2>
-          <p class="f-body">明るさは CoreGraphics ガンマテーブルを通すので、DDC/CI を実装していないモニターでも効きます。書き込みのたびに読み戻して比較し、一致しなければバックオフして最大 4 回まで再試行します。解像度の変更やスリープ復帰のあとも自動で再適用されるので、黙って効かなくなることはありません。</p>
-          <p class="f-note sunk neu neu-sink">再適用は常にパネルの<strong>元のベースライン</strong>から計算し直し、現在のカーブは基準にしません。だから繰り返し調整しても誤差が積み上がりません — 実測でミッドグレーは 0.5020 から 0.3012 へ。プロセス終了時は macOS が自動で戻し、アプリの起動に依存しない復旧経路が 2 つあります（アプリ内と <code>Scripts/restore-dimming.sh</code>）。</p>
-        </div>
-        <figure class="f-media wide neu plate">
-          <img src="../img/display.ja.v533.webp" width="1800" height="2470" loading="lazy" alt="「ディスプレイ」パネル下半分。カラー キャリブレーションのコントラスト、ガンマ、色温度のスライダーと、EDID から読み取った色域カバー率。">
-          <figcaption>調光とキャリブレーションは同じガンマ基準を共有するので、2 つの経路が互いを汚しません。</figcaption>
-        </figure>
-      </article>
-      <article class="feature">
-        <div class="f-copy">
-          <p class="f-eyebrow">03 · 色キャリブレーション</p>
-          <h2 class="f-title">初回の引き継ぎ時に読み取ったカーブを基準に</h2>
-          <p class="f-body">コントラストはミッドグレーを軸に、ガンマは中間調を、色温度は 2700–9000 K をカバーし、3 チャンネルすべてが初回の引き継ぎ時に読み取ったカーブ上で計算されます。6500 K は恒等変換としてアンカーされているので、初期状態はディスプレイ本来の見え方のままです。</p>
-          <p class="f-note sunk neu neu-sink">物理色域は EDID からそのまま読み取り、CIE xy の三角形として描画します。sRGB と Display P3 のカバー率と並べて表示し、合わせられる部分は合わせ、パネルが物理的に届かない部分（高彩度の赤と緑）は<strong>届かないとそのまま表示</strong>します。見えるふりはしません。ワンクリックで ColorSync に返せます。</p>
+          <h2 class="f-title">パネルのファームウェアに触らず暗くする</h2>
+          <p class="f-body">明るさは CoreGraphics ガンマテーブルを通すので、DDC/CI を実装していないモニターでも効きます。解像度の変更や復帰のあとは、アプリがカーブを書き直し、内部の 1 点を狙った値と照合します。一致しなければ再試行し、試行は合計 4 回までです。以降の再適用も自動なので、黙って効かなくなることはありません。</p>
+          <p class="f-note sunk neu neu-sink">再適用は常に、引き継ぎ時に取得したベースラインから計算し直し、現在のカーブは基準にしません。だから調整を繰り返しても誤差は積み上がりません。明るさ 60% ではミッドグレーが 0.5020 から 0.3012 へ動きます — 累積した差分ではなく、正確なスケーリングです。プロセス終了時は macOS がディスプレイを戻し、アプリの起動を必要としない復旧経路が 2 つあります。アプリ内の操作と <code>Scripts/restore-dimming.sh</code> です。</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="カラー キャリブレーションの実測値">
           <p class="gauge sunk neu neu-sink"><span class="k">色温度</span><span class="v tid">6500</span><span class="u">K · 恒等変換としてアンカー</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">ガンマ</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">色域</span><span class="v tid">104%</span><span class="u">sRGB · Display P3 の 77% のみ</span></p>
+          <p class="instrument-note">当社のテストパネルで実測し、ガンマテーブルから読み戻した値です。</p>
         </div>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">03 · 色キャリブレーション</p>
+          <h2 class="f-title">初めて引き継いだときに読み取ったカーブを基準に</h2>
+          <p class="f-body">コントラストはミッドグレーを軸に、ガンマは中間調を、色温度は 2700–9000 K をカバーします。3 つとも、アプリが初めて引き継いだときに読み取ったカーブの上で計算します。6500 K は恒等変換としてアンカーされるので、初期状態はディスプレイがもともと見せている姿のままです。</p>
+          <p class="f-note sunk neu neu-sink">物理色域は EDID からそのまま読み取り、CIE xy の三角形として描きます。sRGB と Display P3 のカバー率と並べて表示し、合わせられる部分は合わせ、パネルが物理的に届かない部分（高彩度の赤と緑）は、見えるふりをせず<strong>届かないと表示</strong>します。ワンクリックで ColorSync に返せます。</p>
+        </div>
+        <figure class="f-media wide neu plate">
+          <img src="../img/display.ja.v533.webp" width="1090" height="2416" loading="lazy" alt="ディスプレイ パネル下半分。色キャリブレーションのコントラスト、ガンマ、色温度のスライダーと、EDID から読み取った色域カバー率。">
+          <figcaption>調光とキャリブレーションは同じガンマ基準を共有します。だから 2 つの経路が互いを汚すことはありません。</figcaption>
+        </figure>
       </article>
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">04 · 安全なクリーンアップ</p>
           <h2 class="f-title">まず隔離、削除はそのあと</h2>
-          <p class="f-body">再生成の手順が確定している 13 種類の生成物だけを対象にします。Xcode DerivedData、SwiftPM、CocoaPods、npm / pnpm / Yarn、Go、Gradle、Rust target、<code>__pycache__</code>、クラッシュレポート、Homebrew キャッシュなどです。削除するものはまず隔離へ移し、既定で 30 日間保持、いつでも復元できます。</p>
-          <p class="f-note sunk neu neu-sink">完全削除は既定で存在しません。アプリ全体でたった 1 つの関数だけがそれを実行でき、6 つの条件が同時に満たされたときだけ進みます — 1 つでも欠ければ中止します。フルディスク アクセスは要求せず、システム保護下のディレクトリは macOS の規則どおりスキップします。自動化ルールは<strong>事前スキャンのみで、削除はできません</strong>。</p>
+          <p class="f-body">対象は、再生成の手順が確定している 13 種類の生成物だけです。Xcode DerivedData、SwiftPM、CocoaPods、npm / pnpm / Yarn、Go、Gradle、Rust target、<code>__pycache__</code>、クラッシュレポート、Homebrew キャッシュなど。削除したものはまず隔離へ移します。隔離したものはいつでも復元でき、完全削除の選択肢が出るのは 30 日たってからです。</p>
+          <p class="f-note sunk neu neu-sink">完全削除は既定でオフです。アプリ全体でその処理を行える関数は 1 つだけで、6 つの条件が同時に満たされたときだけ実行します — 1 つでも欠ければ中止します。フルディスク アクセスは要求せず、システムが保護するディレクトリは macOS の規則どおり飛ばします。自動化ルールは<strong>事前スキャンのみで、削除はしません</strong>。</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/storage.ja.v533.webp" width="1800" height="2470" loading="lazy" alt="ストレージ パネル。ディスクの概要、システム データの内訳、個人フォルダ、大きなファイルの検出、クリーンアップ可能な項目。下部にスキャンは読み取り専用で、クリーンアップは隔離へ移すだけと記載されています。">
+          <img src="../img/storage.ja.v533.webp" width="1090" height="2416" loading="lazy" alt="ストレージ パネル。ディスクの概要、システムデータの内訳、ホームフォルダ、大きなファイルの特定、クリーンアップ可能な項目。下部にスキャンは読み取り専用で、クリーンアップは隔離へ移すだけと記載されています。">
+          <figcaption>スキャンは読み取り専用です。頼むまで、何も動きません。</figcaption>
         </figure>
       </article>
     </div>
   </section>
-  <section class="trio" id="all-features">
-    <h2 class="sec-head">全機能</h2>
-    <p class="statement">各タブはすべて作り込まれています。</p>
-    <div class="trio-grid"><article class="tcard card neu"><h3>Display</h3><p>monitor · master dimming · colour calibration · presets · timing</p></article><article class="tcard card neu"><h3>Scroll</h3><p>always-on · smoothing · switches · feel · direction · exclusions</p></article><article class="tcard card neu"><h3>Eye care</h3><p>eye care · schedule · pomodoro · notes</p></article><article class="tcard card neu"><h3>Tools</h3><p>screen test · reference card · quick switches</p></article><article class="tcard card neu"><h3>Audio</h3><p>output devices · volume and mute · follow power · hardware volume</p></article><article class="tcard card neu"><h3>Mouse</h3><p>mouse · pointer · button mapping · wheel · per-display</p></article><article class="tcard card neu"><h3>Windows</h3><p>windows · layout actions · hotkeys · saved layouts</p></article><article class="tcard card neu"><h3>Sessions</h3><p>sessions · snapshot · archive · confirm · result</p></article><article class="tcard card neu"><h3>Storage</h3><p>disk overview · system data · home folders · large files</p></article><article class="tcard card neu"><h3>Timeline</h3><p>timeline · filters · events</p></article><article class="tcard card neu"><h3>Health</h3><p>overall health · permission audit · config drift · conflicts</p></article><article class="tcard card neu"><h3>Diagnostics</h3><p>capability snapshot · scroll statistics · environment</p></article><article class="tcard card neu"><h3>Automation</h3><p>automation · rules</p></article><article class="tcard card neu"><h3>General</h3><p>hotkeys · backup and migration · about</p></article></div>
-  </section>
-  
 
-  <section class="trio">
-    <div class="wrap"><div class="trio-grid">
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>セッション復元</h3><p>ディスプレイ、ウィンドウ、オーディオ、スクロール、マウス、眼の保護の設定を、領域ごとに復元できる名前付きスナップショットとして保存します。復元前には変更される内容を一覧表示して確認を待ちます。ある領域が使えなければその領域だけをスキップし、復元全体を失敗させません。</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>入力ソースとハードウェア チャンネル</h3><p>ディスプレイが DDC/CI に対応していれば、HDMI / DisplayPort の切り替えに OSD ボタンを探す必要はなく、ハードウェアの明るさ・コントラスト・音量も同じ場所に並びます。対応していなければ「DDC 応答なし」と正直に表示し、ソフトウェア チャンネルで動き続けます — 成功したふりはしません。</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>アクセシビリティ</h3><p>すべてのスライダーとスイッチにアクセシビリティ ラベルがあり、アクセシビリティ ツリーに現れます。インターフェイスの文字は 4.5:1 のコントラスト基準に合わせて作り直しました（修正前の最悪値は 2.65:1）。グローバル ショートカットは ⌃⌥↑ / ⌃⌥↓、⇧ を足すと ±1% の微調整です。</p></article>
-    </div></div>
+  <section class="catalog" id="console">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>コンソールの中身</h2>
+        <p>どのタブも作り込まれていて、下のカードはどれも実際のパネル画面です。「近日公開」の看板の裏に置かれたプレースホルダーではありません。</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="catalog-group">
+          <h3>表示と色</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>表示</dt><dd>モニターとリンクの識別情報、マスター明るさ、色キャリブレーション、DDC ハードウェア、入力ソース、シーンプリセット、映像とタイミング。</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>入力と動き</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>スクロール</dt><dd>フレーム単位のスムージング。操作感、方向、アプリの除外、リアルタイム カウンター。</dd></div>
+            <div class="catalog-item"><dt>マウス</dt><dd>ポインタの加速度、キーマッピング、ホイールの挙動、ディスプレイごとに記憶するポインタ速度。</dd></div>
+            <div class="catalog-item"><dt>ウインドウ</dt><dd>レイアウト操作、ウインドウショートカット、自動化からも再適用できる保存済みレイアウト。</dd></div>
+            <div class="catalog-item"><dt>オーディオ</dt><dd>出力デバイス、音量とミュート、ディスプレイのハードウェア音量、ディスプレイのスリープ時のミュート。</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>ケアと記録</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>アイケア</dt><dd>時間帯スケジュール、ポモドーロ、メモ欄。色温度と明るさが時間帯に合わせて変わります。</dd></div>
+            <div class="catalog-item"><dt>ツール</dt><dd>全画面で行う画面セルフテスト、比較カード、クイック スイッチのパネル。</dd></div>
+            <div class="catalog-item"><dt>セッション</dt><dd>ディスプレイ、ウインドウ、オーディオ、スクロール、マウス、アイケアをスナップショットし、確認してから領域ごとに復元します。</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>システムとインサイト</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>ストレージ</dt><dd>ディスクの概要、システムデータの内訳、ホームフォルダ、大きなファイルの特定、隔離を先に行うクリーンアップ対象。</dd></div>
+            <div class="catalog-item"><dt>タイムライン</dt><dd>アプリが検知した変更と競合のすべて。種類と時刻で絞り込めます。</dd></div>
+            <div class="catalog-item"><dt>ヘルス</dt><dd>総合ヘルス、権限監査、設定のドリフト、ドメイン間の競合。</dd></div>
+            <div class="catalog-item"><dt>診断</dt><dd>機能スナップショット、スクロール実行統計、環境の概要、個人情報を伏せたレポートの書き出し。</dd></div>
+            <div class="catalog-item"><dt>自動化</dt><dd>時間帯、ディスプレイの接続、最前面のアプリをきっかけに動くルール。行うのは設定の変更だけで、削除はしません。</dd></div>
+            <div class="catalog-item"><dt>一般</dt><dd>ショートカット、設定のバックアップと移行、アップデート、このアプリについて、ライセンスのパネル。</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="catalog-foot">表レベルの完全な一覧は<a href="features.html">全機能リスト</a>にあります。</p>
+    </div>
   </section>
+
+  <section class="controls" id="controls">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>メニューバーは、そのまま操作盤です</h2>
+        <p>メニューバーのアイコンをクリックすれば、よく使うものがその場に並びます。ウインドウを開く必要も、タブを探す必要もありません。状態を持つスイッチは実際の状態を表示し、一度きりのアクションはそう書いてあります。</p>
+      </div>
+      <div class="controls-grid">
+        <div class="switchboard">
+          <div class="sb-head"><span class="sb-brand">DisplayPilot</span><span class="sb-hint">メニューバー</span></div>
+          <div class="sb-sliders">
+            <p class="sb-slider"><span class="k">明るさ</span><span class="cs-track"><span class="cs-fill" style="width:72%"></span><span class="cs-knob" style="left:72%"></span></span></p>
+            <p class="sb-slider"><span class="k">音量</span><span class="cs-track"><span class="cs-fill" style="width:44%"></span><span class="cs-knob" style="left:44%"></span></span></p>
+          </div>
+          <div class="sb-grid">
+            <p class="sb-item"><span class="sb-name">スクリーンショット</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">画面収録</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">画面をロック</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">スリープ</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">クリップボードを空にする</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">ゴミ箱を空にする</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">スクリーンセーバ</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">ウインドウを隠す</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">再生 / 一時停止</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">ディスクを取り出す</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item"><span class="sb-name">画面クリーニング</span><span class="sb-kind">実行</span></p>
+            <p class="sb-item on"><span class="sb-name">隠しファイルを表示</span><span class="sb-state">オン</span></p>
+            <p class="sb-item"><span class="sb-name">Dock を隠す</span><span class="sb-state">オフ</span></p>
+            <p class="sb-item on"><span class="sb-name">画面をスリープさせない</span><span class="sb-state">オン</span></p>
+          </div>
+        </div>
+        <div class="control-copy">
+          <div class="control-item">
+            <h3>オーディオはディスプレイに追従</h3>
+            <p>出力の切り替え、ミュート、DDC/CI 対応のパネルならハードウェア音量の変更もここから。ディスプレイがスリープしたらシステム出力をミュートし、復帰したら元の状態に戻せます。</p>
+          </div>
+          <div class="control-item">
+            <h3>ポインタは、自分がどの画面にいるかを知っています</h3>
+            <p>4K パネルと 1080p パネルでは、適切なポインタ速度が違います。ディスプレイごとに 1 つずつ記憶し、画面をまたいだときに適用します。加速度、ホイールの挙動、ボタンの割り当ては、全体で一度設定すれば済みます。</p>
+          </div>
+          <div class="control-item">
+            <h3>ウインドウは置いた場所に着地する</h3>
+            <p>レイアウト操作、ウインドウショートカット、保存済みレイアウト。外部ディスプレイの接続・切断をきっかけに、自動化が保存済みレイアウトを適用できます。だからノート PC とモニターの机と、ドックにつないだ机が、それぞれの配置を保ちます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insight" id="insight">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>やったことは、記録に残します</h2>
+        <p>多くのディスプレイ ツールは、何かを変えて忘れます。これは、何が変わったかを記録し、ずれたものを検査し、動く前に知らせます。</p>
+      </div>
+      <div class="insight-grid">
+        <article class="insight-card wide">
+          <h3>セッション</h3>
+          <p>ディスプレイ、ウインドウ、オーディオ、スクロール、マウス、アイケアを、名前を付けたスナップショットとして保存します。復元の前には、変わる内容を一覧で示して確認を待ちます。使えない領域があれば、その領域だけを飛ばし、復元全体を失敗させません。</p>
+          <p class="insight-meta">領域ごとに復元します。まとめて振って、出た目に任せることはしません。</p>
+        </article>
+        <article class="insight-card">
+          <h3>タイムライン</h3>
+          <p>変更、競合、復旧の経路のすべて。種類と時刻で絞り込めます。ケーブルを変えたあとに何かがおかしくなっても、記録はすでにそこにあります。</p>
+        </article>
+        <article class="insight-card">
+          <h3>ヘルス</h3>
+          <p>権限監査、設定のドリフト、ドメイン間の競合を 1 か所で評価します。権限の項目はシステム設定へリンクし、ドリフトはワンクリック復元を用意し、競合はどのツールが何を書き込んでいるかを説明します。</p>
+        </article>
+        <article class="insight-card">
+          <h3>自動化と診断</h3>
+          <p>ルールは、時間帯、ディスプレイの接続・切断、アプリが最前面に来たことをきっかけに動きます。行うのは設定の変更だけで、削除は一切できません。診断は機能スナップショットを取り、シリアル番号、ライセンス コード、パス、ユーザー名を伏せたレポートを書き出します。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>確かめられる形で作っています</h2>
+        <p>このアプリは、検証できる主張だけを売りにしています。データを実際にどう扱うか、そしてそれを自分で確かめる方法を書きます。</p>
+      </div>
+      <div class="trust-grid">
+        <ul class="proof-list">
+          <li><strong>オフライン検証。</strong>長い <code>DP-</code> コードは、アプリに内蔵された公開鍵で Ed25519 検証します。アクティベーション時に発生する通信は、次に書く 1 回だけのデバイス登録のみ。その後は起動のたびにローカルで検証し、アップデート確認も自分でオンにしない限り行いません。</li>
+          <li><strong>登録は 1 回だけ、あとは何も送りません。</strong>初回アクティベーションのときだけ、ボード識別子とモデル識別子からローカルで計算した不可逆な SHA-256 ダイジェストを、自社のライセンス サービスへ送ります — これが、長い <code>DP-</code> コードを 5 台の Mac までに制限できる仕組みです。シリアル番号、平文のモデル名、MAC アドレス、ディスプレイの EDID、アカウント、利用データは送りません。</li>
+          <li><strong>テレメトリーはありません。</strong>解析も、Cookie も、サードパーティ フォントも、バックグラウンド サービスもありません。このページも外部へのリクエストを出しません。</li>
+          <li><strong>検査はアプリに同梱されています。</strong>セルフテストはバイナリの一部で、何を検証しているかは監査ページに一覧があります。ここに書いた主張が正しくなくなれば、どれかが赤になります。</li>
+        </ul>
+        <div class="audit-plate">
+          <p class="audit-title">自分で動かす</p>
+          <p class="audit-row"><code>--license-selftest</code><span>ライセンス状態機械と、その縮退の境界</span></p>
+          <p class="audit-row"><code>--scroll-selftest</code><span>補間、フレーム タイミング、総量の保存</span></p>
+          <p class="audit-row"><code>--cli-selftest</code><span>引数のファジング、伏字処理、オープンソース表記</span></p>
+          <p class="audit-row"><code>--switch-probe</code><span>各スイッチの可用性と状態を読み取り専用で</span></p>
+          <p class="audit-links"><a href="../verify.html">ライセンスを自分で検証</a> · <a href="../audit.html">検査がカバーする範囲</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="price" id="price">
-    <div class="wrap" id="buy">
-      <div class="sec-head"><h2>買い切り</h2><p>サブスクリプションも、アカウントも、デバイス数による計算もありません。</p></div>
+<div class="wrap" id="buy">
+      <div class="sec-head center"><h2>買い切り</h2><p>サブスクリプションも、アカウントも、デバイス数による計算もありません。</p></div>
       <div class="price-plate plate neu">
         <p class="price-readout sunk neu neu-sink"><span class="num tid" data-price="num">≈US$14</span></p>
         <p class="price-label">買い切り · 購入日から 1 年間のアップデートを含みます</p>
@@ -177,19 +348,28 @@
       </div>
     </div>
   </section>
+
   <section class="spec" id="spec">
-    <div class="wrap"><h2>システム要件</h2><p class="spec-line">macOS 14 Sonoma 以降 · Apple シリコン / Intel 対応ユニバーサルバイナリ · サードパーティ依存なし、バックグラウンド サービスなし · アクセシビリティ権限が必要なのはスクロール スムージングとマウス マッピングのみ · オフラインでも動作します</p></div>
+    <div class="wrap"><h2>システム要件</h2><p class="spec-line">macOS 14 Sonoma 以降 · Apple シリコン / Intel 対応ユニバーサルバイナリ · パッケージマネージャ経由の依存なし。同梱するサードパーティ製コンポーネントは、既定でオフのアップデート確認に使う Sparkle（MIT）のみ · アクセシビリティを使うのはスクロール スムージング、マウス マッピング、ウインドウ管理、ウインドウ復元。それ以外は権限なしで動きます · アクティベーション後はオフラインでも動作します</p></div>
   </section>
 
 </main>
-<footer>
+<footer class="foot-v2">
   <div class="wrap">
-    <p class="foot-links">
-      <a href="privacy.html">プライバシーポリシー</a>
-      <a href="eula.html">ライセンス</a>
-      <a href="support.html">サポート</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">質問・フィードバック · GitHub Issues</a>
-    </p>
+    <div class="foot-grid">
+      <div class="foot-col">
+        <p class="foot-title">製品</p>
+        <p class="foot-links"><a href="#features">機能</a><a href="#console">コンソール</a><a href="#controls">コントロール</a><a href="#price">価格</a><a href="#trust">検証</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">リソース</p>
+        <p class="foot-links"><a href="../guides.html">ガイド</a><a href="features.html">全機能リスト</a><a href="../verify.html">自分で検証する</a><a href="../alternatives.html">他の選択肢と比較</a><a href="../audit.html">透明性</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">サポート</p>
+        <p class="foot-links"><a href="support.html">サポート</a><a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a><a href="privacy.html">プライバシーポリシー</a><a href="eula.html">ライセンス</a></p>
+      </div>
+    </div>
     <p class="foot-note">このページにはトラッカーも Cookie もサードパーティ フォントもなく、外部へのリクエストも発生しません。</p>
     <p class="foot-copy">© 2026 DisplayPilot</p>
   </div>

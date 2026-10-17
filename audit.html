@@ -6,30 +6,58 @@
 <title>How we check ourselves · DisplayPilot</title>
 <meta name="description" content="Every claim on this site is checked by an automated script that reads the source of truth.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/audit.html">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
 </head><body>
-<main class="wrap">
-  <h1>How we check ourselves</h1>
-  <p>Every claim on this site is checked by an automated script that reads the source of truth.</p>
-  <p><strong>16 automated checks</strong></p>
-  <ul>
-      <li><code>check-app-claims</code> — 应用侧否定式承诺：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明</li>
-      <li><code>check-audit-report</code> — 审计报告与文档副本一致、守卫项数等于实测</li>
-      <li><code>check-channel-tags</code> — 渠道标签引用：文档里出现的标签必须真实存在</li>
-      <li><code>check-conventions</code> — 命名与结构约定、单文件行数上限、中文字面量必须进本地化</li>
-      <li><code>check-eula</code> — EULA 八语结构、功能引用、英文本优先</li>
-      <li><code>check-guard-coverage</code> — 每道守卫都有对应证明</li>
-      <li><code>check-launch-posts</code> — 发布文案里的数字与代码事实一致</li>
-      <li><code>check-localization</code> — 七语键集一致、格式符一致、引用一致</li>
-      <li><code>check-pricing</code> — 定价口径在各处一致</li>
-      <li><code>check-privacy</code> — 隐私声明与实际数据行为一致</li>
-      <li><code>check-shell-scripts</code> — 脚本的严格模式与危险命令防护</li>
-      <li><code>check-site-claims</code> — 站点上的数字主张必须等于代码事实</li>
-      <li><code>check-site-links</code> — 站内链接、锚点、hreflang 全部可达</li>
-      <li><code>check-site-seo</code> — 标题、描述、canonical、sitemap 完整</li>
-      <li><code>check-typos</code> — 中英文错别字与标点</li>
-      <li><code>check-versions</code> — 版本号在站点、更新源、下载文件名三处一致</li>
-  </ul>
-  <p class="muted">These checks run before every release. A failing check blocks the build.</p>
-  <p><a href="../index.html">← DisplayPilot</a></p>
-</main></body></html>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Primary"><a href="index.html#features">Features</a>
+      <a href="index.html#console">The console</a>
+      <a href="index.html#controls">Controls</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="guides.html">Guides</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <details class="lang"><summary>English</summary><ul class="lang-menu" aria-label="Language"><li><a href="audit.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="zh-Hans/audit.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="zh-Hant/audit.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main">
+  <article class="doc">
+    <h1>How we check ourselves</h1>
+    <p class="summary">Every claim on this site is checked by an automated script that reads the source of truth. A failing check blocks the build.</p>
+    <p><strong>16 automated checks</strong></p>
+    <ul>
+      <li><code>check-app-claims</code> — app-side negative promises: the network allowlist, the permanent-delete allowlist, zero telemetry, updates off by default, and permission wording.</li>
+      <li><code>check-audit-report</code> — the audit report matches the docs, and its guard counts equal the measured ones.</li>
+      <li><code>check-channel-tags</code> — campaign tags referenced in docs must actually exist.</li>
+      <li><code>check-conventions</code> — naming and structure conventions, the per-file line cap, and Chinese literals must be localised.</li>
+      <li><code>check-eula</code> — EULA in eight languages: structure, feature references, English prevails.</li>
+      <li><code>check-guard-coverage</code> — every guard has a recorded proof.</li>
+      <li><code>check-launch-posts</code> — numbers in launch posts match code facts.</li>
+      <li><code>check-localization</code> — seven locales: same keys, same format specifiers, same quoted strings.</li>
+      <li><code>check-pricing</code> — the price is stated the same way everywhere.</li>
+      <li><code>check-privacy</code> — the privacy statement matches actual data behaviour.</li>
+      <li><code>check-shell-scripts</code> — strict mode and dangerous-command safeguards in shell scripts.</li>
+      <li><code>check-site-claims</code> — every number on the site equals the code fact.</li>
+      <li><code>check-site-links</code> — internal links, anchors and hreflang all resolve.</li>
+      <li><code>check-site-seo</code> — title, description, canonical and sitemap are complete.</li>
+      <li><code>check-typos</code> — common misspellings and punctuation in English pages.</li>
+      <li><code>check-versions</code> — the version is the same on the site, in the update feed and in the download filename.</li>
+    </ul>
+    <p class="back"><a href="index.html">← Back to the overview</a></p>
+  </article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+          <a href="alternatives.html">Compare the options</a>
+</p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer></body></html>

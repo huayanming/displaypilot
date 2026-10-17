@@ -8,28 +8,57 @@
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/audit.html">
 <link rel="stylesheet" href="../style.css">
 </head><body>
-<main class="wrap">
-  <h1>我們怎麼檢查自己</h1>
-  <p>這個站點上的每個數字主張，都由一個讀原始碼的自動腳本核對。</p>
-  <p><strong>16 道自動檢查</strong></p>
-  <ul>
-      <li><code>check-app-claims</code> — 应用侧否定式承诺：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明</li>
-      <li><code>check-audit-report</code> — 审计报告与文档副本一致、守卫项数等于实测</li>
-      <li><code>check-channel-tags</code> — 渠道标签引用：文档里出现的标签必须真实存在</li>
-      <li><code>check-conventions</code> — 命名与结构约定、单文件行数上限、中文字面量必须进本地化</li>
-      <li><code>check-eula</code> — EULA 八语结构、功能引用、英文本优先</li>
-      <li><code>check-guard-coverage</code> — 每道守卫都有对应证明</li>
-      <li><code>check-launch-posts</code> — 发布文案里的数字与代码事实一致</li>
-      <li><code>check-localization</code> — 七语键集一致、格式符一致、引用一致</li>
-      <li><code>check-pricing</code> — 定价口径在各处一致</li>
-      <li><code>check-privacy</code> — 隐私声明与实际数据行为一致</li>
-      <li><code>check-shell-scripts</code> — 脚本的严格模式与危险命令防护</li>
-      <li><code>check-site-claims</code> — 站点上的数字主张必须等于代码事实</li>
-      <li><code>check-site-links</code> — 站内链接、锚点、hreflang 全部可达</li>
-      <li><code>check-site-seo</code> — 标题、描述、canonical、sitemap 完整</li>
-      <li><code>check-typos</code> — 中英文错别字与标点</li>
-      <li><code>check-versions</code> — 版本号在站点、更新源、下载文件名三处一致</li>
-  </ul>
-  <p class="muted">這些檢查在每次發佈前執行。任何一項失敗都會攔住建置。</p>
-  <p><a href="../index.html">← DisplayPilot</a></p>
-</main></body></html>
+<a class="skip" href="#main">跳至主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
+      <a href="index.html#console">控制台</a>
+      <a href="index.html#controls">控制</a>
+      <a href="index.html#price">價格</a>
+      <a href="guides.html">指南</a>
+      <a href="support.html">支援</a>
+    </nav>
+    <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../audit.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/audit.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="audit.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main">
+  <article class="doc">
+    <h1>我們怎麼檢查自己</h1>
+    <p class="summary">這個站點上的每個數字主張，都由一個讀原始碼的自動腳本核對。</p>
+    <p><strong>16 道自動檢查</strong></p>
+    <ul>
+      <li><code>check-app-claims</code> — 應用側否定式承諾：網路白名單、永久刪除白名單、零遙測、更新預設關閉、權限說明</li>
+      <li><code>check-audit-report</code> — 稽核報告與文件副本一致、守衛項數等於實測</li>
+      <li><code>check-channel-tags</code> — 渠道標籤引用：文件裡出現的標籤必須真實存在</li>
+      <li><code>check-conventions</code> — 命名與結構約定、單檔行數上限、中文字面量必須進本地化</li>
+      <li><code>check-eula</code> — EULA 八語結構、功能引用、英文本優先</li>
+      <li><code>check-guard-coverage</code> — 每道守衛都有對應證明</li>
+      <li><code>check-launch-posts</code> — 發布文案裡的數字與程式碼事實一致</li>
+      <li><code>check-localization</code> — 七語鍵集一致、格式符一致、引用一致</li>
+      <li><code>check-pricing</code> — 定價口徑在各處一致</li>
+      <li><code>check-privacy</code> — 隱私聲明與實際資料行為一致</li>
+      <li><code>check-shell-scripts</code> — 腳本的嚴格模式與危險命令防護</li>
+      <li><code>check-site-claims</code> — 站點上的數字主張必須等於程式碼事實</li>
+      <li><code>check-site-links</code> — 站內連結、錨點、hreflang 全部可達</li>
+      <li><code>check-site-seo</code> — 標題、描述、canonical、sitemap 完整</li>
+      <li><code>check-typos</code> — 中英文錯別字與標點</li>
+      <li><code>check-versions</code> — 版本號在站點、更新來源、下載檔名三處一致</li>
+    </ul>
+    <p>這些檢查在每次發布前執行；任何一項失敗都會阻止建置。</p>
+    <p class="back"><a href="../index.html">← DisplayPilot</a></p>
+  </article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">問題與建議 · GitHub Issues</a>
+          <a href="alternatives.html">對比各工具</a>
+</p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer></body></html>

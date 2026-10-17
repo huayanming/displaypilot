@@ -23,7 +23,7 @@
 | `check-conventions.py` | 文件≤400 行、界面字符串、本地化覆盖 | 137 个文件达标 |
 | `check-localization.py` | 每个界面中文字符串必须 7 个语言都有译文 | 1273 条 × 7 语言全通过 |
 | `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1806 项** |
-| `check-versions.py` | 版本单一来源（`VERSION`）与 12 处引用一致（`--online` 另查远程） | 5.0.2 / 12 处 |
+| `check-versions.py` | 版本单一来源（`VERSION`）与 28 处引用一致，并校验 Site/dl 安装包、appcast length/签名、8 语言 JSON-LD（`--online` 另查远程） | 5.7.1 / 28 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
 | `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 89 页 / 89 条 URL |
 | `check-privacy.py` | 被撤回的隐私说法不得回归、邮箱披露必须存在 | 8 语言 × 3 项 = 24 |

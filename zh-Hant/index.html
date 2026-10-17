@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DisplayPilot · macOS 顯示器控制台</title>
-<meta name="description" content="原生 macOS 顯示器控制台：逐幀投遞的平滑捲動、CoreGraphics 伽瑪表軟體調光、以首次接管時讀到的曲線為基準的色彩校正，以及先隔離再刪除的安全清理。14 天免費試用。支援加密貨幣付款，鏈上確認後自動出碼。">
+<title>DisplayPilot · Mac 顯示器缺的那塊控制台</title>
+<meta name="description" content="原生 macOS 顯示器控制台：逐幀遞送的平滑捲動、CoreGraphics 伽馬表軟體調光、以首次接管時讀到的曲線為基準的色彩校正，以及先隔離再刪除的安全清理。不申請完整磁碟存取，14 天免費試用。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/">
@@ -19,8 +19,8 @@
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DisplayPilot">
-<meta property="og:title" content="DisplayPilot · macOS 顯示器控制台">
-<meta property="og:description" content="原生 macOS 顯示器控制台：逐幀投遞的平滑捲動、CoreGraphics 伽瑪表軟體調光、以首次接管時讀到的曲線為基準的色彩校正，以及先隔離再刪除的安全清理。14 天免費試用。">
+<meta property="og:title" content="DisplayPilot · Mac 顯示器缺的那塊控制台">
+<meta property="og:description" content="原生 macOS 顯示器控制台：一格滾輪拆成逐幀遞送的連續捲動，亮度走 CoreGraphics 伽馬表，色彩以首次接管時讀到的曲線為基準校正，刪除前先進隔離區。14 天免費試用。">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,118 +33,288 @@
 <meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DisplayPilot — the missing console for your Mac display">
+<meta property="og:image:alt" content="DisplayPilot —— Mac 顯示器缺的那塊控制台">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"5.7.1","url":"https://huayanming.github.io/displaypilot/zh-Hant/","inLanguage":"zh-Hant","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg","offers":{"@type":"Offer","price":"14","priceCurrency":"USD","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 顯示器控制，DDC 不可用時以伽瑪表調光","以首次接管時讀到的曲線為基準的色彩校正","逐幀遞送的平滑捲動","先隔離再刪除的開發者快取清理"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"滾輪、亮度、色彩"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 或以上","softwareVersion":"5.7.1","url":"https://huayanming.github.io/displaypilot/zh-Hant/","inLanguage":"zh-Hant","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg","offers":{"@type":"Offer","price":"14","priceCurrency":"USD","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 顯示器控制，DDC 不可用時以伽馬表調光","以首次接管時讀到的曲線為基準的色彩校正","逐幀遞送的平滑捲動","選單列總控板：管理顯示器與系統動作","先隔離再刪除的開發者快取清理"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"滾輪、亮度、色彩"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳至主要內容</a>
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
-    <nav class="nav-links" aria-label="主要導覽"><a href="./features.html">全部功能</a>
-      <a href="#features">功能</a>
-      <a href="#price">價格</a>
+    <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
+      <a href="index.html#console">控制台</a>
+      <a href="index.html#controls">控制</a>
+      <a href="index.html#price">價格</a>
+      <a href="guides.html">指南</a>
       <a href="support.html">支援</a>
-      <a href="guide-ddc.html">指南</a>
-</nav>
-    <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" aria-current="true" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    </nav>
+    <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="index.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li><li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/index.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
     <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
   </div>
 </header>
 <main id="main">
-  <section class="hero">
-    <div class="wrap">
-      <h1>滾輪、亮度、色彩</h1>
-      <p class="sub">都調成順手的樣子</p>
-      <p class="lede">原生 macOS 顯示器控制台。滾輪的一格拆成一段逐幀投遞的連續捲動；亮度走 CoreGraphics 伽瑪表，顯示器不實作 DDC/CI 也照樣能調；色彩以面板的原始曲線為基準換算，隨時一鍵交回系統。</p>
-      <p class="hero-cta">
-        <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載 macOS 版</a>
-        <a class="btn btn-ghost" href="#price">14 天免費試用</a>
-      </p>
-      <p class="hero-spec">macOS 14 或以上 · Apple 晶片與 Intel 通用二進位 · 不註冊也能用 · 一次買斷，無訂閱</p>
-      <figure class="hero-shot neu plate">
-        <img src="../img/display.zh-Hans.v533.webp" width="1090" height="2416" alt="DisplayPilot 的「顯示」面板：頂端是顯示器型號與鏈路資訊，下面是軟體調光推桿，再下面是色彩校正的對比、伽瑪、色溫三條推桿，以及從 EDID 讀出的色域三角。">
-      </figure>
+
+  <section class="hero hero-v2">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span>原生 macOS 控制台</p>
+        <h1>滾輪、<br>亮度、色彩</h1>
+        <p class="sub">都調成順手的樣子。</p>
+        <p class="lede">原生 macOS 顯示器控制台。滾輪的一格拆成一段連續捲動，逐幀遞送；亮度走 CoreGraphics 伽馬表，顯示器沒實作 DDC/CI 也照樣能調。色彩按應用程式首次接管時讀到的曲線計算，再一鍵交回系統。</p>
+        <p class="hero-cta">
+          <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載 macOS 版</a>
+          <a class="btn btn-ghost" href="#price">14 天免費試用</a>
+        </p>
+        <ul class="hero-spec">
+          <li>macOS 14 或以上</li>
+          <li>Apple 晶片與 Intel</li>
+          <li>無需帳號</li>
+          <li>一次買斷</li>
+        </ul>
+      </div>
+      <div class="hero-console">
+        <div class="console-tray">
+          <div class="console-screen" aria-hidden="true">
+            <div class="cs-bar"><span class="cs-dot"></span><span class="cs-title">顯示器 1</span><span class="cs-tag">120 Hz · HiDPI</span></div>
+            <div class="cs-block">
+              <span class="cs-label">主控亮度</span>
+              <p class="cs-readout"><span class="num">100</span><span class="unit">%</span></p>
+              <div class="cs-track"><span class="cs-fill"></span><span class="cs-knob"></span></div>
+            </div>
+            <div class="cs-gauges">
+              <p class="cs-gauge"><span class="k">色溫</span><span class="v">6500<em>K</em></span></p>
+              <p class="cs-gauge"><span class="k">伽瑪</span><span class="v">2.2</span></p>
+              <p class="cs-gauge"><span class="k">色域</span><span class="v">104<em>% sRGB</em></span></p>
+            </div>
+            <svg class="cs-gamut" viewBox="0 0 220 150" role="presentation" focusable="false">
+              <path class="cs-gamut-srgb" d="M116 121 L60 58 L183 74 Z" />
+              <path class="cs-gamut-p3" d="M128 132 L44 62 L196 80 Z" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="206" y2="132" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="18" y2="14" />
+            </svg>
+          </div>
+        </div>
+        <p class="console-caption">「顯示」面板的讀數範例。</p>
+      </div>
     </div>
   </section>
-  <section class="statement">
+
+  <section class="statement statement-v2">
     <div class="wrap">
-      <p class="big">不是把系統設定裡的開關換個地方擺，而是做系統沒做的那幾件事。</p>
-      <p class="small">逐幀投遞的捲動、不依賴面板韌體的調光、以原始曲線為基準的校正，以及一條「先隔離、再刪除」的清理路徑。</p>
+      <p class="big">不是把系統設定裡的開關換個位置擺。是系統一直沒做的那部分。</p>
+      <p class="small">逐幀遞送的捲動、不依賴面板韌體的調光、以應用程式首次接管時讀到的曲線為基準的校正，以及一條先隔離再刪除的清理路徑。</p>
     </div>
   </section>
+
   <section class="features" id="features">
     <div class="wrap">
       <article class="feature">
         <div class="f-copy">
-          <p class="f-eyebrow">01 · 絲滑捲動</p>
+          <p class="f-eyebrow">01 · 捲動平滑</p>
           <h2 class="f-title">一格滾輪，拆成一段</h2>
-          <p class="f-body">滾輪的一格不再是一次跳變。事件先被蒐集起來，再掛在螢幕更新上逐幀投遞，每幀送出 <code>pending × (1 − e^(−dt/τ))</code>。因為按時間衰減、不按幀數，60Hz 與 144Hz 的手感一致：離線基準中，120Hz 的首幀從 3 點提升到 9 點，90% 用時從 158ms 縮短到 133ms。</p>
-          <p class="f-note sunk neu neu-sink">終端機、看圖、簡報這類把滾輪當精確輸入或縮放的視窗，預設交回系統；按住 ⌘ 隨時回到原生捲動；平滑<strong>預設關閉</strong>，不開啟就不會接管你的滾輪。介面上留有「看到 / 手勢 / 攔截 / 投遞」四個即時計數，換了滑鼠出問題，一眼就看出卡在哪一層。</p>
+          <p class="f-body">滾輪的一格不再是一次跳變。事件先蒐集起來，再在每次螢幕更新時遞送，每幀送出 <code>pending × (1 − e^(−dt/τ))</code>。衰減由經過的時間驅動、而不是幀數，所以回應形狀由時間決定，與更新率無關；總量守恆在 60、120、144 Hz 下都測過。離線基準中，120 Hz 的首幀從 3 點提升到 9 點，90% 用時從 150 ms 縮短到 133 ms。</p>
+          <p class="f-note sunk neu neu-sink">把滾輪當精確輸入或縮放控制的視窗——終端機、看圖、簡報——預設交回系統。按住 ⌘ 隨時回到原生捲動。平滑<strong>預設關閉</strong>：你不開啟，它就不會接管滾輪。介面上留著四個即時計數——看到、手勢、攔截、遞送——換了新滑鼠出問題，能看清是哪一層丟了事件。</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/scroll.zh-Hans.v533.webp" width="1090" height="2416" loading="lazy" alt="捲動面板：頂端顯示捲動平滑狀態與四層即時計數，下面是安全模式開關與 21 條內建縮放應用程式庫。">
+          <img src="../img/scroll.zh-Hans.v533.webp" width="1090" height="2416" loading="lazy" alt="「捲動」面板：頂端是平滑狀態與四個即時計數，下面是安全模式開關，以及內建的應用程式例外庫。">
+          <figcaption>平滑是一個開關，不是接管。每一層都會報告自己做了什麼。</figcaption>
         </figure>
       </article>
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">02 · 軟體調光</p>
-          <h2 class="f-title">不靠面板韌體調暗</h2>
-          <p class="f-body">亮度走 CoreGraphics 伽瑪表，顯示器不實作 DDC/CI 也一樣能調。每次寫入都讀回比對，不一致就退避重試，最多 4 次；換解析度、休眠喚醒之後自動重放，不會失效。</p>
-          <p class="f-note sunk neu neu-sink">重放永遠從面板的<strong>原始基準</strong>重算，而不是拿目前曲線當基準，所以反覆調整不會累積誤差 —— 實測中灰中點 0.5020 → 0.3012。行程結束後系統自動還原；應用程式內與 <code>Scripts/restore-dimming.sh</code> 各有一條不依賴應用程式執行的復原路徑。</p>
-        </div>
-        <figure class="f-media wide neu plate">
-          <img src="../img/display.zh-Hans.v533.webp" width="1090" height="2416" loading="lazy" alt="顯示面板下半部：色彩校正的對比、伽瑪與色溫推桿，以及從 EDID 讀出的色域覆蓋率。">
-          <figcaption>調光與校正共用同一條伽瑪基準，所以兩條通道不會互相污染。</figcaption>
-        </figure>
-      </article>
-      <article class="feature">
-        <div class="f-copy">
-          <p class="f-eyebrow">03 · 色彩校正</p>
-          <h2 class="f-title">以首次接管時讀到的曲線為準</h2>
-          <p class="f-body">對比以中灰為軸、伽瑪走中間調、色溫涵蓋 2700–9000 K，三條通道都在面板的原始曲線上換算。6500 K 被錨定為恆等轉換，所以預設狀態就是顯示器本來的樣子。</p>
-          <p class="f-note sunk neu neu-sink">物理色域直接從 EDID 讀出來畫成 CIE xy 三角，和 sRGB、Display P3 的覆蓋率擺在一起：能對齊的對齊，對不齊的那部分（面板到不了的高飽和紅與綠）<strong>如實標出</strong>，不假裝能顯示。一鍵交回系統 ColorSync 校正。</p>
+          <h2 class="f-title">調暗，不碰面板韌體</h2>
+          <p class="f-body">亮度走 CoreGraphics 伽馬表，所以顯示器沒實作 DDC/CI 也能用。換解析度或喚醒後，應用程式會重寫曲線，並把一個內部取樣點與目標值比對；對不上就重試，總共最多四次。換解析度與休眠喚醒都會自動重放曲線，不會悄悄失效。</p>
+          <p class="f-note sunk neu neu-sink">重放始終從接管時擷取的基準重算，而不是拿目前曲線當基準，所以反覆調整不會累積誤差。亮度 60% 時，中灰點從 0.5020 移到 0.3012——這是精確縮放，不是累積的偏移量。行程結束時 macOS 會還原顯示器；另有兩條不依賴應用程式執行的復原路徑：應用程式內一條，以及 <code>Scripts/restore-dimming.sh</code>。</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="色彩校正實測讀數">
           <p class="gauge sunk neu neu-sink"><span class="k">色溫</span><span class="v tid">6500</span><span class="u">K · 錨定為恆等轉換</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">伽瑪</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">色域</span><span class="v tid">104%</span><span class="u">sRGB · 僅覆蓋 Display P3 的 77%</span></p>
+          <p class="instrument-note">在我們的測試顯示器上實測，並從伽馬表讀回。</p>
         </div>
       </article>
       <article class="feature">
         <div class="f-copy">
+          <p class="f-eyebrow">03 · 色彩校正</p>
+          <h2 class="f-title">以應用程式首次接管時讀到的曲線為基準</h2>
+          <p class="f-body">對比以中灰為軸，伽瑪調中間調，色溫涵蓋 2700–9000 K——三條通道都按應用程式首次接管時讀到的曲線計算。6500 K 錨定為恆等轉換，所以預設狀態就是顯示器本來的樣子。</p>
+          <p class="f-note sunk neu neu-sink">物理色域直接從 EDID 讀出，畫成 CIE xy 三角，旁邊標出它對 sRGB 與 Display P3 的覆蓋率。能對齊的就對齊；面板物理上到不了的部分——高飽和的紅與綠——<strong>如實標註為不可達</strong>，而不是假裝。一鍵把校正交回 ColorSync。</p>
+        </div>
+        <figure class="f-media wide neu plate">
+          <img src="../img/display.zh-Hans.v533.webp" width="1090" height="2416" loading="lazy" alt="「顯示」面板下半部：色彩校正的對比、伽瑪與色溫三條滑桿，以及從 EDID 讀出的色域覆蓋率。">
+          <figcaption>調光與校正共用同一條伽馬基準，所以兩條通道不會互相污染。</figcaption>
+        </figure>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
           <p class="f-eyebrow">04 · 安全清理</p>
-          <h2 class="f-title">先隔離，再談刪除</h2>
-          <p class="f-body">只處理 13 類有確定性重建方式的產物：Xcode DerivedData、SwiftPM、CocoaPods、npm / pnpm / Yarn、Go、Gradle、Rust target、<code>__pycache__</code>、當機報告、Homebrew 快取這類。刪除前先移進隔離區，預設保留 30 天，隨時還原。</p>
-          <p class="f-note sunk neu neu-sink">永久刪除預設不存在：全應用程式只有一個函式能做這件事，必須同時滿足 6 個條件，一條不過就中止。不申請全磁碟存取，受系統保護的目錄依 macOS 規則跳過；自動化規則<strong>只能預先掃描，不能刪除</strong>。</p>
+          <h2 class="f-title">先隔離，再刪除。</h2>
+          <p class="f-body">只處理 13 類有確定性重建方式的產物：Xcode DerivedData、SwiftPM、CocoaPods、npm / pnpm / Yarn、Go、Gradle、Rust target、<code>__pycache__</code>、當機報告、Homebrew 快取這類。刪掉的東西先移進隔離區，隨時可還原；永久刪除要等 30 天後才會提供。</p>
+          <p class="f-note sunk neu neu-sink">永久刪除預設關閉。全應用程式只有一個函式能做這件事，而且必須同時滿足 6 個條件——有一條不成立就中止。應用程式不申請完整磁碟存取；受系統保護的目錄依 macOS 規則跳過。自動化規則可以<strong>預先掃描，永遠不能刪除</strong>。</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/storage.zh-Hans.v533.webp" width="1090" height="2416" loading="lazy" alt="儲存空間面板：磁碟總覽、系統資料拆解、個人檔案夾、大型檔案定位與可清理項目，底部寫著掃描唯讀、清理只進隔離區。">
+          <img src="../img/storage.zh-Hans.v533.webp" width="1090" height="2416" loading="lazy" alt="「儲存空間」面板：磁碟總覽、系統資料拆解、個人檔案夾、大型檔案定位與可清理項目，底部註明掃描是唯讀的、清理只把檔案移進隔離區。">
+          <figcaption>掃描是唯讀的。你不動它，它不會移動任何檔案。</figcaption>
         </figure>
       </article>
     </div>
   </section>
-  <section class="trio" id="all-features">
-    <h2 class="sec-head">全部功能</h2>
-    <p class="statement">每一頁都做完整。</p>
-    <div class="trio-grid"><article class="tcard card neu"><h3>显示</h3><p>显示器 · 主控亮度 · 色彩校准 · 场景预设 · 画面与时序</p></article><article class="tcard card neu"><h3>滚动</h3><p>常驻 · 滚动平滑 · 开关 · 手感 · 方向 · 应用排除</p></article><article class="tcard card neu"><h3>护眼</h3><p>护眼 · 时段排程 · 番茄钟 · 说明</p></article><article class="tcard card neu"><h3>工具</h3><p>屏幕自检 · 对照卡 · 快捷开关</p></article><article class="tcard card neu"><h3>音频</h3><p>输出设备 · 音量与静音 · 跟随显示器电源 · 显示器硬件音量</p></article><article class="tcard card neu"><h3>鼠标</h3><p>鼠标 · 指针 · 按键映射 · 滚轮 · 按显示器自动适配</p></article><article class="tcard card neu"><h3>窗口</h3><p>窗口 · 布局动作 · 窗口快捷键 · 布局存档</p></article><article class="tcard card neu"><h3>会话</h3><p>会话 · 保存当前状态 · 会话存档 · 恢复前确认 · 恢复结果</p></article><article class="tcard card neu"><h3>存储</h3><p>磁盘总览 · 系统数据拆解 · 个人文件夹 · 大文件定位</p></article><article class="tcard card neu"><h3>时间线</h3><p>时间线 · 筛选 · 事件</p></article><article class="tcard card neu"><h3>健康</h3><p>总体健康度 · 权限审计 · 配置漂移 · 跨域冲突</p></article><article class="tcard card neu"><h3>诊断</h3><p>能力快照 · 滚动运行统计 · 环境概览</p></article><article class="tcard card neu"><h3>自动化</h3><p>自动化 · 规则</p></article><article class="tcard card neu"><h3>通用</h3><p>快捷键 · 设置备份与迁移 · 关于</p></article></div>
-  </section>
-  
 
-  <section class="trio">
-    <div class="wrap"><div class="trio-grid">
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>工作階段回復</h3><p>把顯示器、視窗、音訊、捲動、滑鼠與護眼設定存成一份具名快照，逐域還原，互不牽連。回復前先列出將要改變的內容，確認後才執行；某個網域不可用就跳過該網域，不會整體失敗。</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>輸入來源與硬體通道</h3><p>顯示器支援 DDC/CI 時，切換 HDMI / DisplayPort 不用去摸 OSD 按鈕，硬體亮度、對比與音量也在同一欄。不支援就如實標示「DDC 無回應」，然後繼續用軟體通道工作 —— 不假裝成功。</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>輔助使用</h3><p>每一個推桿與開關都有輔助使用標籤，能進入輔助使用樹；介面文字的對比按 4.5:1 基準重做過（修正前最差 2.65:1）。全域快速鍵 ⌃⌥↑ / ⌃⌥↓，加 ⇧ 是 ±1% 微調。</p></article>
-    </div></div>
+  <section class="catalog" id="console">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>控制台裡有什麼</h2>
+        <p>每一頁都做完整，下面每張卡片都是真實的面板區塊，不是掛著「即將推出」的佔位。</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="catalog-group">
+          <h3>顯示與色彩</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>顯示</dt><dd>顯示器與鏈路識別、主控亮度、色彩校正、DDC 硬體、輸入來源、場景預設、畫面與時序。</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>輸入與動態</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>捲動</dt><dd>逐幀平滑，帶手感、方向、應用程式排除與即時計數。</dd></div>
+            <div class="catalog-item"><dt>滑鼠</dt><dd>指標加速度、按鍵對應、滾輪行為，以及每台顯示器各自記住的指標速度。</dd></div>
+            <div class="catalog-item"><dt>視窗</dt><dd>版面配置動作、視窗快速鍵，以及可以重新套用的版面配置存檔——自動化也能套用。</dd></div>
+            <div class="catalog-item"><dt>音訊</dt><dd>輸出裝置、音量與靜音、顯示器硬體音量，以及顯示器休眠時自動靜音。</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>護眼與記錄</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>護眼</dt><dd>時段排程、番茄鐘與說明欄；色溫隨時間變化。</dd></div>
+            <div class="catalog-item"><dt>工具</dt><dd>全螢幕螢幕自我檢測、對照卡與快捷開關。</dd></div>
+            <div class="catalog-item"><dt>工作階段</dt><dd>把顯示器、視窗、音訊、捲動、滑鼠與護眼存成快照，確認後逐域還原。</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>系統與洞察</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>儲存空間</dt><dd>磁碟總覽、系統資料拆解、個人檔案夾、大型檔案定位與可清理項目。</dd></div>
+            <div class="catalog-item"><dt>時間軸</dt><dd>應用程式注意到的每次變化與衝突，可依類型與時間篩選。</dd></div>
+            <div class="catalog-item"><dt>健康</dt><dd>整體健康度、權限稽核、設定漂移與跨領域衝突。</dd></div>
+            <div class="catalog-item"><dt>診斷</dt><dd>能力快照、捲動執行統計、環境概觀，以及一份可匯出的去識別化報告。</dd></div>
+            <div class="catalog-item"><dt>自動化</dt><dd>在時間窗、顯示器連接或前景應用程式變化時觸發的規則；動作只改設定，永不刪除。</dd></div>
+            <div class="catalog-item"><dt>一般</dt><dd>快速鍵、設定備份與移轉、更新、關於，以及授權面板。</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="catalog-foot">完整的表級清單在<a href="features.html">全部功能</a>。</p>
+    </div>
   </section>
+
+  <section class="controls" id="controls">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>選單列就是一塊總控板</h2>
+        <p>點開選單列圖示，常用的東西已經在手邊——不用開視窗，也不用翻標籤頁。狀態開關顯示真實狀態；一次性動作也會說明。</p>
+      </div>
+      <div class="controls-grid">
+        <div class="switchboard">
+          <div class="sb-head"><span class="sb-brand">DisplayPilot</span><span class="sb-hint">選單列</span></div>
+          <div class="sb-sliders">
+            <p class="sb-slider"><span class="k">亮度</span><span class="cs-track"><span class="cs-fill" style="width:72%"></span><span class="cs-knob" style="left:72%"></span></span></p>
+            <p class="sb-slider"><span class="k">音量</span><span class="cs-track"><span class="cs-fill" style="width:44%"></span><span class="cs-knob" style="left:44%"></span></span></p>
+          </div>
+          <div class="sb-grid">
+            <p class="sb-item"><span class="sb-name">截圖</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">螢幕錄製</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">鎖定螢幕</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">休眠</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">清空剪貼板</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">清空垃圾桶</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">螢幕保護程式</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">隱藏視窗</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">播放 / 暫停</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">退出磁碟</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item"><span class="sb-name">螢幕清潔</span><span class="sb-kind">動作</span></p>
+            <p class="sb-item on"><span class="sb-name">顯示隱藏檔案</span><span class="sb-state">開</span></p>
+            <p class="sb-item"><span class="sb-name">隱藏 Dock</span><span class="sb-state">關</span></p>
+            <p class="sb-item on"><span class="sb-name">保持亮屏</span><span class="sb-state">開</span></p>
+          </div>
+        </div>
+        <div class="control-copy">
+          <div class="control-item">
+            <h3>音訊跟著顯示器走</h3>
+            <p>切換輸出、靜音，或在支援 DDC/CI 的顯示器上直接調硬體音量。顯示器休眠時，應用程式可以把系統輸出靜音，並在喚醒後恢復之前的狀態。</p>
+          </div>
+          <div class="control-item">
+            <h3>指標知道自己在哪塊螢幕上</h3>
+            <p>4K 螢幕與 1080p 螢幕需要不同的指標速度。應用程式為每台顯示器記一份，跨螢幕時自動切換。加速度、滾輪行為與按鍵對應是全域設定，只設一次。</p>
+          </div>
+          <div class="control-item">
+            <h3>視窗落在你放的位置</h3>
+            <p>版面配置動作、視窗快速鍵與版面配置存檔。外接顯示器接入或斷開時，自動化可以套用一份已儲存的版面配置，所以筆電加顯示器的桌面與擴充底座桌面各自保留自己的幾何配置。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insight" id="insight">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>每一步都有記錄</h2>
+        <p>多數顯示工具改完就忘。這個會記下改了什麼、查了什麼漂移，並在動手前告訴你。</p>
+      </div>
+      <div class="insight-grid">
+        <article class="insight-card wide">
+          <h3>工作階段</h3>
+          <p>把顯示器、視窗、音訊、捲動、滑鼠與護眼存成一份具名快照。還原前先列出到底會改哪些東西，等你確認。某個網域不可用就跳過它，而不是整個還原失敗。</p>
+          <p class="insight-meta">逐域還原，從來不是一次盲賭。</p>
+        </article>
+        <article class="insight-card">
+          <h3>時間軸</h3>
+          <p>每一次變化、衝突與還原路徑，都能依類型與時間篩選。換完線材後哪裡不對，記錄早就在了。</p>
+        </article>
+        <article class="insight-card">
+          <h3>健康</h3>
+          <p>權限稽核、設定漂移與跨領域衝突，在一處分級——權限項目直接連到系統設定，漂移提供一鍵還原，衝突會說明是哪個工具在寫什麼。</p>
+        </article>
+        <article class="insight-card">
+          <h3>自動化與診斷</h3>
+          <p>規則在時間窗、顯示器連接或斷開、或某個應用程式切到前景時觸發；它們只改設定，永遠不會刪除任何東西。診斷會拍一份能力快照，並匯出一份去掉序號、授權碼、路徑與使用者名稱的報告。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>做出來就是給人查的</h2>
+        <p>這個應用程式只靠可驗證的說法賣。下面是它實際怎麼處理你的資料——以及你怎麼自己核對。</p>
+      </div>
+      <div class="trust-grid">
+        <ul class="proof-list">
+          <li><strong>離線驗證。</strong>長 <code>DP-</code> 碼用應用程式內建的公鑰做 Ed25519 簽章驗證。啟用時唯一的請求是下一條描述的一次性裝置登記；之後每次啟動都在本機驗簽，更新檢查預設關閉，除非你主動開啟。</li>
+          <li><strong>只登記一次，然後安靜。</strong>僅在首次啟用時，應用程式會把一個不可逆的 SHA-256 摘要傳給我們自己的授權服務——摘要在本機由主機板識別碼與機型識別碼算出，長 <code>DP-</code> 碼正是靠它限制在 5 台 Mac 上。不會傳送序號、明文機型字串、MAC 位址、顯示器 EDID、帳號或使用資料。</li>
+          <li><strong>沒有遙測。</strong>沒有分析、沒有 Cookie、沒有第三方字型、沒有背景服務。這個頁面不發任何對外請求。</li>
+          <li><strong>自我檢測隨應用程式一起發布。</strong>自我檢測是二進位的一部分，稽核頁列出每一項斷言什麼。這裡哪條說法有一天不成立了，就會有一項自我檢測變紅。</li>
+        </ul>
+        <div class="audit-plate">
+          <p class="audit-title">自己跑一遍</p>
+          <p class="audit-row"><code>--license-selftest</code><span>授權狀態機與它的降級邊界</span></p>
+          <p class="audit-row"><code>--scroll-selftest</code><span>插值、幀時序與總量守恆</span></p>
+          <p class="audit-row"><code>--cli-selftest</code><span>參數模糊測試、去識別化、開源聲明</span></p>
+          <p class="audit-row"><code>--switch-probe</code><span>每一項開關的唯讀可用性與狀態</span></p>
+          <p class="audit-links"><a href="verify.html">自己驗證授權</a> · <a href="audit.html">自我檢測涵蓋了什麼</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="price" id="price">
     <div class="wrap" id="buy">
-      <div class="sec-head"><h2>一次買斷</h2><p>沒有訂閱，沒有帳號，也沒有按裝置數的算法。</p></div>
+      <div class="sec-head center"><h2>一次買斷</h2><p>沒有訂閱，沒有帳號，也沒有按裝置數的算法。</p></div>
       <div class="price-plate plate neu">
         <p class="price-readout sunk neu neu-sink"><span class="num tid" data-price="num">≈US$14</span></p>
         <p class="price-label">一次買斷 · 含自購買日起一年的更新</p>
@@ -173,22 +343,29 @@
       </div>
     </div>
   </section>
+
   <section class="spec" id="spec">
-    <div class="wrap"><h2>系統需求</h2><p class="spec-line">macOS 14 Sonoma 或以上 · Apple 晶片與 Intel 通用二進位 · 無第三方相依，不裝背景服務 · 只有捲動平滑與滑鼠映射需要輔助使用權限 · 不連網也能用</p></div>
+    <div class="wrap"><h2>系統需求</h2><p class="spec-line">macOS 14 Sonoma 或以上 · Apple 晶片與 Intel 通用二進位 · 不依賴套件管理器；唯一內嵌的第三方元件是 Sparkle（MIT），用於預設關閉的更新檢查 · 捲動平滑、滑鼠映射、視窗管理與視窗還原會用到輔助使用權限，其它功能不需要 · 啟用後離線可用</p></div>
   </section>
 
 </main>
-<footer>
+<footer class="foot-v2">
   <div class="wrap">
-    <p class="foot-links">
-      <a href="privacy.html">隱私政策</a>
-      <a href="eula.html">授權條款</a>
-      <a href="support.html">支援</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">問題與建議 · GitHub Issues</a>
-          <a href="verify.html">自己驗證</a>
-      <a href="alternatives.html">對比各工具</a>
-</p>
-    <p class="foot-note">本頁沒有追蹤腳本、沒有 Cookie、沒有第三方字型，也沒有一個會送出的請求。</p>
+    <div class="foot-grid">
+      <div class="foot-col">
+        <p class="foot-title">產品</p>
+        <p class="foot-links"><a href="#features">功能</a><a href="#console">控制台</a><a href="#controls">控制</a><a href="#price">價格</a><a href="#trust">驗證</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">資源</p>
+        <p class="foot-links"><a href="guides.html">指南</a><a href="features.html">全部功能</a><a href="verify.html">自己驗證</a><a href="alternatives.html">對比各工具</a><a href="audit.html">透明度</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">支援</p>
+        <p class="foot-links"><a href="support.html">支援</a><a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a><a href="privacy.html">隱私政策</a><a href="eula.html">授權條款</a></p>
+      </div>
+    </div>
+    <p class="foot-note">本頁沒有追蹤器、沒有 Cookie、沒有第三方字型，也不發任何對外請求。</p>
     <p class="foot-copy">© 2026 DisplayPilot</p>
   </div>
 </footer>

@@ -1,51 +1,122 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Toutes les fonctions · DisplayPilot</title>
-<meta name="description" content="Chaque élément correspond à un contrôle réel. chaque onglet, chaque carte, chaque commutateur, chaque option CLI.">
+<meta name="description" content="Chaque onglet, carte, commutateur de la barre des menus et option de ligne de commande de DisplayPilot correspond à un contrôle réel de l’appli.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/fr/features.html">
-<style>
-:root{--bg:#f2f0ec;--ink:#26221e;--mut:#6b645c;--line:#dcd7cf;--acc:#f37021}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,'SF Pro SC','PingFang SC',sans-serif}
-.bar{display:flex;align-items:center;gap:18px;padding:14px 28px;border-bottom:1px solid var(--line);background:#faf9f7}
-.bar b{font-size:16px;letter-spacing:.2px}
-.bar a{color:var(--mut);text-decoration:none;font-size:13.5px}
-.bar a:hover{color:var(--ink)}
-.main{max-width:960px;margin:0 auto;padding:48px 28px 96px}
-h1{font-size:38px;line-height:1.25;margin:0 0 10px;letter-spacing:-.5px}
-.lede{color:var(--mut);margin:0 0 44px;font-size:15.5px}
-h2{font-size:22px;margin:52px 0 14px;letter-spacing:-.2px}
-table{width:100%;border-collapse:collapse;background:#faf9f7;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
-th{background:#f4f2ee;font-weight:600;font-size:13px;color:var(--mut)}
-tr:last-child td{border-bottom:0}
-td:first-child{white-space:nowrap;font-weight:600}
-ul{padding-left:22px}li{margin:6px 0;font-size:14.5px}
-.foot{padding:28px;border-top:1px solid var(--line);color:var(--mut);font-size:13px;text-align:center}
-</style></head><body>
-<div class="bar"><b>DisplayPilot</b><a href="../index.html">Accueil</a><a href="features.html">Toutes les fonctions</a><a href="../privacy.html">Confidentialité</a><a href="../support.html">Assistance</a></div>
-<div class="main"><h1>Toutes les fonctions</h1><p class="lede">Chaque élément correspond à un contrôle réel. chaque onglet, chaque carte, chaque commutateur, chaque option CLI.</p>
-<h2>14 onglets</h2><table><tr><th>标签页</th><th>包含的卡片</th></tr><tr><td>显示</td><td>显示器 · 主控亮度 · 色彩校准 · 场景预设 · 画面与时序</td></tr><tr><td>滚动</td><td>常驻 · 滚动平滑 · 开关 · 手感 · 方向 · 应用排除</td></tr><tr><td>护眼</td><td>护眼 · 时段排程 · 番茄钟 · 说明</td></tr><tr><td>工具</td><td>屏幕自检 · 对照卡 · 快捷开关</td></tr><tr><td>音频</td><td>输出设备 · 音量与静音 · 跟随显示器电源 · 显示器硬件音量</td></tr><tr><td>鼠标</td><td>鼠标 · 指针 · 按键映射 · 滚轮 · 按显示器自动适配</td></tr><tr><td>窗口</td><td>窗口 · 布局动作 · 窗口快捷键 · 布局存档</td></tr><tr><td>会话</td><td>会话 · 保存当前状态 · 会话存档 · 恢复前确认 · 恢复结果</td></tr><tr><td>存储</td><td>磁盘总览 · 系统数据拆解 · 个人文件夹 · 大文件定位</td></tr><tr><td>时间线</td><td>时间线 · 筛选 · 事件</td></tr><tr><td>健康</td><td>总体健康度 · 权限审计 · 配置漂移 · 跨域冲突</td></tr><tr><td>诊断</td><td>能力快照 · 滚动运行统计 · 环境概览</td></tr><tr><td>自动化</td><td>自动化 · 规则</td></tr><tr><td>通用</td><td>快捷键 · 设置备份与迁移 · 关于</td></tr></table>
-<h2 class="sec-head">Barre de menus</h2><table><tr><th>类型</th><th>项目</th></tr>
-<tr><td>真开关</td><td>显示隐藏文件 · 隐藏 Dock · 保持亮屏</td></tr>
-<tr><td>动作</td><td>截图 · 录屏 · 锁屏 · 睡眠 · 清空剪贴板 · 清空废纸篓 · 屏幕保护 · 隐藏窗口 · 播放/暂停 · 推出磁盘 · 屏幕清洁</td></tr>
-<tr><td>不支持</td><td>麦克风静音（默认输入设备没有 mute 属性）</td></tr>
-<tr><td>同时提供</td><td>亮度滑块 · 5 个场景预设 · 回到中性 · 按住看原样 · 音量滑块</td></tr></table>
-<h2>Ligne de commande : 21 options</h2><table><tr><th>参数</th><th>作用</th></tr>
-<tr><td>--list / --list-modes</td><td>列出显示器与全部模式（含被系统隐藏的 HiDPI）</td></tr>
-<tr><td>--set-brightness / --offset-brightness</td><td>设置软件调光亮度 / 在当前值上增减</td></tr>
-<tr><td>--set-temperature / --preset</td><td>设置色温（2700–9000K）/ 应用场景预设</td></tr>
-<tr><td>--set-resolution</td><td>切换分辨率，优先 HiDPI</td></tr>
-<tr><td>--dump-gamma / --reset</td><td>读伽马表中点值（只读）/ 交回系统 ColorSync 校准</td></tr>
-<tr><td>--login-item / --request-accessibility</td><td>登录时启动 / 请求辅助功能权限</td></tr>
-<tr><td>--scroll-report / --scroll-selftest</td><td>滚动诊断 / 验证插值算法</td></tr>
-<tr><td>--license-selftest / --cli-selftest</td><td>授权状态机 / 参数模糊测试与脱敏断言</td></tr>
-<tr><td>--switch-probe / --switch-selftest</td><td>开关可用性（只读）/ 读切读回实测</td></tr></table>
-<h2>Ce que nous ne faisons pas</h2><ul>
-<li>深色模式、勿扰、夜览、原彩显示、隐藏桌面：需要系统私有接口，公开 API 做不到。</li>
-<li>Xcode 缓存清理与屏幕分辨率不做成一键：会真删数据或导致黑屏。</li>
-<li>锁键盘：会让键盘失去响应，不做一键。</li>
-<li>无遥测、无埋点、无账号系统。</li></ul>
-<h2>Limite de confidentialité</h2>
-<p>验签完全离线；<b>仅首次激活</b>联网一次做设备登记，之后每次启动不再联网。上报的只有 sha256(IOPlatformUUID + 机型号)，没有序列号、型号字符串、用户名。</p>
-</div><div class="foot">DisplayPilot 5.7.1 · macOS 14 或更高 · ¥99 一次买断</div></body></html>
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu principal</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Navigation principale"><a href="index.html#features">Fonctions</a>
+      <a href="index.html#console">La console</a>
+      <a href="index.html#controls">Contrôles</a>
+      <a href="index.html#price">Tarif</a>
+      <a href="../guides.html">Guides</a>
+      <a href="support.html">Assistance</a>
+    </nav>
+    <details class="lang"><summary>Français</summary><ul class="lang-menu" aria-label="Langue"><li><a href="../features.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/features.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/features.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/features.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/features.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/features.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="features.html" hreflang="fr" lang="fr" aria-current="true">Français</a></li><li><a href="../es/features.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Télécharger</a>
+  </div>
+</header>
+<main id="main">
+  <article class="doc features-doc">
+    <h1>Toutes les fonctions</h1>
+    <p class="summary">Chaque élément ci-dessous correspond à un vrai contrôle de l’appli — chaque onglet, chaque carte, chaque commutateur de la barre des menus et chaque option de ligne de commande. Rien ici n’est la maquette d’une fonction qui n’existe pas.</p>
+
+    <h2>Onglets</h2>
+    <p>La fenêtre principale est une console de quatorze onglets. Chaque onglet contient les cartes listées à côté.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Onglet</th><th>Cartes</th></tr></thead>
+        <tbody>
+          <tr><td>Affichage</td><td>Affichage · Luminosité principale · Calibration des couleurs · Préréglages de scène · Image et synchronisation</td></tr>
+          <tr><td>Défilement</td><td>Permanent · Lissage du défilement · Interrupteur · Sensation · Direction · Exclusions d’applications</td></tr>
+          <tr><td>Protection oculaire</td><td>Protection oculaire · Planification · Pomodoro · Remarques</td></tr>
+          <tr><td>Outils</td><td>Autotest de l’écran · Carte de comparaison · Commutateurs rapides</td></tr>
+          <tr><td>Audio</td><td>Périphérique de sortie · Volume et coupure du son · Suivre l’alimentation de l’écran · Volume matériel de l’écran</td></tr>
+          <tr><td>Souris</td><td>Souris · Pointeur · Mappage des touches · Molette · S’adapter automatiquement par écran</td></tr>
+          <tr><td>Fenêtres</td><td>Fenêtres · Actions de disposition · Raccourcis de fenêtre · Dispositions enregistrées</td></tr>
+          <tr><td>Sessions</td><td>Sessions · Enregistrer l’état actuel · Archives de sessions · Confirmer avant restauration · Résultat de la restauration</td></tr>
+          <tr><td>Stockage</td><td>Vue d’ensemble du disque · Décomposition des données système · Dossier personnel · Localiser les fichiers volumineux</td></tr>
+          <tr><td>Chronologie</td><td>Chronologie · Filtrer · Événements</td></tr>
+          <tr><td>État</td><td>État général · Audit des autorisations · Dérive de configuration · Conflit entre domaines</td></tr>
+          <tr><td>Diagnostic</td><td>Aperçu des capacités · Statistiques d’exécution du défilement · Aperçu de l’environnement</td></tr>
+          <tr><td>Automatisation</td><td>Automatisation · Règle</td></tr>
+          <tr><td>Général</td><td>Raccourcis · Sauvegarde et migration des réglages · À propos</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Barre des menus</h2>
+    <p>Un clic sur l’icône de la barre des menus ouvre le tableau de contrôle sans ouvrir la fenêtre principale.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Type</th><th>Éléments</th></tr></thead>
+        <tbody>
+          <tr><td>Interrupteurs d’état</td><td>Afficher les fichiers cachés · Masquer le Dock · Garder l’écran allumé</td></tr>
+          <tr><td>Actions ponctuelles</td><td>Capture d’écran · Enregistrement d’écran · Verrouiller l’écran · Veille · Vider le presse-papiers · Vider la corbeille · Économiseur d’écran · Masquer les fenêtres · Lecture / Pause · Éjecter les disques · Nettoyage écran</td></tr>
+          <tr><td>Non affiché</td><td>Les éléments que ce Mac ne peut pas prendre en charge sont absents du panneau de la barre des menus. Le panneau « Commutateurs rapides » dans Outils liste ce qui est indisponible et pourquoi.</td></tr>
+          <tr><td>Aussi dans le panneau</td><td>Curseur de luminosité · Préréglages de scène · Retour au neutre · Maintenir pour comparer · Curseur de volume</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Ligne de commande</h2>
+    <p>Le binaire embarque les mêmes contrôles que le panneau, plus les autotests. Utile pour les scripts et pour vérifier les affirmations de l’appli.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Option</th><th>Ce qu’elle fait</th></tr></thead>
+        <tbody>
+          <tr><td><code>--list</code> / <code>--list-modes</code></td><td>Lister les écrans connectés et tous les modes, y compris les modes HiDPI que macOS cache.</td></tr>
+          <tr><td><code>--set-brightness</code> / <code>--offset-brightness</code> / <code>--set-temperature</code></td><td>Appliquer une gradation logicielle, l’ajuster relativement ou régler la température de couleur (2700–9000 K).</td></tr>
+          <tr><td><code>--preset</code> / <code>--set-resolution</code> / <code>--reset</code></td><td>Appliquer un préréglage de scène, changer de résolution (HiDPI d’abord) ou rendre la calibration à ColorSync.</td></tr>
+          <tr><td><code>--dump-gamma</code></td><td>Afficher le point médian de la table gamma courante. Lecture seule.</td></tr>
+          <tr><td><code>--login-item</code> / <code>--request-accessibility</code></td><td>Lire ou définir le lancement à l’ouverture de session ; demander l’autorisation d’accessibilité.</td></tr>
+          <tr><td><code>--scroll-report</code> / <code>--scroll-selftest</code></td><td>Diagnostics de défilement en direct ; vérifier l’algorithme d’interpolation et la conservation totale.</td></tr>
+          <tr><td><code>--license-selftest</code> / <code>--cli-selftest</code></td><td>Machine d’état des licences et bords de dégradation ; fuzzing des arguments, caviardage et mentions open source.</td></tr>
+          <tr><td><code>--switch-probe</code> / <code>--switch-selftest</code></td><td>Disponibilité et état des interrupteurs en lecture seule ; un autotest lecture-bascule-lecture.</td></tr>
+          <tr><td><code>--probe</code> / <code>--full</code> / <code>--language</code> / <code>--help</code></td><td>Diagnostics, sortie complète, langue de l’interface, aide.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Ce que l’appli ne fait délibérément pas</h2>
+    <ul>
+      <li>Mode sombre, Ne pas déranger, Night Shift, True Tone et masquage du bureau : ils nécessitent des interfaces système privées, et les API publiques ne peuvent pas le faire proprement.</li>
+      <li>Supprimer les caches Xcode en un clic, ou changer de résolution depuis la barre des menus : l’un peut réellement supprimer des données, l’autre peut rendre l’écran noir.</li>
+      <li>Verrouillage du clavier : il peut laisser le clavier sans réponse, ce n’est donc pas une action en un clic.</li>
+      <li>Aucune télémétrie, aucune analyse, aucun système de compte.</li>
+    </ul>
+
+    <h2>Frontière de confidentialité</h2>
+    <p>La vérification est entièrement hors ligne : un long code <code>DP-</code> est vérifié avec Ed25519 contre une clé publique intégrée à l’appli. Le seul usage réseau de l’appli est l’activation — la récupération d’un code court et l’enregistrement unique de l’appareil auprès de notre propre service de licences, afin qu’un long code <code>DP-</code> puisse être limité à 5 Macs. Cet enregistrement transmet un condensat SHA-256 irréversible, calculé localement à partir de l’identifiant de carte et de l’identifiant de modèle ; aucun numéro de série, nom de modèle en clair, adresse MAC, EDID d’écran, nom d’utilisateur ni compte n’est envoyé. Ensuite, chaque lancement est vérifié localement, et la recherche de mises à jour reste désactivée sauf si vous l’activez. Les rapports de diagnostic exportés sont caviardés (numéros de série, codes de licence, chemins absolus, noms d’utilisateur) avant de quitter l’appli.</p>
+    <p class="callout">Les affirmations de cette page sont faites pour être vérifiables. Les commandes d’autotest ci-dessus font partie du binaire, et <a href="../audit.html">la page de transparence</a> liste ce que chacune vérifie.</p>
+
+    <p class="back"><a href="index.html">← Retour à la vue d’ensemble</a></p>
+  </article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Confidentialité</a>
+      <a href="eula.html">Licence</a>
+      <a href="support.html">Assistance</a>
+      <a href="../verify.html">Vérifier vous-même</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-note">Cette page n’a ni traceur, ni cookie, ni police tierce, et n’émet aucune requête sortante.</p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

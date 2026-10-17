@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DisplayPilot — Mac 디스플레이에 없던 콘솔</title>
-<meta name="description" content="네이티브 macOS 디스플레이 콘솔. 프레임 단위로 전달되는 스크롤 스무딩, CoreGraphics 감마 테이블 소프트웨어 디밍, 처음 제어를 넘겨받을 때 읽은 곡선을 기준으로 한 색상 캘리브레이션, 그리고 격리 후 삭제하는 안전한 정리. 14일 무료 체험.암호화폐 결제를 지원하며 온체인 확인 후 자동으로 코드를 발급합니다.">
+<meta name="description" content="Mac 디스플레이를 위한 네이티브 콘솔. 휠 한 칸을 프레임 단위 스크롤로 바꾸고, CoreGraphics 감마 테이블로 디밍하며, 처음 넘겨받을 때 읽은 곡선을 기준으로 색을 맞추고, 격리한 뒤에 삭제합니다.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/ko/">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DisplayPilot">
 <meta property="og:title" content="DisplayPilot — Mac 디스플레이에 없던 콘솔">
-<meta property="og:description" content="네이티브 macOS 디스플레이 콘솔. 프레임 단위로 전달되는 스크롤 스무딩, CoreGraphics 감마 테이블 소프트웨어 디밍, 처음 제어를 넘겨받을 때 읽은 곡선을 기준으로 한 색상 캘리브레이션, 그리고 격리 후 삭제하는 안전한 정리. 14일 무료 체험.">
+<meta property="og:description" content="Mac 디스플레이를 위한 네이티브 콘솔. 프레임 단위 스크롤, CoreGraphics 감마 테이블 디밍, 처음 넘겨받을 때 읽은 곡선을 기준으로 한 캘리브레이션, 격리 후 삭제하는 정리. 14일 무료 체험.">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/ko/">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,118 +33,289 @@
 <meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-ko.v532.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DisplayPilot — the missing console for your Mac display">
+<meta property="og:image:alt" content="DisplayPilot — Mac 디스플레이에 없던 콘솔">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-ko.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"스크롤, 밝기, 색상.","inLanguage":"ko","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/ko/index.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DisplayPilot","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"5.7.1","url":"https://huayanming.github.io/displaypilot/ko/","inLanguage":"ko","downloadUrl":"https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg","offers":{"@type":"Offer","price":"14","priceCurrency":"USD","url":"https://displaypilot-license.huayanming2019.workers.dev/buy","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 디스플레이 제어와 감마 테이블 폴백","넘겨받을 때 읽은 곡선을 기준으로 한 색상 조정","프레임 단위 스크롤 스무딩","디스플레이와 시스템 동작을 위한 메뉴 막대 조작판","격리 후 삭제하는 개발자 캐시 정리"],"publisher":{"@type":"Organization","name":"DisplayPilot"},"headline":"스크롤, 밝기, 색상."}</script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
-    <nav class="nav-links" aria-label="주요 탐색"><a href="./features.html">전체 기능</a>
-      <a href="#features">기능</a>
-      <a href="#price">가격</a>
+    <nav class="nav-links" aria-label="주요 탐색"><a href="index.html#features">기능</a>
+      <a href="index.html#console">콘솔</a>
+      <a href="index.html#controls">컨트롤</a>
+      <a href="index.html#price">가격</a>
+      <a href="../guides.html">가이드</a>
       <a href="support.html">지원</a>
-          <a href="../guides.html" hreflang="en" lang="en">가이드 (EN)</a>
-</nav>
-    <details class="lang"><summary>한국어</summary><ul class="lang-menu" aria-label="언어"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/index.html" aria-current="true" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    </nav>
+    <details class="lang"><summary>한국어</summary><ul class="lang-menu" aria-label="언어"><li><a href="../index.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/index.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/index.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="index.html" hreflang="ko" lang="ko" aria-current="true">한국어</a></li><li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li></ul></details>
     <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">다운로드</a>
   </div>
 </header>
 <main id="main">
-  <section class="hero">
-    <div class="wrap">
-      <h1>스크롤, 밝기, 색상.</h1>
-      <p class="sub">모두 원하는 대로.</p>
-      <p class="lede">네이티브 macOS 디스플레이 콘솔. 휠 한 칸이 프레임 단위로 전달되는 연속 스크롤이 됩니다. 밝기는 CoreGraphics 감마 테이블을 거치므로 DDC/CI를 구현하지 않은 모니터에서도 동작합니다. 색상은 처음 제어를 넘겨받을 때 읽은 곡선을 기준으로 계산하고, 클릭 한 번으로 시스템에 돌려줍니다.</p>
-      <p class="hero-cta">
-        <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">macOS용 다운로드</a>
-        <a class="btn btn-ghost" href="#price">14일 무료 체험</a>
-      </p>
-      <p class="hero-spec">macOS 14 이상 · Apple 실리콘 및 Intel 유니버설 바이너리 · 계정 가입 불필요 · 한 번 구매, 구독 없음</p>
-      <figure class="hero-shot neu plate">
-        <img src="../img/display.en.v533.webp" width="1090" height="2416" alt="DisplayPilot의 '디스플레이' 패널. 위쪽에 모니터 모델과 링크 정보, 그 아래에 소프트웨어 디밍 슬라이더, 다시 그 아래에 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 삼각형이 표시되어 있습니다.">
-      </figure>
+
+  <!-- Hero: 앱의 계기 표현을 CSS로 다시 세운 것 -->
+  <section class="hero hero-v2">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span>네이티브 macOS 콘솔</p>
+        <h1>스크롤, 밝기, 색상.</h1>
+        <p class="sub">좋아하는 값에, 딱 맞게.</p>
+        <p class="lede">Mac 디스플레이를 위한 네이티브 콘솔입니다. 휠 한 칸이 프레임 단위로 전달되는 연속 스크롤이 됩니다. 밝기는 CoreGraphics 감마 테이블을 거치므로 DDC/CI를 구현하지 않은 모니터에서도 동작합니다. 색상은 앱이 처음 제어를 넘겨받을 때 읽은 곡선을 기준으로 계산하고, 클릭 한 번으로 시스템에 돌려줍니다.</p>
+        <p class="hero-cta">
+          <a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">macOS용 다운로드</a>
+          <a class="btn btn-ghost" href="#price">14일 무료 체험</a>
+        </p>
+        <ul class="hero-spec">
+          <li>macOS 14 이상</li>
+          <li>Apple 실리콘 &amp; Intel</li>
+          <li>계정 불필요</li>
+          <li>한 번 구매</li>
+        </ul>
+      </div>
+      <div class="hero-console">
+        <div class="console-tray">
+          <div class="console-screen" aria-hidden="true">
+            <div class="cs-bar"><span class="cs-dot"></span><span class="cs-title">디스플레이 1</span><span class="cs-tag">120 Hz · HiDPI</span></div>
+            <div class="cs-block">
+              <span class="cs-label">마스터 밝기</span>
+              <p class="cs-readout"><span class="num">100</span><span class="unit">%</span></p>
+              <div class="cs-track"><span class="cs-fill"></span><span class="cs-knob"></span></div>
+            </div>
+            <div class="cs-gauges">
+              <p class="cs-gauge"><span class="k">색온도</span><span class="v">6500<em>K</em></span></p>
+              <p class="cs-gauge"><span class="k">감마</span><span class="v">2.2</span></p>
+              <p class="cs-gauge"><span class="k">색역</span><span class="v">104<em>% sRGB</em></span></p>
+            </div>
+            <svg class="cs-gamut" viewBox="0 0 220 150" role="presentation" focusable="false">
+              <path class="cs-gamut-srgb" d="M116 121 L60 58 L183 74 Z" />
+              <path class="cs-gamut-p3" d="M128 132 L44 62 L196 80 Z" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="206" y2="132" />
+              <line class="cs-gamut-axis" x1="18" y1="132" x2="18" y2="14" />
+            </svg>
+          </div>
+        </div>
+        <p class="console-caption">디스플레이 패널의 표시 예시입니다.</p>
+      </div>
     </div>
   </section>
-  <section class="statement">
+
+  <section class="statement statement-v2">
     <div class="wrap">
       <p class="big">시스템 설정의 스위치를 자리만 옮긴 것이 아닙니다. 시스템이 하지 않은 일입니다.</p>
-      <p class="small">프레임 단위로 전달되는 스크롤, 패널 펌웨어에 기대지 않는 디밍, 처음 제어를 넘겨받을 때 읽은 곡선을 기준으로 한 캘리브레이션, 그리고 '먼저 격리, 삭제는 그다음'이라는 정리 경로.</p>
+      <p class="small">프레임 단위로 전달되는 스크롤, 패널 펌웨어에 기대지 않는 디밍, 앱이 처음 제어를 넘겨받을 때 읽은 곡선을 기준으로 한 캘리브레이션, 그리고 격리한 뒤에 삭제하는 정리 경로.</p>
     </div>
   </section>
+
   <section class="features" id="features">
     <div class="wrap">
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">01 · 스크롤 스무딩</p>
-          <h2 class="f-title">한 칸을 하나의 흐름으로</h2>
-          <p class="f-body">휠 한 칸은 더 이상 한 번의 점프가 아닙니다. 이벤트를 모았다가 화면 주사율에 맞춰 프레임마다 전달하며, 각 프레임은 <code>pending × (1 − e^(−dt/τ))</code>를 방출합니다. 감쇠가 프레임 수가 아니라 경과 시간으로 결정되므로 60Hz와 144Hz의 손맛이 같습니다. 오프라인 벤치마크에서 120Hz의 첫 프레임은 3포인트에서 9포인트로 좋아졌고, 90% 도달 시간은 158ms에서 133ms로 줄었습니다.</p>
-          <p class="f-note sunk neu neu-sink">터미널, 이미지 뷰어, 슬라이드처럼 휠을 정밀 입력이나 확대로 다루는 창은 기본적으로 시스템에 돌려줍니다. ⌘를 누른 채 스크롤하면 언제든 네이티브 스크롤로 돌아갑니다. 스무딩은 <strong>기본적으로 꺼져</strong> 있으며, 켜지 않으면 휠을 가로채지 않습니다. 화면에는 '감지 / 제스처 / 가로챔 / 전달' 네 가지 실시간 카운터가 있어, 새 마우스에서 문제가 생기면 어느 계층에서 막히는지 바로 보입니다.</p>
+          <h2 class="f-title">한 칸을, 하나의 흐름으로</h2>
+          <p class="f-body">휠 한 칸은 더 이상 한 번의 점프가 아닙니다. 이벤트를 모아 두었다가 화면 주사율마다 전달하며, 각 프레임은 <code>pending × (1 − e^(−dt/τ))</code>를 내보냅니다. 감쇠는 프레임 수가 아니라 경과 시간으로 결정되므로, 응답의 형태는 주사율이 아니라 시간이 정합니다. 총량 보존은 60 / 120 / 144 Hz 모두에서 실측했습니다. 오프라인 벤치마크에서 120 Hz의 첫 프레임은 3포인트에서 9포인트로, 90% 도달 시간은 150 ms에서 133 ms로 줄었습니다.</p>
+          <p class="f-note sunk neu neu-sink">터미널, 이미지 뷰어, 슬라이드처럼 휠을 정밀 입력이나 확대로 다루는 창은 기본적으로 시스템에 돌려줍니다. ⌘를 누르고 있으면 언제든 네이티브 스크롤로 돌아갑니다. 스무딩은 <strong>기본적으로 꺼져</strong> 있으며, 켜지 않으면 휠을 가로채지 않습니다. 화면에는 '감지 / 제스처 / 가로챔 / 전달' 네 개의 실시간 카운터가 있어, 새 마우스에서 문제가 생기면 어느 계층에서 빠지는지 바로 보입니다.</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/scroll.en.v533.webp" width="1090" height="2416" loading="lazy" alt="스크롤 패널: 상단에 스크롤 스무딩 상태와 네 계층 실시간 카운터, 아래에 안전 모드 스위치와 21개 내장 앱별 예외 목록.">
+          <img src="../img/scroll.en.v533.webp" width="1090" height="2416" loading="lazy" alt="스크롤 패널. 위쪽에 스무딩 상태와 네 개의 실시간 카운터, 아래에 안전 모드 스위치와 내장 앱별 예외 목록.">
+          <figcaption>스무딩은 스위치이지, 가로채기가 아닙니다. 각 계층이 무엇을 했는지 보고합니다.</figcaption>
         </figure>
       </article>
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">02 · 소프트웨어 디밍</p>
-          <h2 class="f-title">패널 펌웨어에 기대지 않고 어둡게</h2>
-          <p class="f-body">밝기는 CoreGraphics 감마 테이블을 거치므로 DDC/CI를 구현하지 않은 모니터에서도 동작합니다. 쓸 때마다 되읽어 비교하고, 다르면 물러섰다가 최대 4번까지 재시도합니다. 해상도 변경이나 잠자기 해제 후에도 자동으로 다시 적용되므로 조용히 멈추지 않습니다.</p>
-          <p class="f-note sunk neu neu-sink">다시 적용할 때는 항상 패널의 <strong>원래 기준선</strong>에서 다시 계산하며 현재 곡선을 기준으로 삼지 않습니다. 그래서 반복해서 조절해도 오차가 쌓이지 않습니다 — 실측에서 중간 회색은 0.5020에서 0.3012로. 프로세스가 끝나면 macOS가 자동으로 되돌리고, 앱 실행에 의존하지 않는 복구 경로가 두 가지 있습니다(앱 내부와 <code>Scripts/restore-dimming.sh</code>).</p>
-        </div>
-        <figure class="f-media wide neu plate">
-          <img src="../img/display.en.v533.webp" width="1090" height="2416" loading="lazy" alt="'디스플레이' 패널 아래쪽: 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 커버리지.">
-          <figcaption>디밍과 캘리브레이션은 같은 감마 기준선을 공유하므로 두 경로가 서로를 오염시키지 않습니다.</figcaption>
-        </figure>
-      </article>
-      <article class="feature">
-        <div class="f-copy">
-          <p class="f-eyebrow">03 · 색상 캘리브레이션</p>
-          <h2 class="f-title">처음 제어를 넘겨받을 때 읽은 곡선을 기준으로</h2>
-          <p class="f-body">대비는 중간 회색을 축으로, 감마는 중간 톤을, 색온도는 2700–9000 K를 아우르며 세 채널 모두 처음 제어를 넘겨받을 때 읽은 곡선 위에서 계산됩니다. 6500 K는 항등 변환으로 고정되어 있어 기본 상태는 디스플레이 본연의 모습 그대로입니다.</p>
-          <p class="f-note sunk neu neu-sink">물리 색역은 EDID에서 그대로 읽어 CIE xy 삼각형으로 그리고, sRGB와 Display P3 커버리지와 나란히 보여줍니다. 맞출 수 있는 부분은 맞추고, 패널이 물리적으로 도달할 수 없는 부분(고채도 빨강과 초록)은 <strong>도달할 수 없다고 그대로 표시</strong>하며 보이는 척하지 않습니다. 클릭 한 번으로 ColorSync에 돌려줍니다.</p>
+          <h2 class="f-title">패널 펌웨어를 건드리지 않고 어둡게</h2>
+          <p class="f-body">밝기는 CoreGraphics 감마 테이블을 거치므로 DDC/CI를 구현하지 않은 모니터에서도 동작합니다. 해상도가 바뀌거나 잠자기에서 깨어나면 앱이 곡선을 다시 쓰고, 내부 표본 1개를 의도한 값과 대조합니다. 어긋나면 재시도하며, 시도는 총 4회까지입니다. 이후의 재적용도 자동이므로 조용히 멈추는 일은 없습니다.</p>
+          <p class="f-note sunk neu neu-sink">다시 적용할 때는 항상 처음 넘겨받을 때 잡은 기준선에서 계산하며 현재 곡선을 기준으로 삼지 않습니다. 그래서 반복해서 조절해도 오차가 쌓이지 않습니다. 밝기 60%에서 중간 회색은 0.5020에서 0.3012로 움직입니다 — 누적된 차이가 아니라 정확한 스케일링입니다. 프로세스가 끝나면 macOS가 디스플레이를 되돌리고, 앱이 실행 중이지 않아도 되는 복구 경로가 두 가지 있습니다. 앱 안의 경로와 <code>Scripts/restore-dimming.sh</code>입니다.</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="색상 캘리브레이션 실측값">
           <p class="gauge sunk neu neu-sink"><span class="k">색온도</span><span class="v tid">6500</span><span class="u">K · 항등 변환으로 고정</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">감마</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">색역</span><span class="v tid">104%</span><span class="u">sRGB · Display P3의 77%만</span></p>
+          <p class="instrument-note">자체 테스트 패널에서 실측하고 감마 테이블에서 되읽은 값입니다.</p>
         </div>
+      </article>
+      <article class="feature">
+        <div class="f-copy">
+          <p class="f-eyebrow">03 · 색상 캘리브레이션</p>
+          <h2 class="f-title">앱이 처음 제어를 넘겨받을 때 읽은 곡선을 기준으로</h2>
+          <p class="f-body">대비는 중간 회색을 축으로, 감마는 중간 톤을, 색온도는 2700–9000 K를 아우릅니다. 세 채널 모두 앱이 처음 제어를 넘겨받을 때 읽은 곡선 위에서 계산합니다. 6500 K는 항등 변환으로 고정되므로 기본 상태는 디스플레이가 원래 보여주던 모습 그대로입니다.</p>
+          <p class="f-note sunk neu neu-sink">물리 색역은 EDID에서 그대로 읽어 CIE xy 삼각형으로 그리고, sRGB와 Display P3 커버리지 옆에 놓습니다. 맞출 수 있는 부분은 맞추고, 패널이 물리적으로 닿을 수 없는 부분(고채도 빨강과 초록)은 꾸며내지 않고 <strong>닿을 수 없다고 표시</strong>합니다. 클릭 한 번으로 ColorSync에 돌려줍니다.</p>
+        </div>
+        <figure class="f-media wide neu plate">
+          <img src="../img/display.en.v533.webp" width="1090" height="2416" loading="lazy" alt="'디스플레이' 패널 아래쪽. 색상 캘리브레이션의 대비·감마·색온도 슬라이더와 EDID에서 읽은 색역 커버리지.">
+          <figcaption>디밍과 캘리브레이션은 같은 감마 기준선을 공유하므로 두 경로가 서로를 오염시키지 않습니다.</figcaption>
+        </figure>
       </article>
       <article class="feature">
         <div class="f-copy">
           <p class="f-eyebrow">04 · 안전한 정리</p>
           <h2 class="f-title">먼저 격리, 삭제는 그다음</h2>
-          <p class="f-body">다시 만드는 방법이 확정된 13종류의 산출물만 다룹니다. Xcode DerivedData, SwiftPM, CocoaPods, npm / pnpm / Yarn, Go, Gradle, Rust target, <code>__pycache__</code>, 크래시 리포트, Homebrew 캐시 같은 것들입니다. 삭제 대상은 먼저 격리로 옮기고 기본 30일 동안 보관하며 언제든 복원할 수 있습니다.</p>
-          <p class="f-note sunk neu neu-sink">영구 삭제는 기본적으로 존재하지 않습니다. 앱 전체에서 단 하나의 함수만 그것을 할 수 있고, 여섯 가지 조건이 동시에 성립할 때만 진행합니다 — 하나라도 어긋나면 중단합니다. 전체 디스크 접근을 요청하지 않으며, 시스템이 보호하는 디렉터리는 macOS 규칙대로 건너뜁니다. 자동화 규칙은 <strong>사전 스캔만 하고 삭제는 하지 못합니다</strong>.</p>
+          <p class="f-body">다시 만드는 방법이 확정된 13종류의 산출물만 다룹니다. Xcode DerivedData, SwiftPM, CocoaPods, npm / pnpm / Yarn, Go, Gradle, Rust target, <code>__pycache__</code>, 크래시 리포트, Homebrew 캐시 같은 것들입니다. 삭제한 것은 먼저 격리로 옮깁니다. 격리된 항목은 언제든 복원할 수 있고, 영구 삭제를 선택할 수 있게 되는 것은 30일이 지난 뒤입니다.</p>
+          <p class="f-note sunk neu neu-sink">영구 삭제는 기본적으로 꺼져 있습니다. 앱 전체에서 그 일을 할 수 있는 함수는 하나뿐이고, 여섯 가지 조건이 동시에 성립할 때만 진행합니다 — 하나라도 어긋나면 중단합니다. 전체 디스크 접근을 요청하지 않으며, 시스템이 보호하는 디렉터리는 macOS 규칙대로 건너뜁니다. 자동화 규칙은 <strong>사전 스캔만 하고 삭제는 하지 못합니다</strong>.</p>
         </div>
         <figure class="f-media tall neu plate">
-          <img src="../img/storage.en.v533.webp" width="1090" height="2416" loading="lazy" alt="저장 공간 패널: 디스크 개요, 시스템 데이터 분석, 개인 폴더, 큰 파일 찾기와 정리 가능 항목. 아래쪽에 스캔은 읽기 전용이고 정리는 격리로 옮길 뿐이라고 적혀 있습니다.">
+          <img src="../img/storage.en.v533.webp" width="1090" height="2416" loading="lazy" alt="저장 공간 패널. 디스크 개요, 시스템 데이터 분석, 개인 폴더, 큰 파일 찾기, 정리 가능한 항목. 아래쪽에 스캔은 읽기 전용이고 정리는 격리로 옮길 뿐이라고 적혀 있습니다.">
+          <figcaption>스캔은 읽기 전용입니다. 요청하기 전에는 아무것도 움직이지 않습니다.</figcaption>
         </figure>
       </article>
     </div>
   </section>
-  <section class="trio" id="all-features">
-    <h2 class="sec-head">전체 기능</h2>
-    <p class="statement">모든 탭이 완성되어 있습니다.</p>
-    <div class="trio-grid"><article class="tcard card neu"><h3>Display</h3><p>monitor · master dimming · colour calibration · presets · timing</p></article><article class="tcard card neu"><h3>Scroll</h3><p>always-on · smoothing · switches · feel · direction · exclusions</p></article><article class="tcard card neu"><h3>Eye care</h3><p>eye care · schedule · pomodoro · notes</p></article><article class="tcard card neu"><h3>Tools</h3><p>screen test · reference card · quick switches</p></article><article class="tcard card neu"><h3>Audio</h3><p>output devices · volume and mute · follow power · hardware volume</p></article><article class="tcard card neu"><h3>Mouse</h3><p>mouse · pointer · button mapping · wheel · per-display</p></article><article class="tcard card neu"><h3>Windows</h3><p>windows · layout actions · hotkeys · saved layouts</p></article><article class="tcard card neu"><h3>Sessions</h3><p>sessions · snapshot · archive · confirm · result</p></article><article class="tcard card neu"><h3>Storage</h3><p>disk overview · system data · home folders · large files</p></article><article class="tcard card neu"><h3>Timeline</h3><p>timeline · filters · events</p></article><article class="tcard card neu"><h3>Health</h3><p>overall health · permission audit · config drift · conflicts</p></article><article class="tcard card neu"><h3>Diagnostics</h3><p>capability snapshot · scroll statistics · environment</p></article><article class="tcard card neu"><h3>Automation</h3><p>automation · rules</p></article><article class="tcard card neu"><h3>General</h3><p>hotkeys · backup and migration · about</p></article></div>
-  </section>
-  
 
-  <section class="trio">
-    <div class="wrap"><div class="trio-grid">
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>세션 복원</h3><p>디스플레이, 창, 오디오, 스크롤, 마우스, 눈 보호 설정을 영역별로 복원되는 이름 있는 스냅샷으로 저장합니다. 복원 전에는 바뀔 내용을 먼저 나열하고 확인을 기다립니다. 어떤 영역을 쓸 수 없으면 그 영역만 건너뛰고 복원 전체를 실패시키지 않습니다.</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>입력 소스와 하드웨어 채널</h3><p>디스플레이가 DDC/CI를 지원하면 HDMI / DisplayPort 전환에 OSD 버튼을 찾을 필요가 없고, 하드웨어 밝기·대비·볼륨도 같은 자리에 있습니다. 지원하지 않으면 'DDC 응답 없음'이라고 솔직히 표시하고 소프트웨어 채널로 계속 동작합니다 — 성공한 척하지 않습니다.</p></article>
-      <article class="tcard card neu"><span class="dot" aria-hidden="true"></span><h3>손쉬운 사용</h3><p>모든 슬라이더와 스위치가 손쉬운 사용 레이블을 제공하고 손쉬운 사용 트리에 나타납니다. 인터페이스 텍스트는 4.5:1 대비 기준에 맞춰 다시 만들었습니다(수정 전 최악은 2.65:1). 전역 단축키는 ⌃⌥↑ / ⌃⌥↓, ⇧를 더하면 ±1% 미세 조정입니다.</p></article>
-    </div></div>
+  <section class="catalog" id="console">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>콘솔 안쪽</h2>
+        <p>모든 탭이 완성되어 있고, 아래 카드는 하나하나가 실제 패널 화면입니다. '출시 예정' 표지 뒤의 빈자리가 아닙니다.</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="catalog-group">
+          <h3>표시와 색상</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>표시</dt><dd>모니터와 링크 식별 정보, 마스터 밝기, 색상 캘리브레이션, DDC 하드웨어, 입력 소스, 장면 프리셋, 화면과 타이밍.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>입력과 움직임</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>스크롤</dt><dd>프레임 단위 스무딩. 조작감, 방향, 앱별 제외, 실시간 카운터.</dd></div>
+            <div class="catalog-item"><dt>마우스</dt><dd>포인터 가속, 키 매핑, 휠 동작, 디스플레이별 자동 적용.</dd></div>
+            <div class="catalog-item"><dt>창</dt><dd>레이아웃 동작, 창 단축키, 자동화에서도 다시 적용할 수 있는 저장된 레이아웃.</dd></div>
+            <div class="catalog-item"><dt>오디오</dt><dd>출력 장치, 음량 및 음소거, 디스플레이 하드웨어 음량, 디스플레이 절전 시 음소거.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>케어와 기록</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>눈 보호</dt><dd>시간대 스케줄, 포모도로, 메모 필드. 색온도와 밝기가 시간대를 따릅니다.</dd></div>
+            <div class="catalog-item"><dt>도구</dt><dd>전체 화면으로 진행하는 화면 자가 점검, 비교 카드, 빠른 스위치 패널.</dd></div>
+            <div class="catalog-item"><dt>세션</dt><dd>디스플레이, 창, 오디오, 스크롤, 마우스, 눈 보호를 스냅샷하고, 확인을 거쳐 영역별로 복원합니다.</dd></div>
+          </dl>
+        </div>
+        <div class="catalog-group">
+          <h3>시스템과 인사이트</h3>
+          <dl class="catalog-list">
+            <div class="catalog-item"><dt>저장 공간</dt><dd>디스크 개요, 시스템 데이터 분석, 홈 폴더, 큰 파일 찾기, 격리를 먼저 거치는 정리 대상.</dd></div>
+            <div class="catalog-item"><dt>타임라인</dt><dd>앱이 감지한 모든 변경과 충돌. 종류와 시간으로 필터링합니다.</dd></div>
+            <div class="catalog-item"><dt>상태</dt><dd>종합 상태, 권한 감사, 구성 드리프트, 도메인 간 충돌.</dd></div>
+            <div class="catalog-item"><dt>진단</dt><dd>기능 스냅샷, 스크롤 실행 통계, 환경 개요, 개인정보를 지운 리포트 내보내기.</dd></div>
+            <div class="catalog-item"><dt>자동화</dt><dd>시간대, 디스플레이 연결, 최전면 앱을 계기로 동작하는 규칙. 하는 일은 설정 변경뿐이며 삭제는 하지 않습니다.</dd></div>
+            <div class="catalog-item"><dt>일반</dt><dd>단축키, 설정 백업 및 마이그레이션, 업데이트, 정보, 라이선스 패널.</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="catalog-foot">표 수준의 전체 목록은 <a href="features.html">전체 기능 목록</a>에 있습니다.</p>
+    </div>
   </section>
+
+  <section class="controls" id="controls">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>메뉴 막대가 곧 조작판입니다</h2>
+        <p>메뉴 막대 아이콘을 클릭하면 자주 쓰는 것이 이미 그 자리에 있습니다. 창을 열 필요도, 탭을 찾을 필요도 없습니다. 상태 스위치는 실제 상태를 보여주고, 한 번만 실행하는 동작은 그렇게 표시합니다.</p>
+      </div>
+      <div class="controls-grid">
+        <div class="switchboard">
+          <div class="sb-head"><span class="sb-brand">DisplayPilot</span><span class="sb-hint">메뉴 막대</span></div>
+          <div class="sb-sliders">
+            <p class="sb-slider"><span class="k">밝기</span><span class="cs-track"><span class="cs-fill" style="width:72%"></span><span class="cs-knob" style="left:72%"></span></span></p>
+            <p class="sb-slider"><span class="k">음량</span><span class="cs-track"><span class="cs-fill" style="width:44%"></span><span class="cs-knob" style="left:44%"></span></span></p>
+          </div>
+          <div class="sb-grid">
+            <p class="sb-item"><span class="sb-name">스크린샷</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">화면 기록</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">화면 잠금</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">잠자기</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">클립보드 비우기</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">휴지통 비우기</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">화면 보호기</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">창 숨기기</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">재생 / 일시정지</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">디스크 추출</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item"><span class="sb-name">화면 청소</span><span class="sb-kind">동작</span></p>
+            <p class="sb-item on"><span class="sb-name">숨긴 파일 표시</span><span class="sb-state">켜짐</span></p>
+            <p class="sb-item"><span class="sb-name">Dock 숨기기</span><span class="sb-state">꺼짐</span></p>
+            <p class="sb-item on"><span class="sb-name">화면 켜 두기</span><span class="sb-state">켜짐</span></p>
+          </div>
+        </div>
+        <div class="control-copy">
+          <div class="control-item">
+            <h3>오디오는 디스플레이를 따릅니다</h3>
+            <p>출력을 바꾸고, 음소거하고, DDC/CI를 지원하는 패널이라면 하드웨어 음량까지 바꿉니다. 디스플레이가 잠들면 시스템 출력을 음소거하고, 깨어나면 이전 상태로 되돌립니다.</p>
+          </div>
+          <div class="control-item">
+            <h3>포인터는 자기가 어느 화면에 있는지 압니다</h3>
+            <p>4K 패널과 1080p 패널에 필요한 포인터 속도는 다릅니다. 디스플레이마다 하나씩 기억해 두었다가 화면을 넘어갈 때 적용합니다. 가속, 휠 동작, 버튼 매핑은 전체에 한 번만 설정하면 됩니다.</p>
+          </div>
+          <div class="control-item">
+            <h3>창은 둔 자리에 내려앉습니다</h3>
+            <p>레이아웃 동작, 창 단축키, 저장된 레이아웃. 외부 디스플레이가 연결되거나 끊길 때 자동화가 저장된 레이아웃을 적용할 수 있습니다. 그래서 노트북과 모니터를 놓은 책상과 도킹한 책상이 각자의 배치를 지킵니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insight" id="insight">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>한 일은 기록에 남습니다</h2>
+        <p>대부분의 디스플레이 도구는 무언가를 바꾸고 잊습니다. 이 앱은 무엇이 바뀌었는지 기록하고, 무엇이 어긋났는지 확인하고, 움직이기 전에 알려줍니다.</p>
+      </div>
+      <div class="insight-grid">
+        <article class="insight-card wide">
+          <h3>세션</h3>
+          <p>디스플레이, 창, 오디오, 스크롤, 마우스, 눈 보호를 이름 있는 스냅샷으로 저장합니다. 복원 전에는 무엇이 바뀔지 정확히 나열하고 확인을 기다립니다. 어떤 영역을 쓸 수 없으면 그 영역만 건너뛰고 복원 전체를 실패시키지 않습니다.</p>
+          <p class="insight-meta">영역별로 복원합니다. 주사위를 한 번 굴려 맡기지 않습니다.</p>
+        </article>
+        <article class="insight-card">
+          <h3>타임라인</h3>
+          <p>모든 변경, 충돌, 복구 경로. 종류와 시간으로 필터링합니다. 케이블을 바꾼 뒤에 뭔가 이상해져도 기록은 이미 거기에 있습니다.</p>
+        </article>
+        <article class="insight-card">
+          <h3>상태</h3>
+          <p>권한 감사, 구성 드리프트, 도메인 간 충돌을 한곳에서 평가합니다. 권한 항목은 시스템 설정으로 연결되고, 드리프트는 클릭 한 번 복원을 제공하며, 충돌은 어느 도구가 무엇을 쓰고 있는지 설명합니다.</p>
+        </article>
+        <article class="insight-card">
+          <h3>자동화와 진단</h3>
+          <p>규칙은 시간대, 디스플레이 연결·해제, 앱이 앞으로 나올 때 동작합니다. 설정을 바꿀 뿐 삭제는 할 수 없습니다. 진단은 기능 스냅샷을 찍고, 일련번호·라이선스 코드·경로·사용자 이름을 지운 리포트를 내보냅니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>확인할 수 있게 만들었습니다</h2>
+        <p>이 앱은 검증할 수 있는 주장으로 팝니다. 데이터를 실제로 어떻게 다루는지, 그리고 그것을 직접 확인하는 방법을 적습니다.</p>
+      </div>
+      <div class="trust-grid">
+        <ul class="proof-list">
+          <li><strong>오프라인 검증.</strong> 긴 <code>DP-</code> 코드는 앱 안에 들어 있는 공개 키로 Ed25519 검증을 합니다. 활성화할 때 생기는 요청은 다음에 적는 1회성 기기 등록뿐입니다. 그 뒤로는 실행할 때마다 로컬에서 검증하며, 업데이트 확인도 직접 켜지 않으면 하지 않습니다.</li>
+          <li><strong>등록은 한 번, 그다음은 침묵.</strong> 첫 활성화 때만 보드 식별자와 모델 식별자에서 로컬로 계산한 되돌릴 수 없는 SHA-256 다이제스트를 자체 라이선스 서비스로 보냅니다 — 긴 <code>DP-</code> 코드를 5대의 Mac으로 제한하는 방식이 이것입니다. 일련번호, 평문 모델 문자열, MAC 주소, 디스플레이 EDID, 계정, 사용 데이터는 보내지 않습니다.</li>
+          <li><strong>텔레메트리는 없습니다.</strong> 분석도, 쿠키도, 서드파티 글꼴도, 백그라운드 서비스도 없습니다. 이 페이지도 외부로 나가는 요청을 만들지 않습니다.</li>
+          <li><strong>검사는 앱과 함께 배포됩니다.</strong> 자가 테스트는 바이너리의 일부이고, 각 검사가 무엇을 주장하는지는 감사 페이지에 나열되어 있습니다. 여기 적은 주장이 더 이상 사실이 아니면 그중 하나가 빨갛게 바뀝니다.</li>
+        </ul>
+        <div class="audit-plate">
+          <p class="audit-title">직접 돌려보기</p>
+          <p class="audit-row"><code>--license-selftest</code><span>라이선스 상태 기계와 축소 경계</span></p>
+          <p class="audit-row"><code>--scroll-selftest</code><span>보간, 프레임 타이밍, 총량 보존</span></p>
+          <p class="audit-row"><code>--cli-selftest</code><span>인자 퍼징, 마스킹, 오픈소스 고지</span></p>
+          <p class="audit-row"><code>--switch-probe</code><span>모든 스위치의 가용성과 상태를 읽기 전용으로</span></p>
+          <p class="audit-links"><a href="../verify.html">라이선스를 직접 검증</a> · <a href="../audit.html">검사가 다루는 범위</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="price" id="price">
-    <div class="wrap" id="buy">
-      <div class="sec-head"><h2>한 번 구매</h2><p>구독도, 계정도, 기기 수 계산도 없습니다.</p></div>
+<div class="wrap" id="buy">
+      <div class="sec-head center"><h2>한 번 구매</h2><p>구독도, 계정도, 기기 수 계산도 없습니다.</p></div>
       <div class="price-plate plate neu">
         <p class="price-readout sunk neu neu-sink"><span class="num tid" data-price="num">≈US$14</span></p>
         <p class="price-label">한 번 구매 · 구매일로부터 1년 업데이트 포함</p>
@@ -177,19 +348,28 @@
       </div>
     </div>
   </section>
+
   <section class="spec" id="spec">
-    <div class="wrap"><h2>시스템 요구 사항</h2><p class="spec-line">macOS 14 Sonoma 이상 · Apple 실리콘 및 Intel 유니버설 바이너리 · 서드파티 의존성 없음, 백그라운드 서비스 없음 · 손쉬운 사용 권한이 필요한 것은 스크롤 스무딩과 마우스 매핑뿐 · 오프라인에서도 동작</p></div>
+    <div class="wrap"><h2>시스템 요구 사항</h2><p class="spec-line">macOS 14 Sonoma 이상 · Apple 실리콘 및 Intel 유니버설 바이너리 · 패키지 관리자 의존성 없음. 함께 배포하는 서드파티 구성 요소는 기본적으로 꺼진 업데이트 확인에 쓰는 Sparkle(MIT)뿐 · 손쉬운 사용 권한을 쓰는 것은 스크롤 스무딩, 마우스 매핑, 창 관리, 창 복원이며 나머지는 권한 없이 동작합니다 · 활성화 후에는 오프라인에서도 동작합니다</p></div>
   </section>
 
 </main>
-<footer>
+<footer class="foot-v2">
   <div class="wrap">
-    <p class="foot-links">
-      <a href="privacy.html">개인정보 처리방침</a>
-      <a href="eula.html">라이선스</a>
-      <a href="support.html">지원</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">질문·피드백 · GitHub Issues</a>
-    </p>
+    <div class="foot-grid">
+      <div class="foot-col">
+        <p class="foot-title">제품</p>
+        <p class="foot-links"><a href="#features">기능</a><a href="#console">콘솔</a><a href="#controls">컨트롤</a><a href="#price">가격</a><a href="#trust">검증</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">리소스</p>
+        <p class="foot-links"><a href="../guides.html">가이드</a><a href="features.html">전체 기능 목록</a><a href="../verify.html">직접 검증하기</a><a href="../alternatives.html">다른 선택지와 비교</a><a href="../audit.html">투명성</a></p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-title">지원</p>
+        <p class="foot-links"><a href="support.html">지원</a><a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a><a href="privacy.html">개인정보 처리방침</a><a href="eula.html">라이선스</a></p>
+      </div>
+    </div>
     <p class="foot-note">이 페이지에는 추적 스크립트도, 쿠키도, 서드파티 글꼴도 없으며 외부로 나가는 요청도 없습니다.</p>
     <p class="foot-copy">© 2026 DisplayPilot</p>
   </div>

@@ -1,51 +1,122 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>전체 기능 · DisplayPilot</title>
-<meta name="description" content="아래 항목은 모두 앱의 실제 컨트롤에 대응합니다. 각 탭·각 카드·각 스위치·각 CLI 플래그.">
+<meta name="description" content="DisplayPilot의 각 탭, 각 카드, 메뉴 막대의 각 스위치, 각 명령줄 플래그가 앱 안에 실제로 있는 컨트롤과 하나씩 대응합니다. 존재하지 않는 기능의 목업은 없습니다.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/ko/features.html">
-<style>
-:root{--bg:#f2f0ec;--ink:#26221e;--mut:#6b645c;--line:#dcd7cf;--acc:#f37021}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,'SF Pro SC','PingFang SC',sans-serif}
-.bar{display:flex;align-items:center;gap:18px;padding:14px 28px;border-bottom:1px solid var(--line);background:#faf9f7}
-.bar b{font-size:16px;letter-spacing:.2px}
-.bar a{color:var(--mut);text-decoration:none;font-size:13.5px}
-.bar a:hover{color:var(--ink)}
-.main{max-width:960px;margin:0 auto;padding:48px 28px 96px}
-h1{font-size:38px;line-height:1.25;margin:0 0 10px;letter-spacing:-.5px}
-.lede{color:var(--mut);margin:0 0 44px;font-size:15.5px}
-h2{font-size:22px;margin:52px 0 14px;letter-spacing:-.2px}
-table{width:100%;border-collapse:collapse;background:#faf9f7;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
-th{background:#f4f2ee;font-weight:600;font-size:13px;color:var(--mut)}
-tr:last-child td{border-bottom:0}
-td:first-child{white-space:nowrap;font-weight:600}
-ul{padding-left:22px}li{margin:6px 0;font-size:14.5px}
-.foot{padding:28px;border-top:1px solid var(--line);color:var(--mut);font-size:13px;text-align:center}
-</style></head><body>
-<div class="bar"><b>DisplayPilot</b><a href="../index.html">홈</a><a href="features.html">전체 기능</a><a href="../privacy.html">개인정보</a><a href="../support.html">지원</a></div>
-<div class="main"><h1>전체 기능</h1><p class="lede">아래 항목은 모두 앱의 실제 컨트롤에 대응합니다. 각 탭·각 카드·각 스위치·각 CLI 플래그.</p>
-<h2>탭</h2><table><tr><th>标签页</th><th>包含的卡片</th></tr><tr><td>显示</td><td>显示器 · 主控亮度 · 色彩校准 · 场景预设 · 画面与时序</td></tr><tr><td>滚动</td><td>常驻 · 滚动平滑 · 开关 · 手感 · 方向 · 应用排除</td></tr><tr><td>护眼</td><td>护眼 · 时段排程 · 番茄钟 · 说明</td></tr><tr><td>工具</td><td>屏幕自检 · 对照卡 · 快捷开关</td></tr><tr><td>音频</td><td>输出设备 · 音量与静音 · 跟随显示器电源 · 显示器硬件音量</td></tr><tr><td>鼠标</td><td>鼠标 · 指针 · 按键映射 · 滚轮 · 按显示器自动适配</td></tr><tr><td>窗口</td><td>窗口 · 布局动作 · 窗口快捷键 · 布局存档</td></tr><tr><td>会话</td><td>会话 · 保存当前状态 · 会话存档 · 恢复前确认 · 恢复结果</td></tr><tr><td>存储</td><td>磁盘总览 · 系统数据拆解 · 个人文件夹 · 大文件定位</td></tr><tr><td>时间线</td><td>时间线 · 筛选 · 事件</td></tr><tr><td>健康</td><td>总体健康度 · 权限审计 · 配置漂移 · 跨域冲突</td></tr><tr><td>诊断</td><td>能力快照 · 滚动运行统计 · 环境概览</td></tr><tr><td>自动化</td><td>自动化 · 规则</td></tr><tr><td>通用</td><td>快捷键 · 设置备份与迁移 · 关于</td></tr></table>
-<h2>메뉴 막대</h2><table><tr><th>类型</th><th>项目</th></tr>
-<tr><td>真开关</td><td>显示隐藏文件 · 隐藏 Dock · 保持亮屏</td></tr>
-<tr><td>动作</td><td>截图 · 录屏 · 锁屏 · 睡眠 · 清空剪贴板 · 清空废纸篓 · 屏幕保护 · 隐藏窗口 · 播放/暂停 · 推出磁盘 · 屏幕清洁</td></tr>
-<tr><td>不支持</td><td>麦克风静音（默认输入设备没有 mute 属性）</td></tr>
-<tr><td>同时提供</td><td>亮度滑块 · 5 个场景预设 · 回到中性 · 按住看原样 · 音量滑块</td></tr></table>
-<h2>CLI 플래그</h2><table><tr><th>参数</th><th>作用</th></tr>
-<tr><td>--list / --list-modes</td><td>列出显示器与全部模式（含被系统隐藏的 HiDPI）</td></tr>
-<tr><td>--set-brightness / --offset-brightness</td><td>设置软件调光亮度 / 在当前值上增减</td></tr>
-<tr><td>--set-temperature / --preset</td><td>设置色温（2700–9000K）/ 应用场景预设</td></tr>
-<tr><td>--set-resolution</td><td>切换分辨率，优先 HiDPI</td></tr>
-<tr><td>--dump-gamma / --reset</td><td>读伽马表中点值（只读）/ 交回系统 ColorSync 校准</td></tr>
-<tr><td>--login-item / --request-accessibility</td><td>登录时启动 / 请求辅助功能权限</td></tr>
-<tr><td>--scroll-report / --scroll-selftest</td><td>滚动诊断 / 验证插值算法</td></tr>
-<tr><td>--license-selftest / --cli-selftest</td><td>授权状态机 / 参数模糊测试与脱敏断言</td></tr>
-<tr><td>--switch-probe / --switch-selftest</td><td>开关可用性（只读）/ 读切读回实测</td></tr></table>
-<h2>의도적으로 하지 않는 것</h2><ul>
-<li>深色模式、勿扰、夜览、原彩显示、隐藏桌面：需要系统私有接口，公开 API 做不到。</li>
-<li>Xcode 缓存清理与屏幕分辨率不做成一键：会真删数据或导致黑屏。</li>
-<li>锁键盘：会让键盘失去响应，不做一键。</li>
-<li>无遥测、无埋点、无账号系统。</li></ul>
-<h2>개인정보 경계</h2>
-<p>验签完全离线；<b>仅首次激活</b>联网一次做设备登记，之后每次启动不再联网。上报的只有 sha256(IOPlatformUUID + 机型号)，没有序列号、型号字符串、用户名。</p>
-</div><div class="foot">DisplayPilot 5.7.1 · macOS 14 或更高 · ¥99 一次买断</div></body></html>
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="주요 탐색"><a href="index.html#features">기능</a>
+      <a href="index.html#console">콘솔</a>
+      <a href="index.html#controls">컨트롤</a>
+      <a href="index.html#price">가격</a>
+      <a href="../guides.html">가이드</a>
+      <a href="support.html">지원</a>
+    </nav>
+    <details class="lang"><summary>한국어</summary><ul class="lang-menu" aria-label="언어"><li><a href="../features.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/features.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/features.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/features.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="features.html" hreflang="ko" lang="ko" aria-current="true">한국어</a></li><li><a href="../de/features.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/features.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/features.html" hreflang="es" lang="es">Español</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">다운로드</a>
+  </div>
+</header>
+<main id="main">
+  <article class="doc features-doc">
+    <h1>전체 기능</h1>
+    <p class="summary">아래 항목은 모두 앱 안에 실제로 있는 컨트롤과 대응합니다. 탭, 카드, 메뉴 막대 스위치, 명령줄 플래그까지. 존재하지 않는 기능의 목업은 없습니다.</p>
+
+    <h2>탭</h2>
+    <p>메인 창은 14개 탭으로 된 콘솔입니다. 각 탭에는 옆에 적은 카드가 들어 있습니다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>탭</th><th>카드</th></tr></thead>
+        <tbody>
+          <tr><td>표시</td><td>표시 · 마스터 밝기 · 색상 캘리브레이션 · 장면 프리셋 · 화면과 타이밍</td></tr>
+          <tr><td>스크롤</td><td>상주 · 스크롤 스무딩 · 켜기/끄기 · 조작감 · 방향 · 앱 제외</td></tr>
+          <tr><td>눈 보호</td><td>눈 보호 · 시간대 스케줄 · 포모도로 · 설명</td></tr>
+          <tr><td>도구</td><td>화면 자가 점검 · 비교 카드 · 빠른 스위치</td></tr>
+          <tr><td>오디오</td><td>출력 장치 · 음량 및 음소거 · 디스플레이 전원 따르기 · 디스플레이 하드웨어 음량</td></tr>
+          <tr><td>마우스</td><td>마우스 · 포인터 · 키 매핑 · 휠 · 디스플레이별 자동 적용</td></tr>
+          <tr><td>창</td><td>창 · 레이아웃 동작 · 창 단축키 · 저장된 레이아웃</td></tr>
+          <tr><td>세션</td><td>세션 · 현재 상태 저장 · 세션 아카이브 · 복원 전 확인 · 복원 결과</td></tr>
+          <tr><td>저장 공간</td><td>디스크 개요 · 시스템 데이터 분석 · 홈 폴더 · 큰 파일 찾기</td></tr>
+          <tr><td>타임라인</td><td>타임라인 · 필터 · 이벤트</td></tr>
+          <tr><td>상태</td><td>종합 상태 · 권한 감사 · 구성 드리프트 · 도메인 간 충돌</td></tr>
+          <tr><td>진단</td><td>기능 스냅샷 · 스크롤 실행 통계 · 환경 개요</td></tr>
+          <tr><td>자동화</td><td>자동화 · 규칙</td></tr>
+          <tr><td>일반</td><td>단축키 · 설정 백업 및 마이그레이션 · 정보</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>메뉴 막대</h2>
+    <p>메뉴 막대 아이콘을 클릭하면 메인 창을 열지 않고 조작판이 열립니다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>종류</th><th>항목</th></tr></thead>
+        <tbody>
+          <tr><td>상태 스위치</td><td>숨긴 파일 표시 · Dock 숨기기 · 화면 켜 두기</td></tr>
+          <tr><td>일회성 동작</td><td>스크린샷 · 화면 기록 · 화면 잠금 · 잠자기 · 클립보드 비우기 · 휴지통 비우기 · 화면 보호기 · 창 숨기기 · 재생 / 일시정지 · 디스크 추출 · 화면 청소</td></tr>
+          <tr><td>표시되지 않음</td><td>이 Mac이 지원하지 않는 항목은 메뉴 막대 패널에 나오지 않습니다. '도구'의 빠른 스위치 패널에 무엇이 안 되는지, 왜 그런지 나옵니다.</td></tr>
+          <tr><td>패널에 있는 것</td><td>밝기 슬라이더 · 장면 프리셋 · 중립으로 되돌리기 · 길게 눌러 원래 화면 보기 · 음량 슬라이더</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>명령줄</h2>
+    <p>바이너리에는 패널과 같은 컨트롤과 자가 테스트가 들어 있습니다. 스크립트에도, 앱 자체의 주장을 확인하는 데도 쓸 수 있습니다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>플래그</th><th>하는 일</th></tr></thead>
+        <tbody>
+          <tr><td><code>--list</code> / <code>--list-modes</code></td><td>온라인 디스플레이와 모든 모드(macOS가 숨긴 HiDPI 모드 포함)를 나열합니다.</td></tr>
+          <tr><td><code>--set-brightness</code> / <code>--offset-brightness</code> / <code>--set-temperature</code></td><td>소프트웨어 디밍을 설정하고, 상대적으로 조정하고, 색온도(2700–9000 K)를 설정합니다.</td></tr>
+          <tr><td><code>--preset</code> / <code>--set-resolution</code> / <code>--reset</code></td><td>장면 프리셋을 적용하고, 해상도를 전환하고(HiDPI 우선), 캘리브레이션을 ColorSync로 돌려줍니다.</td></tr>
+          <tr><td><code>--dump-gamma</code></td><td>현재 감마 테이블의 중간값을 출력합니다. 읽기 전용입니다.</td></tr>
+          <tr><td><code>--login-item</code> / <code>--request-accessibility</code></td><td>로그인 시 실행을 읽거나 설정합니다. 손쉬운 사용 권한을 요청합니다.</td></tr>
+          <tr><td><code>--scroll-report</code> / <code>--scroll-selftest</code></td><td>실시간 스크롤 진단. 보간 알고리즘과 총량 보존을 검증합니다.</td></tr>
+          <tr><td><code>--license-selftest</code> / <code>--cli-selftest</code></td><td>라이선스 상태 기계와 축소 경계. 인자 퍼징, 마스킹, 오픈소스 고지.</td></tr>
+          <tr><td><code>--switch-probe</code> / <code>--switch-selftest</code></td><td>읽기 전용 스위치 가용성과 상태. 읽기→전환→읽기 자가 테스트.</td></tr>
+          <tr><td><code>--probe</code> / <code>--full</code> / <code>--language</code> / <code>--help</code></td><td>진단, 전체 출력, 인터페이스 언어, 도움말.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>의도적으로 하지 않는 것</h2>
+    <ul>
+      <li>다크 모드, 방해 금지 모드, Night Shift, True Tone, 데스크톱 숨기기: 시스템 비공개 인터페이스가 필요하고 공개 API로는 깔끔하게 할 수 없습니다.</li>
+      <li>Xcode 캐시 원클릭 삭제, 메뉴 막대에서 해상도 전환: 전자는 실제로 데이터를 지우고, 후자는 화면이 꺼질 수 있습니다.</li>
+      <li>키보드 잠금: 키보드가 반응하지 않게 남을 수 있어 원클릭 동작으로 두지 않았습니다.</li>
+      <li>텔레메트리도, 분석도, 계정 시스템도 없습니다.</li>
+    </ul>
+
+    <h2>개인정보 경계</h2>
+    <p>검증은 완전히 오프라인입니다. 긴 <code>DP-</code> 코드는 앱 안에 들어 있는 공개 키로 Ed25519 검증을 합니다. 앱이 네트워크를 쓰는 곳은 활성화할 때뿐입니다 — 짧은 코드 교환과 기기 1회 등록이며, 대상은 저희 라이선스 서비스입니다. 긴 <code>DP-</code> 코드를 5대의 Mac으로 제한할 수 있는 이유가 이것입니다. 이 등록이 보내는 것은 보드 식별자(IOPlatformUUID)와 모델 식별자에서 로컬로 계산한 되돌릴 수 없는 SHA-256 다이제스트뿐입니다. 일련번호, 평문 모델 문자열, MAC 주소, 디스플레이 EDID, 사용자 이름, 계정은 보내지 않습니다. 이후 실행은 모두 로컬에서 검증되며, 업데이트 확인은 Sparkle(MIT)이 하고 기본적으로 꺼져 있습니다. 내보낸 진단 리포트는 앱을 떠나기 전에 일련번호, 라이선스 코드, 절대 경로, 사용자 이름을 지웁니다.</p>
+    <p class="callout">이 페이지의 주장은 확인할 수 있게 적었습니다. 위의 자가 테스트 명령은 바이너리의 일부이고, <a href="../audit.html">투명성 페이지</a>에 각 명령이 무엇을 검증하는지 나와 있습니다.</p>
+
+    <p class="back"><a href="index.html">← 개요로 돌아가기</a></p>
+  </article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">개인정보 처리방침</a>
+      <a href="eula.html">라이선스</a>
+      <a href="support.html">지원</a>
+      <a href="../verify.html">직접 검증하기</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-note">이 페이지에는 추적 스크립트도, 쿠키도, 서드파티 글꼴도 없으며 외부로 나가는 요청도 없습니다.</p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
