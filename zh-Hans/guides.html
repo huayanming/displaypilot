@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 外接显示器的各种毛病，一页一个问题 · DisplayPilot</title>
+<meta name="description" content="把我们认真写过的外接显示器问题整理成一个索引：DDC/CI 不应答、亮度被重置、文字发虚、色彩发灰、滚轮卡顿，以及安全的缓存清理。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guides.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guides.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guides.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guides.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guides.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器的各种毛病，一页一个问题">
+<meta property="og:description" content="把我们认真写过的外接显示器问题整理成一个索引：DDC/CI 不应答、亮度被重置、文字发虚、色彩发灰、滚轮卡顿，以及安全的缓存清理。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guides.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","headline":"Mac 外接显示器的各种毛病","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guides.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+      <a href="../guides.html" hreflang="en" lang="en">English</a>
+      <a href="../../zh-Hant/guides.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>Mac 外接显示器的各种毛病</h1>
+<p class="summary">这些页面一页只讲一个问题，用的就是你会搜的那些说法。每一页先讲机制，再讲怎么做——包括「答案不是我们的应用」这种时候。</p>
+
+<h2>显示器不听你的</h2>
+<ul class="ticks">
+  <li><a href="guide-ddc.html"><strong>亮度键在外接显示器上没反应</strong></a> — DDC/CI 不应答：为什么多数时候问题在面板、线材或接口，以及按什么顺序排查。</li>
+  <li><a href="guide-wake.html"><strong>休眠之后亮度又被重置</strong></a> — 调暗、合盖、回来又亮了。到底是什么时候丢掉的，以及怎么留住它。</li>
+</ul>
+
+<h2>看起来不对</h2>
+<ul class="ticks">
+  <li><a href="guide-hidpi.html"><strong>文字发虚、发软</strong></a> — 同一个分辨率往往存在两份——一份做了 HiDPI 缩放，一份是 1:1 原生。怎么分辨它们。</li>
+  <li><a href="guide-color.html"><strong>色彩发灰、发平</strong></a> — 两种抱怨，一个解释：调暗会怎样影响你设好的颜色，以及怎么调回来。</li>
+</ul>
+
+<h2>手感不对</h2>
+<ul class="ticks">
+  <li><a href="guide-scroll.html"><strong>鼠标滚轮一格一格地跳</strong></a> — macOS 交给滚轮的是离散的格，交给触控板的是连续手势。修好它的机制，以及路上的三个坑。</li>
+</ul>
+
+<h2>打扫干净，但不弄丢东西</h2>
+<ul class="ticks">
+  <li><a href="guide-cleanup.html"><strong>清理缓存而不丢东西</strong></a> — 那几十 GB 到底在哪里，以及让清理「可回退」的那一条规则。</li>
+</ul>
+
+<h2>怎么选工具，以及怎么验证我们</h2>
+<ul class="ticks">
+  <li><a href="alternatives.html"><strong>Mac 外接显示器工具该用哪个？</strong></a> — 这一领域四款应用的诚实对比，包括我们什么时候是错误的选择。</li>
+  <li><a href="verify.html"><strong>自己验证</strong></a> — 我们是新应用、没有评测。这里讲怎么在信任之前，先核对下载、签名与付款。</li>
+  <li><a href="audit.html"><strong>我们怎么审查自己的产品</strong></a> — 本站结论背后的测量，以及我们没有做的那些说法。</li>
+</ul>
+
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
