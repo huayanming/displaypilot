@@ -1,46 +1,37 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>功能 · DisplayPilot</title>
-<meta name="description" content="逐项列出 DisplayPilot 的 14 个标签页、52 张卡片、17 项菜单栏开关与 21 个命令行参数。">
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>全機能一覧 · DisplayPilot</title>
+<meta name="description" content="以下はすべてアプリ内の実在するコントロールに対応しています。14 タブ · 52 カード · 17 スイッチ · 21 CLI フラグ。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/ja/features.html">
-<link rel="stylesheet" href="../style.css">
-</head>
-<body>
-<header class="nav"><a class="brand-name" href="./index.html">DisplayPilot</a>
-<nav><a href="./index.html">首页</a><a href="./features.html">功能</a><a href="./privacy.html">隐私</a><a href="./support.html">支持</a></nav></header>
-<main class="wrap">
-<h1>完整功能清单</h1>
-<p >下面每一项都能在应用里找到对应控件，不是宣传话术。共 <strong>14 个标签页 · 52 张卡片 · 17 项菜单栏开关 · 21 个命令行参数</strong>。</p>
-<h2 class="sec-head">面板：14 个标签页</h2>
-<table class="spec"><thead><tr><th>标签页</th><th>包含的卡片</th></tr></thead><tbody>
-<tr><td>显示</td><td>显示器 · 主控亮度 · 色彩校准 · 场景预设 · 画面与时序</td></tr>
-<tr><td>滚动</td><td>常驻 · 滚动平滑 · 开关 · 手感 · 方向 · 应用排除</td></tr>
-<tr><td>护眼</td><td>护眼 · 时段排程 · 番茄钟 · 说明</td></tr>
-<tr><td>工具</td><td>屏幕自检 · 对照卡 · 快捷开关</td></tr>
-<tr><td>音频</td><td>输出设备 · 音量与静音 · 跟随显示器电源 · 显示器硬件音量</td></tr>
-<tr><td>鼠标</td><td>鼠标 · 指针 · 按键映射 · 滚轮 · 按显示器自动适配</td></tr>
-<tr><td>窗口</td><td>窗口 · 布局动作 · 窗口快捷键 · 布局存档</td></tr>
-<tr><td>会话</td><td>会话 · 保存当前状态 · 会话存档 · 恢复前确认 · 恢复结果</td></tr>
-<tr><td>存储</td><td>磁盘总览 · 系统数据拆解 · 个人文件夹 · 大文件定位</td></tr>
-<tr><td>时间线</td><td>时间线 · 筛选 · 事件</td></tr>
-<tr><td>健康</td><td>总体健康度 · 权限审计 · 配置漂移 · 跨域冲突</td></tr>
-<tr><td>诊断</td><td>能力快照 · 滚动运行统计 · 环境概览</td></tr>
-<tr><td>自动化</td><td>自动化 · 规则</td></tr>
-<tr><td>通用</td><td>快捷键 · 设置备份与迁移 · 关于</td></tr>
-</tbody></table>
-<h2 class="sec-head">菜单栏：17 项开关</h2>
-<p>点菜单栏图标直接可用，不用打开主窗口。</p>
-<table class="spec"><thead><tr><th>类型</th><th>项目</th></tr></thead><tbody>
-<tr><td>真开关（有状态）</td><td>显示隐藏文件 · 隐藏 Dock · 保持亮屏</td></tr>
+<style>
+:root{--bg:#f2f0ec;--ink:#26221e;--mut:#6b645c;--line:#dcd7cf;--acc:#f37021}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,'SF Pro SC','PingFang SC',sans-serif}
+.bar{display:flex;align-items:center;gap:18px;padding:14px 28px;border-bottom:1px solid var(--line);background:#faf9f7}
+.bar b{font-size:16px;letter-spacing:.2px}
+.bar a{color:var(--mut);text-decoration:none;font-size:13.5px}
+.bar a:hover{color:var(--ink)}
+.main{max-width:960px;margin:0 auto;padding:48px 28px 96px}
+h1{font-size:38px;line-height:1.25;margin:0 0 10px;letter-spacing:-.5px}
+.lede{color:var(--mut);margin:0 0 44px;font-size:15.5px}
+h2{font-size:22px;margin:52px 0 14px;letter-spacing:-.2px}
+table{width:100%;border-collapse:collapse;background:#faf9f7;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+th{background:#f4f2ee;font-weight:600;font-size:13px;color:var(--mut)}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap;font-weight:600}
+ul{padding-left:22px}li{margin:6px 0;font-size:14.5px}
+.foot{padding:28px;border-top:1px solid var(--line);color:var(--mut);font-size:13px;text-align:center}
+</style></head><body>
+<div class="bar"><b>DisplayPilot</b><a href="../index.html">ホーム</a><a href="features.html">全機能</a><a href="../privacy.html">プライバシー</a><a href="../support.html">サポート</a></div>
+<div class="main"><h1>全機能一覧</h1><p class="lede">以下はすべてアプリ内の実在するコントロールに対応しています。14 タブ · 52 カード · 17 スイッチ · 21 CLI フラグ。</p>
+<h2>14 タブ</h2><table><tr><th>标签页</th><th>包含的卡片</th></tr><tr><td>显示</td><td>显示器 · 主控亮度 · 色彩校准 · 场景预设 · 画面与时序</td></tr><tr><td>滚动</td><td>常驻 · 滚动平滑 · 开关 · 手感 · 方向 · 应用排除</td></tr><tr><td>护眼</td><td>护眼 · 时段排程 · 番茄钟 · 说明</td></tr><tr><td>工具</td><td>屏幕自检 · 对照卡 · 快捷开关</td></tr><tr><td>音频</td><td>输出设备 · 音量与静音 · 跟随显示器电源 · 显示器硬件音量</td></tr><tr><td>鼠标</td><td>鼠标 · 指针 · 按键映射 · 滚轮 · 按显示器自动适配</td></tr><tr><td>窗口</td><td>窗口 · 布局动作 · 窗口快捷键 · 布局存档</td></tr><tr><td>会话</td><td>会话 · 保存当前状态 · 会话存档 · 恢复前确认 · 恢复结果</td></tr><tr><td>存储</td><td>磁盘总览 · 系统数据拆解 · 个人文件夹 · 大文件定位</td></tr><tr><td>时间线</td><td>时间线 · 筛选 · 事件</td></tr><tr><td>健康</td><td>总体健康度 · 权限审计 · 配置漂移 · 跨域冲突</td></tr><tr><td>诊断</td><td>能力快照 · 滚动运行统计 · 环境概览</td></tr><tr><td>自动化</td><td>自动化 · 规则</td></tr><tr><td>通用</td><td>快捷键 · 设置备份与迁移 · 关于</td></tr></table>
+<h2>メニューバー 17 スイッチ</h2><table><tr><th>类型</th><th>项目</th></tr>
+<tr><td>真开关</td><td>显示隐藏文件 · 隐藏 Dock · 保持亮屏</td></tr>
 <tr><td>动作</td><td>截图 · 录屏 · 锁屏 · 睡眠 · 清空剪贴板 · 清空废纸篓 · 屏幕保护 · 隐藏窗口 · 播放/暂停 · 推出磁盘 · 屏幕清洁</td></tr>
-<tr><td>如实标注不支持</td><td>麦克风静音（默认输入设备没有 mute 属性）</td></tr>
-<tr><td>同时提供</td><td>亮度滑块 · 5 个场景预设 · 回到中性 · 按住看原样 · 音量滑块</td></tr>
-</tbody></table>
-<h2 class="sec-head">命令行：21 个参数</h2>
-<table class="spec"><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody>
+<tr><td>不支持</td><td>麦克风静音（默认输入设备没有 mute 属性）</td></tr>
+<tr><td>同时提供</td><td>亮度滑块 · 5 个场景预设 · 回到中性 · 按住看原样 · 音量滑块</td></tr></table>
+<h2>CLI 21 フラグ</h2><table><tr><th>参数</th><th>作用</th></tr>
 <tr><td>--list / --list-modes</td><td>列出显示器与全部模式（含被系统隐藏的 HiDPI）</td></tr>
 <tr><td>--set-brightness / --offset-brightness</td><td>设置软件调光亮度 / 在当前值上增减</td></tr>
 <tr><td>--set-temperature / --preset</td><td>设置色温（2700–9000K）/ 应用场景预设</td></tr>
@@ -49,18 +40,12 @@
 <tr><td>--login-item / --request-accessibility</td><td>登录时启动 / 请求辅助功能权限</td></tr>
 <tr><td>--scroll-report / --scroll-selftest</td><td>滚动诊断 / 验证插值算法</td></tr>
 <tr><td>--license-selftest / --cli-selftest</td><td>授权状态机 / 参数模糊测试与脱敏断言</td></tr>
-<tr><td>--switch-probe / --switch-selftest</td><td>开关可用性（只读）/ 读切读回实测</td></tr>
-</tbody></table>
-<h2 class="sec-head">明确不做的事</h2>
-<ul class="doc">
+<tr><td>--switch-probe / --switch-selftest</td><td>开关可用性（只读）/ 读切读回实测</td></tr></table>
+<h2>意図的に行わないこと</h2><ul>
 <li>深色模式、勿扰、夜览、原彩显示、隐藏桌面：需要系统私有接口，公开 API 做不到。</li>
 <li>Xcode 缓存清理与屏幕分辨率不做成一键：会真删数据或导致黑屏。</li>
 <li>锁键盘：会让键盘失去响应，不做一键。</li>
-<li>无遥测、无埋点、无账号系统。</li>
-</ul>
-<h2 class="sec-head">隐私边界</h2>
-<p>验签完全离线；<strong>仅首次激活</strong>联网一次做设备登记，之后每次启动不再联网。上报的只有 sha256(IOPlatformUUID + 机型号)，没有序列号、型号字符串、用户名。</p>
-</main>
-<footer class="doc-foot"><p>DisplayPilot 5.6.9 · macOS 14 或更高 · ¥99 一次买断</p></footer>
-</body>
-</html>
+<li>无遥测、无埋点、无账号系统。</li></ul>
+<h2>プライバシー境界</h2>
+<p>验签完全离线；<b>仅首次激活</b>联网一次做设备登记，之后每次启动不再联网。上报的只有 sha256(IOPlatformUUID + 机型号)，没有序列号、型号字符串、用户名。</p>
+</div><div class="foot">DisplayPilot 5.6.9 · macOS 14 或更高 · ¥99 一次买断</div></body></html>
