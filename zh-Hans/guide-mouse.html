@@ -58,7 +58,7 @@
 <p>同一个滑杆读出两个数字，因为它们是两样东西。而那个「通用键」才和偏好<strong>精确相等</strong>。</p>
 
 <h2>半个互联网都在用的那个 API 名，并不存在</h2>
-<p>很多教程——包括我们拿到的任务说明——都写着 <code>IOHIDSetPointerAcceleration</code>。这个符号在任何在售的 macOS 上都不存在：SDK 头文件里没有、<code>.tbd</code> 里没有，对已加载的 IOKit 镜像做 <code>dlsym</code> 返回 NULL。</p>
+<p>很多教程都写着 <code>IOHIDSetPointerAcceleration</code>。这个符号在任何在售的 macOS 上都不存在：SDK 头文件里没有、<code>.tbd</code> 里没有，对已加载的 IOKit 镜像做 <code>dlsym</code> 返回 NULL。</p>
 <p><code>&lt;IOKit/hidsystem/IOHIDLib.h&gt;</code> 里真正声明的是另一组：</p>
 <ul class="ticks"><li><code>IOHIDSetMouseAcceleration</code> / <code>IOHIDGetMouseAcceleration</code> → <code>HIDPointerAcceleration</code></li><li><code>IOHIDSetScrollAcceleration</code> / <code>IOHIDGetScrollAcceleration</code> → <code>HIDScrollAcceleration</code></li><li><code>IOHIDSetAccelerationWithKey</code> / <code>IOHIDCopyCFTypeParameter</code> / <code>IOHIDSetCFTypeParameter</code></li></ul>
 <p>前四个在 10.12 起标记为废弃，但仍然应答——而且关键在于：<strong>它们都不是「跟踪速度」滑杆</strong>。它们是隔壁的另一个参数。</p>

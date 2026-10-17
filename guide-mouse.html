@@ -58,7 +58,7 @@ live  HIDScrollAcceleration (generic key)          20480    = 0.3125</code></pre
 <p>Two different numbers for the same slider, because they are two different things. The generic key is the one that matches the preference exactly.</p>
 
 <h2>The API name that half the internet uses does not exist</h2>
-<p>Plenty of guides — and, in our case, an actual work brief — name <code>IOHIDSetPointerAcceleration</code>. That symbol does not exist on any shipping macOS: it is missing from the SDK headers, absent from the <code>.tbd</code> stubs, and <code>dlsym</code> on the loaded IOKit image returns NULL.</p>
+<p>Plenty of guides name <code>IOHIDSetPointerAcceleration</code>. That symbol does not exist on any shipping macOS: it is missing from the SDK headers, absent from the <code>.tbd</code> stubs, and <code>dlsym</code> on the loaded IOKit image returns NULL.</p>
 <p>What does exist, declared in <code>&lt;IOKit/hidsystem/IOHIDLib.h&gt;</code>, is a different set:</p>
 <ul class="ticks"><li><code>IOHIDSetMouseAcceleration</code> / <code>IOHIDGetMouseAcceleration</code> → <code>HIDPointerAcceleration</code></li><li><code>IOHIDSetScrollAcceleration</code> / <code>IOHIDGetScrollAcceleration</code> → <code>HIDScrollAcceleration</code></li><li><code>IOHIDSetAccelerationWithKey</code> / <code>IOHIDCopyCFTypeParameter</code> / <code>IOHIDSetCFTypeParameter</code></li></ul>
 <p>Those first four are marked deprecated as of 10.12 but still answer — and, crucially, <strong>none of them is the Tracking Speed slider</strong>. They are a different parameter that happens to live next door.</p>
