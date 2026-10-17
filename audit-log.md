@@ -22,7 +22,7 @@
 |---|---|---|
 | `check-conventions.py` | 文件≤400 行、界面字符串、本地化覆盖 | 137 个文件达标 |
 | `check-localization.py` | 每个界面中文字符串必须 7 个语言都有译文 | 1273 条 × 7 语言全通过 |
-| `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1562 项** |
+| `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1573 项** |
 | `check-versions.py` | 版本单一来源（`VERSION`）与 12 处引用一致（`--online` 另查远程） | 5.0.2 / 12 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
 | `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 85 页 / 85 条 URL |
@@ -252,6 +252,7 @@
 | 210 | **新增 --probe：只读扫描显示器应答哪些 MCCS 功能码，并解析 EDID 身份** | 能力探测 | ① 起因：用户要求「把所有显示器设置搬上面板」。先做决定性实验，而不是先改界面；② 新增 Core/MCCSProbe.swift（37 个有把握的标准码名表 + 0x00–0xFF 全扫 + EDID 厂商ID/产品码/型号解析）；③ CLI 新增 --probe / --full：亮度当闸门（6 次重试），逐个只读问，打印每个应答码的 current/max；④ **实测本机外接 UP32R7-A：EDID 读得到（品牌 CRT · 产品码 0x2700 · 2026 年第 13 周），但亮度 6 次全部无应答 → 这条通路没有 DDC/CI**；I2C 通而 DDC 不通，排除「问得太少」；⑤ 结论：用户面板空，不是软件问得少，是**面板不应答**；下一步是让用户在 OSD 里找 DDC/CI 开关，并已把「通用控件 + 品牌配置表」写进 Docs/display-capabilities-plan.md | DisplayPilot --probe |
 | 211 | **软件升级落地：探测到的功能码自动出现在面板上** | 界面/DDC | ① 新增 Core/MCCSProbe.swift：37 个有把握的 MCCS 标准码名表 + commandOnly 只读命令集（出厂重置类永不给滑块）+ EDID 身份解析（厂商 PnP ID / 产品码 / 序列 / 型号 / 生产周）；② 新增 Model/AppModel+DDCRaw.swift：ddcSetRaw 写任意功能码，写后重读并把 endpoint 重新发布，面板立刻显示新值；③ 新增 UI/MainView+Discovered.swift：discoveredRows 遍历 capabilities.vcpValues，把没被写死的应答码全部渲染成控件；**安全边界：只有语义已知且非命令型的码给可拖滑块，其余只读显示**；④ 为守住 400 行约定，把新代码拆成两个新文件（374 / 396 / 44 / 28 行）；⑤ 编译通过、门禁 16 项全绿；**未替换已安装的已公证 5.0.2**，留待正式发版 | DisplayPilot --probe |
 | 212 | **发版前的便利性升级：按住看原样** | 界面/痛点 | ① 起因：用户亲历「调了色温，忘了原来什么样，也不知道怎么回去」。先摸清现状——App 已有自动化规则、全局热键、菜单栏、预设、护眼、滚轮、鼠标、屏幕测试、诊断，**不是功能少，是缺少「撤销感知」**；② 新增 AppModel.previewingOriginal + AppModel+Preview.swift 的 setPreviewOriginal：按住时把全中性 GammaParams 推到伽马表，松开恢复；**刻意不走 update(_:)，因为那条路会 persist —— 一次误操作不该把用户调好的参数存成中性**；③ 菜单栏加「按住看原样」按钮（onLongPressGesture 的 pressing 回调，按下即生效）；④ 新增文案已补 7 语 Localizable.strings（zh-Hant/en/ja/ko/de/fr/es）；⑤ 编译通过、门禁 16 项全绿；文件均未超 400 行（224/398/17/78） | 菜单栏 → 按住「按住看原样」 |
+| 213 | **5.1.0 正式发布：公证通过、GitHub Release 上线** | 发版 | ① 用官方 ship.sh 一条龙（门禁→编译→回归→清理安全→签名+公证+staple→Gatekeeper 终验），**运行期间零重建**，票据未作废；② 公证 Accepted、staple validate worked、Gatekeeper **accepted / Notarized Developer ID / yanming hua (7P2P353LBW)**；包内容断言：版本 5.1.0、架构 x86_64+arm64、签名与票据齐全；③ 产物 DMG 7,458,408 字节，sha256 e63e591e99a1279dc79dca508eba1cbb8eddcde137427018a0b424c152098bfa；DMG 本身也公证 + staple + validate；④ GitHub Release v5.1.0 已建，asset digest 与本地 sha256 一致，302→200 实测 content-length 7,458,408；⑤ **一处未完成**：Sparkle appcast 需要 EdDSA 私钥重签，但钥匙串里该条目工具取不到（sign_update 报 key not found，generate_appcast 报 -25300）。**没有私钥就重签会破坏所有老用户的自动更新**，所以 appcast 已回滚到 5.0.2，保持可用的旧状态；**新版下载与安装不受影响，只影响「应用内自动更新」提示** | https://github.com/huayanming/displaypilot/releases/tag/v5.1.0 |
 
 ## 3. 仍然开着的项（诚实清单）
 
@@ -298,7 +299,7 @@ bash Scripts/check.sh                      # 16 道守卫 + 编译 + 回归（�
 python3 Scripts/check-pricing.py --online  # 价格：含实时汇率下的实收 vs 广告价
 python3 Scripts/check-versions.py --online # 版本：含 brew tap 与 GitHub release
 python3 Scripts/check-eula.py              # EULA：结构 + 各语言完整度
-python3 Scripts/check-app-claims.py        # 应用侧否定式承诺（1562 项）
+python3 Scripts/check-app-claims.py        # 应用侧否定式承诺（1573 项）
 
 cd Server && npm test                      # 服务端 190 项
 ./Scripts/release.sh --package-only 9.9.9  # 应失败：产物版本断言（安全，不产出任何东西）
