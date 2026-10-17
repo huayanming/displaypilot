@@ -18,7 +18,7 @@ with a deterministic rebuild path — quarantined for 30 days before anything is
 | | |
 |---|---|
 | Name | DisplayPilot |
-| Version | 5.0.2 |
+| Version | 5.7.1 |
 | Platform | macOS 14 or later · universal binary (Apple silicon + Intel) |
 | Bundle identifier | `com.neeson.displaypilot` |
 | Developer ID team | `7P2P353LBW` (yanming hua) |
@@ -70,7 +70,7 @@ Screenshots are unretouched captures of the shipping UI on a real external monit
 ## Contact
 
 Email **huayanming2019@gmail.com** — a person reads it, usually within a few hours.
-Download: <https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.0.2.dmg>
+Download: <https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg>
 Homepage: <https://huayanming.github.io/displaypilot/>
 
 ---
@@ -81,7 +81,7 @@ DisplayPilot 是一款 macOS 外接显示器控制台：亮度、色彩、滚动
 它存在的理由是那个迟早会遇到的故障——大量显示器没有实现 DDC/CI，Mac 的亮度键因此完全不起作用。
 DisplayPilot 改用 CoreGraphics 伽马表接管，面板依然可以调暗，而且完全可回退。
 
-**事实**：版本 5.0.2 · macOS 14 及以上 · 通用二进制（Apple 芯片与 Intel）·
+**事实**：版本 5.7.1 · macOS 14 及以上 · 通用二进制（Apple 芯片与 Intel）·
 Developer ID 团队 `7P2P353LBW` · 已由 Apple 公证且凭据钉扎 · ¥99 / US$14 一次买断（含一年更新）·
 14 天全功能试用，无需注册 · 无遥测（自动检查更新默认关闭）· 闭源，独立开发者，背后没有公司。
 
