@@ -1,142 +1,457 @@
-# DisplayPilot
+# DisplayPilot · 显示器控制
 
-**A macOS console for external displays** — brightness, colour, scrolling and disk, in one app.
+一台 Mac Studio（M1 Max）外接显示器 UP32R7-A 的专用控制软件。原生 SwiftUI + AppKit，
+菜单栏常驻，窗口是一块「校准台」式面板。
 
-[Website](https://huayanming.github.io/displaypilot/?src=github) ·
-[Download](https://github.com/huayanming/displaypilot/releases) ·
-[DDC/CI troubleshooting](https://huayanming.github.io/displaypilot/guide-ddc.html?src=github) ·
-[Cleanup guide](https://huayanming.github.io/displaypilot/guide-cleanup.html?src=github) ·
-[Issues](https://github.com/huayanming/displaypilot/issues) ·
-[中文说明](#中文说明)
+![控制台面板](Docs/panel.png)
 
-> This repository is the **website and distribution channel** (GitHub Pages + Releases).
-> It also backs the Homebrew cask and the Sparkle update feed (`appcast.xml`).
->
-> The app itself is **closed source**. This repository contains the site, the release
-> notes and the download links — not the application’s source code. Please do not
-> reuse the site’s text or images without asking.
-
-![Display control](https://huayanming.github.io/displaypilot/img/display.webp)
-
-## Deep dives
-
-Written from the implementation, not from a feature list. Each one can be checked against what the app does.
-
-| Page | What it is about |
-|---|---|
-| [All guides](https://huayanming.github.io/displaypilot/guides.html?src=github) | Organised by symptom |
-| [What an implementation has to get right](https://huayanming.github.io/displaypilot/dev-ddc.html?src=github) | I2C addresses, why EDID reads are shallow, why a monitor needs a beat, why symbols are resolved with dlsym |
-| [Which layer is dimming your screen](https://huayanming.github.io/displaypilot/guide-layers.html?src=github) | hardware / software / unavailable / unknown, and why the last two are not the same |
-| [What a gamma table actually does](https://huayanming.github.io/displaypilot/guide-gamma.html?src=github) | The five operations, the contrast pivot at 0.5, and three traps |
-| [A test you cannot read is just a colourful screen](https://huayanming.github.io/displaypilot/guide-test.html?src=github) | Five full-screen patterns, and why a test tool must never trap you |
-| [Two apps fighting over the same setting](https://huayanming.github.io/displaypilot/guide-conflict.html?src=github) | Bundle-id prefix matching, and why a miss beats a false alarm |
-| [Was it the update?](https://huayanming.github.io/displaypilot/guide-update.html?src=github) | Direction is the evidence, and why "ok" must be a positive confirmation |
-
-## How this project is checked
-
-Sixteen offline guards and 208 tests, and every guard is proved to fail on a planted defect.
-Both records are public:
-
-- [The audit log](https://huayanming.github.io/displaypilot/audit-log.md?src=github) — every round, including the ones where this project was wrong.
-- [Each guard failing on purpose](https://huayanming.github.io/displaypilot/guard-proofs.md?src=github) — so the checks are not decorative.
-
-## What it solves
-
-| | |
-|---|---|
-| **Display control** | Uses DDC/CI for hardware brightness, volume and input switching **when the panel implements it**; otherwise it falls back to **CoreGraphics gamma dimming** and says so in the UI ("no DDC reply") instead of pretending it worked |
-| **Colour calibration** | Contrast, gamma and temperature are recomputed against the panel's **original curves**, so repeated adjustments do not accumulate error; one click hands control back to ColorSync |
-| **Smooth scrolling** | Frame-by-frame delivery with time-based decay, so 60 Hz and 144 Hz feel the same (requires Accessibility permission) |
-| **Safe cleanup** | Only the **13 kinds of artifacts that have a deterministic rebuild path** are touched; everything moves to a **30-day quarantine** first; permanent deletion is off by default and requires **six conditions** to hold |
-
-![Smooth scrolling](https://huayanming.github.io/displaypilot/img/scroll.webp)
-![Storage](https://huayanming.github.io/displaypilot/img/storage.webp)
-
-## Install
-
-**Homebrew (recommended)**
-
-```bash
-brew install --cask huayanming/tap/displaypilot
-```
-
-**Direct download**
-
-Get `DisplayPilot-5.2.9.dmg` from [Releases](https://github.com/huayanming/displaypilot/releases/latest),
-or download it from the [website](https://huayanming.github.io/displaypilot/?src=github).
-
-- Requires **macOS 14 or later**
-- Signed with a Developer ID certificate and notarised by Apple (Gatekeeper opens it directly)
-- Universal binary (Apple silicon and Intel)
-
-## Price
-
-- **14-day free trial with every feature unlocked** — no account required
-- One-time purchase of **¥99 / US$14** — no subscription, no renewals
-- Activation codes are Ed25519-signed and verified **offline**: after activation the app does not phone home and is not bound to a device
-
-## Privacy
-
-**No telemetry, no analytics, no usage uploads, and no automatic crash reports.**
-
-Only three things ever reach the network:
-
-1. Checking for updates (**off by default**; can be triggered by hand in Settings)
-2. Redeeming a short activation code (only when you paste one)
-3. Opening a web page when you click a link
-
-"Report a problem" keeps everything on your Mac until you send it yourself.
-
-Every one of these claims has a code reference and is registered in the claims ledger that ships with the
-source, with a one-command way to reproduce it. Changing the code means updating the ledger — we do not want
-the website and the application to drift apart.
-
-## Known boundaries
-
-- If a display **does not implement DDC/CI**, hardware brightness, volume and input switching simply are not
-  available. Gamma dimming dims the picture, not the backlight: it saves less power and **has no effect on HDR content**.
-- Docks, active adapters and KVMs often drop the DDC side channel — that is an environment problem, and a
-  different cable or a direct connection usually fixes it.
-- Refunds: within 14 days of purchase, if the app cannot work on your machine and we cannot fix it, we refund
-  in full (see section 5 of the [EULA](https://huayanming.github.io/displaypilot/eula.html)).
-
-## Updates
-
-The app ships with a Sparkle updater; the feed is
-[`appcast.xml`](https://huayanming.github.io/displaypilot/appcast.xml). Update packages are signed with an
-Ed25519 key that is **separate from the activation-code key** — neither can stand in for the other.
-
-## Licence
-
-The **website content and documentation** in this repository are copyright the author. The **application is
-commercial software** and its use is governed by the
-[end-user licence agreement](https://huayanming.github.io/displaypilot/eula.html). The in-app "Open source
-licences" panel lists every third-party component and its licence.
+左侧导轨共 **14 个板块**：显示 / 滚动 / 护眼 / 工具 / 音频 / 鼠标 / 窗口 / 会话 /
+存储 / 时间线 / 健康 / 诊断 / 自动化 / 通用（「会话」为 3.0.0 之后新增）。
 
 ---
 
-## 中文说明
+## 先说结论：你这块显示器不支持 DDC/CI
 
-**macOS 显示器控制台** —— 亮度、色彩、滚动与磁盘，一个应用说清楚。
+这是实测结果，直接决定了软件怎么做：
 
-[官网](https://huayanming.github.io/displaypilot/zh-Hans/?src=github) ·
-[下载](https://github.com/huayanming/displaypilot/releases) ·
-[DDC/CI 排查指南](https://huayanming.github.io/displaypilot/zh-Hans/guide-ddc.html?src=github) ·
-[清理指南](https://huayanming.github.io/displaypilot/zh-Hans/guide-cleanup.html?src=github)
+| 检查项 | 结果 |
+| --- | --- |
+| DisplayPort 链路 | 正常（Upstream=DP / Downstream=DP，音频走 DP） |
+| EDID 读取（I²C `0x50`） | **正常**，拿到 `UP32R7-A` |
+| DDC/CI 读取（I²C `0x37`） | **全部无应答**，读回的是 DCP 的陈旧缓冲，从未出现 `0x6E` 回复 |
+| CoreGraphics 伽马表 | **可读可写**，调光真实生效 |
 
-| | |
-|---|---|
-| **显示器控制** | DDC/CI 可用时走硬件亮度/音量/输入源；**不可用时自动改用 CoreGraphics 伽马表调光**，并在界面上明确标注「DDC 无应答」，不假装成功 |
-| **色彩校准** | 对比度、伽马、色温都以**面板原始曲线**为基准重算，反复调节不会累积误差，一键交回 ColorSync |
-| **平滑滚动** | 逐帧投递，按经过时间衰减，60Hz 与 144Hz 手感一致（需要辅助功能权限） |
-| **安全清理** | 只处理 **13 类有确定性重建方式**的产物；**先移入隔离区保留 30 天**，永久删除默认关闭，且必须同时满足 6 个条件 |
+也就是说：**总线是通的，是面板固件不实现 DDC/CI**。
+所以硬件亮度、硬件对比度、硬件音量、输入源切换、电源控制在这一台上都无法实现
+——不是软件没做，是协议那头没人应答。
 
-**安装**：`brew install --cask huayanming/tap/displaypilot`，或从 [Releases](https://github.com/huayanming/displaypilot/releases/latest) 取 `DisplayPilot-5.2.9.dmg`。要求 **macOS 14 或更高**，已用 Developer ID 签名并通过 Apple 公证，通用二进制。
+如果你在显示器 OSD 里找到「DDC/CI」开关并打开，重启软件点「重新探测」即可；
+软件会第一时间切换到硬件控制。用 `Tools/ddc-probe.swift` 可以随时复验：
 
-**价格**：**14 天免费试用，功能完整**，不需要注册账号；一次性买断 **¥99 / US$14**，没有订阅。激活码为 Ed25519 签名、**本地离线验证**：激活后不联网，也不绑定设备。
+```bash
+swiftc -O Tools/ddc-probe.swift -o /tmp/ddc-probe && /tmp/ddc-probe
+```
 
-**隐私**：**不做遥测、不做埋点、不上传使用数据，也不自动上传崩溃日志。** 真正联网的只有三件事：检查更新（**默认关闭**）、兑换激活短码（只有你主动输入时）、你主动点击链接时打开网页。「报告问题」生成的内容只留在你本机，必须由你手动发送。
+于是 DisplayPilot 的核心改为 **CoreGraphics 伽马表软件调光**：
+它不依赖显示器固件，对任何面板都有效，实测在你这里生效（中点 0.5020 → 0.3012）。
 
-**已知边界**：显示器**没有实现 DDC/CI** 时，硬件亮度/音量/输入源切换就是不可用；伽马表调光压的是画面而非背光，省电不如硬件调光，也**对 HDR 内容无效**。扩展坞、主动式转接线、KVM 常会丢掉 DDC 侧通道——换线或直连通常能修好。退款：购买后 14 天内，如果软件在你的设备上无法正常工作且我们无法解决，全额退款（见[许可协议](https://huayanming.github.io/displaypilot/zh-Hans/eula.html)第五节）。
+---
 
-**更新**：内置 Sparkle 更新器，feed 为 [`appcast.xml`](https://huayanming.github.io/displaypilot/appcast.xml)；更新包用 Ed25519 独立签名（与激活码密钥**分开**，互相不能替代）。
+## 功能
+
+**主控亮度** —— 0–100% 连续软件调光。不改变背光功耗，但显示效果是真实的暗。
+
+**色彩校准** —— 对比度（以中灰为轴）、伽马（中间调）、色温（2700–9000 K）。
+三条通道都以显示器**原始曲线**为基准换算，反复拖动不会叠加累积误差。
+6500 K 被锚定为恒等变换，所以默认状态就是显示器本来的样子。
+
+**场景预设** —— 白天 / 阅读 / 夜间 / 影院 / 熄灯，一次写入全部通道。
+
+**画面与时序** —— 分辨率与刷新率切换，18 档逻辑分辨率 × 最多 12 档刷新率。
+
+  这里有一个系统坑：直接调用 CGDisplayCopyAllDisplayModes 只会返回原生 1:1 模式，
+  HiDPI 模式全部被藏起来 —— 你切过去只会让界面变糊。必须显式传入
+  kCGDisplayShowDuplicateLowResolutionModes 才会拿到那 155 个 HiDPI 模式。
+  软件已经这么做，并把「HiDPI · 清晰」与「原生 1:1」分成两组列出。
+
+**显示器硬件通道** —— DDC/CI 可用时出现硬件亮度、对比度、音量、输入源、关闭屏幕。
+
+**链路负载** —— 实时显示当前模式吃掉了多少显示带宽（帧缓冲像素 × 刷新率），上限由模式表反推而非假定。
+
+**色彩能力** —— 从 EDID 直接读出面板的物理色域，画出 CIE xy 三角，对比 sRGB 与 Display P3 的覆盖率。
+
+**其他** —— 菜单栏常驻与快捷调光、全局热键、显示器休眠、对照卡、一键交回系统 ColorSync 校准。
+
+---
+
+## 为什么大尺寸 HiDPI 只能 60Hz
+
+HiDPI 模式下真正被扫描输出的是超采样帧缓冲，不是逻辑尺寸。「看起来像 3360×1890」
+实际是 6720×3780 —— 横竖各翻倍，**4 倍像素**。刷新率受「帧缓冲像素 × 刷新率」的带宽预算约束，
+你这台机器实测落在 2.44 – 2.76 Gpx/s：
+
+| 模式 | 帧缓冲 | 刷新 | 像素率 |
+| --- | --- | --- | --- |
+| 3360×1890 HiDPI | 6720×3780 | 60Hz | 1.52 Gpx/s |
+| 3008×1692 HiDPI | 6016×3384 | 120Hz | 2.44 Gpx/s ✅ 刚刚好 |
+| 2560×1440 HiDPI | 5120×2880 | 144Hz | 2.12 Gpx/s |
+
+6720×3780 要上 120Hz 需要 **3.05 Gpx/s**，超出预算；而刷新率档位只有
+24 / 25 / 30 / 50 / 60 / 120 / 144 —— 够不到 120 就直接掉回 60。
+所以每个刷新率都有一个「最大分辨率」，软件把这三档做成了「推荐组合」快捷按钮。
+
+这个上限来自 DisplayPort 链路带宽（M1 Max 是 DP 1.4 / HBR3，约 25.9 Gbps）叠加
+DCP 扫描输出预算，**不是显示器本身的问题** —— 它的 EDID 里报到 165Hz。
+要真正突破只有换带宽：DP 2.1（雷雳 5）机型带宽是这里的数倍。
+
+---
+
+## 还有什么没被用上
+
+从 EDID 和系统报告里挖出来的、还没兑现的能力：
+
+| 能力 | 状态 | 说明 |
+| --- | --- | --- |
+| HDR10 / PQ | EDID 声明支持，**当前未启用** | macOS 报告 EDR = 1.00。可去 系统设置 → 显示器 看有没有「高动态范围」开关 |
+| 165Hz | EDID 上限 165Hz，**系统只给到 144Hz** | 带宽其实够：2560×1440 HiDPI @165 = 2.43 Gpx/s，刚好落在实测上限 2.44 之内。但 macOS 没有公开 API 能自建时序，需要 BetterDisplay / SwitchResX |
+| VRR / FreeSync | **没有** | EDID 里 SupportsVariableRefreshRate = No，不用惦记 |
+| 90° 旋转 | 面板支持，**软件未实现** | 可做成竖屏 2160×3840 |
+| 广色域 BT.2020 | 只是信令 | EDID 有 BT.2020 标志，但物理色域就是 sRGB（见下），不是真能力 |
+| DP 音频 | 可用 | 作为输出设备已能用，但 macOS 未暴露音量控制 |
+
+---
+
+## 能不能调成 iPhone 的颜色
+
+**不能完全一致 —— 物理上做不到。** 软件里现在能读到这块面板的真实色域：
+
+| | x | y |
+| --- | --- | --- |
+| 红 | 0.6426 | 0.3359 |
+| 绿 | 0.3135 | 0.6201 |
+| 蓝 | 0.1514 | 0.0527 |
+| 白点 | 0.3135 | 0.3291（D65） |
+
+换算成色域面积：**覆盖 sRGB 的 104%，只覆盖 Display P3 的 77%**。
+iPhone 从 7 代起用的是 Display P3，比 sRGB 大约大 36% —— 你的面板到不了。
+超出的那部分高饱和红与绿在物理上无法显示，只能被裁剪或映射进来。
+
+能对齐的部分，已经对齐了：
+
+* 白点：两边都是 D65；
+* 传递曲线：当前配置就是 sRGB IEC61966-2.1，与 iPhone 的 SDR 曲线一致；
+* sRGB 以内的颜色：可以一致；
+* sRGB 以外的颜色：做不到，这是硬件差异。
+
+两个容易忽略的坑：
+
+* **True Tone**：iPhone 白点跟着环境光走，是个移动目标，静态显示器追不上；
+* **亮度与黑位**：iPhone 是 OLED，峰值亮度上千尼特、黑位接近 0；你的面板差得远，暗室与亮室的观感本来就不同。
+
+想自己比一比，点「打开对照卡」，把手机放在旁边逐块对照 —— 那一排 sRGB 与 P3 色块在本显示器上看起来几乎一样，正好说明问题。
+
+---
+
+## 构建与运行
+
+```bash
+./Scripts/build-app.sh          # 渲染图标 → 编译 → 打包 → 临时签名
+open build/DisplayPilot.app
+```
+
+装到应用程序目录：
+
+```bash
+cp -R build/DisplayPilot.app /Applications/
+```
+
+跑一遍端到端自检（会短暂把屏幕调到 60% 再恢复）：
+
+```bash
+./Scripts/smoke-test.sh
+```
+
+只需要 Swift 工具链，没有第三方依赖。
+
+---
+
+## 命令行
+
+同一个二进制文件带参数运行即为命令行模式。调光指令会发送给正在运行的 App：
+
+```text
+DisplayPilot --list                         # 列出在线显示器
+DisplayPilot --set-brightness 0.4           # 亮度 40%
+DisplayPilot --offset-brightness -0.05      # 在当前亮度上减 5%
+DisplayPilot --set-temperature 4300         # 色温 4300K
+DisplayPilot --preset night                 # day|read|night|film|dark
+DisplayPilot --set-resolution 1920x1080     # 切换分辨率，优先 HiDPI
+DisplayPilot --set-resolution 2560x1440@144 # 指定刷新率
+DisplayPilot --list-modes                   # 全部模式（含系统隐藏的 HiDPI）
+DisplayPilot --dump-gamma                   # 打印伽马表中点值（只读）
+DisplayPilot --reset                        # 交回系统 ColorSync 校准
+```
+
+---
+
+## 快捷键
+
+| 组合 | 作用 |
+| --- | --- |
+| ⌃⌥↑ | 亮度 +5% |
+| ⌃⌥↓ | 亮度 −5% |
+
+---
+
+## 安全性：不会把你的屏幕留在黑暗里
+
+macOS 26 上伽马表由**窗口服务器持有**，设置它的进程一旦退出，显示会自动还原。
+实测验证过这一点：
+
+```text
+进程存活时   mid = 0.3012   （另一进程读到的确实是调暗后的值）
+进程退出后   mid = 0.5020   （自动回到系统状态）
+```
+
+所以即使 DisplayPilot 崩溃或被强杀，屏幕也会自己恢复，不存在「调暗后再也调不回来」的风险。
+除此之外还有两道保险：
+
+* 正常退出时主动还原伽马；
+* 菜单栏和窗口底部都有「还原此显示器」/「交回系统校准」，后者调用
+  `CGDisplayRestoreColorSyncSettings()`，可以清掉任何遗留状态。
+
+> 注意：这也意味着软件调光**只在该进程运行时有效**。这也是命令行需要 App 常驻的原因。
+
+---
+
+## 目录结构
+
+```text
+Package.swift                     SwiftPM 清单（macOS 14+，无依赖）
+Sources/DisplayPilot/
+  App/DisplayPilotApp.swift       @main；CLI 或 GUI 分流、菜单栏场景、退出还原
+  App/CLI.swift                   无头命令，经分布式通知驱动运行中的 App
+  Core/DDC.swift                  IOAVService 私有 API 封装与 VCP 读写
+  Core/GammaController.swift      伽马表基准、变换、重连重放
+  Core/DisplayCatalog.swift       显示器枚举、模式列表、分辨率切换
+  Core/AudioController.swift      显示器音频端点（DP/HDMI）音量
+  Core/HotKeyManager.swift        Carbon 全局热键
+  Model/AppModel.swift            状态与编排
+  UI/Theme.swift                  配色、量规、徽标、输出电平表
+  UI/Components.swift             带刻度的推子、通道条、按键排
+  UI/MainView.swift               主面板
+  UI/MenuBarView.swift            菜单栏面板
+Scripts/build-app.sh              构建 + 打包 + 签名
+Scripts/make-icon.py              Pillow 渲染图标（仪表盘主题）
+Scripts/smoke-test.sh             端到端自检
+Tools/ddc-probe.swift             独立 DDC/CI 诊断工具
+```
+
+---
+
+## 已知限制
+
+1. **硬件亮度不可用** —— 见上文。换一台实现 DDC/CI 的显示器即自动获得。
+2. **软件调光不省电** —— 伽马调光作用在扫描输出上，背光功耗不变；它压暗画面，不压暗灯管。
+3. **软件调光会压缩对比度** —— 这是伽马调光的固有特性：黑位与白位同时下移。
+4. **音量** —— 显示器的 DP 音频端点在 macOS 上未暴露 VolumeScalar，因此系统软件音量对它无效；
+   只有 DDC/CI 的 `VCP 0x62` 才能调它，而那一台无应答。
+5. **分辨率切换** —— 由系统图形栈执行，切换瞬间会重新握手，屏幕可能黑一下属正常。
+   软件调光挂在显示重配置回调上，换完分辨率会自动重放，不会失效（已实测）。
+6. **HiDPI 上限是 3360×1890** —— 面板原生 3840×2160，最大的 2 倍超采样模式就是 3360×1890；
+   再往上（5K、6K）属于超过面板像素的降采样渲染，清晰度收益递减而带宽开销照付。
+
+---
+
+## 换显示器之后
+
+把新的显示器接上，重新打开 DisplayPilot：
+
+* 若它支持 DDC/CI，「显示器硬件通道」一栏会自动出现硬件亮度、对比度、音量、输入源按钮；
+* `--list` 会列出新面板；
+* 每台显示器的调光/校色参数按 `厂商ID.型号ID.序列号` 分别记忆，互不干扰。
+
+---
+
+## 面板自己的说明书（EDID 全文解析）
+
+直接从 EDID 读出来，比系统报告更全：
+
+| 项 | 值 |
+| --- | --- |
+| 面板 | 3840×2160 · 32.1 英寸 · γ 2.2 · 2026 年第 13 周 |
+| 色度 | R(0.6426, 0.3359) G(0.3135, 0.6201) B(0.1514, 0.0527) W(0.3135, 0.3291) |
+| 声明刷新范围 | **48 – 165 Hz** |
+| 最大像素时钟 | **1600 MHz** |
+| 详细时序 | 3840×2160@60（基准 DTD）、1920×1080@60（CTA）、**3840×2160@120 与 @144（DisplayID）** |
+| 音频 | LPCM 2 声道，32–192 kHz |
+| 色彩格式 | YCbCr 4:4:4 / 4:2:2 / 4:2:0 |
+| HDR | 只有 HDR 动态元数据块，**没有静态元数据块**；系统 EDR = 1.00 |
+
+### 由此确定的三件事
+
+1. **165Hz 是真没给。** 面板声明到 165Hz；最大像素时钟 1600 MHz 也够（4K@165 只需约 1467 MHz）。
+   但 macOS 只生成到 144Hz —— 这是唯一一个「硬件支持、系统没给」的实质性性能。
+   要拿到需要注入自定义时序，macOS 没有公开 API。
+
+2. **面板只接收 3840×2160。** 超采样模式（例如 2560×1440 HiDPI 背后是 5120×2880 帧缓冲）
+   是在 GPU 里缩放完才送出的。所以限制超采样模式的是**显示管线的帧缓冲吞吐（实测约 2.5 Gpx/s）**，
+   既不是线材，也不是 DP 链路，更不是面板本身。这一点修正了本文件早先的说法。
+
+3. **HDR 基本没戏。** 缺少 HDR 静态元数据块，系统 EDR 也报 1.00。面板虽然带了动态元数据块，
+   但没有软件路径能把它变成可用的 HDR。
+
+### 另外两件「能但没用上」的事
+
+* **YCbCr 4:4:4 / 4:2:2**：面板接受非 RGB 色彩格式。桌面走 RGB，视频播放链路也没用上它。
+  对桌面没有收益，列在这里只是为了完整。
+* **90° 旋转**：面板支持旋转，软件里还没做。可以做成竖屏 2160×3840。
+
+---
+
+## 三个来自通用可交互设计原则的决定
+
+下面三件事不是某个产品的专利，而是「反馈要即时、语义要一致、写入要可验证」这三条通用原则的落地。
+
+### 1. 亮度 HUD：反馈必须浮在窗口之外
+
+用热键调亮度时主窗口通常是关着的，改了没有任何反馈 —— 用户只能靠猜。
+所以调亮度会在屏幕角落弹一个不抢焦点的浮层，显示当前亮度、进度条与显示器名。
+
+### 2. 修饰键语义：同一个键，按住改变含义
+
+同一个快捷键，按住修饰键时应该做另一件相关的事，而不是再占一个键位。
+这样热键数量可控，用户也不必记忆两套。
+
+### 3. 写入要读回验证
+
+对显示器写入参数后必须读回比对：写成功不等于生效。读回不一致就退避重试，
+而不是假设它成功了。这条原则在 DDC/CI 上尤其重要 —— 面板可能静默丢弃命令。
+
+## 滚动平滑
+
+滚动平滑把滚轮的一格拆成一段连续滚动，按显示器刷新率逐帧投递。
+
+### 分层
+
+| 层 | 用什么 | 干什么 |
+| --- | --- | --- |
+| 拦截 | CGEventTap | 在事件抵达应用前截获滚轮事件 |
+| 累积 | ScrollEngine | 把点数量攒起来，不立刻投递 |
+| 驱动 | CVDisplayLink | 挂在屏幕刷新上，逐帧投递 |
+| 投递 | CGEventPost | 发出 isContinuous=1 的像素级滚动事件 |
+
+### 算法
+
+每帧投递 `pending × (1 - e^(-dt/τ))`，其中 `τ = 平滑时长 / 4.6`。
+因为按**时间**衰减而不是按帧数，所以换刷新率（60Hz ↔ 144Hz）手感完全一致。
+
+**首帧起步**另有一个速度下限（`defaultFirstFrameGain = 0.33`）：纯指数在首帧只投递
+`1 - e^(-dt/τ)`，60Hz 是 21%，120Hz 只有 11% —— 刷新率越高，起步反而越"肉"。
+加了下限后首帧至少投递 1/3，起步手感与刷新率无关；总量不变，因为首帧只是从同一个
+池子里多拿一点。把该常量设为 0 即可恢复原手感。
+
+发出的是整数（`PointDeltaAxis1` 是纯像素整数），小数部分进位到下一帧 ——
+既保留亚像素精度，又不丢总量。
+
+### 安全性
+
+写这类东西必须交代清楚：
+
+1. **默认关闭。** 必须手动打开，不会偷偷接管滚轮。
+2. **绝不吞掉无法还原的事件。** 只有当帧时钟真的启动成功才吞掉原事件；启动失败就原样放行。
+3. **绕过键。** 按住 ⌘ 滚动 = 完全原生行为。
+4. **进程退出即失效。** 拦截器活在进程里，App 一退滚轮立刻回到原生。
+5. **需要辅助功能权限。** 没授权时拦截器根本不会创建，界面会显示状态并给出授权入口。
+6. **系统禁用自动重挂。** 回调超时被系统 disable 时会立刻重新启用。
+7. **精确输入放行。** 终端（Terminal / iTerm / Warp / kitty / Alacritty / WezTerm 等）
+   的滚轮是一行一格，平滑反而更难选词、更难盯日志，所以默认交回系统原生 ——
+   逻辑与"缩放语义放行"共用同一条通道，可在"内置缩放应用库"开关处整体关掉。
+
+### 自检
+
+    DisplayPilot --scroll-selftest
+
+前半段是**离线基准**：`ScrollSelfTest` 用固定的 dt 逐帧驱动插值器，
+不开事件拦截、不发任何真实事件，量出起步与收尾的形状：
+
+    离线基准（不触碰真实输入）：
+      起始响应  60Hz  首帧 6→9 点（20%→30%）  90% 用时 150→150 ms
+      起始响应 120Hz  首帧 3→9 点（10%→30%）  90% 用时 158→133 ms
+      总量守恒  60Hz  期望 150 点 · 实际 150 点 · 误差 0.00%
+      ...
+
+后半段用真实的合成滚轮事件驱动真实引擎，但把输出引到计数器上 ——
+**不会真的滚动你的屏幕** —— 验证总量守恒：
+
+   输入      : 5 格 x 30 点 = 150 点
+   速度倍率  : 1.50
+   期望输出  : 225 点
+   实际输出  : 225 点（45 帧，单帧最大 14 点）
+   误差      : 0.00%
+   结果      : 通过（总量守恒）
+
+### 可调项
+
+| 项 | 范围 | 说明 |
+| --- | --- | --- |
+| 启用平滑 | 开 / 关 | 总开关 |
+| 垂直 / 水平平滑 | 开 / 关 | 分轴控制 |
+| 速度 | 0.3 – 3.0× | 距离倍率 |
+| 平滑时长 | 0.08 – 0.90 秒 | 越大越丝滑 |
+| 反转垂直 / 水平 | 开 / 关 | 在系统方向之上再翻转单轴 |
+| 绕过键 | 按住 ⌘ | 固定 |
+
+### 首次使用
+
+打开「滚动」页 → 打开「启用平滑」→ 点「授予辅助功能权限」→
+在 系统设置 → 隐私与安全性 → 辅助功能 里勾选 DisplayPilot → 回到窗口即自动生效。
+
+---
+
+## 关于签名（这不是小事，是功能正确性的前提）
+
+应用现在用**本机已有的 Apple Development 证书**签名，而不是 ad-hoc 签名。
+
+原因：**TCC（辅助功能授权）把授权钉在「代码签名要求」上。**
+
+| 签名方式 | 代码签名要求 | 后果 |
+| --- | --- | --- |
+| ad-hoc（以前） | 含 `cdhash H"..."` | 二进制一变要求就变 → **刚授的权立刻作废** |
+| 证书（现在） | `anchor apple generic and certificate leaf[subject.CN] = "..."` | 重建多少次都不变 → **授权一次长期有效** |
+
+这就是之前反复授权又反复失效的根因。不是权限没给对，是签名身份本身不稳定。
+
+签名的锚点可以用这条命令自查：
+
+    codesign -d -r- /Applications/DisplayPilot.app
+
+只要输出里**没有 `cdhash`**、而是 `certificate leaf[subject.CN]`，就是对的。
+
+构建脚本会自动挑选第一个可用的 codesigning 身份；如果机器上一张证书都没有，
+才退回 ad-hoc 并打印警告。
+
+---
+
+## 两个根因（这段值得留着）
+
+平滑滚动一开始完全没反应，排查下来是**两个独立的根因**，跟功能本身都无关。
+
+### 根因一：签名身份不稳定 → 授权反复失效
+
+TCC 把辅助功能授权钉在「代码签名要求」上。
+
+| 签名 | 代码签名要求 | 后果 |
+| --- | --- | --- |
+| ad-hoc | 含 `cdhash H"…"` | 二进制一变就作废 → **每次重建都要重授权** |
+| 证书 | `anchor apple generic and certificate leaf[subject.CN] = "…"` | 重建多少次都不变 |
+
+改用本机已有的 Apple Development 证书签名后，连续重建两次权限都还在。自查：
+
+    codesign -d -r- /Applications/DisplayPilot.app
+    # 输出里不该出现 cdhash
+
+### 根因二：用 isContinuous 区分鼠标和触控板是错的
+
+原来用 `scrollWheelEventIsContinuous` 判断：连续型 = 触控板，放行不处理。
+
+**但罗技 MX Master 3S 这种高分辨率滚轮的连续型事件、相位是 0** ——
+它上报连续 delta，却带着滚轮的语义。结果就是**每一格都被当成触控板放行了**：
+
+    辅助功能权限 : 1
+    拦截器运行中 : 1
+    已拦截事件   : 0     ← 一个都没拦到
+
+正确做法是用**手势相位**区分：
+
+    phase = scrollWheelEventScrollPhase
+    momentum = scrollWheelEventMomentumPhase
+    if phase != 0 || momentum != 0  → 触控板 / 妙控鼠标手势，放行
+    否则                            → 滚轮，接管平滑
+
+修好后同一台机器：
+
+    看到事件 : 151   手势跳过 : 0   拦截 : 151   投递 : 126
+
+界面上还留了实时计数（看到 / 手势 / 拦截 / 投递），万一以后换鼠标出问题，
+一眼就能看出卡在哪一层。
