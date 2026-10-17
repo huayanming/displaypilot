@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>读不懂的测试，只是一块彩色屏幕 — DisplayPilot</title>
+<meta name="description" content="怎么真正测一台外接显示器：五个全屏测试各看什么、为什么每个测试都必须配一句「健康的面板长什么样」，以及为什么测试工具绝不能把你困住。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-test.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器 DDC/CI 无响应">
+<meta property="og:description" content="为什么 Mac 调不动外接显示器的亮度，怎么定位原因，以及 DDC/CI 不可用时还能怎么做。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-test.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-test.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-test.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-test.html">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "读不懂的测试，只是一块彩色屏幕", "description": "怎么真正测一台外接显示器：五个全屏测试各看什么、为什么每个测试都必须配一句「健康的面板长什么样」，以及为什么测试工具绝不能把你困住。", "url": "https://huayanming.github.io/displaypilot/zh-Hans/guide-test.html", "inLanguage": "zh-Hans"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">说明</p>
+  <h1>读不懂的测试，只是一块彩色屏幕</h1>
+  <p class="lede">五个全屏图案，比任何规格表都更能说明一台外接显示器的情况。
+  但前提是：你得知道自己在看什么。</p>
+
+  <h2>值得测的东西</h2>
+  <ul>
+    <li><strong>坏点与亮点</strong>——在纯色场上始终保持黑或始终亮着的单点。</li>
+    <li><strong>灰阶</strong>——面板在相邻色调之间是平滑过渡，还是在本该连续的地方出现色带。</li>
+    <li><strong>均匀性</strong>——一整块中灰会让背光漏光、云斑和「脏屏」效应显形，
+      这是照片永远做不到的。</li>
+    <li><strong>锐度</strong>——面板是不是真的运行在原生分辨率上，缩放有没有把细节糊掉。</li>
+    <li><strong>运动</strong>——面板把移动的边缘拖糊多少。这是廉价面板差别最大的地方，
+      也是宣传数字最容易误导的地方。</li>
+  </ul>
+
+  <h2>每个图案都要配一句能读懂的说明</h2>
+  <p>没有说明的图案，只是一块有颜色的屏幕。每个测试都应该用一句话讲清楚：
+  你要看的是什么，以及<strong>一块健康的面板看起来应该是什么样</strong>。
+  少了这句话，用户除了「刚才显示了点东西」之外什么也没得到。</p>
+
+  <h2>为什么用无边框覆盖窗，而不是原生全屏 Space</h2>
+  <p>要铺满屏幕，最直觉的做法是进入系统原生全屏 Space。问题在于：
+  <strong>Space 是可恢复的状态</strong>——一个测试工具如果留下一个 Space，
+  就是把人困在一个退不出去的窗口里的经典做法。
+  而一个钉在目标屏幕上的无边框覆盖窗，关掉之后桌面<strong>和原来一模一样</strong>。</p>
+
+  <h2>Esc 不会自动生效</h2>
+  <p>无边框窗口<strong>默认拒绝成为 key window</strong>，除非你主动索取。
+  少了这一步，<strong>Esc 永远到不了正在运行的测试</strong>，
+  唯一的出路是强退一个已经铺满屏幕的 App。<strong>如果测试工具能把你困住，它就不是测试工具。</strong></p>
+
+  <h2>诚实的边界</h2>
+  <ul>
+    <li>这些测试展示的是<strong>你的眼睛能注意到</strong>的问题。它们不是色度计：
+      均匀性和灰阶测试能<strong>暴露</strong>问题，不能<strong>测量</strong>问题。</li>
+    <li>什么都没看出来不等于面板就好。它只说明在那个图案上、那个亮度下，没有缺陷越过你的阈值。</li>
+    <li>运动是五项里<strong>最不具结论性</strong>的一项——拖影取决于你拿什么做参照，
+      而没有任何全屏图案能替代高速摄影。</li>
+  </ul>
+
+  <h2>相关</h2>
+  <ul>
+    <li><a href="guide-color.html">色彩发灰</a></li>
+    <li><a href="guide-hidpi.html">文字发虚</a></li>
+    <li><a href="guide-conflict.html">两个 App 抢同一个设置</a></li>
+    <li><a href="../verify.html">怎么自己核对</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
