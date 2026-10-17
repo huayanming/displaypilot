@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>调暗屏幕时，伽马表到底做了什么 — DisplayPilot</title>
+<meta name="description" content="从滑块到面板之间的五步运算：伽马、绕 0.5 旋转的对比度、乘亮度、逐通道增益、钳位；以及围绕它的三个陷阱——复利、表格被静默丢弃、暖色把面板调亮。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-gamma.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器 DDC/CI 无响应">
+<meta property="og:description" content="为什么 Mac 调不动外接显示器的亮度，怎么定位原因，以及 DDC/CI 不可用时还能怎么做。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-gamma.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-gamma.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "调暗屏幕时，伽马表到底做了什么", "description": "从滑块到面板之间的五步运算：伽马、绕 0.5 旋转的对比度、乘亮度、逐通道增益、钳位；以及围绕它的三个陷阱——复利、表格被静默丢弃、暖色把面板调亮。", "url": "https://huayanming.github.io/displaypilot/zh-Hans/guide-gamma.html", "inLanguage": "zh-Hans"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">说明</p>
+  <h1>调暗屏幕时，伽马表到底做了什么</h1>
+  <p class="lede">亮度滑块不是一个操作。从滑块到面板之间有五步，
+  而<strong>顺序比数值更重要</strong>。</p>
+
+  <h2>五步运算，按顺序</h2>
+  <p>对斜坡里的每一个采样点，逐个处理：</p>
+  <pre><code>x = pow(raw, 1/gamma)
+x = (x - 0.5) * contrast + 0.5
+x = x * brightness
+x = x * tint
+x = clamp(x, 0, 1)</code></pre>
+  <p>请仔细读第二行：<strong>对比度是绕 0.5 旋转的，不是绕零。</strong>
+  在 contrast 为 1 时它是恒等变换，整行等于不存在；一旦低于 1，
+  它就把整条斜坡往中点拉——<strong>也就是把斜坡底部抬离零</strong>。
+  让真黑变成深灰的是<strong>这一项</strong>，不是调光本身。</p>
+
+  <h2>陷阱一：反复调整会复利</h2>
+  <p>如果每次调整都在<em>当前</em>表格上再加工，第二次加工的就是一张已经被加工过的表。
+  正确做法是<strong>先捕获面板的原始斜坡一次</strong>，之后永远基于它。
+  这和「调度器乘一个已经被调暗过的值」是同一类 bug：第一次看起来没问题，之后永远在漂。</p>
+
+  <h2>陷阱二：表格会被静默丢弃</h2>
+  <p>唤醒、改分辨率、GPU 复位，都可能把表格丢掉而不通知任何人。
+  所以不能假设「写进去了就一直有效」：<strong>读回来</strong>，
+  拿一个内部采样点和你的意图比对，不一致就<strong>退避重试</strong>。
+  比对必须有容差，因为读回来不是逐位精确的。</p>
+
+  <h2>陷阱三：暖色调整绝不能把面板调亮</h2>
+  <p>把画面调暖，意味着抬高红、压低蓝。直白地做，峰值会超过 1，面板反而比你设定之前更亮。
+  约束只需要一行：<strong>把峰值归一到 1。</strong>
+  颜色变动不该变成亮度变动。</p>
+
+  <h2>参考白点</h2>
+  <p>所有色偏都相对于<strong>一个参考白点</strong>表达，这样参考色温就是恒等变换，
+  一块没被动过的面板保持原样。这个锚点选得草率，「什么都没改」就会悄悄变成「稍微暖了一点」。</p>
+
+  <h2>诚实的边界</h2>
+  <ul>
+    <li>以上全部<strong>只改画面，不碰背光</strong>。它在每一块显示器上都能用，
+      包括完全不支持 DDC/CI 的面板——但它没法让面板本身真的变暗。</li>
+    <li>这里的具体常数是<strong>某一个实现</strong>的选择。可迁移的是<strong>顺序和三个陷阱</strong>，不是那些数字。</li>
+    <li>带容差的读回，仍可能接受一张在采样点上恰好吻合的错误表格。只比一个点<strong>便宜，但不穷尽</strong>。</li>
+  </ul>
+
+  <h2>相关</h2>
+  <ul>
+    <li><a href="../guide-layers.html">哪一层在把你的屏幕调暗（英文）</a></li>
+    <li><a href="guide-color.html">色彩发灰</a></li>
+    <li><a href="guide-night.html">按时段调暗，以及那个把屏幕一路调到全黑的陷阱</a></li>
+    <li><a href="audit.html">我们怎么检查自己</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
