@@ -54,7 +54,7 @@
 <h2>The mechanism that actually fixes it</h2>
 <p>There are three steps, and all three matter:</p>
 <ul class="ticks"><li><strong>Intercept before the app sees it.</strong> A <code>CGEventTap</code> receives the wheel event first, so it can be swallowed and replaced.</li><li><strong>Accumulate, do not consume.</strong> The engine keeps the unspent remainder of the notch and hands out a fraction of it per frame.</li><li><strong>Emit on the display clock.</strong> A <code>CVDisplayLink</code> fires in step with the panel refresh, so the deltas arrive with the frames rather than in a burst.</li></ul>
-<p>This is the architecture the open-source MOS popularised, and it is the right one — our scroll engine mirrors it rather than inventing a worse wheel.</p>
+<p>This is the scroll architecture browsers and the system itself use: split each notch into frames and deliver them at the display refresh rate.</p>
 
 <h2>Trap 1 — not every wheel notch means "scroll"</h2>
 <p>This is the one that bites. In Photos, Maps, Keynote, Numbers, and most spreadsheets, one wheel notch is not a scroll at all — it is a <strong>zoom step</strong> or a page turn.</p>
