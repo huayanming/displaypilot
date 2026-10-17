@@ -9,12 +9,12 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="site-header"><a class="brand" href="./index.html">DisplayPilot</a>
+<header class="nav"><a class="brand-name" href="./index.html">DisplayPilot</a>
 <nav><a href="./index.html">首页</a><a href="./features.html">功能</a><a href="./privacy.html">隐私</a><a href="./support.html">支持</a></nav></header>
 <main class="wrap">
 <h1>完整功能清单</h1>
-<p class="lede">下面每一项都能在应用里找到对应控件，不是宣传话术。共 <strong>14 个标签页 · 52 张卡片 · 17 项菜单栏开关 · 21 个命令行参数</strong>。</p>
-<h2>面板：14 个标签页</h2>
+<p >下面每一项都能在应用里找到对应控件，不是宣传话术。共 <strong>14 个标签页 · 52 张卡片 · 17 项菜单栏开关 · 21 个命令行参数</strong>。</p>
+<h2 class="sec-head">面板：14 个标签页</h2>
 <table class="spec"><thead><tr><th>标签页</th><th>包含的卡片</th></tr></thead><tbody>
 <tr><td>显示</td><td>显示器 · 主控亮度 · 色彩校准 · 场景预设 · 画面与时序</td></tr>
 <tr><td>滚动</td><td>常驻 · 滚动平滑 · 开关 · 手感 · 方向 · 应用排除</td></tr>
@@ -31,7 +31,7 @@
 <tr><td>自动化</td><td>自动化 · 规则</td></tr>
 <tr><td>通用</td><td>快捷键 · 设置备份与迁移 · 关于</td></tr>
 </tbody></table>
-<h2>菜单栏：17 项开关</h2>
+<h2 class="sec-head">菜单栏：17 项开关</h2>
 <p>点菜单栏图标直接可用，不用打开主窗口。</p>
 <table class="spec"><thead><tr><th>类型</th><th>项目</th></tr></thead><tbody>
 <tr><td>真开关（有状态）</td><td>显示隐藏文件 · 隐藏 Dock · 保持亮屏</td></tr>
@@ -39,7 +39,7 @@
 <tr><td>如实标注不支持</td><td>麦克风静音（默认输入设备没有 mute 属性）</td></tr>
 <tr><td>同时提供</td><td>亮度滑块 · 5 个场景预设 · 回到中性 · 按住看原样 · 音量滑块</td></tr>
 </tbody></table>
-<h2>命令行：21 个参数</h2>
+<h2 class="sec-head">命令行：21 个参数</h2>
 <table class="spec"><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody>
 <tr><td>--list / --list-modes</td><td>列出显示器与全部模式（含被系统隐藏的 HiDPI）</td></tr>
 <tr><td>--set-brightness / --offset-brightness</td><td>设置软件调光亮度 / 在当前值上增减</td></tr>
@@ -51,16 +51,16 @@
 <tr><td>--license-selftest / --cli-selftest</td><td>授权状态机 / 参数模糊测试与脱敏断言</td></tr>
 <tr><td>--switch-probe / --switch-selftest</td><td>开关可用性（只读）/ 读切读回实测</td></tr>
 </tbody></table>
-<h2>明确不做的事</h2>
-<ul class="limits">
+<h2 class="sec-head">明确不做的事</h2>
+<ul class="doc">
 <li>深色模式、勿扰、夜览、原彩显示、隐藏桌面：需要系统私有接口，公开 API 做不到。</li>
 <li>Xcode 缓存清理与屏幕分辨率不做成一键：会真删数据或导致黑屏。</li>
 <li>锁键盘：会让键盘失去响应，不做一键。</li>
 <li>无遥测、无埋点、无账号系统。</li>
 </ul>
-<h2>隐私边界</h2>
+<h2 class="sec-head">隐私边界</h2>
 <p>验签完全离线；<strong>仅首次激活</strong>联网一次做设备登记，之后每次启动不再联网。上报的只有 sha256(IOPlatformUUID + 机型号)，没有序列号、型号字符串、用户名。</p>
 </main>
-<footer class="site-footer"><p>DisplayPilot 5.6.9 · macOS 14 或更高 · ¥99 一次买断</p></footer>
+<footer class="doc-foot"><p>DisplayPilot 5.6.9 · macOS 14 或更高 · ¥99 一次买断</p></footer>
 </body>
 </html>
