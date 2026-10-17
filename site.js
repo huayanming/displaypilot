@@ -12,7 +12,7 @@
   /* ── 只改这里 ────────────────────────────────────────────── */
   var SITE = {
     // 安装包直链（GitHub Releases）。发新版只改这一行。
-    download: "https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.6.4.dmg",
+    download: "https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.6.5.dmg",
     // 结账地址。空字符串 = 还没有可用的付款入口。
     purchase: "https://displaypilot-license.huayanming2019.workers.dev/buy",
     // 价格：全站唯一常量。key 是页面的 <html lang>，default 覆盖其余语言。
