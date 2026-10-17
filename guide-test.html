@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A test you cannot read is just a colourful screen — DisplayPilot</title>
+<meta name="description" content="How to test an external display properly: five full-screen patterns, why each needs a sentence telling you what a healthy panel looks like, and why a test tool that opens a native full-screen Space can strand you.">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-test.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="DDC/CI not responding on macOS">
+<meta property="og:description" content="Why external display brightness stops responding on a Mac, how to isolate the cause, and what works when DDC/CI is unavailable.">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-test.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "A test you cannot read is just a colourful screen", "description": "How to test an external display properly: five full-screen patterns, why each needs a sentence telling you what a healthy panel looks like, and why a test tool that opens a native full-screen Space can strand you.", "url": "https://huayanming.github.io/displaypilot/guide-test.html"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html">Features</a>
+      <a href="index.html">Pricing</a>
+      <a href="support.html">Support</a>
+      <a href="guides.html">Guides</a>
+      <a href="zh-Hans/guide-ddc.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+      <a href="zh-Hant/guide-ddc.html" hreflang="zh-Hant" lang="zh-Hant">繁體</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">Explainer</p>
+  <h1>A test you cannot read is just a colourful screen</h1>
+  <p class="lede">Five full-screen patterns will tell you more about an external display than any spec sheet. The
+  catch is that a pattern only means something if you know what you are looking at.</p>
+
+  <h2>What is worth testing</h2>
+  <ul>
+    <li><strong>Dead and stuck pixels</strong> — single points that stay dark or stay lit against solid fields.</li>
+    <li><strong>Grayscale</strong> — whether the panel steps smoothly between tones, or banding appears where the
+      ramp should be continuous.</li>
+    <li><strong>Uniformity</strong> — a flat mid-grey field makes backlight bleed, clouding and a dirty-screen
+      effect visible in a way that a photograph never does.</li>
+    <li><strong>Sharpness</strong> — whether the panel is actually running at its native resolution and whether
+      scaling is blurring fine structures.</li>
+    <li><strong>Motion</strong> — how much the panel smears a moving edge. This is where cheap panels differ most
+      and where advertising numbers mislead most.</li>
+  </ul>
+
+  <h2>Every pattern needs one readable sentence</h2>
+  <p>A pattern without an instruction is a coloured screen. Each test should say, in one sentence, what you are
+  watching and <em>what a healthy panel looks like</em>. If the sentence is missing, the user learns nothing except
+  that something was displayed.</p>
+
+  <h2>Why a bordered overlay beats a full-screen Space</h2>
+  <p>The obvious way to show a full-screen pattern is to enter a native full-screen Space. The problem is that a
+  Space is <strong>restorable state</strong>: a test tool that leaves one behind is the classic way to strand a
+  user in a window they cannot get out of. A borderless overlay pinned to the target screen closes back to the
+  desktop exactly as it was.</p>
+
+  <h2>The Esc key does not just work</h2>
+  <p>Borderless windows refuse key status unless you explicitly ask for it. Without that, <strong>Esc never reaches
+  the running test</strong> and the only way out is to force-quit an app that has covered the screen. If a test
+  tool could trap you, it is not a test tool.</p>
+
+  <h2>Honest limits</h2>
+  <ul>
+    <li>These tests show you what your eyes can notice. They are not a colorimeter: uniformity and grayscale tests
+      reveal problems, they do not measure them.</li>
+    <li>Seeing nothing is not proof of a good panel. It means no defect crossed your threshold, on that field, at
+      that brightness.</li>
+    <li>Motion is the least conclusive of the five — smear depends on the camera you compare against, and no
+      full-screen pattern replaces a high-speed capture.</li>
+  </ul>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="guide-color.html">Colour looks washed out</a></li>
+    <li><a href="guide-hidpi.html">Text looks blurry</a></li>
+    <li><a href="verify.html">How to check any of this yourself</a></li>
+    <li><a href="audit.html">How we test what we ship</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">License</a>
+      <a href="support.html">Support</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
