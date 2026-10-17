@@ -25,7 +25,7 @@
 | `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1518 项** |
 | `check-versions.py` | 版本单一来源（`VERSION`）与 12 处引用一致（`--online` 另查远程） | 5.0.2 / 12 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
-| `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 74 页 / 74 条 URL |
+| `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 75 页 / 75 条 URL |
 | `check-privacy.py` | 被撤回的隐私说法不得回归、邮箱披露必须存在 | 8 语言 × 3 项 = 24 |
 | `check-eula.py` | 10 大节齐全、不再引用不存在的功能、英文本优先条款、退款路径指向真实功能 | 8 语言；**并持续显示各语言完整度** |
 | `check-launch-posts.py` | 文案数字从代码现读比对、每条链接带 `?src=`、撤回说法、硬编码价格 | 17 项（数字主张 9 · 归因链接 6 · 撤回说法 2） |
@@ -206,6 +206,7 @@
 | 164 | **写「两个 App 抢同一个显示设置」：一个没人写、但每个 Mac 用户都遇到过的问题** | 获客/内容 | ① 素材来自 Sources/DisplayPilot/Core/ConflictArbitration.swift：匹配先按**小写化的 bundle-id 前缀**、再按精确的本地化名称；之所以要前缀，是因为厂商会同时装一个菜单栏 App **加若干辅助进程**，而辅助进程往往没有可用的名字；② 页面把一个很好的原则原样写出来：**「一条永不触发的警告，好过一条误报到无关进程上的警告」**——并补了一句实话：会被人学会忽略的冲突警告，比没有警告更糟；③ **headline 守卫连续两轮抓到我**：我复制 dev-ddc.html 做骨架后，JSON-LD 的 headline 还是旧页的；上一轮用正则替换没生效，这轮改成**字符串替换**才修好——两次都是同一种错；④ 站点 72 → **73 页 / 73 条 sitemap**，报告页数同步更新，门禁 exit 0 | curl -sL …/guide-conflict.html |
 | 165 | **写「亮度到底在哪一层」：hardware / software / unavailable / unknown** | 获客/内容 | ① 素材来自 Sources/DisplayPilot/Core/DDCSelfHeal.swift 的真实常量：SelfHealChannel 四个状态、wakeDelay = 2.5 秒、retryDelays = [1, 2, 4]；② 页面把「unknown 与 unavailable 不能合并」和「退避阶梯必须可测试（注入 writer 与 sleeper）」讲成两条工程判断，并写明软件调光会**抬起黑位**这一诚实边界；③ **这次 JSON-LD 从零生成**，不再复制上一页的骨架——那个连续两轮咬我的 headline 错就此消失，门禁**一次通过** ✓；④ 站点 73 → **74 页 / 74 条 sitemap** | curl -sL …/guide-layers.html |
 | 166 | **我上一轮在页面上写了一句不成立的话，被自己的源码核对推翻** | 内容/诚信 | ① guide-layers.html 里我写「软件调光会在低端抬起黑位」——但读 GammaController.swift 的 shape() 才发现：算式是 x = pow(raw, 1/gamma); x = (x-0.5)*contrast+0.5; x *= brightness; x *= tint；② **纯亮度缩放（contrast = 1）时 raw=0 仍得 0，黑还是黑**；真正抬黑的是「绕 0.5 旋转」那一项——只要 contrast < 1，底部就被推到 0 以上；③ 于是把原句改成准确表述：contrast 为 1 时是纯缩放、黑不变；低于 1 时才是它把黑变成深灰；④ 这条比写新页面重要——**一个能被源码核对推翻的说法，会毁掉整页的可信度** | 见 guide-layers.html |
+| 167 | **把上一轮修正过的源码依据写成正式一页：伽马表到底做了什么** | 获客/内容 | ① 页面把 shape() 的五步原样列出（pow(raw, 1/gamma) → 绕 0.5 旋转的 contrast → 乘 brightness → 乘 tint → clamp），并点名关键：**contrast 绕 0.5 而不是绕零**，所以只有 contrast < 1 才抬黑位；② 三个陷阱都来自源码注释：反复调整会复利（必须保留原始斜坡）、表格会在唤醒/改分辨率/GPU 复位时被静默丢弃（读回并退避重试、带容差）、暖色调整不得让面板变亮（把峰值归一到 1）；③ 诚实边界也写了：读回只比一个内部采样点，**便宜但不穷尽**；常数是某个实现的选择，可迁移的是顺序与三个陷阱；④ 站点 74 → **75 页 / 75 条 sitemap**，JSON-LD 从零生成，门禁一次通过 | curl -sL …/guide-gamma.html |
 
 ## 3. 仍然开着的项（诚实清单）
 
