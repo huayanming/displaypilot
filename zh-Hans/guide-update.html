@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>是不是这次更新的锅？先看方向 — DisplayPilot</title>
+<meta name="description" content="出问题后怎么判断是不是更新造成的：为什么方向（先后）就是证据、为什么「正常」必须是明确的正面确认、以及为什么诊断只该读冻结的快照。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-update.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="Mac 外接显示器 DDC/CI 无响应">
+<meta property="og:description" content="为什么 Mac 调不动外接显示器的亮度，怎么定位原因，以及 DDC/CI 不可用时还能怎么做。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-update.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-update.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-update.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-update.html">
+</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "是不是这次更新的锅？先看方向", "description": "出问题后怎么判断是不是更新造成的：为什么方向（先后）就是证据、为什么「正常」必须是明确的正面确认、以及为什么诊断只该读冻结的快照。", "url": "https://huayanming.github.io/displaypilot/zh-Hans/guide-update.html", "inLanguage": "zh-Hans"}</script>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#price">价格</a>
+      <a href="support.html">支持</a>
+      <a href="guides.html">指南</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <p class="kicker">排查</p>
+  <h1>是不是这次更新的锅？先看方向</h1>
+  <p class="lede">昨天还好好的，今天不行了。诚实的答案不是「大概是更新」，
+  而是先看<strong>哪件事先发生</strong>。</p>
+
+  <h2>方向很重要</h2>
+  <p>发生在更新<strong>之后</strong>的故障，是典型的「更新之后出的问题」；
+  发生在更新<strong>之前</strong>的，就不能怪它——不管这有多诱人。
+  在把责任归给任何东西之前，先把两个时间戳并排放在一起。
+  这一步通常就能消掉很大一部分错误归因，两个方向上都一样。</p>
+
+  <h2>「正常」必须是明确的正面确认</h2>
+  <p>诊断报「正常」这件事本身有个陷阱：如果「正常」的意思是<em>我们没发现问题</em>，
+  那么<strong>一条从没运行过的规则，看起来就和一台健康的机器一模一样</strong>。三种状态应当是：</p>
+  <ul>
+    <li><strong>正常</strong>——我们查过，明确确认没问题，而不是「没有数据」。</li>
+    <li><strong>留意</strong>——值得看一眼，但不算缺陷。</li>
+    <li><strong>警告</strong>——一个具体的问题。</li>
+  </ul>
+  <p>把「正常」定义为正面确认，才能避免「什么都没查」被读成「一切健康」。</p>
+
+  <h2>只读快照，不读活状态</h2>
+  <p>结论应当来自一份<strong>冻结的快照</strong>——里面是所有规则被允许读取的东西。
+  如果规则在运行过程中还能去读活状态，答案就会取决于分析跑到一半时变了什么；
+  而<strong>同一台机器可以在几分钟内给出两个不同的结论，中间什么都没发生</strong>。</p>
+
+  <h2>两个很细的计数错误</h2>
+  <ul>
+    <li>同一条警告用两种语言记录下来，是<strong>一个问题</strong>，不是两个。
+      按稳定的类别归组，否则一份双语的日志看起来像麻烦翻倍。</li>
+    <li>解析不出来的名字算<strong>未知</strong>，绝不猜。错误的归因比空的归因更糟，
+      因为它会把你引到错的地方去找。</li>
+  </ul>
+
+  <h2>实际怎么办</h2>
+  <ul>
+    <li>在动手修之前，先记下问题<strong>开始</strong>的确切时间——之后的每个动作都会毁掉证据。</li>
+    <li>拿它去和更新记录比，而不是和你对更新的记忆比。</li>
+    <li>如果问题早于更新，就别再想着回滚了，去看看别的：一根线、一个扩展坞、一台显示器、一次系统小版本更新。</li>
+  </ul>
+
+  <h2>诚实的边界</h2>
+  <ul>
+    <li>时间戳只能给事情排序，<strong>不能证明因果</strong>——更新之后的故障，也可能来自一根恰好在那时候松掉的线。</li>
+    <li>快照让结论<strong>可复现</strong>，不等于<strong>正确</strong>。阈值设错的规则，会把同一个错误答案完美地复现出来。</li>
+  </ul>
+
+  <h2>相关</h2>
+  <ul>
+    <li><a href="guide-ddc.html">DDC/CI 没反应</a></li>
+    <li><a href="../guide-conflict.html">两个 App 抢同一个设置（英文）</a></li>
+    <li><a href="../audit.html">我们怎么检查自己</a></li>
+    <li><a href="../verify.html">怎么自己核对</a></li>
+  </ul>
+</main>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隐私政策</a>
+      <a href="eula.html">许可协议</a>
+      <a href="support.html">支持</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+</body>
+</html>
