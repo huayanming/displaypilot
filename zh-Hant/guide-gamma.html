@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>調暗螢幕時，伽馬表到底做了什麼 · DisplayPilot</title>
+<meta name="description" content="從滑桿到面板之間的五步運算：伽馬、繞 0.5 旋轉的對比、乘亮度、逐通道增益、鉗位；以及圍繞它的三個陷阱——複利、表格被靜默丟棄、暖色把面板調亮。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-gamma.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-gamma.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-gamma.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="調暗螢幕時，伽馬表到底做了什麼">
+<meta property="og:description" content="從滑桿到面板之間的五步運算：伽馬、繞 0.5 旋轉的對比、乘亮度、逐通道增益、鉗位；以及圍繞它的三個陷阱——複利、表格被靜默丟棄、暖色把面板調亮。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-gamma.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"調暗螢幕時，伽馬表到底做了什麼","about":"伽馬表與軟體調光的運算順序","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-gamma.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
+      <a href="index.html#console">控制台</a>
+      <a href="index.html#controls">控制</a>
+      <a href="index.html#price">價格</a>
+      <a href="guides.html">指南</a>
+      <a href="support.html">支援</a>
+    </nav>
+    <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../guide-gamma.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/guide-gamma.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="guide-gamma.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>調暗螢幕時，伽馬表到底做了什麼</h1>
+<p class="summary">亮度滑桿不是一個操作。從滑桿到面板之間有五步，而<strong>順序比數值更重要</strong>。</p>
+
+<h2>五步運算，按順序</h2>
+<p>對斜坡裡的每一個取樣點，逐個處理：</p>
+<pre><code>x = pow(raw, 1/gamma)
+x = (x - 0.5) * contrast + 0.5
+x = x * brightness
+x = x * tint
+x = clamp(x, 0, 1)</code></pre>
+<p>請仔細讀第二行：<strong>對比是繞 0.5 旋轉的，不是繞零。</strong>在 contrast 為 1 時它是恆等變換，整行等於不存在；一旦低於 1，它就把整條斜坡往中點拉——<strong>也就是把斜坡底部抬離零</strong>。讓真黑變成深灰的是<strong>這一項</strong>，不是調光本身。</p>
+
+<h2>陷阱一：反覆調整會複利</h2>
+<p>如果每次調整都在<em>目前</em>表格上再加工，第二次加工的就是一張已經被加工過的表格。正確做法是<strong>先擷取首次接管時讀到的斜坡一次</strong>，之後永遠基於它。這和「排程器乘一個已經被調暗過的值」是同一類 bug：第一次看起來沒問題，之後永遠在漂。</p>
+
+<h2>陷阱二：表格會被靜默丟棄</h2>
+<p>喚醒、改解析度、GPU 重設，都可能把表格丟掉而不通知任何人。所以不能假設「寫進去了就一直有效」：<strong>讀回來</strong>，拿一個內部取樣點和你的意圖比對，不一致就<strong>退避重試</strong>。比對必須有容差，因為讀回來不是逐位精確的。</p>
+
+<h2>陷阱三：暖色調整絕不能把面板調亮</h2>
+<p>把畫面調暖，意味著抬高紅、壓低藍。直白地做，峰值會超過 1，面板反而比你設定之前更亮。約束只需要一行：<strong>把峰值歸一到 1。</strong>顏色變動不該變成亮度變動。</p>
+
+<h2>參考白點</h2>
+<p>所有色偏都相對於<strong>一個參考白點</strong>表達，這樣參考色溫就是恆等變換，一塊沒被動過的面板保持原樣。這個錨點選得草率，「什麼都沒改」就會悄悄變成「稍微暖了一點」。</p>
+
+<h2>誠實的邊界</h2>
+<ul>
+  <li>以上全部<strong>只改畫面，不碰背光</strong>。它在每一塊顯示器上都能用，包括完全不支援 DDC/CI 的面板——但它沒法讓面板本身真的變暗。</li>
+  <li>這裡的具體常數是<strong>某一個實作</strong>的選擇。可遷移的是<strong>順序和三個陷阱</strong>，不是那些數字。</li>
+  <li>帶容差的讀回，仍可能接受一張在取樣點上恰好吻合的錯誤表格。只比一個點<strong>便宜，但不窮盡</strong>。</li>
+</ul>
+
+<h2>相關</h2>
+<p class="small"><a href="guide-layers.html">哪一層在把螢幕調暗</a> · <a href="guide-color.html">色彩發灰</a> · <a href="guide-night.html">按時段調暗，以及那個把螢幕一路調到全黑的陷阱</a> · <a href="guide-test.html">怎麼真正測一台顯示器</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私權政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

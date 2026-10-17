@@ -67,7 +67,7 @@
 <tr><td>HiDPI scaling / virtual screens</td><td>No</td><td>No</td><td><strong>Yes</strong></td><td>No</td></tr>
 <tr><td>Safe cleanup of rebuildable files</td><td><strong>Yes</strong> — 13 types, 30-day quarantine</td><td>No</td><td>No</td><td>No</td></tr>
 <tr><td>Smooth scrolling</td><td><strong>Yes</strong> — frame-by-frame, time-based decay</td><td>No</td><td>No</td><td>No</td></tr>
-<tr><td>Calibration anchored to panel-original curves</td><td><strong>Yes</strong></td><td>No</td><td>Partly (advanced image controls)</td><td>No</td></tr>
+<tr><td>Calibration anchored to the curve read at takeover</td><td><strong>Yes</strong></td><td>No</td><td>Partly (advanced image controls)</td><td>No</td></tr>
 <tr><td>Activation</td><td>Ed25519 code, verified offline, device-free</td><td>n/a</td><td>Licence file</td><td>Licence key</td></tr>
 <tr><td>Telemetry</td><td>None at all</td><td>see their docs</td><td>see their docs</td><td>see their docs</td></tr>
 <tr><td>Minimum macOS</td><td>14</td><td>see their docs</td><td>see their docs</td><td>11</td></tr>
@@ -87,7 +87,7 @@
 <ul class="ticks">
   <li><strong>Cleanup with a quarantine.</strong> Only 13 kinds of artifacts that have a deterministic rebuild path are touched; everything moves to quarantine for 30 days first; permanent deletion is off by default and requires six conditions to hold.</li>
   <li><strong>Scrolling that is time-based, not frame-based.</strong> 60 Hz and 144 Hz feel the same, and it ships off until you turn it on.</li>
-  <li><strong>Calibration against the panel's original curves.</strong> Repeated adjustment does not accumulate error, and one click hands control back to ColorSync.</li>
+  <li><strong>Calibration against the curve read when the app first takes over.</strong> Repeated adjustment does not accumulate error, and one click hands control back to ColorSync.</li>
   <li><strong>Offline activation, no device binding.</strong> A <code>DP-</code> code is verified on your Mac with an embedded Ed25519 public key — no server call, and the licence is not tied to a device.</li>
 </ul>
 

@@ -45,7 +45,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>自己验证</h1>
-<p class="summary">DisplayPilot 是还没有评价的新付费应用，所以<strong>请不要信我们的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 5.7.1 版本。</p>
+<p class="summary">DisplayPilot 是还没有评价的新付费应用，所以<strong>请不要信我们的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 5.7.2 版本。</p>
 
 <h2>一、它真的是我们的吗？Apple 公证过吗？</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/DisplayPilot.app
@@ -62,8 +62,8 @@ xcrun stapler validate /Applications/DisplayPilot.app
 <p>这个二进制用我们的 Developer ID 签名，Apple 扫描并公证过，且公证凭据<strong>钉扎</strong>在应用内，因此离线也能验证。任何被改动过的副本都过不了这三项。</p>
 
 <h2>二、下载的东西完整吗？</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-5.7.1.dmg
-  d88cc144cb25b57dce109a7ac4f2dd93b33856268449bc49b07d26c9ccd73bdf</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-5.7.2.dmg
+  b0965abc40b17c17128a1c687036ef5f31610c9f1a287e50a6acbf73d139dcfb</code></pre>
 <p>同一个值也写在 Homebrew cask 里，所以你有<strong>两个独立的地方</strong>可以对照：</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>如果对不上，<strong>不要运行这个文件</strong>。</p>
@@ -88,7 +88,7 @@ xcrun stapler validate /Applications/DisplayPilot.app
 <h2>首页上的那个滚动数字</h2>
 <p>首页引用了一组实测的滚动响应改善。它来自应用自带的离线基准，你可以自己跑——它用固定的时间步逐帧驱动插值器，不拦截任何真实输入，然后把响应形状打印出来：</p>
 <pre><code>DisplayPilot --scroll-selftest</code></pre>
-<p>在我们的测试面板（120&nbsp;Hz）上，首帧从 3 点提升到 9 点，90% 用时从 158&nbsp;ms 降到 133&nbsp;ms。这些数字描述的是<em>算法</em>的响应，不是你的硬件，所以你自己跑出来的会不一样。</p>
+<p>在我们的测试面板（120&nbsp;Hz）上，首帧从 3 点提升到 9 点，90% 用时从 150&nbsp;ms 降到 133&nbsp;ms。这些数字描述的是<em>算法</em>的响应，不是你的硬件，所以你自己跑出来的会不一样。</p>
 </article>
 </main>
 <footer class="doc-foot">

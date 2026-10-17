@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-gamma.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-gamma.html">
 <link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "What a gamma table actually does when you dim a display", "description": "The five operations between a slider and your panel — gamma, a contrast pivot at 0.5, a scale, a per-channel gain, a clamp — and the three traps around them: compounding, a table that silently drops, and a warm tint that brightens.", "url": "https://huayanming.github.io/displaypilot/guide-gamma.html"}</script>
 </head>
@@ -39,7 +40,7 @@
       <a href="guides.html">Guides</a>
       <a href="support.html">Support</a>
     </nav>
-    <details class="lang"><summary>English</summary><ul class="lang-menu" aria-label="Language"><li><a href="guide-gamma.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="zh-Hans/guide-gamma.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li></ul></details>
+    <details class="lang"><summary>English</summary><ul class="lang-menu" aria-label="Language"><li><a href="guide-gamma.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="zh-Hans/guide-gamma.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="zh-Hant/guide-gamma.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li></ul></details>
     <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
   </div>
 </header>
@@ -64,7 +65,7 @@ x = clamp(x, 0, 1)</code></pre>
 
   <h2>Trap 1 — repeated adjustments compound</h2>
   <p>If each adjustment shapes the <em>current</em> table, the second one shapes a table that is already shaped.
-  The fix is to capture the display's pristine ramp once and always shape <em>that</em>. It is the same class of
+  The fix is to capture the ramp once at takeover and always shape <em>that</em>. It is the same class of
   bug as a scheduler that multiplies an already-dimmed value: it looks fine on the first call and drifts forever
   after.</p>
 

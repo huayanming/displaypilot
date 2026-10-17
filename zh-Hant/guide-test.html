@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>讀不懂的測試，只是一塊彩色螢幕 · DisplayPilot</title>
+<meta name="description" content="怎麼真正測一台外接顯示器：五個全螢幕測試各看什麼、為什麼每個測試都必須配一句「健康的面板長什麼樣」，以及為什麼測試工具絕不能把你困住。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-test.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-test.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-test.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-test.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-test.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="讀不懂的測試，只是一塊彩色螢幕">
+<meta property="og:description" content="怎麼真正測一台外接顯示器：五個全螢幕測試各看什麼、為什麼每個測試都必須配一句「健康的面板長什麼樣」，以及為什麼測試工具絕不能把你困住。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-test.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"讀不懂的測試，只是一塊彩色螢幕","about":"外接顯示器的全螢幕檢測","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-test.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
+      <a href="index.html#console">控制台</a>
+      <a href="index.html#controls">控制</a>
+      <a href="index.html#price">價格</a>
+      <a href="guides.html">指南</a>
+      <a href="support.html">支援</a>
+    </nav>
+    <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../guide-test.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/guide-test.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="guide-test.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>讀不懂的測試，只是一塊彩色螢幕</h1>
+<p class="summary">五個全螢幕圖案，比任何規格表都更能說明一台外接顯示器的情況。但前提是：你得知道自己在看什麼。</p>
+
+<h2>值得測的東西</h2>
+<ul>
+  <li><strong>壞點與亮點</strong>——在純色場上始終保持黑或始終亮著的單點。</li>
+  <li><strong>灰階</strong>——面板在相鄰色調之間是平滑過渡，還是在本該連續的地方出現色帶。</li>
+  <li><strong>均勻性</strong>——一整塊中灰會讓背光漏光、雲斑和「髒屏」效應顯形，這是照片永遠做不到的。</li>
+  <li><strong>銳利度</strong>——面板是不是真的執行在原生解析度上，縮放有沒有把細節糊掉。</li>
+  <li><strong>動態</strong>——面板把移動的邊緣拖糊多少。這是廉價面板差別最大的地方，也是宣傳數字最容易誤導的地方。</li>
+</ul>
+
+<h2>每個圖案都要配一句能讀懂的說明</h2>
+<p>沒有說明的圖案，只是一塊有顏色的螢幕。每個測試都應該用一句話講清楚：你要看的是什麼，以及<strong>一塊健康的面板看起來應該是什麼樣</strong>。少了這句話，使用者除了「剛才顯示了點東西」之外什麼也沒得到。</p>
+
+<h2>為什麼用無邊框覆蓋窗，而不是原生全螢幕 Space</h2>
+<p>要鋪滿螢幕，最直覺的做法是進入系統原生全螢幕 Space。問題在於：<strong>Space 是可回復的狀態</strong>——一個測試工具如果留下一個 Space，就是把人困在一個退不出去的視窗裡的經典做法。而一個釘在目標螢幕上的無邊框覆蓋窗，關掉之後桌面<strong>和原來一模一樣</strong>。</p>
+
+<h2>Esc 不會自動生效</h2>
+<p>無邊框視窗<strong>預設拒絕成為 key window</strong>，除非你主動要求。少了這一步，<strong>Esc 永遠到不了正在執行的測試</strong>，唯一的出路是強制結束一個已經鋪滿螢幕的 App。<strong>如果測試工具能把你困住，它就不是測試工具。</strong></p>
+
+<h2>誠實的邊界</h2>
+<ul>
+  <li>這些測試展示的是<strong>你的眼睛能注意到</strong>的問題。它們不是色度計：均勻性和灰階測試能<strong>暴露</strong>問題，不能<strong>測量</strong>問題。</li>
+  <li>什麼都沒看出來不等於面板就好。它只說明在那個圖案上、那個亮度下，沒有缺陷越過你的閾值。</li>
+  <li>動態是五項裡<strong>最不具結論性</strong>的一項——拖影取決於你拿什麼做參照，而沒有任何全螢幕圖案能替代高速攝影。</li>
+</ul>
+
+<h2>相關</h2>
+<p class="small"><a href="guide-color.html">色彩發灰</a> · <a href="guide-hidpi.html">文字發虛</a> · <a href="guide-conflict.html">兩個 App 搶同一個設定</a> · <a href="verify.html">怎麼自己核對</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私權政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

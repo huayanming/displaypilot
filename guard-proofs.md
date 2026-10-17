@@ -8,7 +8,7 @@
 |---|---|---|---|
 | `check-app-claims.py` | 应用行为承诺（1806 项） | 在 Commerce.swift 里插入一处 URLSession 调用（白名单外） | 「出现了网络调用，但它不在白名单里（承诺是全应用只有兑换短码联网）」 |
 | `check-localization.py` | 界面字符串覆盖与格式符一致（1276 条/语言） | 删掉 en.lproj 最后一条翻译 | 缺 1 条 |
-| `check-versions.py` | 版本号单一来源 + **发布链路完整性**（Site/dl 安装包存在、appcast length/签名与文件一致、8 语言 JSON-LD、CHANGELOG 小节、两份 CHANGELOG 一致） | ① 把 site.js 的下载文件改成 5.7.0；② 删掉 Site/dl 的安装包；③ 改坏 appcast 的 length | ①「Site/site.js 下载直链不一致」；②「缺少 Site/dl/DisplayPilot-5.7.1.dmg（线上会 404）」；③「appcast length 与安装包大小一致 —— feed 写 …，文件是 …」 |
+| `check-versions.py` | 版本号单一来源 + **发布链路完整性**（Site/dl 安装包存在、appcast length/签名与文件一致、8 语言 JSON-LD、verify 页文件名与 sha256、CHANGELOG 小节与副本一致） | ① 把 site.js 的下载文件改成 5.7.0；② 删掉 Site/dl 的安装包；③ 改坏 appcast 的 length | ①「Site/site.js 下载直链不一致」；②「缺少 Site/dl/DisplayPilot-5.7.1.dmg（线上会 404）」；③「appcast length 与安装包大小一致 —— feed 写 …，文件是 …」 |
 | `check-pricing.py` | 价格单一来源（14 处引用） | 把 zh-Hans/index.html 的价格 99 改成 98 | 价格引用不一致 |
 | `check-site-claims.py` | 官网规格主张 + 透明页守卫数量 + **仓库内不得出现 11 位手机号** | ① 把透明页「16 道自动检查」改成 15；② 在页面里植入 `17551085105` | ①「写 15 道自动检查，实测 16」；②「Site/__phone_probe.html 出现 11 位手机号」 |
 | `check-site-seo.py` | canonical / hreflang / sitemap 双向一致 + **全站页面骨架一致**（统一导航 / skip / main / 页脚 / 唯一 h1） | ① 把 index.html 的 canonical 指向 example.com；② 改坏 verify.html 的 `<header class="nav">` | ①「canonical 非自指」；②「verify.html: 缺少统一导航（页面骨架与全站不一致）」 |

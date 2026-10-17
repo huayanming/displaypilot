@@ -60,12 +60,13 @@
 <article class="doc">
   <h1>지원</h1>
   <p class="updated">최종 업데이트: 2026년 10월 16일</p>
-  <p class="summary">먼저 아래 자주 묻는 질문을 확인하세요. 질문이 필요하면 앱의 <strong>'일반 → 정보 → 문제 보고'</strong>로 진단 정보를 생성해 직접 한 번 읽어 본 뒤, 문제 설명과 함께 <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>에 올려 주세요 — 현재 이것이 유일한 지원 창구입니다. 앱은 <strong>어떤 것도 자동으로 수집하거나 업로드하지 않습니다</strong>.</p>
+  <p class="summary">먼저 아래 자주 묻는 질문을 확인하세요. 질문이 필요하면 앱의 <strong>'일반 → 정보 → 문제 신고'</strong>로 진단 정보를 생성해 직접 한 번 읽어 본 뒤, 문제 설명과 함께 <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>에 올려 주세요 — 현재 이것이 유일한 지원 창구입니다. 앱은 <strong>어떤 것도 자동으로 수집하거나 업로드하지 않습니다</strong>.</p>
     <p class="summary">이메일: <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a>（GitHub를 쓰지 않으셔도 됩니다）</p>
   <h2>자주 묻는 질문</h2>
   <h3>1. 디스플레이가 'DDC 응답 없음'으로 나오는 이유는?</h3>
   <p>그 패널이 DDC/CI(디스플레이 제어 명령 집합)를 구현하지 않았기 때문입니다. 앱의 문제가 아닙니다. 일부 디스플레이, TV, 독, 어댑터는 이런 명령에 아예 응답하지 않으며, 테스트에 쓰는 UP32R7-A도 그중 하나입니다.</p>
   <p>이 경우 하드웨어 밝기, 하드웨어 볼륨, 입력 소스 전환을 쓸 수 없습니다. 앱은 'DDC 응답 없음'이라고 분명히 표시하고 밝기를 자동으로 <strong>소프트웨어 디밍</strong>(CoreGraphics 감마 테이블로 화면을 어둡게 하는 방식)에 넘깁니다. 소프트웨어 디밍도 화면을 어둡게 할 수 있지만 패널 백라이트 전류를 바꾸지 않으므로 절전 폭은 하드웨어 디밍과 다릅니다.</p>
+  <p>다섯 가지 원인 중 무엇이 모니터 쪽이고 무엇이 케이블 쪽인지까지 포함한 자세한 진단은 <a href="../guide-ddc.html">macOS에서 DDC/CI가 응답하지 않을 때</a>에 정리되어 있습니다.</p>
   <h3>2. 스크롤 스무딩이 Mos / Mac Mouse Fix와 충돌하면?</h3>
   <p>이런 도구는 모두 휠 이벤트를 가로채 스무딩하므로 <strong>동시에 켜면 서로의 휠 입력을 삼킵니다</strong>. 앱은 시작할 때와 실행 중에 같은 종류의 도구를 감지해 충돌을 알립니다. 해결 방법은 다음 중 하나입니다.</p>
   <ul><li>스무딩 도구를 하나만 남깁니다.</li><li>이 앱의 '스크롤' 패널에서 스크롤 스무딩을 끄거나, 다른 도구를 끕니다.</li><li>둘 다 남긴다면 '안전 모드'를 씁니다: ⌘를 누른 채 스크롤하면 일시적으로 시스템에 돌려주고, 이미지 뷰어·슬라이드·지도처럼 휠을 확대로 다루는 창도 자동으로 시스템에 돌려줍니다.</li></ul>
@@ -80,21 +81,22 @@ sudo shutdown -r now</code></pre><strong>사용자 수준만 지우면 부족합
   <p><strong>복구 계열 작업은 언제나 쓸 수 있고 네트워크 연결도 필요로 하지 않습니다</strong>: 이 디스플레이 복원, 시스템 교정으로 되돌리기, 디스플레이 잠자기, 종료, 라이선스 페이지, 정보 페이지, 삭제/재설정 진입점. 즉 체험이 만료되어도 복구할 수 없는 화면에 갇히는 일은 없습니다.</p>
   <h3>5. 지금 구매하거나 활성화할 수 있나요?</h3>
   <p class="callout"><strong>구매할 수 있습니다.</strong> 구매 채널이 개통되었고 암호화폐로 결제합니다. <a data-site="purchase" href="https://displaypilot-license.huayanming2019.workers.dev/buy">주문 페이지</a>에서 체인과 토큰을 고르고 표시된 정확한 금액을 보내세요. 확인되면(보통 몇 분) 라이선스 코드가 즉시 표시됩니다. 코드를 파일로 저장하거나 자신에게 보내거나, 나중에 영구 링크나 6자리 조회 코드로 다시 열 수 있습니다.</p>
-  <p>채널이 열린 뒤 새 Mac으로 옮기는 절차는 이렇습니다. 새 Mac에서 '일반 → 라이선스'를 열고 구매 이메일의 라이선스 키를 입력해 활성화합니다. 슬롯이 가득 찼다고 나오면 옛 Mac의 같은 페이지에서 '비활성화'를 눌러 슬롯을 비운 뒤 새 Mac에서 다시 활성화합니다 — 비활성화는 그 기기의 라이선스만 제거하고 구매에는 영향을 주지 않습니다. 동시 활성화 대수는 라이선스 서비스가 정하며 구매 페이지에 적혀 있습니다.</p>
+  <p>새 Mac으로 옮기려면 '일반 → 라이선스'를 열고 구매한 코드를 붙여넣어 활성화하세요 — 활성화는 오프라인으로 검증되므로 네트워크 없이도 됩니다. 같은 코드를 본인이 소유하거나 관리하는 Mac에서 쓸 수 있습니다. <code>DP-</code> 코드에는 서버가 강제하는 기기 수 제한이 없으니 1 사용자 1 라이선스를 지켜 주세요.</p>
   <h3>6. 정리 기능이 잘못된 것을 지울 수 있나요?</h3>
   <p>'잘못 지운다'는 가능성을 최대한 낮추는 설계입니다.</p>
+  <p>어떤 그룹을 실제로 안전하게 지울 수 있는지, 정확한 경로와 다시 만드는 비용은 <a href="../guide-cleanup.html">아무것도 잃지 않고 macOS 개발자 캐시 정리하기</a>에 정리되어 있습니다.</p>
   <ul><li>다시 만드는 방법이 확정된 <strong>13종류의 산출물</strong>만 다룹니다(Xcode DerivedData, SwiftPM, CocoaPods, npm/pnpm/Yarn, Go, Gradle, <code>__pycache__</code>, Rust target, 크래시 리포트, Homebrew 캐시 등).</li><li><strong>정리 대상이 절대 되지 않는 것</strong>: 문서, 데스크톱, 다운로드, 사진, 영상, 음악, 환경설정, Application Support, 키체인, 메일, 메시지, Safari.</li><li>삭제 전에 <strong>먼저 격리 영역으로 옮기고</strong> 기본 30일 동안 보관하며 언제든 복원할 수 있습니다.</li><li>영구 삭제는 기본적으로 없습니다. 앱 전체에서 단 하나의 함수만 영구 삭제를 할 수 있고 여섯 조건을 동시에 만족해야 하며, 하나라도 어긋나면 중단합니다.</li><li>자동화 규칙은 <strong>사전 스캔만 하고 삭제하지 못합니다</strong>.</li></ul>
   <h3>7. 제 정보를 자동으로 수집하나요?</h3>
   <p><strong>아니요.</strong> 앱은 텔레메트리도 분석도 하지 않고 사용 데이터나 크래시 로그를 자동 업로드하지 않습니다. '문제 보고'가 만든 내용은 사용자의 Mac에만 남고 직접 복사하거나 보내야 나갑니다. 네트워크에 연결하는 것은 세 가지뿐입니다: 업데이트 확인(기본 꺼짐), 라이선스 확인(채널이 열리고 활성화한 뒤에만), 그리고 직접 클릭할 때 웹 페이지 열기. 자세한 내용은 <a href="privacy.html">개인정보 처리방침</a>을 보세요.</p>
   <h2>문제 보고 방법</h2>
-  <ol><li>'일반 → 정보 → 문제 보고'를 열고 클릭해 진단 정보를 생성합니다.</li><li><strong>직접 한 번 읽어 봅니다</strong>(일련번호, 사용자 이름, 파일 경로, 라이선스 키는 제거되지만 그래도 확인하세요).</li><li>'클립보드에 복사'를 누르고 <a href="https://github.com/huayanming/displaypilot/issues/new">GitHub에서 새 이슈를 열어</a> 문제 설명과 함께 붙여 넣습니다.</li></ol>
+  <ol><li>'일반 → 정보 → 문제 신고'를 열고 클릭해 진단 정보를 생성합니다.</li><li><strong>직접 한 번 읽어 봅니다</strong>(일련번호, 사용자 이름, 파일 경로, 라이선스 키는 제거되지만 그래도 확인하세요).</li><li>'클립보드에 복사'를 누르고 <a href="https://github.com/huayanming/displaypilot/issues/new">GitHub에서 새 이슈를 열어</a> 문제 설명과 함께 붙여 넣습니다.</li></ol>
   <h3>크래시 로그 첨부(앱이 충돌한 적이 있다면)</h3>
   <ol><li><strong>'응용 프로그램 → 유틸리티 → 콘솔'</strong>을 엽니다.</li><li>왼쪽에서 '충돌 보고서'를 선택합니다.</li><li>DisplayPilot 항목을 찾아 오른쪽 클릭 → Finder에서 보기.</li><li>해당 시각의 <code>.ips</code> 파일을 그 이슈에 첨부로 끌어다 놓습니다.</li></ol>
   <p>로그의 일반적인 위치는 <code>~/Library/Logs/DiagnosticReports/</code>입니다.</p>
   <h2>할 수 없는 일</h2>
   <ul><li>DDC/CI를 지원하지 않는 디스플레이에서는 하드웨어 밝기/볼륨/입력 전환을 제공할 수 없습니다.</li><li>소프트웨어 디밍과 하드웨어 디밍의 보임새가 완전히 같다고 보장할 수 없습니다.</li><li>macOS의 디스플레이 배치를 대신 조작할 수 없습니다. 복구는 위 절차를 따라야 합니다.</li><li>암호화폐 결제를 온체인에서 취소할 수 없습니다. 소프트웨어가 동작하지 않고 저희가 해결할 수 없다면 구매 후 14일 이내에 연락해 주세요. 같은 통화로 환불합니다(자세한 내용은 <a href="eula.html">라이선스</a>).</li></ul>
   <a class="back" href="index.html">← 홈으로 돌아가기</a>
-<p class="small">자세한 문제 해결 가이드(영어)：<a href="../guide-ddc.html">DDC/CI 무응답</a> · <a href="../guide-wake.html">잠자기 후 밝기 초기화</a> · <a href="../guide-color.html">색이 흐려짐</a> · <a href="../guide-hidpi.html">글자가 흐림</a> · <a href="../verify.html">주장을 직접 검증하기</a></p>
+<p class="small">자세한 문제 해결 가이드(영어)：<a href="../guide-ddc.html">DDC/CI 무응답</a> · <a href="../guide-wake.html">잠자기 후 밝기 초기화</a> · <a href="../guide-color.html">색이 흐려짐</a> · <a href="../guide-hidpi.html">글자가 흐림</a> · <a href="../verify.html">주장을 직접 검증하기</a> · <a href="../audit.html">이 제품을 어떻게 감사하는지(어디서 틀렸는지)</a></p>
 </article>
 </main>
 <footer class="doc-foot">

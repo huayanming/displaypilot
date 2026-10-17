@@ -24,6 +24,7 @@
 
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-gamma.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-gamma.html">
 <link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-gamma.html">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "调暗屏幕时，伽马表到底做了什么", "description": "从滑块到面板之间的五步运算：伽马、绕 0.5 旋转的对比度、乘亮度、逐通道增益、钳位；以及围绕它的三个陷阱——复利、表格被静默丢弃、暖色把面板调亮。", "url": "https://huayanming.github.io/displaypilot/zh-Hans/guide-gamma.html", "inLanguage": "zh-Hans"}</script>
 </head>
@@ -40,7 +41,7 @@
       <a href="guides.html">指南</a>
       <a href="support.html">支持</a>
     </nav>
-    <details class="lang"><summary>简体中文</summary><ul class="lang-menu" aria-label="语言"><li><a href="../guide-gamma.html" hreflang="en" lang="en">English</a></li><li><a href="guide-gamma.html" hreflang="zh-Hans" lang="zh-Hans" aria-current="true">简体中文</a></li></ul></details>
+    <details class="lang"><summary>简体中文</summary><ul class="lang-menu" aria-label="语言"><li><a href="../guide-gamma.html" hreflang="en" lang="en">English</a></li><li><a href="guide-gamma.html" hreflang="zh-Hans" lang="zh-Hans" aria-current="true">简体中文</a></li><li><a href="../zh-Hant/guide-gamma.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li></ul></details>
     <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
   </div>
 </header>
@@ -65,7 +66,7 @@ x = clamp(x, 0, 1)</code></pre>
 
   <h2>陷阱一：反复调整会复利</h2>
   <p>如果每次调整都在<em>当前</em>表格上再加工，第二次加工的就是一张已经被加工过的表。
-  正确做法是<strong>先捕获面板的原始斜坡一次</strong>，之后永远基于它。
+  正确做法是<strong>先捕获首次接管时读到的斜坡一次</strong>，之后永远基于它。
   这和「调度器乘一个已经被调暗过的值」是同一类 bug：第一次看起来没问题，之后永远在漂。</p>
 
   <h2>陷阱二：表格会被静默丢弃</h2>

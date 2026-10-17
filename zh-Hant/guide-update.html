@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>是不是這次更新的鍋？先看方向 · DisplayPilot</title>
+<meta name="description" content="出問題後怎麼判斷是不是更新造成的：為什麼方向（先後）就是證據、為什麼「正常」必須是明確的正面確認、以及為什麼診斷只該讀凍結的快照。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-update.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-update.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-update.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-update.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-update.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="是不是這次更新的鍋？先看方向">
+<meta property="og:description" content="出問題後怎麼判斷是不是更新造成的：為什麼方向（先後）就是證據、為什麼「正常」必須是明確的正面確認、以及為什麼診斷只該讀凍結的快照。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-update.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"是不是這次更新的鍋？先看方向","about":"更新與問題歸因的判斷順序","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-update.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
+      <a href="index.html#console">控制台</a>
+      <a href="index.html#controls">控制</a>
+      <a href="index.html#price">價格</a>
+      <a href="guides.html">指南</a>
+      <a href="support.html">支援</a>
+    </nav>
+    <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../guide-update.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/guide-update.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="guide-update.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>是不是這次更新的鍋？先看方向</h1>
+<p class="summary">昨天還好好的，今天不行了。誠實的答案不是「大概是更新」，而是先看<strong>哪件事先發生</strong>。</p>
+
+<h2>方向很重要</h2>
+<p>發生在更新<strong>之後</strong>的故障，是典型的「更新之後出的問題」；發生在更新<strong>之前</strong>的，就不能怪它——不管這有多誘人。在把責任歸給任何東西之前，先把兩個時間戳並排放在一起。這一步通常就能消掉很大一部分錯誤歸因，兩個方向上都是。</p>
+
+<h2>「正常」必須是明確的正面確認</h2>
+<p>診斷報「正常」這件事本身有個陷阱：如果「正常」的意思是<em>我們沒發現問題</em>，那麼<strong>一條從沒執行過的規則，看起來就和一台健康的機器一模一樣</strong>。三種狀態應該是：</p>
+<ul>
+  <li><strong>正常</strong>——我們查過，明確確認沒問題，而不是「沒有資料」。</li>
+  <li><strong>留意</strong>——值得看一眼，但不算缺陷。</li>
+  <li><strong>警告</strong>——一個具體的問題。</li>
+</ul>
+<p>把「正常」定義為正面確認，才能避免「什麼都沒查」被讀成「一切健康」。</p>
+
+<h2>只讀快照，不讀活狀態</h2>
+<p>結論應當來自一份<strong>凍結的快照</strong>——裡面是所有規則被允許讀取的東西。如果規則在執行過程中還能去讀活狀態，答案就會取決於分析跑到一半時變了什麼；而<strong>同一台機器可以在幾分鐘內給出兩個不同的結論，中間什麼都沒發生</strong>。</p>
+
+<h2>兩個很細的計數錯誤</h2>
+<ul>
+  <li>同一條警告用兩種語言記錄下來，是<strong>一個問題</strong>，不是兩個。按穩定的類別歸組，否則一份雙語的日誌看起來像麻煩翻倍。</li>
+  <li>解析不出來的名稱算<strong>未知</strong>，絕不猜。錯誤的歸因比空的歸因更糟，因為它會把你引到錯的地方去找。</li>
+</ul>
+
+<h2>實際怎麼辦</h2>
+<ul>
+  <li>在動手修之前，先記下問題<strong>開始</strong>的確切時間——之後的每個動作都會毀掉證據。</li>
+  <li>拿它去和更新記錄比，而不是和你對更新的記憶比。</li>
+  <li>如果問題早於更新，就別再想著回滾了，去看看別的：一根線、一個擴充座、一台顯示器、一次系統小版本更新。</li>
+</ul>
+
+<h2>誠實的邊界</h2>
+<ul>
+  <li>時間戳只能給事情排序，<strong>不能證明因果</strong>——更新之後的故障，也可能來自一根恰好在那時候鬆掉的線。</li>
+  <li>快照讓結論<strong>可重現</strong>，不等於<strong>正確</strong>。閾值設錯的規則，會把同一個錯誤答案完美地重現出來。</li>
+</ul>
+
+<h2>相關</h2>
+<p class="small"><a href="guide-ddc.html">DDC/CI 沒反應</a> · <a href="guide-conflict.html">兩個 App 搶同一個設定</a> · <a href="verify.html">怎麼自己核對</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私權政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

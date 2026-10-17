@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>兩個 App 搶同一個顯示設定時，會發生什麼 · DisplayPilot</title>
+<meta name="description" content="為什麼亮度會自己變：按 bundle-id 前綴辨識對手、為什麼輔助程序讓按名稱比對失效、以及為什麼「寧可漏報也不誤報」。">
+<link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-conflict.html">
+<link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-conflict.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-conflict.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-conflict.html">
+<link rel="alternate" hreflang="x-default" href="https://huayanming.github.io/displaypilot/guide-conflict.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:title" content="兩個 App 搶同一個顯示設定時，會發生什麼">
+<meta property="og:description" content="為什麼亮度會自己變：按 bundle-id 前綴辨識對手、為什麼輔助程序讓按名稱比對失效、以及為什麼「寧可漏報也不誤報」。">
+<meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-conflict.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"兩個 App 搶同一個顯示設定時，會發生什麼","about":"macOS 顯示設定的衝突辨識","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-conflict.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
+      <a href="index.html#console">控制台</a>
+      <a href="index.html#controls">控制</a>
+      <a href="index.html#price">價格</a>
+      <a href="guides.html">指南</a>
+      <a href="support.html">支援</a>
+    </nav>
+    <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../guide-conflict.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/guide-conflict.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="guide-conflict.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+  </div>
+</header>
+<main id="main" class="wrap page"><article class="doc">
+<h1>兩個 App 搶同一個顯示設定時，會發生什麼</h1>
+<p class="summary">亮度自己會變。你設好的顏色，一小時後不對了。設定裡什麼都沒動——因為另一件工具正在往同一個地方寫，而雙方都不知道。</p>
+
+<h2>第二個工具可以寫的地方不止一處</h2>
+<p>顯示狀態不是一個值，而是<strong>一組各自獨立的領域</strong>。每一個都可能被另一個工具悄悄寫入：一個選單列 App、一個輔助程序、一段腳本。雙方都以為這塊歸自己管。</p>
+
+<h2>辨識對方才是難的部分</h2>
+<p>按顯示名稱比對並不可靠。廠商常常同時裝一個選單列 App <em>和</em>若干輔助程序，而輔助程序往往<strong>根本沒有可用的名稱</strong>。所以可靠的信號是<strong>bundle identifier 的前綴</strong>；對於 bundle id 沒有公開文件的工具，再用精確的在地化名稱做第二輪比對。</p>
+
+<h2>為什麼「漏掉」比「誤報」好</h2>
+<p>兩輪都沒比對上的工具會<strong>維持未被發現</strong>，這是有意為之：<strong>一條永不觸發的警告，好過一條誤報到無關程序的警告。</strong>一條你學會忽略的衝突警告，比沒有警告更糟。</p>
+
+<h2>該怎麼做</h2>
+<ul>
+  <li>如果兩個 App 都聲稱管亮度，選一個，關掉另一個。它們之間<strong>沒有任何仲裁協議</strong>——後寫的贏，而誰在後寫取決於時序。</li>
+  <li>去查<strong>輔助程序</strong>，不要只看選單列裡那個 App。真正寫入的常常是輔助程序。</li>
+  <li>如果漂移發生在<strong>喚醒之後</strong>或顯示器重連之後，那多半不是衝突，而是一塊需要一點時間才能重新回應的面板。</li>
+</ul>
+
+<h2>誠實的邊界</h2>
+<ul>
+  <li>這一頁講的是<strong>某一個實作</strong>如何發現對手。它不是一個標準，也看不見 bundle id 和名稱都比對不上的工具。</li>
+  <li>「後寫的贏」是描述，不是保證。兩個工具交錯寫入，可能得到一個<strong>雙方都沒想要</strong>的狀態。</li>
+</ul>
+
+<h2>相關</h2>
+<p class="small"><a href="guide-wake.html">喚醒後亮度自己重置</a> · <a href="guide-update.html">是不是這次更新的鍋</a> · <a href="alternatives.html">該用哪個工具？</a></p>
+</article>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="privacy.html">隱私權政策</a>
+      <a href="eula.html">授權條款</a>
+      <a href="support.html">支援</a>
+      <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
+    </p>
+    <p class="foot-copy">© 2026 DisplayPilot</p>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>
