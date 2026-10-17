@@ -3,13 +3,13 @@
     <channel>
         <title>DisplayPilot</title>
         <item>
-            <title>5.6.8</title>
-            <pubDate>Sun, 18 Oct 2026 03:33:25 +0800</pubDate>
+            <title>5.6.9</title>
+            <pubDate>Sun, 18 Oct 2026 03:47:05 +0800</pubDate>
             <link>https://huayanming.github.io/displaypilot/</link>
-            <sparkle:version>5.6.8</sparkle:version>
-            <sparkle:shortVersionString>5.6.8</sparkle:shortVersionString>
+            <sparkle:version>5.6.9</sparkle:version>
+            <sparkle:shortVersionString>5.6.9</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.6.8.dmg" length="7842347" type="application/octet-stream" sparkle:edSignature="1/Q1nHBwQzcEsZQQaltVdnFr8hQzd7x3J7fWKc0pmTY0VnlPRadPX0NFrrvFw6zv/yBl7w2u456Vv7TRlw9WCg=="/>
+            <enclosure url="https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.6.9.dmg" length="7843181" type="application/octet-stream" sparkle:edSignature="THatxWAQgcLJfDjEkA3NtmbhxrhaIKVckUIPsLxpjex9sh/5Tz4jzEYpmV7oRva5+sFQqhZ4E+KweBDm3F6NBg=="/>
         </item>
     </channel>
 </rss>
