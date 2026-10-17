@@ -11,11 +11,11 @@ A native macOS display console. One-time purchase, no account, no telemetry.
 | 清理隔离区 | 保留 30 天 |
 | 可重建产物 | 13 类有确定性重建方式 |
 | 永久删除 | 必须同时满足 6 个条件 |
-| 下载 | DisplayPilot-5.6.1.dmg |
+| 下载 | DisplayPilot-5.6.2.dmg |
 
 ## 下载
 
-- macOS 应用：`DisplayPilot-5.6.1.dmg`（Release 页）
+- macOS 应用：`DisplayPilot-5.6.2.dmg`（Release 页）
 - 更新源：`appcast.xml`
 
 ## 先说结论：你这块显示器不支持 DDC/CI
