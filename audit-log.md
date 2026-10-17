@@ -22,7 +22,7 @@
 |---|---|---|
 | `check-conventions.py` | 文件≤400 行、界面字符串、本地化覆盖 | 137 个文件达标 |
 | `check-localization.py` | 每个界面中文字符串必须 7 个语言都有译文 | 1273 条 × 7 语言全通过 |
-| `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1694 项** |
+| `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **1705 项** |
 | `check-versions.py` | 版本单一来源（`VERSION`）与 12 处引用一致（`--online` 另查远程） | 5.0.2 / 12 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
 | `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 85 页 / 85 条 URL |
@@ -270,6 +270,7 @@
 | 228 | **用户怀疑「时间线造成的」，逐项查证后：真因是时间线页用了普通 VStack（5.1.3 已发）** | 性能/时间线 | ① 先查上限：DomainEvents 其实**有** capacity=500 且 insert 后裁剪，所以「日志无限增长」这个假设不成立；② 真因在 UI：TimelineView(.everyMinute) 里套的是普通 VStack + ForEach，**500 条一次性全部构建**，叠加每分钟重绘 —— 6K 屏上切到该页即卡；改为 LazyVStack 只建可见行；③ 5.1.3 已发布上线：appcast 5.1.3、镜像 200 · 7,568,860、门禁 16 项全绿；④ **关键事实**：/Applications 仍是 5.0.2 —— 5.1.1/5.1.2/5.1.3 三个版本都发了，用户一个都没装，所以「还是卡」测的始终是旧版；⑤ CDN 延迟再次出现：首次核对仍是 5.1.2、镜像 404，约 50 秒后才变 5.1.3 | 装上 5.1.3 后切到时间线页观察 |
 | 229 | **5.1.3 已装入 /Applications，用户机器上首次跑上新版** | 交付 | ① 按用户「装啊」执行：osascript 优雅退出 → 旧版 mv 到 /tmp/DP-5.0.2-backup.app（**留回退**，不是 rm）→ cp -R 5.1.3 → xattr 清隔离 → open；② 核对：/Applications = 5.1.3、bundle id 仍是 com.neeson.displaypilot、Gatekeeper accepted / Notarized Developer ID、进程 17630 运行中；③ **许可证保住**（截图里许可卡片显示「已激活」）—— 因为许可证按 bundle ID 存，换 app 包不影响；④ 截图验证新 UI 全部在：状态栏（[●][☀] + 19:06，中性时正确地不显示名字与百分比）、场景条五个中文名、**会议被正确高亮**（当前全中性）、软件更新卡片显示「版本 5.1.3」；⑤ 备份仍在 /tmp/DP-5.0.2-backup.app，需要回退随时可换回 | 切到「时间线」页观察是否还卡 |
 | 230 | **5.1.4 / 5.1.5 连续发布并装到用户机器上（切页 + 时间线 + 竖线）** | 交付 | ① 5.1.4：去掉 content 的 .id(tab) 与转场（每次切页重建 10 张卡 + 动画期间两棵树并存）；TimelineView 从**包住** LazyVStack 改为放在**每一行**（包住时惰性容器退化成一次性全建，这是「时间线一多就卡」的真因，用户实测 500 条时卡）；事件上限 500→200；② 5.1.5：删除显示/滚动/鼠标三处卡片左侧的 2pt Rectangle 竖线（均为 overlay(alignment:.leading)）；③ 发布过程中 Apple 时间戳服务短暂不可用，导致一次 ship 中断并把 build 里的 app 签名剥掉（not signed at all），重试后恢复；**已安装的版本未受影响**；④ 5.1.5 已装入 /Applications（进程 27888、Gatekeeper accepted），上一版备份在 /tmp/DP-5.1.3-backup.app | 切页 / 时间线 / 卡片竖线 三项各看一眼 |
+| 231 | **色彩能力第 1 层落地：系统 ICC 配置文件库（通用，不依赖 DDC）** | 色彩/通用性 | ① 用户指出「客户端面向所有客户，不能只对你这块屏有效」——正确，重做为四层：系统 ICC 配置文件（任何 Mac 任何屏可用、可逆）／显示器 DDC 预设 0x14·0x0C（有才显示）／色域覆盖（已有）／硬件校准（需色度计，不做也不假装）；② 新增 Core/ColorProfileLibrary.swift：枚举 ~/Library 与 /Library 与 /System/Library 三处 ColorSync/Profiles，按优先级去重；用 ColorSyncDeviceSetCustomProfiles 切换（deviceID 是 CFUUID 而不是字符串，常量是 Unmanaged 需解包）；③ 命名两次踩坑：ColorProfile 与系统类型重名 → 改 ICCProfile；ColorSync C 接口的 deviceClass/profile 常量均为 Unmanaged<CFString>，需 takeUnretainedValue；④ 编译通过、门禁 16 项全绿；**核心已就绪但尚未接界面**，也没有在任何显示器上实测切换 | 待接界面 |
 
 ## 3. 仍然开着的项（诚实清单）
 
@@ -316,7 +317,7 @@ bash Scripts/check.sh                      # 16 道守卫 + 编译 + 回归（�
 python3 Scripts/check-pricing.py --online  # 价格：含实时汇率下的实收 vs 广告价
 python3 Scripts/check-versions.py --online # 版本：含 brew tap 与 GitHub release
 python3 Scripts/check-eula.py              # EULA：结构 + 各语言完整度
-python3 Scripts/check-app-claims.py        # 应用侧否定式承诺（1694 项）
+python3 Scripts/check-app-claims.py        # 应用侧否定式承诺（1705 项）
 
 cd Server && npm test                      # 服务端 190 项
 ./Scripts/release.sh --package-only 9.9.9  # 应失败：产物版本断言（安全，不产出任何东西）
