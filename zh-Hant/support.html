@@ -60,11 +60,11 @@
 <article class="doc">
   <h1>支援</h1>
   <p class="updated">最後更新：2026 年 10 月 16 日</p>
-  <p class="summary">遇到問題先看下面的常見問題。需要提問時，請用應用程式內<strong>「一般 → 關於 → 回報問題」</strong>產生診斷資訊，自己看一遍之後，連同問題描述一起寄到 <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a> —— 這是目前唯一的支援管道。應用程式<strong>不會自動蒐集或上傳任何內容</strong>。</p>
+  <p class="summary">遇到問題先看下面的常見問題。需要協助時，請聯繫<strong>尼森與海</strong>：<a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a> 或微信 <code>neeson1987</code>；也可以使用 <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>。應用程式<strong>不會自動蒐集或上傳任何內容</strong>。</p>
     <p class="summary">電郵: <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a>（不方便用 GitHub 時，也可以直接寄信）</p>
   <h2>常見問題</h2>
-  <h3>1. 為什麼我的顯示器 DDC 無回應？</h3>
-  <p>因為這塊面板沒有實作 DDC/CI（顯示器控制命令集）。這不是應用程式的問題：有些顯示器、電視、擴充底座與轉接器根本不回應這類命令，我們用於測試的 UP32R7-A 就是其中之一。</p>
+  <h3>1. 為什麼你的顯示器 DDC 無回應？</h3>
+  <p>因為這塊面板沒有實作 DDC/CI（顯示器控制命令集）。這不是應用程式的問題：有些顯示器、電視、擴充底座與轉接器根本不回應這類命令，尼森與海用於測試的 UP32R7-A 就是其中之一。</p>
   <p>此時硬體亮度、硬體音量與輸入來源切換不可用；應用程式會明確標示「DDC 無回應」，並自動把亮度交給<strong>軟體調光</strong>（透過 CoreGraphics 伽瑪表壓暗畫面）。軟體調光一樣能把螢幕調暗，但它不改變面板背光電流，所以省電幅度與硬體調光不同。</p>
   <p>完整排查（五個原因裡哪些該怪顯示器、哪些該怪線材）：<a href="guide-ddc.html">Mac 外接顯示器 DDC/CI 無回應</a>。</p>
   <h3>2. 捲動平滑和 Mos / Mac Mouse Fix 衝突怎麼辦？</h3>
@@ -75,7 +75,7 @@
   <ol><li><strong>應用程式內還原</strong>：「顯示」面板底部 →「還原此顯示器」或「交回系統校正」。選單列圖示裡也能找到。</li><li><strong>不依賴應用程式</strong>：在終端機執行 <code>bash Scripts/restore-dimming.sh</code>。它把亮度、色溫、預設寫回中性值，<strong>不需要應用程式正在執行</strong>。</li><li><strong>顯示排列卡住 / 外接顯示器無法辨識</strong>：需要管理員密碼。刪除系統層級顯示設定後重新啟動：<pre><code>sudo rm /Library/Preferences/com.apple.windowserver.displays.plist
 rm -f ~/Library/Preferences/ByHost/com.apple.windowserver.displays.*.plist
 sudo shutdown -r now</code></pre><strong>只刪使用者層級不夠</strong> —— 真正存顯示排列的是系統層級那個檔案；刪完必須重新啟動。</li><li><strong>完全進不了系統</strong>：關機 → 長按電源鍵 → 選項 → 終端機，執行 <code>emergency-restore-display.sh</code>（在安裝目錄的 Scripts 下）。</li></ol>
-  <p>這些復原路徑是刻意做成不依賴應用程式的。我們曾在測試中把顯示器弄黑過，所以「能復原」是產品的硬性要求，不是附贈功能。</p>
+  <p>這些復原路徑是刻意做成不依賴應用程式的。尼森與海曾在測試中把顯示器弄黑過，所以「能復原」是產品的硬性要求，不是附贈功能。</p>
   <h3>4. 試用結束後哪些功能還能用？</h3>
   <p>試用期（14 天）內功能完整。試用結束後<strong>只暫停 5 項增強功能</strong>：捲動平滑、滑鼠按鍵映射、護眼排程、自動化規則、工作階段儲存與回復。</p>
   <p><strong>復原類操作永遠可用，且不依賴連網</strong>：還原此顯示器、交回系統校正、顯示器休眠、結束、授權頁面、關於頁面、解除安裝/重置入口。換句話說，欠費不會把你鎖在一塊無法復原的螢幕前。</p>
@@ -86,19 +86,29 @@ sudo shutdown -r now</code></pre><strong>只刪使用者層級不夠</strong> �
   <p>設計上就是把「刪錯」的機率壓到最低：</p>
   <p>這 13 類裡哪些真的可以安全刪除、確切路徑，以及重建的代價：<a href="guide-cleanup.html">macOS 開發者快取清理：哪些能刪、哪些刪了就出事</a>。</p>
   <ul><li>只處理 <strong>13 類有確定性重建方式的產物</strong>（Xcode DerivedData、SwiftPM、CocoaPods、npm/pnpm/Yarn、Go、Gradle、<code>__pycache__</code>、Rust target、當機報告、Homebrew 快取等）；</li><li><strong>永不參與清理</strong>：文件、桌面、下載項目、圖片、影片、音樂、偏好設定、Application Support、鑰匙圈、郵件、訊息、Safari；</li><li>刪除前<strong>先移入隔離區</strong>，預設保留 30 天，隨時可還原；</li><li>永久刪除預設不存在：全應用程式只有一個函式能永久刪除，必須同時滿足 6 個條件，任何一條不過就中止；</li><li>自動化規則<strong>只能預先掃描，不能刪除</strong>。</li></ul>
-  <h3>7. 你們會自動蒐集我的資訊嗎？</h3>
+  <h3>7. 應用程式會自動蒐集你的資訊嗎？</h3>
   <p><strong>不會。</strong>應用程式不做遙測、不做埋點、不上傳使用資料，也不自動上傳當機記錄。「回報問題」產生的內容只在你本機，必須由你手動複製或傳送。真正連網的只有三件事：檢查更新（預設關閉）、檢查授權（通道接通並啟用之後才有），以及你主動點擊時開啟網頁。詳見<a href="privacy.html">隱私政策</a>。</p>
   <h2>怎麼回報問題</h2>
   <ol><li>開啟「一般 → 關於 → 回報問題」，點一下產生診斷資訊；</li><li><strong>自己看一遍</strong>內容（它會移除序號、使用者名稱、檔案路徑與授權碼，但你仍應確認）；</li><li>點「複製到剪貼板」，再到 <a href="https://github.com/huayanming/displaypilot/issues/new">GitHub 上新增一條 issue</a>，把內容與問題描述一起貼進去。</li></ol>
   <h3>附上當機記錄（如果應用程式當機過）</h3>
   <ol><li>開啟<strong>「應用程式 → 工具程式 → 控制台」</strong>；</li><li>左側選「當機報告」（Crash Reports）；</li><li>找到 LumePane 的項目，右鍵 → 在 Finder 中顯示；</li><li>把對應時間點的 <code>.ips</code> 檔案拖進那條 issue 作為附件。</li></ol>
   <p>記錄的常見位置是 <code>~/Library/Logs/DiagnosticReports/</code>。</p>
-  <h2>我們做不到的事</h2>
-  <ul><li>不能在不支援 DDC/CI 的顯示器上提供硬體亮度/音量/輸入來源；</li><li>不能保證軟體調光與硬體調光的觀感完全一致；</li><li>不能替你操作 macOS 的顯示排列，復原必須按上面的步驟來；</li><li>無法在鏈上撤銷加密貨幣付款。如果軟體在你這裡無法正常工作、我們又修不好，請在購買後 14 天內聯絡我們，我們會按原幣別退款（完整退款政策見<a href="eula.html">授權合約</a>）。</li></ul>
-  <a class="back" href="index.html">← 返回首頁</a>
+  <h2>LumePane 做不到的事</h2>
+  <ul><li>不能在不支援 DDC/CI 的顯示器上提供硬體亮度/音量/輸入來源；</li><li>不能保證軟體調光與硬體調光的觀感完全一致；</li><li>不能替你操作 macOS 的顯示排列，復原必須按上面的步驟來；</li><li>無法在鏈上撤銷加密貨幣付款。如果軟體在你這裡無法正常工作、LumePane 又修不好，請在購買後 14 天內聯絡尼森與海，尼森與海會按原幣別退款（完整退款政策見<a href="eula.html">授權合約</a>）。</li></ul>
+  <section class="contact-card" aria-labelledby="contact-dev">
+  <a class="contact-qr" aria-label="WeChat QR code" href="../img/wechat-service-qr.png" target="_blank" rel="noopener"><img src="../img/wechat-service-qr.png" alt="尼森與海微信二維碼" width="128" height="114" loading="lazy"></a>
+  <div class="contact-copy">
+    <h2 id="contact-dev">聯繫開發者</h2>
+    <p>遇到問題、購買諮詢或想回饋建議，請聯繫 <strong>尼森與海</strong>。購買相關問題請附上訂單號或收據郵箱。</p>
+    <div class="contact-kv"><span>郵箱：<a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a></span><span>微信：<code>neeson1987</code></span></div>
+    <div class="contact-actions"><a class="btn btn-primary" href="mailto:huayanming2019@gmail.com?subject=LumePane%20%E6%94%AF%E6%8F%B4">寄郵件</a><a class="btn btn-ghost" href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a></div>
+    <p class="small">通常在 24 小時內回覆。</p>
+  </div>
+</section>
+<a class="back" href="index.html">← 返回首頁</a>
 <p class="small">深入排查指南：<a href="guide-ddc.html">DDC/CI 無回應</a> · <a href="guide-wake.html">休眠後亮度被重置</a> · <a href="guide-color.html">色彩越調越偏</a> · <a href="guide-hidpi.html">文字發虛</a></p>
 <p class="small"><a href="verify.html">如何自己驗證這些說法</a></p>
-<p class="small"><a href="audit.html">我們怎麼審查自己的產品（以及我們錯在哪）</a></p>
+<p class="small"><a href="audit.html">尼森與海怎麼審查自己的產品（以及尼森與海錯在哪）</a></p>
 </article>
 </main>
 <footer class="doc-foot">
@@ -110,7 +120,7 @@ sudo shutdown -r now</code></pre><strong>只刪使用者層級不夠</strong> �
       <a href="https://github.com/huayanming/displaypilot/issues">問題與建議 · GitHub Issues</a>
           <a href="alternatives.html">對比各工具</a>
 </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

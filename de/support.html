@@ -64,7 +64,7 @@
     <p class="summary">E-Mail: <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a>（auch möglich, wenn du GitHub nicht nutzen möchtest）</p>
   <h2>Häufige Fragen</h2>
   <h3>1. Warum meldet mein Display „DDC antwortet nicht“?</h3>
-  <p>Weil dieses Panel DDC/CI (den Befehlssatz zur Displaysteuerung) nicht implementiert. Das ist kein Problem der App: Manche Displays, Fernseher, Docks und Adapter antworten auf diese Befehle schlicht nicht, und das UP32R7-A, das wir zum Testen verwenden, gehört dazu.</p>
+  <p>Weil dieses Panel DDC/CI (den Befehlssatz zur Displaysteuerung) nicht implementiert. Das ist kein Problem der App: Manche Displays, Fernseher, Docks und Adapter antworten auf diese Befehle schlicht nicht, und das von Neeson &amp; Sea zum Testen verwendete UP32R7-A gehört dazu.</p>
   <p>In diesem Fall sind Hardware-Helligkeit, Hardware-Lautstärke und das Umschalten der Eingangsquelle nicht verfügbar. Die App meldet klar „DDC antwortet nicht“ und übergibt die Helligkeit automatisch an das <strong>Software-Dimming</strong> (das Bild wird über die CoreGraphics-Gammatabelle dunkler). Software-Dimming dunkelt den Bildschirm ebenso ab, ändert aber nicht den Backlight-Strom des Panels, weshalb sich die Einsparung von Hardware-Dimming unterscheidet.</p>
   <p>Vollständige Diagnose, einschließlich welcher der fünf Ursachen das Display und welcher das Kabel zuzuordnen ist: <a href="../guide-ddc.html">DDC/CI antwortet unter macOS nicht</a>.</p>
   <h3>2. Was tun, wenn die Scroll-Glättung mit Mos oder Mac Mouse Fix kollidiert?</h3>
@@ -93,9 +93,19 @@ sudo shutdown -r now</code></pre><strong>Nur die Benutzerebene zu löschen reich
   <h3>Ein Absturzprotokoll anhängen (falls die App abgestürzt ist)</h3>
   <ol><li><strong>Programme → Dienstprogramme → Konsole</strong> öffnen;</li><li>in der Seitenleiste „Absturzberichte“ wählen;</li><li>den Eintrag LumePane finden, Rechtsklick → im Finder zeigen;</li><li>die <code>.ips</code>-Datei des betreffenden Zeitpunkts als Anhang in das Issue ziehen.</li></ol>
   <p>Der übliche Ort für Protokolle ist <code>~/Library/Logs/DiagnosticReports/</code>.</p>
-  <h2>Was wir nicht können</h2>
-  <ul><li>Auf Displays ohne DDC/CI können wir Hardware-Helligkeit/-Lautstärke/-Eingang nicht anbieten;</li><li>wir können nicht garantieren, dass Software-Dimmung identisch zu Hardware-Dimmung aussieht;</li><li>wir können die macOS-Display-Anordnung nicht für Sie bedienen — die Wiederherstellung muss den Schritten oben folgen;</li><li>wir können eine Krypto-Zahlung nicht on-chain rückgängig machen. Wenn die Software bei Ihnen nicht funktioniert und wir es nicht lösen können, kontaktieren Sie uns innerhalb von 14 Tagen nach dem Kauf; wir erstatten in derselben Währung (vollständige Regelung in der <a href="eula.html">Lizenz</a>).</li></ul>
-  <a class="back" href="index.html">← Zurück zur Startseite</a>
+  <h2>Was LumePane nicht kann</h2>
+  <ul><li>Auf Displays ohne DDC/CI können wir Hardware-Helligkeit/-Lautstärke/-Eingang nicht anbieten;</li><li>LumePane kann nicht garantieren, dass Software-Dimmung identisch zu Hardware-Dimmung aussieht;</li><li>LumePane kann die macOS-Display-Anordnung nicht für Sie bedienen — die Wiederherstellung muss den Schritten oben folgen;</li><li>LumePane kann eine Krypto-Zahlung nicht on-chain rückgängig machen. Wenn die Software bei Ihnen nicht funktioniert und wir es nicht lösen können, kontaktieren Sie Neeson &amp; Sea innerhalb von 14 Tagen nach dem Kauf; Neeson &amp; Sea erstattet in derselben Währung (vollständige Regelung in der <a href="eula.html">Lizenz</a>).</li></ul>
+  <section class="contact-card" aria-labelledby="contact-dev">
+  <a class="contact-qr" aria-label="WeChat QR code" href="../img/wechat-service-qr.png" target="_blank" rel="noopener"><img src="../img/wechat-service-qr.png" alt="WeChat-QR von Neeson &amp; Sea" width="128" height="114" loading="lazy"></a>
+  <div class="contact-copy">
+    <h2 id="contact-dev">Entwickler kontaktieren</h2>
+    <p>Fragen, Kaufberatung oder Feedback? Schreib <strong>Neeson &amp; Sea</strong> per E-Mail oder WeChat. Bei Kaufproblemen bitte Bestellnummer oder Rechnungs-E-Mail angeben.</p>
+    <div class="contact-kv"><span>E-Mail: <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a></span><span>WeChat: <code>neeson1987</code></span></div>
+    <div class="contact-actions"><a class="btn btn-primary" href="mailto:huayanming2019@gmail.com?subject=LumePane%20Support">E-Mail senden</a><a class="btn btn-ghost" href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a></div>
+    <p class="small">Antwort in der Regel innerhalb von 24 Stunden.</p>
+  </div>
+</section>
+<a class="back" href="index.html">← Zurück zur Startseite</a>
 <p class="small">Ausführliche Fehlersuche (Englisch)：<a href="../guide-ddc.html">DDC/CI antwortet nicht</a> · <a href="../guide-wake.html">Helligkeit nach dem Ruhezustand</a> · <a href="../guide-color.html">Farben wirken flau</a> · <a href="../guide-hidpi.html">unscharfer Text</a></p>
 <p class="small"><a href="../verify.html">Diese Aussagen selbst prüfen</a></p>
 <p class="small"><a href="../audit.html">Wie wir dieses Produkt prüfen (und was wir falsch gemacht haben)</a></p>
@@ -109,7 +119,7 @@ sudo shutdown -r now</code></pre><strong>Nur die Benutzerebene zu löschen reich
       <a href="support.html">Support</a>
       <a href="https://github.com/huayanming/displaypilot/issues">Fragen &amp; Feedback · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

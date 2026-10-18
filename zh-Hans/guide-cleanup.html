@@ -91,7 +91,7 @@ du -sh ~/Library/Caches/go-build ~/.gradle/caches ~/.npm/_cacache 2>/dev/null</c
 rm -rf ~/Library/Caches/go-build/*</code></pre>
   <p>两个没人提醒、但一定会踩的坑：删 DerivedData 之前先退出 Xcode（正在编译会持续往里写）；任何缓存在对应工具运行期间都不要删。</p>
 
-  <h2>为什么我们「先隔离，再删除」</h2>
+  <h2>为什么尼森与海「先隔离，再删除」</h2>
   <p>缓存<em>原则上</em>可以随便删。真正会出事的，是那条规则在你的环境里恰好不成立的情况：某个项目钉住了旧缓存、某个工具把状态也放在里面、某个你以为不是归档的归档。</p>
   <p>所以应用第一遍从不删除。它先测量，把内容移进隔离区，然后开始 30 天倒计时。这段时间里一旦有东西坏了，一键还原。窗口过去之后才会真正删除，而且永久删除默认关闭，必须同时满足六个条件——差一个就中止。</p>
 
@@ -112,7 +112,7 @@ rm -rf ~/Library/Caches/go-build/*</code></pre>
       <a href="support.html">支持</a>
       <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

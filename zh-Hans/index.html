@@ -135,7 +135,7 @@
           <p class="gauge sunk neu neu-sink"><span class="k">色温</span><span class="v tid">6500</span><span class="u">K · 锚定为恒等变换</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">伽马</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">色域</span><span class="v tid">104%</span><span class="u">sRGB · 仅覆盖 Display P3 的 77%</span></p>
-          <p class="instrument-note">在我们的测试显示器上实测，并从伽马表读回。</p>
+          <p class="instrument-note">在尼森与海的测试显示器上实测，并从伽马表读回。</p>
         </div>
       </article>
       <article class="feature">
@@ -296,7 +296,7 @@
       <div class="trust-grid">
         <ul class="proof-list">
           <li><strong>离线验证。</strong>长 <code>DP-</code> 码用应用内置的公钥做 Ed25519 验签。激活时唯一的请求是下一条描述的一次性设备登记；之后每次启动都在本地验签，更新检查默认关闭，除非你主动开启。</li>
-          <li><strong>只登记一次，然后安静。</strong>仅在首次激活时，应用会把一个不可逆的 SHA-256 摘要发给我们自己的授权服务——摘要在本地由主板标识和机型标识算出，长 <code>DP-</code> 码正是靠它限制在 5 台 Mac 上。不会发送序列号、明文机型字符串、MAC 地址、显示器 EDID、账号或使用数据。</li>
+          <li><strong>只登记一次，然后安静。</strong>仅在首次激活时，应用会把一个不可逆的 SHA-256 摘要发给尼森与海自己的授权服务——摘要在本地由主板标识和机型标识算出，长 <code>DP-</code> 码正是靠它限制在 5 台 Mac 上。不会发送序列号、明文机型字符串、MAC 地址、显示器 EDID、账号或使用数据。</li>
           <li><strong>没有遥测。</strong>没有分析、没有 Cookie、没有第三方字体、没有后台服务。这个页面不发任何对外请求。</li>
           <li><strong>自检随应用一起发布。</strong>自检是二进制的一部分，审计页列出每一项断言什么。这里哪条说法有一天不成立了，就会有一项自检变红。</li>
         </ul>
@@ -357,7 +357,7 @@
       </div>
     </div>
     <p class="foot-note">本页没有跟踪器、没有 Cookie、没有第三方字体，也不发任何对外请求。</p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

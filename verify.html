@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Verify it yourself — every claim, with the command to check it · LumePane</title>
-<meta name="description" content="LumePane is a new paid app with no reviews yet. Do not take our word: here is how to verify the signature, the notarization, the checksum, the offline activation and the absence of telemetry on your own Mac.">
+<meta name="description" content="LumePane is a new paid app with no reviews yet. Do not take Neeson &amp; Sea’s word: here is how to verify the signature, the notarization, the checksum, the offline activation and the absence of telemetry on your own Mac.">
 <link rel="canonical" href="https://lumepane.com/verify.html">
 <link rel="alternate" hreflang="en" href="https://lumepane.com/verify.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://lumepane.com/zh-Hans/verify.html">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="LumePane">
 <meta property="og:title" content="Verify it yourself — every claim, with the command to check it">
-<meta property="og:description" content="LumePane is a new paid app with no reviews yet. Do not take our word: here is how to verify the signature, the notarization, the checksum, the offline activation and the absence of telemetry on your own Mac.">
+<meta property="og:description" content="LumePane is a new paid app with no reviews yet. Do not take Neeson &amp; Sea’s word: here is how to verify the signature, the notarization, the checksum, the offline activation and the absence of telemetry on your own Mac.">
 <meta property="og:url" content="https://lumepane.com/verify.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://lumepane.com/img/og-en.v532.png">
@@ -45,7 +45,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>Verify it yourself</h1>
-<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take our word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 7.1.6 build.</p>
+<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take Neeson &amp; Sea's word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 7.1.6 build.</p>
 
 <h2>1. Is it really ours, and did Apple notarize it?</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -59,7 +59,7 @@ spctl -a -vv -t exec /Applications/LumePane.app
 
 xcrun stapler validate /Applications/LumePane.app
   The validate action worked!</code></pre>
-<p>The binary is signed with our Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
+<p>The binary is signed with Neeson &amp; Sea's Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
 
 <h2>2. Did the download arrive intact?</h2>
 <pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.6.dmg
@@ -69,26 +69,26 @@ xcrun stapler validate /Applications/LumePane.app
 <p>If your value differs, <strong>do not run the file</strong>.</p>
 
 <h2>3. Does it phone home?</h2>
-<p>The app's own code contains exactly <strong>one</strong> endpoint: <code>/api/redeem</code> on our licence service. It is called only when you paste a <em>short</em> code — the long <code>DP-</code> code is verified entirely offline and never touches the network. Update checks are <strong>off by default</strong> (<code>SUEnableAutomaticChecks</code> is <code>false</code>). Automatic downloading is opt-in: <code>SUAllowsAutomaticUpdates</code> permits it, but remains <code>false</code> until you turn it on in the panel; then it only fetches <code>appcast.xml</code> and the signed update from our site.</p>
+<p>The app's own code contains exactly <strong>one</strong> endpoint: <code>/api/redeem</code> on Neeson &amp; Sea's licence service. It is called only when you paste a <em>short</em> code — the long <code>DP-</code> code is verified entirely offline and never touches the network. Update checks are <strong>off by default</strong> (<code>SUEnableAutomaticChecks</code> is <code>false</code>). Automatic downloading is opt-in: <code>SUAllowsAutomaticUpdates</code> permits it, but remains <code>false</code> until you turn it on in the panel; then it only fetches <code>appcast.xml</code> and the signed update from Neeson &amp; Sea's site.</p>
 <p>Watch it yourself — open the app, leave it idle, then:</p>
 <pre><code>lsof -i -P | grep -i displaypilot</code></pre>
-<p>With update checks off it prints nothing. The app never sends usage data, crash reports or an identifier to us; there is no analytics code in it.</p>
+<p>With update checks off it prints nothing. The app never sends usage data, crash reports or an identifier to Neeson &amp; Sea; there is no analytics code in it.</p>
 
 <h2>4. Does activation really work without a network?</h2>
 <p>Turn off Wi-Fi, paste a long <code>DP-</code> code into the licence field, and it activates. The key is embedded in the app: an Ed25519 public key verifies the code locally, and the code is not bound to a device.</p>
 
 <h2>5. What you cannot check this way</h2>
 <ul class="ticks">
-  <li><strong>Whether the cleanup logic is correct.</strong> It touches only 13 kinds of rebuildable artifacts and quarantines for 30 days first. We publish the reasoning and the checks in the <a href="https://github.com/huayanming/displaypilot">audit report</a> rather than asking you to trust the UI.</li>
+  <li><strong>Whether the cleanup logic is correct.</strong> It touches only 13 kinds of rebuildable artifacts and quarantines for 30 days first. Neeson &amp; Sea publish the reasoning and the checks in the <a href="https://github.com/huayanming/displaypilot">audit report</a> rather than asking you to trust the UI.</li>
   <li><strong>Whether the display work is right for your panel.</strong> That is what the 14-day trial is for.</li>
-  <li><strong>Whether we are pleasant to deal with.</strong> No page can prove that. Email us and see.</li>
+  <li><strong>Whether Neeson &amp; Sea is pleasant to deal with.</strong> No page can prove that. Email Neeson &amp; Sea and see.</li>
 </ul>
-<p class="small">If any command above does not produce the output shown, that is a bug in our documentation or in our build — tell us at <a href="support.html">Support</a> and we will fix it, publicly.</p>
-<p class="small"><a href="audit.html">How we audit this product (and what we got wrong)</a></p>
+<p class="small">If any command above does not produce the output shown, that is a bug in Neeson &amp; Sea's documentation or in Neeson &amp; Sea's build — tell Neeson &amp; Sea at <a href="support.html">Support</a> and Neeson &amp; Sea will fix it, publicly.</p>
+<p class="small"><a href="audit.html">How Neeson &amp; Sea audits this product (and what Neeson &amp; Sea got wrong)</a></p>
 <h2>The scrolling numbers on the front page</h2>
 <p>The front page quotes a measured improvement in scroll response. That measurement comes from the app's own offline benchmark, which you can run yourself — it drives the interpolator frame by frame with a fixed timestep, without intercepting any real input, and prints the response shape:</p>
 <pre><code>LumePane --scroll-selftest</code></pre>
-<p>On our test panel (120&nbsp;Hz) the first frame went from 3 to 9 points and time-to-90% from 150&nbsp;ms to 133&nbsp;ms. Those numbers describe the <em>algorithm's</em> response, not your hardware, so expect your own run to differ.</p>
+<p>On Neeson &amp; Sea's test panel (120&nbsp;Hz) the first frame went from 3 to 9 points and time-to-90% from 150&nbsp;ms to 133&nbsp;ms. Those numbers describe the <em>algorithm's</em> response, not your hardware, so expect your own run to differ.</p>
 </article>
 </main>
 <footer class="doc-foot">
@@ -99,7 +99,7 @@ xcrun stapler validate /Applications/LumePane.app
       <a href="support.html">Support</a>
       <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
 <script src="site.js" defer></script>

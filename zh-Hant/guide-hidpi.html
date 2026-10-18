@@ -64,12 +64,12 @@ HiDPI  2560 × 1440
 <h2>該怎麼做</h2>
 <ul class="ticks">
   <li><strong>挑縮放解析度時優先選 HiDPI 那條。</strong>在上面這份清單裡，選「3008 × 1692 · HiDPI」而不是「3008 × 1692 · 原生」。桌面大小一樣，文字更銳利。</li>
-  <li><strong>系統設定裡找不到想要的模式，不代表它不存在</strong>：macOS 藏起了很多。我們的應用會列出顯示器<strong>真正上報的全部模式</strong>——包括被系統隱藏的 HiDPI 變體——並可以切過去（終端裡是 <code>--list-modes</code> 與 <code>--set-resolution</code>，介面裡是顯示面板）。</li>
+  <li><strong>系統設定裡找不到想要的模式，不代表它不存在</strong>：macOS 藏起了很多。尼森與海的應用會列出顯示器<strong>真正上報的全部模式</strong>——包括被系統隱藏的 HiDPI 變體——並可以切過去（終端裡是 <code>--list-modes</code> 與 <code>--set-resolution</code>，介面裡是顯示面板）。</li>
   <li><strong>如果面板本身像素密度就低，那沒有軟體能救。</strong>34 吋 3440×1440 大約是 110 PPI，27 吋 4K 約 163 PPI；在同樣的桌面大小下，前者永遠更軟。</li>
-  <li><strong>如果你需要 macOS 根本不提供的解析度</strong>——自訂時序、虛擬螢幕、面板沒上報的縮放——用 <strong>BetterDisplay</strong>。那正是它擅長的，我們不提供。這句話我們也寫在<a href="alternatives.html">對比頁</a>裡。</li>
+  <li><strong>如果你需要 macOS 根本不提供的解析度</strong>——自訂時序、虛擬螢幕、面板沒上報的縮放——用 <strong>BetterDisplay</strong>。那正是它擅長的，尼森與海不提供。這句話尼森與海也寫在<a href="alternatives.html">對比頁</a>裡。</li>
 </ul>
 
-<h2>為什麼我們能說得這麼具體</h2>
+<h2>為什麼尼森與海能說得這麼具體</h2>
 <p>因為應用裡本來就有這個診斷：當目前模式是 1:1、而同樣尺寸存在 HiDPI 變體時，它會指出來並列出那個變體。這個檢查之所以存在，是因為「大面板跑在 1:1」是導致文字讀起來吃力的常見原因，而修好它通常只差一次模式切換。</p>
 
 <h2>相關</h2>
@@ -84,7 +84,7 @@ HiDPI  2560 × 1440
       <a href="support.html">支援</a>
       <a href="https://github.com/huayanming/displaypilot/issues">問題與回饋 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

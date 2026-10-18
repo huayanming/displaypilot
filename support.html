@@ -60,13 +60,13 @@
 <article class="doc">
   <h1>Support</h1>
   <p class="updated">Last updated: October 16, 2026</p>
-  <p class="summary">Check the FAQ below first. If you need to ask, use <strong>General → About → Report a Problem</strong> in the app to generate diagnostic information, read it through yourself, and post it together with a description of the issue on <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a> — that is currently the only support channel. The app <strong>never collects or uploads anything automatically</strong>.</p>
+  <p class="summary">Check the FAQ below first. For direct help, contact <strong>Neeson &amp; Sea</strong> at <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a> or WeChat <code>neeson1987</code>; <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a> remains available. The app <strong>never collects or uploads anything automatically</strong>.</p>
     <p class="summary">Email: <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a>（works too if you would rather not use GitHub）</p>
   <h2>Buying from mainland China</h2>
   <p>LumePane is also on Afdian for buyers in mainland China. The ¥99 licence can be purchased there with Alipay or WeChat: <a href="https://afdian.com/a/lumepane">LumePane on Afdian</a>.</p>
   <h2>Frequently asked questions</h2>
   <h3>1. Why does my display say “DDC not responding”?</h3>
-  <p>Because that panel doesn't implement DDC/CI (the display control command set). This is not a problem with the app: some displays, TVs, docks, and adapters simply don't respond to these commands, and the UP32R7-A we use for testing is one of them.</p>
+  <p>Because that panel doesn't implement DDC/CI (the display control command set). This is not a problem with the app: some displays, TVs, docks, and adapters simply don't respond to these commands, and the UP32R7-A used for testing by Neeson &amp; Sea is one of them.</p>
   <p>When that happens, hardware brightness, hardware volume, and input switching are unavailable. The app clearly reports “DDC not responding” and automatically hands brightness to <strong>software dimming</strong> (darkening the image through the CoreGraphics gamma table). Software dimming still darkens the screen, but it doesn't change the panel's backlight current, so power savings differ from hardware dimming.</p>
   <p>Full diagnosis, including which of the five causes is the monitor's fault and which is the cable's: <a href="guide-ddc.html">DDC/CI not responding on macOS</a>.</p>
   <h3>2. What if smooth scrolling conflicts with Mos or Mac Mouse Fix?</h3>
@@ -77,7 +77,7 @@
   <ol><li><strong>In-app restore</strong>: Display panel, at the bottom → “Restore this display” or “Hand back to system calibration”. Both are also in the menu bar icon's menu.</li><li><strong>Without the app</strong>: in Terminal, run <code>bash Scripts/restore-dimming.sh</code>. It writes brightness, color temperature, and presets back to neutral values and <strong>does not need the app to be running</strong>.</li><li><strong>Stuck display arrangement / external display not detected</strong>: this needs an administrator password. Delete the system-level display configuration and restart: <pre><code>sudo rm /Library/Preferences/com.apple.windowserver.displays.plist
 rm -f ~/Library/Preferences/ByHost/com.apple.windowserver.displays.*.plist
 sudo shutdown -r now</code></pre> <strong>Deleting only the user-level file is not enough</strong> — the display arrangement actually lives in the system-level file, and you must restart afterwards.</li><li><strong>If you can't get into the system at all</strong>: power off → hold the power button → Options → Terminal, and run <code>emergency-restore-display.sh</code> (in the Scripts folder of the installation directory).</li></ol>
-  <p>These recovery paths are deliberately built not to depend on the app. We have managed to black out a display during testing ourselves, so “you can always recover” is a hard product requirement, not a bonus feature.</p>
+  <p>These recovery paths are deliberately built not to depend on the app. Neeson &amp; Sea has managed to black out a display during testing, so “you can always recover” is a hard product requirement, not a bonus feature.</p>
   <h3>4. What still works after the trial ends?</h3>
   <p>During the 14-day trial, every feature is available. After the trial ends, <strong>only 5 enhancement features pause</strong>: scroll smoothing, mouse button mapping, eye-care scheduling, automation rules, and session save/restore.</p>
   <p><strong>Recovery operations always remain available and never depend on a network connection</strong>: restore this display, hand back to system calibration, display sleep, quit, the license page, the About page, and the uninstall/reset entry point. In other words, an expired trial will never lock you in front of a screen you can't restore.</p>
@@ -95,12 +95,22 @@ sudo shutdown -r now</code></pre> <strong>Deleting only the user-level file is n
   <h3>Attaching a crash log (if the app has crashed)</h3>
   <ol><li>open <strong>Applications → Utilities → Console</strong>;</li><li>select “Crash Reports” in the left sidebar;</li><li>find the LumePane entry, right-click → Reveal in Finder;</li><li>drag the <code>.ips</code> file from the relevant time into that issue as an attachment.</li></ol>
   <p>The usual location for logs is <code>~/Library/Logs/DiagnosticReports/</code>.</p>
-  <h2>What we can't do</h2>
-  <ul><li>we can't provide hardware brightness, volume, or input switching on a display that doesn't support DDC/CI;</li><li>we can't guarantee that software dimming looks identical to hardware dimming;</li><li>we can't operate macOS display arrangement for you — recovery has to follow the steps above;</li><li>we can't reverse a cryptocurrency payment on-chain. If the Software doesn't work for you and we can't fix it, contact us within 14 days of purchase and we will refund you in the same currency (see the <a href="eula.html">license</a> for the full refund policy).</li></ul>
-  <a class="back" href="index.html">← Back to home</a>
+  <h2>What LumePane cannot do</h2>
+  <ul><li>LumePane cannot provide hardware brightness, volume, or input switching on a display that doesn't support DDC/CI;</li><li>LumePane cannot guarantee that software dimming looks identical to hardware dimming;</li><li>LumePane cannot operate macOS display arrangement for you — recovery has to follow the steps above;</li><li>LumePane cannot reverse a cryptocurrency payment on-chain. If the Software doesn't work for you and LumePane cannot fix it, contact Neeson &amp; Sea within 14 days of purchase and Neeson &amp; Sea will refund you in the same currency (see the <a href="eula.html">license</a> for the full refund policy).</li></ul>
+  <section class="contact-card" aria-labelledby="contact-dev">
+  <a class="contact-qr" aria-label="WeChat QR code" href="img/wechat-service-qr.png" target="_blank" rel="noopener"><img src="img/wechat-service-qr.png" alt="WeChat QR code for Neeson &amp; Sea" width="128" height="114" loading="lazy"></a>
+  <div class="contact-copy">
+    <h2 id="contact-dev">Contact the developer</h2>
+    <p>Questions, purchase help, or feedback? Contact <strong>Neeson &amp; Sea</strong> by email or WeChat. Please include the order number or receipt email for purchase issues.</p>
+    <div class="contact-kv"><span>Email: <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a></span><span>WeChat: <code>neeson1987</code></span></div>
+    <div class="contact-actions"><a class="btn btn-primary" href="mailto:huayanming2019@gmail.com?subject=LumePane%20support">Send email</a><a class="btn btn-ghost" href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a></div>
+    <p class="small">Usually answered within 24 hours.</p>
+  </div>
+</section>
+<a class="back" href="index.html">← Back to home</a>
 <p class="small">Troubleshooting guides：<a href="guide-ddc.html">DDC/CI not responding</a> · <a href="guide-wake.html">brightness resets after sleep</a> · <a href="guide-color.html">colours look washed out</a> · <a href="guide-hidpi.html">blurry text</a></p>
 <p class="small"><a href="verify.html">How to verify these claims yourself</a></p>
-<p class="small"><a href="audit.html">How we audit this product (and what we got wrong)</a></p>
+<p class="small"><a href="audit.html">How LumePane is audited (and what Neeson &amp; Sea got wrong)</a></p>
 </article>
 </main>
 <footer class="doc-foot">
@@ -112,7 +122,7 @@ sudo shutdown -r now</code></pre> <strong>Deleting only the user-level file is n
       <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
           <a href="alternatives.html">Compare the options</a>
 </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
 <script src="site.js" defer></script>

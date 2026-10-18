@@ -104,7 +104,7 @@
     </ul>
 
     <h2>Privacy boundary</h2>
-    <p>Verification is fully offline: a long <code>DP-</code> code is checked against a public key inside the app with Ed25519. The app's only network use is activation — redeeming a short code and registering the device once, with our own licensing service, so a long <code>DP-</code> code can be limited to 5 Macs. That registration carries an irreversible SHA-256 digest, computed locally from the board identifier and the model identifier; no serial number, plaintext model string, MAC address, display EDID, user name or account is sent. After that, every launch is verified locally, and update checks stay off unless you enable them. Exported diagnostic reports are redacted for serial numbers, licence codes, absolute paths and user names before they leave the app.</p>
+    <p>Verification is fully offline: a long <code>DP-</code> code is checked against a public key inside the app with Ed25519. The app's only network use is activation — redeeming a short code and registering the device once, with Neeson &amp; Sea's own licensing service, so a long <code>DP-</code> code can be limited to 5 Macs. That registration carries an irreversible SHA-256 digest, computed locally from the board identifier and the model identifier; no serial number, plaintext model string, MAC address, display EDID, user name or account is sent. After that, every launch is verified locally, and update checks stay off unless you enable them. Exported diagnostic reports are redacted for serial numbers, licence codes, absolute paths and user names before they leave the app.</p>
     <p class="callout">The claims on this page are meant to be checkable. The self-test commands above are part of the binary, and <a href="audit.html">the transparency page</a> lists what each one asserts.</p>
 
     <p class="back"><a href="index.html">← Back to the overview</a></p>
@@ -120,7 +120,7 @@
       <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
     </p>
     <p class="foot-note">This page has no trackers, no cookies, no third-party fonts, and makes no outbound requests.</p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
 <script src="site.js" defer></script>

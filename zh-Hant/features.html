@@ -104,7 +104,7 @@
     </ul>
 
     <h2>隱私邊界</h2>
-    <p>驗簽完全離線：長 <code>DP-</code> 碼用應用程式內建的公鑰做 Ed25519 驗證。應用程式唯一用到網路的地方是啟用——領取短碼，以及把裝置登記一次，都發往我們自己的發碼服務，長 <code>DP-</code> 碼因此才能限制在 5 台 Mac 上。這次登記攜帶一個不可逆的 SHA-256 摘要，在本機由主機板識別碼與機型識別碼算出（sha256(IOPlatformUUID + 機型號)）；不會傳送序號、明文機型字串、MAC 位址、顯示器 EDID、使用者名稱或帳號。之後每次啟動都在本機驗簽。更新檢查由 Sparkle（MIT）完成，預設關閉，除非你主動開啟。匯出的診斷報告在離開應用程式前會去掉序號、授權碼、絕對路徑與使用者名稱。</p>
+    <p>驗簽完全離線：長 <code>DP-</code> 碼用應用程式內建的公鑰做 Ed25519 驗證。應用程式唯一用到網路的地方是啟用——領取短碼，以及把裝置登記一次，都發往尼森與海自己的發碼服務，長 <code>DP-</code> 碼因此才能限制在 5 台 Mac 上。這次登記攜帶一個不可逆的 SHA-256 摘要，在本機由主機板識別碼與機型識別碼算出（sha256(IOPlatformUUID + 機型號)）；不會傳送序號、明文機型字串、MAC 位址、顯示器 EDID、使用者名稱或帳號。之後每次啟動都在本機驗簽。更新檢查由 Sparkle（MIT）完成，預設關閉，除非你主動開啟。匯出的診斷報告在離開應用程式前會去掉序號、授權碼、絕對路徑與使用者名稱。</p>
     <p class="callout">這一頁的說法都可供核對。上面的自我檢測指令是二進位的一部分，<a href="audit.html">透明度頁</a>列出每一項斷言什麼。</p>
 
     <p class="back"><a href="index.html">← 返回總覽</a></p>
@@ -120,7 +120,7 @@
       <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
     </p>
     <p class="foot-note">本頁沒有追蹤器、沒有 Cookie、沒有第三方字型，也不發任何對外請求。</p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

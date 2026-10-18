@@ -75,7 +75,7 @@
   <ol><li><strong>앱 내 복원</strong>: '디스플레이' 패널 아래쪽 → '이 디스플레이 복원' 또는 '시스템 교정으로 되돌리기'. 메뉴 막대 아이콘에서도 찾을 수 있습니다.</li><li><strong>앱에 의존하지 않는 방법</strong>: 터미널에서 <code>bash Scripts/restore-dimming.sh</code>를 실행합니다. 밝기, 색온도, 프리셋을 중립 값으로 되돌리며 <strong>앱이 실행 중일 필요가 없습니다</strong>.</li><li><strong>디스플레이 배치가 멈췄거나 외부 디스플레이가 인식되지 않을 때</strong>: 관리자 암호가 필요합니다. 시스템 수준 디스플레이 구성을 지우고 재시동합니다: <pre><code>sudo rm /Library/Preferences/com.apple.windowserver.displays.plist
 rm -f ~/Library/Preferences/ByHost/com.apple.windowserver.displays.*.plist
 sudo shutdown -r now</code></pre><strong>사용자 수준만 지우면 부족합니다</strong> — 디스플레이 배치를 실제로 저장하는 것은 시스템 수준 파일이며, 지운 뒤 반드시 재시동해야 합니다.</li><li><strong>시스템에 아예 들어갈 수 없을 때</strong>: 전원을 끄고 → 전원 버튼을 길게 눌러 → 옵션 → 터미널을 열어 <code>emergency-restore-display.sh</code>(설치 폴더의 Scripts 안)를 실행합니다.</li></ol>
-  <p>이 복구 경로들은 의도적으로 앱에 의존하지 않게 만들었습니다. 우리도 테스트 중에 디스플레이를 새까맣게 만든 적이 있어, '복구할 수 있다'는 것은 제품의 필수 조건이며 덤으로 주는 기능이 아닙니다.</p>
+  <p>이 복구 경로들은 의도적으로 앱에 의존하지 않게 만들었습니다. Neeson &amp; Sea도 테스트 중에 디스플레이를 새까맣게 만든 적이 있어, '복구할 수 있다'는 것은 제품의 필수 조건이며 덤으로 주는 기능이 아닙니다.</p>
   <h3>4. 체험이 끝나면 어떤 기능을 쓸 수 있나요?</h3>
   <p>14일 체험 동안에는 모든 기능을 쓸 수 있습니다. 체험이 끝나면 <strong>일시 중지되는 것은 5개 확장 기능뿐</strong>입니다: 스크롤 스무딩, 마우스 버튼 매핑, 눈 보호 일정, 자동화 규칙, 세션 저장과 복원.</p>
   <p><strong>복구 계열 작업은 언제나 쓸 수 있고 네트워크 연결도 필요로 하지 않습니다</strong>: 이 디스플레이 복원, 시스템 교정으로 되돌리기, 디스플레이 잠자기, 종료, 라이선스 페이지, 정보 페이지, 삭제/재설정 진입점. 즉 체험이 만료되어도 복구할 수 없는 화면에 갇히는 일은 없습니다.</p>
@@ -94,8 +94,18 @@ sudo shutdown -r now</code></pre><strong>사용자 수준만 지우면 부족합
   <ol><li><strong>'응용 프로그램 → 유틸리티 → 콘솔'</strong>을 엽니다.</li><li>왼쪽에서 '충돌 보고서'를 선택합니다.</li><li>LumePane 항목을 찾아 오른쪽 클릭 → Finder에서 보기.</li><li>해당 시각의 <code>.ips</code> 파일을 그 이슈에 첨부로 끌어다 놓습니다.</li></ol>
   <p>로그의 일반적인 위치는 <code>~/Library/Logs/DiagnosticReports/</code>입니다.</p>
   <h2>할 수 없는 일</h2>
-  <ul><li>DDC/CI를 지원하지 않는 디스플레이에서는 하드웨어 밝기/볼륨/입력 전환을 제공할 수 없습니다.</li><li>소프트웨어 디밍과 하드웨어 디밍의 보임새가 완전히 같다고 보장할 수 없습니다.</li><li>macOS의 디스플레이 배치를 대신 조작할 수 없습니다. 복구는 위 절차를 따라야 합니다.</li><li>암호화폐 결제를 온체인에서 취소할 수 없습니다. 소프트웨어가 동작하지 않고 저희가 해결할 수 없다면 구매 후 14일 이내에 연락해 주세요. 같은 통화로 환불합니다(자세한 내용은 <a href="eula.html">라이선스</a>).</li></ul>
-  <a class="back" href="index.html">← 홈으로 돌아가기</a>
+  <ul><li>DDC/CI를 지원하지 않는 디스플레이에서는 하드웨어 밝기/볼륨/입력 전환을 제공할 수 없습니다.</li><li>소프트웨어 디밍과 하드웨어 디밍의 보임새가 완전히 같다고 보장할 수 없습니다.</li><li>macOS의 디스플레이 배치를 대신 조작할 수 없습니다. 복구는 위 절차를 따라야 합니다.</li><li>암호화폐 결제를 온체인에서 취소할 수 없습니다. 소프트웨어가 동작하지 않고 Neeson &amp; Sea가 해결할 수 없다면 구매 후 14일 이내에 연락해 주세요. 같은 통화로 환불합니다(자세한 내용은 <a href="eula.html">라이선스</a>).</li></ul>
+  <section class="contact-card" aria-labelledby="contact-dev">
+  <a class="contact-qr" aria-label="WeChat QR code" href="../img/wechat-service-qr.png" target="_blank" rel="noopener"><img src="../img/wechat-service-qr.png" alt="Neeson &amp; Sea WeChat QR" width="128" height="114" loading="lazy"></a>
+  <div class="contact-copy">
+    <h2 id="contact-dev">개발자에게 문의</h2>
+    <p>질문, 구매 상담, 의견은 <strong>Neeson &amp; Sea</strong>에게 이메일 또는 WeChat으로 보내 주세요. 구매 관련 문의는 주문 번호나 영수증 이메일을 포함해 주세요.</p>
+    <div class="contact-kv"><span>이메일: <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a></span><span>WeChat: <code>neeson1987</code></span></div>
+    <div class="contact-actions"><a class="btn btn-primary" href="mailto:huayanming2019@gmail.com?subject=LumePane%20support">이메일 보내기</a><a class="btn btn-ghost" href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a></div>
+    <p class="small">보통 24시간 이내에 답장합니다.</p>
+  </div>
+</section>
+<a class="back" href="index.html">← 홈으로 돌아가기</a>
 <p class="small">자세한 문제 해결 가이드(영어)：<a href="../guide-ddc.html">DDC/CI 무응답</a> · <a href="../guide-wake.html">잠자기 후 밝기 초기화</a> · <a href="../guide-color.html">색이 흐려짐</a> · <a href="../guide-hidpi.html">글자가 흐림</a> · <a href="../verify.html">주장을 직접 검증하기</a> · <a href="../audit.html">이 제품을 어떻게 감사하는지(어디서 틀렸는지)</a></p>
 </article>
 </main>
@@ -107,7 +117,7 @@ sudo shutdown -r now</code></pre><strong>사용자 수준만 지우면 부족합
       <a href="support.html">지원</a>
       <a href="https://github.com/huayanming/displaypilot/issues">질문·피드백 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

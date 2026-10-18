@@ -52,13 +52,13 @@
 
 <h2>为什么想当然的修法没用</h2>
 <p>最自然的修法是：监听唤醒通知，然后把值写回去。这<strong>会失败</strong>，原因很具体——<strong>面板在唤醒之后需要一点时间才会回应 DDC/CI</strong>。你在通知到达的瞬间就写，这次写入会被直接丢掉。这就是为什么很多自己写的小脚本「有时候灵、有时候不灵」。</p>
-<p>可靠的做法是：等一等（我们等 2.5 秒），再写；如果没写进去，就重试。我们的重试节奏是 1 秒、2 秒、4 秒。而且第一次尝试时面板可能根本还没出现在总线上——这不是错误，这是正常的先后顺序。</p>
-<p class="small">这不是推测：它是我们源码里 <code>SelfHealEngine.wakeDelay</code> 上的注释，也是这个功能存在的原因。</p>
+<p>可靠的做法是：等一等（尼森与海等 2.5 秒），再写；如果没写进去，就重试。尼森与海的重试节奏是 1 秒、2 秒、4 秒。而且第一次尝试时面板可能根本还没出现在总线上——这不是错误，这是正常的先后顺序。</p>
+<p class="small">这不是推测：它是尼森与海源码里 <code>SelfHealEngine.wakeDelay</code> 上的注释，也是这个功能存在的原因。</p>
 
 <h2>今天就能用的办法</h2>
 <ul class="ticks">
   <li><strong>在显示器自己的 OSD 里设置。</strong>由面板自己保存的值，能扛过休眠、分辨率变化和重启。</li>
-  <li><strong>用一个处理了唤醒路径的免费工具。</strong><strong>MonitorControl</strong> 做 DDC 亮度与音量，而且开源——如果你只要亮度和音量，就用它，不要给我们付钱。这话我们也写在<a href="alternatives.html">对比页</a>里。</li>
+  <li><strong>用一个处理了唤醒路径的免费工具。</strong><strong>MonitorControl</strong> 做 DDC 亮度与音量，而且开源——如果你只要亮度和音量，就用它，不要给尼森与海付钱。这话尼森与海也写在<a href="alternatives.html">对比页</a>里。</li>
   <li><strong>或者让应用替你写回。</strong>LumePane 会监听唤醒与显示器重配置，等待、把记住的硬件状态写回去，失败就重试。你可以关掉自动重放，只留一个「立即重放一次」按钮，把控制权握在自己手上。</li>
 </ul>
 
@@ -66,7 +66,7 @@
 <p>那是另一个故障——可能是面板没有实现 DDC/CI，也可能是线材或接口不传它。区分办法在<a href="guide-ddc.html">《DDC/CI 无响应》</a>里。</p>
 
 <h2>相关</h2>
-<p class="small"><a href="guide-night.html">按时段调暗，最后把屏幕调成了全黑</a> · <a href="guide-brightness.html">外接显示器的亮度怎么调？</a> · <a href="guide-mouse.html">鼠标加速关不掉</a> · <a href="guides.html">全部指南</a> · <a href="guide-ddc.html">DDC/CI 无响应：区分显示器、线材与接口</a> · <a href="alternatives.html">该用哪个 Mac 显示器工具？一份诚实对比</a> · <a href="verify.html">自己验证我们的说法</a> · <a href="guide-scroll.html">鼠标滚轮一格一格地跳</a></p>
+<p class="small"><a href="guide-night.html">按时段调暗，最后把屏幕调成了全黑</a> · <a href="guide-brightness.html">外接显示器的亮度怎么调？</a> · <a href="guide-mouse.html">鼠标加速关不掉</a> · <a href="guides.html">全部指南</a> · <a href="guide-ddc.html">DDC/CI 无响应：区分显示器、线材与接口</a> · <a href="alternatives.html">该用哪个 Mac 显示器工具？一份诚实对比</a> · <a href="verify.html">自己验证尼森与海的说法</a> · <a href="guide-scroll.html">鼠标滚轮一格一格地跳</a></p>
 <p class="small"><a href="guide-color.html">调暗之后画面发灰？</a></p>
 <p class="small"><a href="guide-hidpi.html">文字发虚？先看你用的是哪种模式</a></p>
 </article>
@@ -79,7 +79,7 @@
       <a href="support.html">支持</a>
       <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

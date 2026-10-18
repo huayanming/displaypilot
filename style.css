@@ -877,3 +877,122 @@ html[lang="zh-Hant"] .hero-v2 h1 {
   .hero-console { transform: none !important; }
   .scroll-meter { display: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   Subpage system (2026-10-18): the same neumorphic instrument language
+   as the homepage, applied to support, guides, features, legal,
+   verification, comparison and audit pages. The JS enhancement wraps
+   h2 sections into cards and builds a sticky contents rail; without JS
+   the article still reads as a complete, usable document.
+   ═══════════════════════════════════════════════════════════════════ */
+.doc {
+  width: min(1120px, 100% - 3rem);
+  padding: clamp(2.4rem, 5vw, 4rem) 0 var(--sec);
+}
+.doc-hero {
+  padding: clamp(1.5rem, 4vw, 2.6rem);
+  margin-bottom: 1.35rem;
+  background: var(--surface);
+  border-radius: var(--r-plate);
+  box-shadow: var(--raise-lg);
+}
+.doc-hero h1 { font-size: clamp(2rem, 4.6vw, 3.25rem); line-height: 1.06; }
+.doc-hero .updated { margin-top: .8rem; }
+.doc-hero .summary { margin-top: 1.2rem; padding: 0; background: none; box-shadow: none; }
+.doc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 232px;
+  gap: clamp(1.1rem, 2.4vw, 2rem);
+  align-items: start;
+}
+.doc-body { min-width: 0; }
+.doc-section {
+  position: relative;
+  margin-top: 1.1rem;
+  padding: clamp(1.05rem, 2.4vw, 1.7rem) clamp(1.1rem, 2.8vw, 1.9rem);
+  background: var(--surface);
+  border-radius: var(--r-card);
+  box-shadow: var(--raise-sm);
+}
+.doc-section h2 { margin: .1rem 0 1rem; }
+.doc-section h3 { margin-top: 1.35rem; }
+.doc-section > :first-child { margin-top: 0; }
+.doc-section > :last-child { margin-bottom: 0; }
+.doc-toc {
+  position: sticky;
+  top: 4.7rem;
+  padding: 1.1rem 1rem;
+  background: var(--surface);
+  border-radius: var(--r-card);
+  box-shadow: var(--raise-sm);
+}
+.doc-toc-title {
+  margin: 0 0 .55rem;
+  font-size: .72rem;
+  font-weight: 720;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--hermes-link);
+}
+.doc-toc ol { margin: 0; padding: 0; list-style: none; }
+.doc-toc li + li { margin-top: .18rem; }
+.doc-toc a {
+  display: block;
+  padding: .34rem .52rem;
+  border-radius: 9px;
+  color: var(--ink-soft);
+  font-size: .8rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.doc-toc a:hover { color: var(--ink); background: var(--hermes-wash); }
+.doc-end {
+  margin-top: 1.3rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--r-card);
+  background: var(--sunken);
+  box-shadow: var(--sink-sm);
+  color: var(--ink-soft);
+  font-size: .85rem;
+}
+.doc-end a { font-weight: 640; }
+/* Contact developer module — deliberately a card, never a floating link. */
+.contact-card {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  margin-top: 1.25rem;
+  padding: 1.15rem;
+  background: var(--surface);
+  border-radius: var(--r-card);
+  box-shadow: var(--raise-sm);
+}
+.contact-qr {
+  width: 128px;
+  padding: .45rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 0 0 1px var(--ridge);
+}
+.contact-qr img { width: 100%; height: auto; image-rendering: pixelated; }
+.contact-copy { min-width: 0; }
+.contact-copy h2 { margin: 0 0 .35rem; font-size: 1.05rem; }
+.contact-copy p { color: var(--ink-soft); font-size: .86rem; line-height: 1.65; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .65rem; }
+.contact-actions .btn { padding: .5rem .8rem; font-size: .8rem; border-radius: 12px; }
+.contact-kv { display: grid; gap: .18rem; margin-top: .5rem; font-size: .82rem; color: var(--ink-soft); }
+.contact-kv code { background: var(--sunken); padding: .05rem .32rem; border-radius: 5px; color: var(--ink); }
+@media (max-width: 900px) {
+  .doc-layout { grid-template-columns: 1fr; }
+  .doc-toc { position: static; order: -1; }
+  .doc-toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .2rem .5rem; }
+}
+@media (max-width: 620px) {
+  .doc { width: calc(100% - 1.5rem); }
+  .doc-hero { padding: 1.2rem 1.05rem; border-radius: 24px; }
+  .doc-section { padding: 1rem .95rem; border-radius: 20px; }
+  .contact-card { grid-template-columns: 1fr; }
+  .contact-qr { width: 150px; margin-inline: auto; }
+  .doc-toc ol { grid-template-columns: 1fr; }
+}

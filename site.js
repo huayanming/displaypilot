@@ -104,7 +104,7 @@ function campaignSource() {
 })();
 
 
-/* 我已付款上报：个人收款码没有回调，买家点一下才能让店主知道。 */
+/* 买家付款通知：个人收款码没有回调，买家点一下才能让开发者知道。 */
 (function () {
   var ENDPOINT = 'https://license.lumepane.com/api/paid';
   document.addEventListener('click', function (event) {
@@ -307,4 +307,114 @@ function campaignSource() {
       card.addEventListener("pointerleave", function () { card.classList.remove("is-spot"); });
     });
   }
+})();
+
+
+/* Support → contact developer. Progressive enhancement; the rest of the
+   support page remains complete without JavaScript. */
+(function () {
+  "use strict";
+  var path = location.pathname;
+  if (!/(^|\/)support(\.html)?$/.test(path)) return;
+  var doc = document.querySelector("article.doc");
+  if (!doc || doc.querySelector(".contact-card")) return;
+  var lang = document.documentElement.lang || "en";
+  var copy = {
+    "en": {title:"Contact the developer", body:"Questions, purchase help, or feedback? Contact <strong>Neeson &amp; Sea</strong> by email or WeChat. For purchase issues, include the order number or receipt email.", email:"Email", wechat:"WeChat", emailBtn:"Send email", issue:"GitHub Issues", note:"Usually answered within 24 hours."},
+    "zh-Hans": {title:"联系开发者", body:"遇到问题、购买咨询或想反馈建议，请联系 <strong>尼森与海</strong>。购买相关问题请附上订单号或收据邮箱。", email:"邮箱", wechat:"微信", emailBtn:"发邮件", issue:"GitHub Issues", note:"通常在 24 小时内回复。"},
+    "zh-Hant": {title:"聯繫開發者", body:"遇到問題、購買諮詢或想回饋建議，請聯繫 <strong>尼森與海</strong>。購買相關問題請附上訂單號或收據郵箱。", email:"郵箱", wechat:"微信", emailBtn:"寄郵件", issue:"GitHub Issues", note:"通常在 24 小時內回覆。"},
+    "ja": {title:"開発者に連絡", body:"ご不明点、購入の相談、ご意見は <strong>Neeson &amp; Sea</strong> までメールまたは WeChat でお送りください。購入に関する場合は注文番号または領収書のメールアドレスを添えてください。", email:"メール", wechat:"WeChat", emailBtn:"メールを送る", issue:"GitHub Issues", note:"通常 24 時間以内に返信します。"},
+    "ko": {title:"개발자에게 문의", body:"질문, 구매 상담, 의견은 <strong>Neeson &amp; Sea</strong>에게 이메일 또는 WeChat으로 보내 주세요. 구매 관련 문의는 주문 번호나 영수증 이메일을 포함해 주세요.", email:"이메일", wechat:"WeChat", emailBtn:"이메일 보내기", issue:"GitHub Issues", note:"보통 24시간 이내에 답장합니다."},
+    "de": {title:"Entwickler kontaktieren", body:"Fragen, Kaufberatung oder Feedback? Schreib <strong>Neeson &amp; Sea</strong> per E-Mail oder WeChat. Bei Kaufproblemen bitte Bestellnummer oder Rechnungs-E-Mail angeben.", email:"E-Mail", wechat:"WeChat", emailBtn:"E-Mail senden", issue:"GitHub Issues", note:"Antwort in der Regel innerhalb von 24 Stunden."},
+    "fr": {title:"Contacter le développeur", body:"Une question, un achat ou une suggestion ? Contactez <strong>Neeson &amp; Sea</strong> par e-mail ou WeChat. Pour un achat, indiquez le numéro de commande ou l’e-mail du reçu.", email:"E-mail", wechat:"WeChat", emailBtn:"Envoyer un e-mail", issue:"GitHub Issues", note:"Réponse généralement sous 24 heures."},
+    "es": {title:"Contactar con el desarrollador", body:"¿Dudas, compra o sugerencias? Contacta con <strong>Neeson &amp; Sea</strong> por correo o WeChat. Para compras, incluye el número de pedido o el correo del recibo.", email:"Correo", wechat:"WeChat", emailBtn:"Enviar correo", issue:"GitHub Issues", note:"Normalmente respondo en 24 horas."}
+  };
+  var c = copy[lang] || copy.en;
+  var prefix = /\/(zh-Hans|zh-Hant|ja|ko|de|fr|es)\//.test(path) ? "../img/" : "img/";
+  var section = document.createElement("section");
+  section.className = "contact-card";
+  section.setAttribute("aria-labelledby", "contact-dev");
+  section.innerHTML = '<a class="contact-qr" href="' + prefix + 'wechat-service-qr.png" target="_blank" rel="noopener"><img src="' + prefix + 'wechat-service-qr.png" alt="' + c.wechat + '" width="128" height="114" loading="lazy"></a>' +
+    '<div class="contact-copy"><h2 id="contact-dev">' + c.title + '</h2><p>' + c.body + '</p>' +
+    '<div class="contact-kv"><span>' + c.email + ': <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a></span><span>' + c.wechat + ': <code>neeson1987</code></span></div>' +
+    '<div class="contact-actions"><a class="btn btn-primary" href="mailto:huayanming2019@gmail.com?subject=LumePane%20support">' + c.emailBtn + '</a><a class="btn btn-ghost" href="https://github.com/huayanming/displaypilot/issues">' + c.issue + '</a></div>' +
+    '<p class="small">' + c.note + '</p></div>';
+  var back = doc.querySelector("a.back");
+  if (back) doc.insertBefore(section, back); else doc.appendChild(section);
+})();
+
+/* Subpage instrument shell — progressive enhancement only.
+   Wraps each h2 section in a card and inserts a contents rail. If this
+   script is blocked, the original article remains complete and readable. */
+(function () {
+  "use strict";
+  var doc = document.querySelector("article.doc");
+  if (!doc || doc.dataset.enhanced === "1") return;
+  var h1 = doc.querySelector("h1");
+  if (!h1) return;
+  var top = [];
+  var summary = doc.querySelector(".summary");
+  var updated = doc.querySelector(".updated");
+  if (updated) top.push(updated);
+  if (summary) top.push(summary);
+
+  var hero = document.createElement("header");
+  hero.className = "doc-hero";
+  h1.parentNode.insertBefore(hero, h1);
+  hero.appendChild(h1);
+  top.forEach(function (node) { hero.appendChild(node); });
+
+  var body = document.createElement("div");
+  body.className = "doc-body";
+  var toc = document.createElement("aside");
+  toc.className = "doc-toc";
+  toc.setAttribute("aria-label", "On this page");
+  var tocTitle = document.createElement("p");
+  tocTitle.className = "doc-toc-title";
+  var tocLabels = {
+    "en": "On this page",
+    "zh-Hans": "本页目录",
+    "zh-Hant": "本頁目錄",
+    "ja": "このページの目次",
+    "ko": "이 페이지 목차",
+    "de": "Auf dieser Seite",
+    "fr": "Sur cette page",
+    "es": "En esta página"
+  };
+  tocTitle.textContent = tocLabels[document.documentElement.lang] || tocLabels.en;
+  var list = document.createElement("ol");
+  toc.appendChild(tocTitle);
+  toc.appendChild(list);
+
+  var current = null;
+  var index = 0;
+  Array.prototype.slice.call(doc.children).forEach(function (child) {
+    if (child === hero || child.tagName === "H1") return;
+    if (child.tagName === "H2") {
+      index += 1;
+      var id = "section-" + index;
+      child.id = child.id || id;
+      var section = document.createElement("section");
+      section.className = "doc-section";
+      section.appendChild(child);
+      body.appendChild(section);
+      var item = document.createElement("li");
+      var link = document.createElement("a");
+      link.href = "#" + child.id;
+      link.textContent = child.textContent;
+      item.appendChild(link);
+      list.appendChild(item);
+      current = section;
+    } else if (current) {
+      current.appendChild(child);
+    } else {
+      body.appendChild(child);
+    }
+  });
+
+  var layout = document.createElement("div");
+  layout.className = "doc-layout";
+  layout.appendChild(body);
+  if (list.children.length > 1) layout.appendChild(toc);
+  doc.appendChild(layout);
 })();

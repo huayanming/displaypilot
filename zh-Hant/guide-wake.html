@@ -52,13 +52,13 @@
 
 <h2>為什麼想當然的修法沒用</h2>
 <p>最自然的修法是：監聽喚醒通知，然後把值寫回去。這<strong>會失敗</strong>，原因很具體——<strong>面板在喚醒之後需要一點時間才會回應 DDC/CI</strong>。你在通知到達的瞬間就寫，這次寫入會被直接丟掉。這就是為什麼很多自己寫的小腳本「有時候靈、有時候不靈」。</p>
-<p>可靠的做法是：等一等（我們等 2.5 秒），再寫；如果沒寫進去，就重試。我們的重試節奏是 1 秒、2 秒、4 秒。而且第一次嘗試時面板可能根本還沒出現在匯流排上——這不是錯誤，這是正常的先後順序。</p>
-<p class="small">這不是推測：它是我們原始碼裡 <code>SelfHealEngine.wakeDelay</code> 上的註解，也是這個功能存在的原因。</p>
+<p>可靠的做法是：等一等（尼森與海等 2.5 秒），再寫；如果沒寫進去，就重試。尼森與海的重試節奏是 1 秒、2 秒、4 秒。而且第一次嘗試時面板可能根本還沒出現在匯流排上——這不是錯誤，這是正常的先後順序。</p>
+<p class="small">這不是推測：它是尼森與海原始碼裡 <code>SelfHealEngine.wakeDelay</code> 上的註解，也是這個功能存在的原因。</p>
 
 <h2>今天就能用的辦法</h2>
 <ul class="ticks">
   <li><strong>在顯示器自己的 OSD 裡設定。</strong>由面板自己保存的值，能撐過休眠、解析度變化和重開機。</li>
-  <li><strong>用一個處理了喚醒路徑的免費工具。</strong><strong>MonitorControl</strong> 做 DDC 亮度與音量，而且開源——如果你只要亮度和音量，就用它，不要給我們付錢。這話我們也寫在<a href="alternatives.html">對比頁</a>裡。</li>
+  <li><strong>用一個處理了喚醒路徑的免費工具。</strong><strong>MonitorControl</strong> 做 DDC 亮度與音量，而且開源——如果你只要亮度和音量，就用它，不要給尼森與海付錢。這話尼森與海也寫在<a href="alternatives.html">對比頁</a>裡。</li>
   <li><strong>或者讓應用替你寫回。</strong>LumePane 會監聽喚醒與顯示器重配置，等待、把記住的硬體狀態寫回去，失敗就重試。你可以關掉自動重放，只留一個「立即重放一次」按鈕，把控制權握在自己手上。</li>
 </ul>
 
@@ -66,7 +66,7 @@
 <p>那是另一個故障——可能是面板沒有實作 DDC/CI，也可能是線材或介面不傳它。區分辦法在<a href="guide-ddc.html">《DDC/CI 無回應》</a>裡。</p>
 
 <h2>相關</h2>
-<p class="small"><a href="guide-ddc.html">DDC/CI 無回應：區分顯示器、線材與介面</a> · <a href="alternatives.html">該用哪個 Mac 顯示器工具？一份誠實對比</a> · <a href="verify.html">自己驗證我們的說法</a></p>
+<p class="small"><a href="guide-ddc.html">DDC/CI 無回應：區分顯示器、線材與介面</a> · <a href="alternatives.html">該用哪個 Mac 顯示器工具？一份誠實對比</a> · <a href="verify.html">自己驗證尼森與海的說法</a></p>
 <p class="small"><a href="guide-color.html">調暗之後畫面發灰？</a></p>
 <p class="small"><a href="guide-hidpi.html">文字發虛？先看你用的是哪種模式</a></p>
 </article>
@@ -79,7 +79,7 @@
       <a href="support.html">支援</a>
       <a href="https://github.com/huayanming/displaypilot/issues">問題與回饋 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

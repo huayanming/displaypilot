@@ -116,7 +116,7 @@
         <div class="f-copy">
           <p class="f-eyebrow">01 · Suavizado de desplazamiento</p>
           <h2 class="f-title">Un paso, convertido en un solo trazo</h2>
-          <p class="f-body">Un paso de la rueda ya no es un salto único. Los eventos se acumulan y se entregan en cada refresco de pantalla: cada fotograma emite <code>pending × (1 − e^(−dt/τ))</code>. Como la atenuación depende del tiempo transcurrido y no del número de fotogramas, la forma de la respuesta la fija el tiempo, no la frecuencia de refresco; la conservación total se mide a 60, 120 y 144 Hz. En nuestra prueba offline, el primer fotograma a 120 Hz pasó de 3 a 9 puntos, y el tiempo hasta el 90 % bajó de 150 ms a 133 ms.</p>
+          <p class="f-body">Un paso de la rueda ya no es un salto único. Los eventos se acumulan y se entregan en cada refresco de pantalla: cada fotograma emite <code>pending × (1 − e^(−dt/τ))</code>. Como la atenuación depende del tiempo transcurrido y no del número de fotogramas, la forma de la respuesta la fija el tiempo, no la frecuencia de refresco; la conservación total se mide a 60, 120 y 144 Hz. En de Neeson &amp; Sea prueba offline, el primer fotograma a 120 Hz pasó de 3 a 9 puntos, y el tiempo hasta el 90 % bajó de 150 ms a 133 ms.</p>
           <p class="f-note sunk neu neu-sink">Las ventanas que tratan la rueda como entrada de precisión o zoom —terminales, visores de imágenes, presentaciones— se devuelven al sistema de forma predeterminada. Mantén ⌘ en cualquier momento para volver al desplazamiento nativo. El suavizado viene <strong>desactivado</strong>: nunca toma el control de tu rueda si no lo activas. La interfaz muestra cuatro contadores en vivo —vistos, gesto, interceptados, entregados— para que, con un ratón nuevo, veas de inmediato en qué capa se atasca.</p>
         </div>
         <figure class="f-media tall neu plate">
@@ -135,7 +135,7 @@
           <p class="gauge sunk neu neu-sink"><span class="k">Temperatura de color</span><span class="v tid">6500</span><span class="u">K · anclada como transformación identidad</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">Gamma</span><span class="v tid">2,2</span><span class="u">· sRGB IEC61966-2.1</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">Gamut</span><span class="v tid">104 %</span><span class="u">sRGB · solo cubre el 77 % de Display P3</span></p>
-          <p class="instrument-note">Medido en nuestro panel de prueba y leído de la tabla gamma.</p>
+          <p class="instrument-note">Medido en de Neeson &amp; Sea panel de prueba y leído de la tabla gamma.</p>
         </div>
       </article>
       <article class="feature">
@@ -296,7 +296,7 @@
       <div class="trust-grid">
         <ul class="proof-list">
           <li><strong>Verificación sin conexión.</strong> Un código largo <code>DP-</code> se verifica con Ed25519 contra una clave pública dentro de la app. La única petición al activar es el registro del dispositivo que se describe a continuación; después, cada inicio se verifica en local, y las comprobaciones de actualización siguen desactivadas salvo que las actives.</li>
-          <li><strong>Un registro y después, silencio.</strong> Solo en la primera activación, la app envía un resumen SHA-256 irreversible, calculado en local a partir del identificador de placa y del identificador de modelo, a nuestro propio servicio de licencias: así un código largo <code>DP-</code> puede limitarse a 5 Macs. No se envía número de serie, modelo en texto plano, dirección MAC, EDID de pantalla, cuenta ni datos de uso.</li>
+          <li><strong>Un registro y después, silencio.</strong> Solo en la primera activación, la app envía un resumen SHA-256 irreversible, calculado en local a partir del identificador de placa y del identificador de modelo, a de Neeson &amp; Sea propio servicio de licencias: así un código largo <code>DP-</code> puede limitarse a 5 Macs. No se envía número de serie, modelo en texto plano, dirección MAC, EDID de pantalla, cuenta ni datos de uso.</li>
           <li><strong>Sin telemetría.</strong> Sin analítica, sin cookies, sin fuentes de terceros, sin servicio en segundo plano. Esta página no hace peticiones salientes.</li>
           <li><strong>Las comprobaciones vienen con la app.</strong> Las autopruebas forman parte del binario, y la página de auditoría enumera qué verifica cada una. Si alguna afirmación de esta página dejara de ser cierta, una de ellas se pondría en rojo.</li>
         </ul>
@@ -356,7 +356,7 @@
       </div>
     </div>
     <p class="foot-note">Esta página no tiene rastreadores, ni cookies, ni fuentes de terceros, y no envía ninguna petición saliente.</p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

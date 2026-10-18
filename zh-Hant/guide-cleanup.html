@@ -91,7 +91,7 @@ du -sh ~/Library/Caches/go-build ~/.gradle/caches ~/.npm/_cacache 2>/dev/null</c
 rm -rf ~/Library/Caches/go-build/*</code></pre>
   <p>兩個沒人提醒、但一定會踩的坑：刪 DerivedData 之前先結束 Xcode（正在編譯會持續往裡寫）；任何快取在對應工具執行期間都不要刪。</p>
 
-  <h2>為什麼我們「先隔離，再刪除」</h2>
+  <h2>為什麼尼森與海「先隔離，再刪除」</h2>
   <p>快取<em>原則上</em>可以隨便刪。真正會出事的，是那條規則在你的環境裡恰好不成立的情況：某個專案釘住了舊快取、某個工具把狀態也放在裡面、某個你以為不是封存的封存檔。</p>
   <p>所以應用程式第一遍從不刪除。它先測量，把內容移進隔離區，然後開始 30 天倒數。這段時間裡一旦有東西壞了，一鍵還原。視窗過去之後才會真正刪除，而且永久刪除預設關閉，必須同時滿足六個條件——差一個就中止。</p>
 
@@ -112,7 +112,7 @@ rm -rf ~/Library/Caches/go-build/*</code></pre>
       <a href="support.html">支援</a>
       <a href="https://github.com/huayanming/displaypilot/issues">問題與回饋 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

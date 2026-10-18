@@ -56,7 +56,7 @@
 <pre><code>let current = display.brightness
 let dimmed  = current * 0.6      // 错的
 apply(dimmed)</code></pre>
-<p>把它挂在 60 秒一次的心跳上，面板就会被反复乘以 0.6：0.6、0.36、0.22、0.13……<strong>屏幕会自己走向全黑</strong>，而用户的说法是「这个应用一夜之间把我屏幕弄坏了」。</p>
+<p>把它挂在 60 秒一次的心跳上，面板就会被反复乘以 0.6：0.6、0.36、0.22、0.13……<strong>屏幕会自己走向全黑</strong>，而用户的说法是「这个应用一夜之间把你的屏幕弄坏了」。</p>
 <p>解法是把值做成<strong>绝对量</strong>——<strong>按满量程的比例，而不是实时值的倍数</strong>：</p>
 <pre><code>let target = 0.6               // 满量程的比例
 apply(target)</code></pre>
@@ -76,7 +76,7 @@ apply(target)</code></pre>
 <ul class="ticks"><li>淡入淡出的时长调到「<strong>长到读得出是一次过渡，短到不觉得迟钝</strong>」——一个真实的取舍，说出来而不是藏起来。</li><li>休息（番茄钟式计时）可以调暗或遮罩屏幕。状态机带<strong>一键跳过</strong>，可以提前结束休息回到工作——因为<strong>一个不能跳过的休息，人们会干脆把整个功能关掉</strong>。</li></ul>
 
 <h2>诚实的边界</h2>
-<ul class="ticks"><li>它调暗的是<strong>画面</strong>，不是背光。低亮度下黑位不再是真的黑。</li><li>改白点是<strong>软件色温</strong>，不是硬件校准。要准确的颜色得上色度计。</li><li>它与 Night Shift、f.lux 属于<strong>同一类机制</strong>——我们不声称比这更高级。</li></ul>
+<ul class="ticks"><li>它调暗的是<strong>画面</strong>，不是背光。低亮度下黑位不再是真的黑。</li><li>改白点是<strong>软件色温</strong>，不是硬件校准。要准确的颜色得上色度计。</li><li>它与 Night Shift、f.lux 属于<strong>同一类机制</strong>——尼森与海不声称比这更高级。</li></ul>
 
 <h2>相关</h2>
 <p class="small"><a href="guides.html">全部指南</a> · <a href="guide-brightness.html">外接显示器亮度怎么调</a> · <a href="guide-color.html">色彩发灰</a> · <a href="guide-ddc.html">DDC/CI 无响应</a></p>
@@ -90,7 +90,7 @@ apply(target)</code></pre>
       <a href="support.html">支持</a>
       <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

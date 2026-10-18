@@ -64,7 +64,7 @@
 <h2>如果三种都不行</h2>
 <ul class="ticks"><li>去显示器自己的菜单里找 <strong>DDC/CI</strong> 开关，把它打开。</li><li><strong>换一根线、换一个口</strong>——这是最常见的一招，因为扩展坞和 KVM 正是丢掉 DDC/CI 的地方。</li><li>把显示器<strong>直连</strong>试试，中间不要有 hub。</li><li>完整的排查顺序见 <a href="guide-ddc.html">DDC/CI 无响应</a>。</li></ul>
 
-<h2>我们的应用是怎么处理的</h2>
+<h2>尼森与海的应用是怎么处理的</h2>
 <p>LumePane 先试 DDC/CI，显示器不回应时改用伽马表，所以同一套控制在混合面板之间都能用——而且它会<strong>告诉</strong>你当前这块屏走的是哪条路，而不是假装两者等价。走伽马表时，它以<strong>首次接管时读到的曲线</strong>为基准，关掉时把原始表交还回去。</p>
 
 <h2>相关</h2>
@@ -79,7 +79,7 @@
       <a href="support.html">支持</a>
       <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

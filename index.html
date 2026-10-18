@@ -117,7 +117,7 @@
         <div class="f-copy">
           <p class="f-eyebrow">01 · Smooth scrolling</p>
           <h2 class="f-title">One notch, split into a stroke</h2>
-          <p class="f-body">A wheel notch stops being a single jump. Events are accumulated, then delivered on every display refresh — each frame emitting <code>pending × (1 − e^(−dt/τ))</code>. Because the decay is driven by elapsed time rather than by frame count, the response shape is set by time, not refresh rate; total conservation is measured at 60, 120 and 144 Hz. In our offline benchmark, the first frame at 120 Hz improved from 3 points to 9, and time-to-90% fell from 150 ms to 133 ms.</p>
+          <p class="f-body">A wheel notch stops being a single jump. Events are accumulated, then delivered on every display refresh — each frame emitting <code>pending × (1 − e^(−dt/τ))</code>. Because the decay is driven by elapsed time rather than by frame count, the response shape is set by time, not refresh rate; total conservation is measured at 60, 120 and 144 Hz. In Neeson &amp; Sea's offline benchmark, the first frame at 120 Hz improved from 3 points to 9, and time-to-90% fell from 150 ms to 133 ms.</p>
           <p class="f-note sunk neu neu-sink">Windows that treat the wheel as a precision input or a zoom control — terminals, image viewers, slide decks — are handed back to the system by default. Hold ⌘ at any time to return to native scrolling. Smoothing ships <strong>off</strong>: it never takes over your wheel unless you turn it on. The interface keeps four live counters — seen, gesture, intercepted, delivered — so when a new mouse misbehaves, you can see exactly which layer is dropping it.</p>
         </div>
         <figure class="f-media tall neu plate">
@@ -136,7 +136,7 @@
           <p class="gauge sunk neu neu-sink"><span class="k">Color temperature</span><span class="v tid">6500</span><span class="u">K · anchored as the identity transform</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">Gamma</span><span class="v tid">2.2</span><span class="u">· sRGB IEC61966-2.1</span></p>
           <p class="gauge sunk neu neu-sink"><span class="k">Gamut</span><span class="v tid">104%</span><span class="u">sRGB · covers only 77% of Display P3</span></p>
-          <p class="instrument-note">Measured on our test panel and read back from the gamma table.</p>
+          <p class="instrument-note">Measured on Neeson &amp; Sea's test panel and read back from the gamma table.</p>
         </div>
       </article>
       <article class="feature">
@@ -297,7 +297,7 @@
       <div class="trust-grid">
         <ul class="proof-list">
           <li><strong>Offline verification.</strong> A long <code>DP-</code> code is verified with Ed25519 against a public key inside the app. The only request at activation is the one-time device registration described next; after that every launch is verified locally, and update checks stay off unless you enable them.</li>
-          <li><strong>One registration, then silence.</strong> On first activation only, the app sends an irreversible SHA-256 digest, computed locally from the board identifier and the model identifier, to our own licensing service — that is how a long <code>DP-</code> code can be limited to 5 Macs. No serial number, plaintext model string, MAC address, display EDID, account or usage data is sent.</li>
+          <li><strong>One registration, then silence.</strong> On first activation only, the app sends an irreversible SHA-256 digest, computed locally from the board identifier and the model identifier, to Neeson &amp; Sea's own licensing service — that is how a long <code>DP-</code> code can be limited to 5 Macs. No serial number, plaintext model string, MAC address, display EDID, account or usage data is sent.</li>
           <li><strong>No telemetry.</strong> No analytics, no cookies, no third-party fonts, no background service. This page makes no outbound requests.</li>
           <li><strong>The checks ship with the app.</strong> Self-tests are part of the binary, and the audit page lists what each one asserts. If a claim here ever stops being true, one of them goes red.</li>
         </ul>
@@ -358,7 +358,7 @@
       </div>
     </div>
     <p class="foot-note">This page has no trackers, no cookies, no third-party fonts, and makes no third-party requests.</p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
 <script src="site.js" defer></script>

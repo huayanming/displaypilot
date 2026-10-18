@@ -89,7 +89,7 @@ du -sh ~/Library/Caches/go-build ~/.gradle/caches ~/.npm/_cacache 2>/dev/null</c
 rm -rf ~/Library/Caches/go-build/*</code></pre>
   <p>Two cautions nobody mentions until they bite: quit Xcode before removing DerivedData (a running build will keep writing into it), and never delete a cache while its tool is running.</p>
 
-  <h2>Why we quarantine before we delete</h2>
+  <h2>Why Neeson &amp; Sea quarantine before Neeson &amp; Sea delete</h2>
   <p>A cache is safe to delete <em>in principle</em>. The interesting failures are the ones where the rule is slightly wrong for your setup: a project pinned to an old cache, a tool that keeps state in there, an archive you had forgotten was an archive.</p>
   <p>So the app never deletes on the first pass. It measures, moves the payload into a quarantine folder, and starts a 30-day clock. If something breaks inside that window, one click restores it. Permanent deletion happens only after the window, is off by default, and requires six conditions to hold at once — fail any one and it aborts.</p>
 
@@ -110,7 +110,7 @@ rm -rf ~/Library/Caches/go-build/*</code></pre>
       <a href="support.html">Support</a>
       <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
 <script src="site.js" defer></script>

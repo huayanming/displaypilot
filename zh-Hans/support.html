@@ -60,13 +60,13 @@
 <article class="doc">
   <h1>支持</h1>
   <p class="updated">最后更新：2026 年 10 月 16 日</p>
-  <p class="summary">遇到问题先看下面的常见问题。需要提问时，请用应用内<strong>「通用 → 关于 → 报告问题」</strong>生成诊断信息，自己看一遍之后，连同问题描述一起发到 <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a> —— 这是目前唯一的支持渠道。应用<strong>不会自动收集或上传任何内容</strong>。</p>
+  <p class="summary">遇到问题先看下面的常见问题。需要帮助时，请联系<strong>尼森与海</strong>：<a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a> 或微信 <code>neeson1987</code>；也可以使用 <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>。应用<strong>不会自动收集或上传任何内容</strong>。</p>
     <p class="summary">邮箱: <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a>（不方便用 GitHub 时，也可以直接发邮件）</p>
   <h2>中国大陆购买</h2>
   <p>LumePane 已入驻爱发电，中国大陆用户可以用支付宝或微信购买 99 元授权：<a href="https://afdian.com/a/lumepane">在爱发电购买 LumePane</a>。</p>
   <h2>常见问题</h2>
-  <h3>1. 为什么我的显示器 DDC 无应答？</h3>
-  <p>因为这块面板没有实现 DDC/CI（显示器控制命令集）。这不是应用的问题：有些显示器、电视、扩展坞与转接器根本不响应这类命令，我们用于测试的 UP32R7-A 就是其中之一。</p>
+  <h3>1. 为什么你的显示器 DDC 无应答？</h3>
+  <p>因为这块面板没有实现 DDC/CI（显示器控制命令集）。这不是应用的问题：有些显示器、电视、扩展坞与转接器根本不响应这类命令，尼森与海用于测试的 UP32R7-A 就是其中之一。</p>
   <p>此时硬件亮度、硬件音量与输入源切换不可用；应用会明确标注「DDC 无应答」，并自动把亮度交给<strong>软件调光</strong>（通过 CoreGraphics 伽马表压暗画面）。软件调光一样能把屏幕调暗，但它不改变面板背光电流，所以省电幅度与硬件调光不同。</p>
   <p>完整排查（五个原因里哪些该怪显示器、哪些该怪线材）：<a href="guide-ddc.html">Mac 外接显示器 DDC/CI 无响应</a>。</p>
   <h3>2. 平滑滚动和 Mos / Mac Mouse Fix 冲突怎么办？</h3>
@@ -77,7 +77,7 @@
   <ol><li><strong>应用内还原</strong>：「显示」面板底部 →「还原此显示器」或「交回系统校准」。菜单栏图标里也能找到。</li><li><strong>不依赖应用</strong>：在终端运行 <code>bash Scripts/restore-dimming.sh</code>。它把亮度、色温、预设写回中性值，<strong>不需要应用正在运行</strong>。</li><li><strong>显示排列卡住 / 外接显示器不识别</strong>：需要管理员密码。删除系统级显示配置后重启：<pre><code>sudo rm /Library/Preferences/com.apple.windowserver.displays.plist
 rm -f ~/Library/Preferences/ByHost/com.apple.windowserver.displays.*.plist
 sudo shutdown -r now</code></pre><strong>只删用户级不够</strong> —— 真正存显示排列的是系统级那个文件；删完必须重启。</li><li><strong>完全进不了系统</strong>：关机 → 长按电源键 → 选项 → 终端，运行 <code>emergency-restore-display.sh</code>（在安装目录的 Scripts 下）。</li></ol>
-  <p>这些恢复路径是刻意做成不依赖应用的。我们曾在测试中把显示器弄黑过，所以「能恢复」是产品的硬性要求，不是附赠功能。</p>
+  <p>这些恢复路径是刻意做成不依赖应用的。尼森与海曾在测试中把显示器弄黑过，所以「能恢复」是产品的硬性要求，不是附赠功能。</p>
   <h3>4. 试用结束后哪些功能还能用？</h3>
   <p>试用期（14 天）内功能完整。试用结束后<strong>只暂停 5 项增强功能</strong>：滚动平滑、鼠标按键映射、护眼排程、自动化规则、会话保存与恢复。</p>
   <p><strong>恢复类操作永远可用，且不依赖联网</strong>：还原此显示器、交回系统校准、显示器休眠、退出、许可页面、关于页面、卸载/重置入口。换句话说，欠费不会把你锁在一块无法恢复的屏幕前。</p>
@@ -88,19 +88,29 @@ sudo shutdown -r now</code></pre><strong>只删用户级不够</strong> —— �
   <p>设计上就是把「删错」的概率压到最低：</p>
   <p>这 13 类里哪些真的可以安全删除、确切路径，以及重建的代价：<a href="guide-cleanup.html">macOS 开发者缓存清理：哪些能删、哪些删了就出事</a>。</p>
   <ul><li>只处理 <strong>13 类有确定性重建方式的产物</strong>（Xcode DerivedData、SwiftPM、CocoaPods、npm/pnpm/Yarn、Go、Gradle、<code>__pycache__</code>、Rust target、崩溃报告、Homebrew 缓存等）；</li><li><strong>永不参与清理</strong>：文稿、桌面、下载、图片、影片、音乐、偏好设置、Application Support、钥匙串、邮件、信息、Safari；</li><li>删除前<strong>先移入隔离区</strong>，默认保留 30 天，随时可还原；</li><li>永久删除默认不存在：全应用只有一个函数能永久删除，必须同时满足 6 个条件，任何一条不过就中止；</li><li>自动化规则<strong>只能预扫描，不能删除</strong>。</li></ul>
-  <h3>7. 你们会自动收集我的信息吗？</h3>
+  <h3>7. 应用会自动收集你的信息吗？</h3>
   <p><strong>不会。</strong>应用不做遥测、不做埋点、不上传使用数据，也不自动上传崩溃日志。「报告问题」生成的内容只在你本机，必须由你手动复制或发送。真正联网的只有三件事：检查更新（默认关闭）、校验授权（通道接通并激活之后才有），以及你主动点击时打开网页。详见<a href="privacy.html">隐私政策</a>。</p>
   <h2>怎么报告问题</h2>
   <ol><li>打开「通用 → 关于 → 报告问题」，点一下生成诊断信息；</li><li><strong>自己看一遍</strong>内容（它会移除序列号、用户名、文件路径与授权码，但你仍应确认）；</li><li>点「复制到剪贴板」，再到 <a href="https://github.com/huayanming/displaypilot/issues/new">GitHub 上新建一条 issue</a>，把内容与问题描述一起贴进去。</li></ol>
   <h3>附上崩溃日志（如果应用崩溃过）</h3>
   <ol><li>打开<strong>「应用程序 → 实用工具 → 控制台」</strong>；</li><li>左侧选「崩溃报告」（Crash Reports）；</li><li>找到 LumePane 的条目，右键 → 在访达中显示；</li><li>把对应时间点的 <code>.ips</code> 文件拖进那条 issue 作为附件。</li></ol>
   <p>日志的常见位置是 <code>~/Library/Logs/DiagnosticReports/</code>。</p>
-  <h2>我们做不到的事</h2>
-  <ul><li>不能在不支持 DDC/CI 的显示器上提供硬件亮度/音量/输入源；</li><li>不能保证软件调光与硬件调光的观感完全一致；</li><li>不能替你操作 macOS 的显示排列，恢复必须按上面的步骤来；</li><li>无法在链上撤销加密货币付款。如果软件在你这里无法正常工作、我们又修不好，请在购买后 14 天内联系我们，我们会按原币种退款（完整退款政策见<a href="eula.html">许可协议</a>）。</li></ul>
-  <a class="back" href="index.html">← 返回首页</a>
+  <h2>LumePane 做不到的事</h2>
+  <ul><li>不能在不支持 DDC/CI 的显示器上提供硬件亮度/音量/输入源；</li><li>不能保证软件调光与硬件调光的观感完全一致；</li><li>不能替你操作 macOS 的显示排列，恢复必须按上面的步骤来；</li><li>无法在链上撤销加密货币付款。如果软件在你这里无法正常工作、LumePane 又修不好，请在购买后 14 天内联系尼森与海，尼森与海会按原币种退款（完整退款政策见<a href="eula.html">许可协议</a>）。</li></ul>
+  <section class="contact-card" aria-labelledby="contact-dev">
+  <a class="contact-qr" aria-label="WeChat QR code" href="../img/wechat-service-qr.png" target="_blank" rel="noopener"><img src="../img/wechat-service-qr.png" alt="尼森与海微信二维码" width="128" height="114" loading="lazy"></a>
+  <div class="contact-copy">
+    <h2 id="contact-dev">联系开发者</h2>
+    <p>遇到问题、购买咨询或想反馈建议，请联系 <strong>尼森与海</strong>。购买相关问题请附上订单号或收据邮箱。</p>
+    <div class="contact-kv"><span>邮箱：<a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a></span><span>微信：<code>neeson1987</code></span></div>
+    <div class="contact-actions"><a class="btn btn-primary" href="mailto:huayanming2019@gmail.com?subject=LumePane%20%E6%94%AF%E6%8C%81">发邮件</a><a class="btn btn-ghost" href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a></div>
+    <p class="small">通常在 24 小时内回复。</p>
+  </div>
+</section>
+<a class="back" href="index.html">← 返回首页</a>
 <p class="small">深入排查指南：<a href="guide-ddc.html">DDC/CI 无响应</a> · <a href="guide-wake.html">休眠后亮度被重置</a> · <a href="guide-color.html">色彩越调越偏</a> · <a href="guide-hidpi.html">文字发虚</a></p>
 <p class="small"><a href="verify.html">如何自己验证这些说法</a></p>
-<p class="small"><a href="audit.html">我们怎么审查自己的产品（以及我们错在哪）</a></p>
+<p class="small"><a href="audit.html">尼森与海怎么审查自己的产品（以及尼森与海错在哪）</a></p>
 </article>
 </main>
 <footer class="doc-foot">
@@ -112,7 +122,7 @@ sudo shutdown -r now</code></pre><strong>只删用户级不够</strong> —— �
       <a href="https://github.com/huayanming/displaypilot/issues">问题与建议 · GitHub Issues</a>
           <a href="alternatives.html">对比各工具</a>
 </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

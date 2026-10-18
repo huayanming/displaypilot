@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>自己验证——每条说法都附上可执行的检查命令 · LumePane</title>
-<meta name="description" content="LumePane 是还没有评价的新付费应用。别信我们的话：这一页告诉你如何在自己的 Mac 上验证签名、公证、校验和、离线激活，以及是否真的没有遥测。">
+<meta name="description" content="LumePane 是还没有评价的新付费应用。别信尼森与海的话：这一页告诉你如何在自己的 Mac 上验证签名、公证、校验和、离线激活，以及是否真的没有遥测。">
 <link rel="canonical" href="https://lumepane.com/zh-Hans/verify.html">
 <link rel="alternate" hreflang="en" href="https://lumepane.com/verify.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://lumepane.com/zh-Hans/verify.html">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="LumePane">
 <meta property="og:title" content="自己验证——每条说法都附上可执行的检查命令">
-<meta property="og:description" content="LumePane 是还没有评价的新付费应用。别信我们的话：这一页告诉你如何在自己的 Mac 上验证签名、公证、校验和、离线激活，以及是否真的没有遥测。">
+<meta property="og:description" content="LumePane 是还没有评价的新付费应用。别信尼森与海的话：这一页告诉你如何在自己的 Mac 上验证签名、公证、校验和、离线激活，以及是否真的没有遥测。">
 <meta property="og:url" content="https://lumepane.com/zh-Hans/verify.html">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lumepane.com/img/og-zh-Hans.v532.png">
@@ -45,9 +45,9 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>自己验证</h1>
-<p class="summary">LumePane 是还没有评价的新付费应用，所以<strong>请不要信我们的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 7.1.6 版本。</p>
+<p class="summary">LumePane 是还没有评价的新付费应用，所以<strong>请不要信尼森与海的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 7.1.6 版本。</p>
 
-<h2>一、它真的是我们的吗？Apple 公证过吗？</h2>
+<h2>一、它真的是尼森与海的吗？Apple 公证过吗？</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
   Authority=Developer ID Application: yanming hua (7P2P353LBW)
   Format=app bundle with Mach-O universal (x86_64 arm64)
@@ -59,7 +59,7 @@ spctl -a -vv -t exec /Applications/LumePane.app
 
 xcrun stapler validate /Applications/LumePane.app
   The validate action worked!</code></pre>
-<p>这个二进制用我们的 Developer ID 签名，Apple 扫描并公证过，且公证凭据<strong>钉扎</strong>在应用内，因此离线也能验证。任何被改动过的副本都过不了这三项。</p>
+<p>这个二进制用尼森与海的 Developer ID 签名，Apple 扫描并公证过，且公证凭据<strong>钉扎</strong>在应用内，因此离线也能验证。任何被改动过的副本都过不了这三项。</p>
 
 <h2>二、下载的东西完整吗？</h2>
 <pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.6.dmg
@@ -69,26 +69,26 @@ xcrun stapler validate /Applications/LumePane.app
 <p>如果对不上，<strong>不要运行这个文件</strong>。</p>
 
 <h2>三、它会偷偷联网吗？</h2>
-<p>应用自己的代码里<strong>只有一个</strong>网络端点：许可服务的 <code>/api/redeem</code>。它只在粘贴<strong>短码</strong>时被调用——以 <code>DP-</code> 开头的长码完全离线校验，永不联网。自动检查更新<strong>默认关闭</strong>（<code>SUEnableAutomaticChecks</code> 为 <code>false</code>）。自动下载是显式选择：<code>SUAllowsAutomaticUpdates</code> 允许开启，但默认仍为 <code>false</code>；你在面板里打开后，它只从我们站点取 <code>appcast.xml</code> 和签名更新包，不取别的。</p>
+<p>应用自己的代码里<strong>只有一个</strong>网络端点：许可服务的 <code>/api/redeem</code>。它只在粘贴<strong>短码</strong>时被调用——以 <code>DP-</code> 开头的长码完全离线校验，永不联网。自动检查更新<strong>默认关闭</strong>（<code>SUEnableAutomaticChecks</code> 为 <code>false</code>）。自动下载是显式选择：<code>SUAllowsAutomaticUpdates</code> 允许开启，但默认仍为 <code>false</code>；你在面板里打开后，它只从尼森与海站点取 <code>appcast.xml</code> 和签名更新包，不取别的。</p>
 <p>你可以自己盯：打开应用、让它空闲，然后在终端里执行：</p>
 <pre><code>lsof -i -P | grep -i displaypilot</code></pre>
-<p>在关闭自动更新检查时，这条命令<strong>什么都不输出</strong>。应用不会向我们发送使用数据、崩溃报告或任何标识符；里面没有统计代码。</p>
+<p>在关闭自动更新检查时，这条命令<strong>什么都不输出</strong>。应用不会向尼森与海发送使用数据、崩溃报告或任何标识符；里面没有统计代码。</p>
 
 <h2>四、断网也能激活吗？</h2>
 <p>关掉 Wi-Fi，把长 <code>DP-</code> 码粘进授权框，它会激活。公钥内嵌在应用里：用 Ed25519 在本机验签，且激活码<strong>不绑定设备</strong>。</p>
 
 <h2>五、这一页验证不了什么</h2>
 <ul class="ticks">
-  <li><strong>清理逻辑对不对。</strong>它只处理 13 类有确定性重建方式的产物，先隔离 30 天。我们把推理与检查写在<a href="https://github.com/huayanming/displaypilot">审计报告</a>里，而不是让你相信界面。</li>
+  <li><strong>清理逻辑对不对。</strong>它只处理 13 类有确定性重建方式的产物，先隔离 30 天。尼森与海把推理与检查写在<a href="https://github.com/huayanming/displaypilot">审计报告</a>里，而不是让你相信界面。</li>
   <li><strong>显示器那部分对你的面板是否合适。</strong>这正是 14 天试用存在的意义。</li>
-  <li><strong>我们好不好打交道。</strong>这没有哪一页能证明。发封邮件试试。</li>
+  <li><strong>尼森与海好不好打交道。</strong>这没有哪一页能证明。发封邮件试试。</li>
 </ul>
-<p class="small">如果上面任何一条命令的输出与这里写的不一致，那是我们的文档或构建有问题——请到<a href="support.html">支持页</a>告诉我们，我们会公开修正。</p>
-<p class="small"><a href="audit.html">我们怎么审查自己的产品（以及我们错在哪）</a></p>
+<p class="small">如果上面任何一条命令的输出与这里写的不一致，那是尼森与海的文档或构建有问题——请到<a href="support.html">支持页</a>告诉尼森与海，尼森与海会公开修正。</p>
+<p class="small"><a href="audit.html">尼森与海怎么审查自己的产品（以及尼森与海错在哪）</a></p>
 <h2>首页上的那个滚动数字</h2>
 <p>首页引用了一组实测的滚动响应改善。它来自应用自带的离线基准，你可以自己跑——它用固定的时间步逐帧驱动插值器，不拦截任何真实输入，然后把响应形状打印出来：</p>
 <pre><code>LumePane --scroll-selftest</code></pre>
-<p>在我们的测试面板（120&nbsp;Hz）上，首帧从 3 点提升到 9 点，90% 用时从 150&nbsp;ms 降到 133&nbsp;ms。这些数字描述的是<em>算法</em>的响应，不是你的硬件，所以你自己跑出来的会不一样。</p>
+<p>在尼森与海的测试面板（120&nbsp;Hz）上，首帧从 3 点提升到 9 点，90% 用时从 150&nbsp;ms 降到 133&nbsp;ms。这些数字描述的是<em>算法</em>的响应，不是你的硬件，所以你自己跑出来的会不一样。</p>
 </article>
 </main>
 <footer class="doc-foot">
@@ -99,7 +99,7 @@ xcrun stapler validate /Applications/LumePane.app
       <a href="support.html">支持</a>
       <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 LumePane</p>
+    <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>
