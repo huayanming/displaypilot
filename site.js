@@ -353,10 +353,10 @@ function campaignSource() {
   var h1 = doc.querySelector("h1");
   if (!h1) return;
   var top = [];
-  var summary = doc.querySelector(".summary");
+  var summaries = doc.querySelectorAll(".summary");
   var updated = doc.querySelector(".updated");
   if (updated) top.push(updated);
-  if (summary) top.push(summary);
+  Array.prototype.forEach.call(summaries, function (node) { top.push(node); });
 
   var hero = document.createElement("header");
   hero.className = "doc-hero";
@@ -387,6 +387,7 @@ function campaignSource() {
   toc.appendChild(list);
 
   var current = null;
+  var intro = null;
   var index = 0;
   Array.prototype.slice.call(doc.children).forEach(function (child) {
     if (child === hero || child.tagName === "H1") return;
@@ -408,7 +409,15 @@ function campaignSource() {
     } else if (current) {
       current.appendChild(child);
     } else {
-      body.appendChild(child);
+      // Anything before the first h2 belongs to one intro card. Leaving it
+      // as bare text between the hero and the first section made support pages
+      // look like two unrelated layouts stacked together.
+      if (!intro) {
+        intro = document.createElement("section");
+        intro.className = "doc-section doc-intro";
+        body.appendChild(intro);
+      }
+      intro.appendChild(child);
     }
   });
 
