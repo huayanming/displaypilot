@@ -45,7 +45,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>Verify it yourself</h1>
-<p class="summary">DisplayPilot is a new paid app with no reviews yet, so please do not take our word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 5.8.0 build.</p>
+<p class="summary">DisplayPilot is a new paid app with no reviews yet, so please do not take our word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 5.9.0 build.</p>
 
 <h2>1. Is it really ours, and did Apple notarize it?</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/DisplayPilot.app
@@ -62,8 +62,8 @@ xcrun stapler validate /Applications/DisplayPilot.app
 <p>The binary is signed with our Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
 
 <h2>2. Did the download arrive intact?</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-5.8.0.dmg
-  04540aadb10639fc20ea5a40caaa08fa62999e474c7ab147f89b4b473ce663af</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-5.9.0.dmg
+  79e911bedc3ead78988d6807e7d30ea4ba553f26aa73107bb84393e428f66783</code></pre>
 <p>The same value is published in the Homebrew cask, so there are two independent places to compare against:</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>If your value differs, <strong>do not run the file</strong>.</p>
