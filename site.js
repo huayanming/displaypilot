@@ -12,7 +12,7 @@
   /* ── 只改这里 ────────────────────────────────────────────── */
   var SITE = {
     // 安装包直链（GitHub Releases）。发新版只改这一行。
-    download: "https://lumepane.com/dl/DisplayPilot-7.1.2.dmg",
+    download: "https://lumepane.com/dl/DisplayPilot-7.1.3.dmg",
     // 结账地址。空字符串 = 还没有可用的付款入口。
     purchase: "https://license.lumepane.com/buy",
     // 价格：全站唯一常量。key 是页面的 <html lang>，default 覆盖其余语言。
