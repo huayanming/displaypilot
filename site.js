@@ -12,9 +12,9 @@
   /* ── 只改这里 ────────────────────────────────────────────── */
   var SITE = {
     // 安装包直链（GitHub Releases）。发新版只改这一行。
-    download: "https://huayanming.github.io/displaypilot/dl/DisplayPilot-7.0.0.dmg",
+    download: "https://lumepane.com/dl/DisplayPilot-7.0.0.dmg",
     // 结账地址。空字符串 = 还没有可用的付款入口。
-    purchase: "https://displaypilot-license.huayanming2019.workers.dev/buy",
+    purchase: "https://license.lumepane.com/buy",
     // 价格：全站唯一常量。key 是页面的 <html lang>，default 覆盖其余语言。
     pricing: {
       "default": { num: "≈US$14", unit: "" },
@@ -106,7 +106,7 @@ function campaignSource() {
 
 /* 我已付款上报：个人收款码没有回调，买家点一下才能让店主知道。 */
 (function () {
-  var ENDPOINT = 'https://displaypilot-license.huayanming2019.workers.dev/api/paid';
+  var ENDPOINT = 'https://license.lumepane.com/api/paid';
   document.addEventListener('click', function (event) {
     var btn = event.target.closest ? event.target.closest('[data-paid-report]') : null;
     if (!btn || btn.getAttribute('data-busy') === '1') return;

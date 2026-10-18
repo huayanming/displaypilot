@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://huayanming.github.io/displaypilot/sitemap.xml
+Sitemap: https://lumepane.com/sitemap.xml

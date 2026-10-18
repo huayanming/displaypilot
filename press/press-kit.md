@@ -59,19 +59,19 @@ Screenshots are unretouched captures of the shipping UI on a real external monit
 ## Claims you can check, and what we do not claim
 
 - Every claim about the build is checkable by the reviewer: see
-  <https://huayanming.github.io/displaypilot/verify.html> (signature, notarization, checksum,
+  <https://lumepane.com/verify.html> (signature, notarization, checksum,
   offline activation, no telemetry — with the exact commands).
 - **We do not claim** HiDPI scaling, virtual screens or XDR/HDR extra brightness — other apps do
   those and we point people at them in
-  <https://huayanming.github.io/displaypilot/alternatives.html>.
+  <https://lumepane.com/alternatives.html>.
 - **We do not claim** a device count is enforced. The licence is per user and the code is not
   bound to a machine; that is deliberate.
 
 ## Contact
 
 Email **huayanming2019@gmail.com** — a person reads it, usually within a few hours.
-Download: <https://huayanming.github.io/displaypilot/dl/DisplayPilot-7.0.0.dmg>
-Homepage: <https://huayanming.github.io/displaypilot/>
+Download: <https://lumepane.com/dl/DisplayPilot-7.0.0.dmg>
+Homepage: <https://lumepane.com/>
 
 ---
 

@@ -3,7 +3,7 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 --><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>LumePane</title>
-    <link>https://huayanming.github.io/displaypilot/dl/</link>
+    <link>https://lumepane.com/dl/</link>
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
@@ -12,7 +12,7 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
       <sparkle:version>7.0.0</sparkle:version>
       <sparkle:shortVersionString>7.0.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://huayanming.github.io/displaypilot/dl/DisplayPilot-7.0.0.dmg" length="9346628" type="application/octet-stream" sparkle:edSignature="tagrAoQdZys7ijlN2YkqK3g6fPT/skyuCqkwYdJ+rDujOjic74AuZ+TrAnc1G5BR0kjHf7eDcS19hKCSQLSqBg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-7.0.0.dmg" length="9346628" type="application/octet-stream" sparkle:edSignature="tagrAoQdZys7ijlN2YkqK3g6fPT/skyuCqkwYdJ+rDujOjic74AuZ+TrAnc1G5BR0kjHf7eDcS19hKCSQLSqBg=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
