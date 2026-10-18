@@ -45,7 +45,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>Verify it yourself</h1>
-<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take our word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 7.1.4 build.</p>
+<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take our word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 7.1.5 build.</p>
 
 <h2>1. Is it really ours, and did Apple notarize it?</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -62,14 +62,14 @@ xcrun stapler validate /Applications/LumePane.app
 <p>The binary is signed with our Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
 
 <h2>2. Did the download arrive intact?</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.4.dmg
-  6cccfc386de9426c3096d06fb996ec9df76c880e767c85cbba431bcf6ed9f19a</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.5.dmg
+  fc834457c2a2457db3d81a0cf08f73c18eaafc4e9c62637451c8b91871f73b41</code></pre>
 <p>The same value is published in the Homebrew cask, so there are two independent places to compare against:</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>If your value differs, <strong>do not run the file</strong>.</p>
 
 <h2>3. Does it phone home?</h2>
-<p>The app's own code contains exactly <strong>one</strong> endpoint: <code>/api/redeem</code> on our licence service. It is called only when you paste a <em>short</em> code — the long <code>DP-</code> code is verified entirely offline and never touches the network. Update checks are <strong>off by default</strong> (<code>SUEnableAutomaticChecks</code> and <code>SUAllowsAutomaticUpdates</code> are both <code>false</code>); if you switch them on, they fetch <code>appcast.xml</code> from our site and nothing else.</p>
+<p>The app's own code contains exactly <strong>one</strong> endpoint: <code>/api/redeem</code> on our licence service. It is called only when you paste a <em>short</em> code — the long <code>DP-</code> code is verified entirely offline and never touches the network. Update checks are <strong>off by default</strong> (<code>SUEnableAutomaticChecks</code> is <code>false</code>). Automatic downloading is opt-in: <code>SUAllowsAutomaticUpdates</code> permits it, but remains <code>false</code> until you turn it on in the panel; then it only fetches <code>appcast.xml</code> and the signed update from our site.</p>
 <p>Watch it yourself — open the app, leave it idle, then:</p>
 <pre><code>lsof -i -P | grep -i displaypilot</code></pre>
 <p>With update checks off it prints nothing. The app never sends usage data, crash reports or an identifier to us; there is no analytics code in it.</p>

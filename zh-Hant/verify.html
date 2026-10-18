@@ -45,7 +45,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>自己驗證</h1>
-<p class="summary">LumePane 是還沒有評價的新付費應用，所以<strong>請不要信我們的話</strong>。這一頁的每條說法，都可以在你的 Mac 上用下面的命令親自核對。這裡引用的輸出，逐字來自已發布的 7.1.4 版本。</p>
+<p class="summary">LumePane 是還沒有評價的新付費應用，所以<strong>請不要信我們的話</strong>。這一頁的每條說法，都可以在你的 Mac 上用下面的命令親自核對。這裡引用的輸出，逐字來自已發布的 7.1.5 版本。</p>
 
 <h2>一、它真的是我們的嗎？Apple 公證過嗎？</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -62,14 +62,14 @@ xcrun stapler validate /Applications/LumePane.app
 <p>這個二進位用我們的 Developer ID 簽章，Apple 掃描並公證過，且公證憑據<strong>釘紮</strong>在應用內，因此離線也能驗證。任何被改動過的副本都過不了這三項。</p>
 
 <h2>二、下載的東西完整嗎？</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.4.dmg
-  6cccfc386de9426c3096d06fb996ec9df76c880e767c85cbba431bcf6ed9f19a</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.5.dmg
+  fc834457c2a2457db3d81a0cf08f73c18eaafc4e9c62637451c8b91871f73b41</code></pre>
 <p>同一個值也寫在 Homebrew cask 裡，所以你有<strong>兩個獨立的地方</strong>可以對照：</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>如果對不上，<strong>不要執行這個檔案</strong>。</p>
 
 <h2>三、它會偷偷連網嗎？</h2>
-<p>應用自己的程式碼裡<strong>只有一個</strong>網路端點：授權服務的 <code>/api/redeem</code>。它只在貼上<strong>短碼</strong>時被呼叫——以 <code>DP-</code> 開頭的長碼完全離線驗證，永不連網。自動檢查更新<strong>預設關閉</strong>（<code>SUEnableAutomaticChecks</code> 與 <code>SUAllowsAutomaticUpdates</code> 都是 <code>false</code>）；你若手動開啟，它只從我們站點取 <code>appcast.xml</code>，不取別的。</p>
+<p>應用自己的程式碼裡<strong>只有一個</strong>網路端點：授權服務的 <code>/api/redeem</code>。它只在貼上<strong>短碼</strong>時被呼叫——以 <code>DP-</code> 開頭的長碼完全離線驗證，永不連網。自動檢查更新<strong>預設關閉</strong>（<code>SUEnableAutomaticChecks</code> 為 <code>false</code>）。自動下載是明確選擇：<code>SUAllowsAutomaticUpdates</code> 允許開啟，但預設仍為 <code>false</code>；你在面板裡打開後，它只從我們站點取 <code>appcast.xml</code> 和簽名更新包，不取別的。</p>
 <p>你可以自己盯：開啟應用、讓它閒置，然後在終端機執行：</p>
 <pre><code>lsof -i -P | grep -i displaypilot</code></pre>
 <p>在關閉自動更新檢查時，這條命令<strong>什麼都不輸出</strong>。應用不會向我們傳送使用資料、當機報告或任何識別碼；裡面沒有統計程式碼。</p>

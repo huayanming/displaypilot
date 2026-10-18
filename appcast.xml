@@ -7,15 +7,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 7.1.4</title>
-      <pubDate>Sun, 18 Oct 2026 13:04:50 +0000</pubDate>
-      <sparkle:version>7.1.4</sparkle:version>
-      <sparkle:shortVersionString>7.1.4</sparkle:shortVersionString>
+      <title>LumePane 7.1.5</title>
+      <pubDate>Sun, 18 Oct 2026 13:27:59 +0000</pubDate>
+      <sparkle:version>7.1.5</sparkle:version>
+      <sparkle:shortVersionString>7.1.5</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-7.1.4.dmg" length="9742914" type="application/octet-stream" sparkle:edSignature="9XcLN9BinqIRKR5rxW0+pckwbTCzdqo4sNGCV6JIv6n8xwnLq8OYXimgwwzO69sibKlegyzupAn6igoLCvIhAA=="></enclosure>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[更新体验
+• 更新窗口现在直接显示本版更新内容，而不是只显示版本号；appcast 内嵌发布说明，Sparkle 更新时可见。
+• 通用页“软件更新”增加“查看更新内容”入口。
+• 新增可选“自动下载更新”：默认关闭；开启后检查到新版本会在后台下载，安装前仍会提示，不会静默重启。
+• 自动下载选项只允许用户主动开启；SUEnableAutomaticChecks 默认仍为 false。
+• “自动检查更新”的设置更新时立即在状态里显示“发现新版本”，不再停留在“正在检查更新…”。]]></description>
+      <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-7.1.5.dmg" length="9755666" type="application/octet-stream" sparkle:edSignature="RCdchhl3PSLK+SNCTeLEQnCwhyZkgj2zuF9BuoQh8bQGULScC2AhVK90bjHL12Ns11z3WvZs8IXA0ok0iglSCg=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: ZxirS2x+khU7wn9fner9t0WrvOODXvij6aCRf1DlfrFWO41aCZRA7fubNKf29tj+wU4W8Xq0PrM6HOrZ10DiBw==
-length: 1157
+edSignature: zXLoDsk5py8TKyJmTAYYdIWngfOf3EIx5lINCruXZybB/mQhAkJFgmjHeWnFXfh9ilogpmACB+otwvYdG+SmCg==
+length: 1957
 -->
