@@ -701,6 +701,8 @@ html[lang="zh-Hant"] .hero-v2 h1 {
 }
 @media (max-width: 820px) {
   .catalog-grid { grid-template-columns: 1fr; }
+  .catalog-group:first-child .catalog-item,
+  .catalog-group:nth-child(3) .catalog-item:last-child { grid-column: span 1; }
 }
 @media (max-width: 620px) {
   .hero-v2 { padding-top: 2.2rem; }
