@@ -23,7 +23,7 @@ with a deterministic rebuild path — quarantined for 30 days before anything is
 | Bundle identifier | `com.neeson.displaypilot` |
 | Developer ID team | `7P2P353LBW` (yanming hua) |
 | Signing | Developer ID, hardened runtime, notarized by Apple, ticket stapled |
-| Price | ¥99 / US$14 one-time (perpetual licence, one user; one year of updates included) |
+| Price | ¥99 / US$19 one-time (perpetual licence, one user; one year of updates included) |
 | Trial | 14 days, all features, no account required |
 | Distribution | Direct download (notarized DMG) · Homebrew tap `huayanming/tap` |
 | Telemetry | None. Update checks are off by default; the app's own code has exactly one endpoint, used only when you paste a short support code |
@@ -82,7 +82,7 @@ LumePane 是一款 macOS 外接显示器控制台：亮度、色彩、滚动与�
 LumePane 改用 CoreGraphics 伽马表接管，面板依然可以调暗，而且完全可回退。
 
 **事实**：版本 5.7.1 · macOS 14 及以上 · 通用二进制（Apple 芯片与 Intel）·
-Developer ID 团队 `7P2P353LBW` · 已由 Apple 公证且凭据钉扎 · ¥99 / US$14 一次买断（含一年更新）·
+Developer ID 团队 `7P2P353LBW` · 已由 Apple 公证且凭据钉扎 · ¥99 / US$19 一次买断（含一年更新）·
 14 天全功能试用，无需注册 · 无遥测（自动检查更新默认关闭）· 闭源，独立开发者，背后没有公司。
 
 **技术看点**：① DDC/CI 缺失时的伽马表回退（不累积误差、一键交回 ColorSync）；
