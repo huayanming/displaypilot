@@ -7,15 +7,15 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>DisplayPilot 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>DisplayPilot 6.0.1</title>
-      <pubDate>Sun, 18 Oct 2026 00:48:19 +0000</pubDate>
-      <sparkle:version>6.0.1</sparkle:version>
-      <sparkle:shortVersionString>6.0.1</sparkle:shortVersionString>
+      <title>DisplayPilot 6.0.2</title>
+      <pubDate>Sun, 18 Oct 2026 05:43:57 +0000</pubDate>
+      <sparkle:version>6.0.2</sparkle:version>
+      <sparkle:shortVersionString>6.0.2</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://huayanming.github.io/displaypilot/dl/DisplayPilot-6.0.1.dmg" length="8650499" type="application/octet-stream" sparkle:edSignature="E51eY5fU1vUt7WyojT9tHyB49hFu80QUKEUBFFGyBy0XUgaUFFrjS+Guc5gA/LOPjomZjA+783KKbVJ8Y8z8BQ=="></enclosure>
+      <enclosure url="https://huayanming.github.io/displaypilot/dl/DisplayPilot-6.0.2.dmg" length="8653161" type="application/octet-stream" sparkle:edSignature="hFwthISBMxearUhhxa5l+rkq227mcjlI7JwQlzfbPL4F50pdQARdNuYP7qhBfBN8cwDUmXMW6lqe+YCg5NnXBQ=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: tETX45cuEa1fxQQ0UwTTdKMGSDa2kt/88GR2IBkRQxF1zc7Oc463PtuBL3q8dNCX0EhAoF36pQG89RVI3a5oDA==
+edSignature: QsyTTRcGJEuuvg/fLk8g9F3jDPVJsjSgK1+wAlHSHi6UCMeymgyj5RGcJaAknSQuuZFU+0/Ldof38++EaMjXAg==
 length: 1211
 -->
