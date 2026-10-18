@@ -431,6 +431,14 @@ html[lang="ja"] .hero-v2 h1,
 html[lang="ko"] .hero-v2 h1 {
   line-height: 1.2; letter-spacing: -.032em;
 }
+/* The Chinese/Traditional template carries an explicit <br> after 「滚轮、」.
+   That was designed for the two-line English hero. For CJK, hide it so
+   「滚轮、亮度、色彩」 stays on one line and only wraps when the viewport
+   genuinely cannot fit it. */
+html[lang="zh-Hans"] .hero-v2 h1 br,
+html[lang="zh-Hant"] .hero-v2 h1 br {
+  display: none;
+}
 .hero-v2 .sub {
   margin-top: .55rem; color: var(--ink-soft);
   font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 600; letter-spacing: -.028em;
