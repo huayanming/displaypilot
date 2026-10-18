@@ -103,11 +103,11 @@
       <li>Dark mode, Do Not Disturb, Night Shift, True Tone and hiding the desktop: they need private system interfaces, and the public APIs cannot do it cleanly.</li>
       <li>One-click Xcode cache deletion, or resolution switching from the menu bar: one can really delete data, the other can blank the screen.</li>
       <li>Keyboard lock: it can leave the keyboard unresponsive, so it is not a one-click action.</li>
-      <li>No telemetry, no analytics, no account system.</li>
+      <li>No telemetry by default, no third-party analytics, no account system. One optional anonymous usage pulse is off by default.</li>
     </ul>
 
     <h2>Privacy boundary</h2>
-    <p>Verification is fully offline: a long <code>DP-</code> code is checked against a public key inside the app with Ed25519. The app's only network use is activation — redeeming a short code and registering the device once, with Neeson &amp; Sea's own licensing service, so a long <code>DP-</code> code can be limited to 5 Macs. That registration carries an irreversible SHA-256 digest, computed locally from the board identifier and the model identifier; no serial number, plaintext model string, MAC address, display EDID, user name or account is sent. After that, every launch is verified locally, and update checks stay off unless you enable them. Exported diagnostic reports are redacted for serial numbers, licence codes, absolute paths and user names before they leave the app.</p>
+    <p>Verification is fully offline: a long <code>DP-</code> code is checked against a public key inside the app with Ed25519. Apart from the opt-in anonymous pulse, the app's only network use is activation — redeeming a short code and registering the device once, with Neeson &amp; Sea's own licensing service, so a long <code>DP-</code> code can be limited to 5 Macs. That registration carries an irreversible SHA-256 digest, computed locally from the board identifier and the model identifier; no serial number, plaintext model string, MAC address, display EDID, user name or account is sent. After that, every launch is verified locally, and update checks stay off unless you enable them. Exported diagnostic reports are redacted for serial numbers, licence codes, absolute paths and user names before they leave the app.</p>
     <p class="callout">The claims on this page are meant to be checkable. The self-test commands above are part of the binary, and <a href="audit.html">the transparency page</a> lists what each one asserts.</p>
 
     <p class="back"><a href="index.html">← Back to the overview</a></p>

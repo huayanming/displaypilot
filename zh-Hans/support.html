@@ -92,7 +92,7 @@ sudo shutdown -r now</code></pre><strong>只删用户级不够</strong> —— �
   <p>这 13 类里哪些真的可以安全删除、确切路径，以及重建的代价：<a href="guide-cleanup.html">macOS 开发者缓存清理：哪些能删、哪些删了就出事</a>。</p>
   <ul><li>只处理 <strong>13 类有确定性重建方式的产物</strong>（Xcode DerivedData、SwiftPM、CocoaPods、npm/pnpm/Yarn、Go、Gradle、<code>__pycache__</code>、Rust target、崩溃报告、Homebrew 缓存等）；</li><li><strong>永不参与清理</strong>：文稿、桌面、下载、图片、影片、音乐、偏好设置、Application Support、钥匙串、邮件、信息、Safari；</li><li>删除前<strong>先移入隔离区</strong>，默认保留 30 天，随时可还原；</li><li>永久删除默认不存在：全应用只有一个函数能永久删除，必须同时满足 6 个条件，任何一条不过就中止；</li><li>自动化规则<strong>只能预扫描，不能删除</strong>。</li></ul>
   <h3>7. 应用会自动收集你的信息吗？</h3>
-  <p><strong>不会。</strong>应用不做遥测、不做埋点、不上传使用数据，也不自动上传崩溃日志。「报告问题」生成的内容只在你本机，必须由你手动复制或发送。真正联网的只有三件事：检查更新（默认关闭）、校验授权（通道接通并激活之后才有），以及你主动点击时打开网页。详见<a href="privacy.html">隐私政策</a>。</p>
+  <p><strong>不会。</strong>默认情况下，应用不做遥测、不接第三方埋点、不上传使用数据，也不自动上传崩溃日志。唯一例外是可选「匿名使用统计」，默认关闭；开启后每天最多发送一次随机安装 ID、版本与试用/已购状态，不发送 IP、账号、显示器或操作内容。「报告问题」生成的内容只在你本机，必须由你手动复制或发送。默认情况下，真正联网的只有三件事：检查更新（默认关闭）、校验授权、以及你主动点击时打开网页；只有你主动开启匿名统计，才会多这一次可选脉冲。详见<a href="privacy.html">隐私政策</a>。</p>
   <h2>怎么报告问题</h2>
   <ol><li>打开「通用 → 关于 → 报告问题」，点一下生成诊断信息；</li><li><strong>自己看一遍</strong>内容（它会移除序列号、用户名、文件路径与授权码，但你仍应确认）；</li><li>点「复制到剪贴板」，再到 <a href="https://github.com/huayanming/displaypilot/issues/new">GitHub 上新建一条 issue</a>，把内容与问题描述一起贴进去。</li></ol>
   <h3>附上崩溃日志（如果应用崩溃过）</h3>

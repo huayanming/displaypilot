@@ -48,7 +48,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>Verify it yourself</h1>
-<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take Neeson &amp; Sea's word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 7.1.6 build.</p>
+<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take Neeson &amp; Sea's word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 7.1.7 build.</p>
 
 <h2>1. Is it really ours, and did Apple notarize it?</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -65,17 +65,17 @@ xcrun stapler validate /Applications/LumePane.app
 <p>The binary is signed with Neeson &amp; Sea's Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
 
 <h2>2. Did the download arrive intact?</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.6.dmg
-  a459d47dd3675cbbfeb0e3a7dfe4fffb4ae4872bae31e2e84842deea74adbe1c</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.7.dmg
+  2eefe85543606e1dac6bfcf835b96797b8173b087dacf54a9009029298d79a59</code></pre>
 <p>The same value is published in the Homebrew cask, so there are two independent places to compare against:</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>If your value differs, <strong>do not run the file</strong>.</p>
 
 <h2>3. Does it phone home?</h2>
-<p>The app's own code contains exactly <strong>one</strong> endpoint: <code>/api/redeem</code> on Neeson &amp; Sea's licence service. It is called only when you paste a <em>short</em> code — the long <code>DP-</code> code is verified entirely offline and never touches the network. Update checks are <strong>off by default</strong> (<code>SUEnableAutomaticChecks</code> is <code>false</code>). Automatic downloading is opt-in: <code>SUAllowsAutomaticUpdates</code> permits it, but remains <code>false</code> until you turn it on in the panel; then it only fetches <code>appcast.xml</code> and the signed update from Neeson &amp; Sea's site.</p>
+<p>The app's own code contains two endpoints on Neeson &amp; Sea's licence service: <code>/api/redeem</code>, called only when you paste a <em>short</em> code, and <code>/api/pulse</code>, called at most once a day <strong>only if you turn on anonymous usage statistics</strong>. The long <code>DP-</code> code is verified entirely offline and never touches the network. Update checks are <strong>off by default</strong> (<code>SUEnableAutomaticChecks</code> is <code>false</code>). Automatic downloading is opt-in: <code>SUAllowsAutomaticUpdates</code> permits it, but remains <code>false</code> until you turn it on in the panel; then it only fetches <code>appcast.xml</code> and the signed update from Neeson &amp; Sea's site.</p>
 <p>Watch it yourself — open the app, leave it idle, then:</p>
 <pre><code>lsof -i -P | grep -i displaypilot</code></pre>
-<p>With update checks off it prints nothing. The app never sends usage data, crash reports or an identifier to Neeson &amp; Sea; there is no analytics code in it.</p>
+<p>With update checks off and anonymous usage statistics off (the default), this prints nothing. The app sends no crash reports and no identifier to Neeson &amp; Sea; the optional pulse is the only usage signal, and it is off until you enable it.</p>
 
 <h2>4. Does activation really work without a network?</h2>
 <p>Turn off Wi-Fi, paste a long <code>DP-</code> code into the licence field, and it activates. The key is embedded in the app: an Ed25519 public key verifies the code locally, and the code is not bound to a device.</p>

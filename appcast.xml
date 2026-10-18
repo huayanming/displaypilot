@@ -7,19 +7,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 7.1.6</title>
-      <pubDate>Sun, 18 Oct 2026 13:52:31 +0000</pubDate>
-      <sparkle:version>7.1.6</sparkle:version>
-      <sparkle:shortVersionString>7.1.6</sparkle:shortVersionString>
+      <title>LumePane 7.1.7</title>
+      <pubDate>Sun, 18 Oct 2026 14:56:21 +0000</pubDate>
+      <sparkle:version>7.1.7</sparkle:version>
+      <sparkle:shortVersionString>7.1.7</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[布局稳定性
-• 修复点击“系统”页后窗口框架横向撑开、左侧导航被裁掉的问题：InstrumentButton 的全局最小宽度改为按需设置，只有底部操作栏与通用页操作行使用 126 pt 下限，系统页的内联 Dock/权限按钮恢复紧凑宽度。
-• 系统页在 600 pt 最小窗口下实测不再改变窗口尺寸或裁切侧栏。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[可选匿名使用统计
+• 「关于」新增「匿名使用统计」开关，**默认关闭**。开启后每天最多发送一次随机安装 ID、应用版本与试用/已购状态；不发送 IP、账号、显示器、授权码或操作内容。
+• 服务端只保存随机安装 ID 的 SHA-256 摘要，用于统计每日活跃安装数；关闭后不再发送。
+• 后台新增「今日下载（试用）」「今日活跃（自愿）」「近 7 日 / 30 日活跃（自愿）」。
+• 官网新增下载计数入口：点击下载时记录一次匿名下载，再跳转到安装包；不记录 IP 或用户代理。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-7.1.6.dmg" length="9752575" type="application/octet-stream" sparkle:edSignature="DHgcmwMCteiqyPQ1VsnIgm02a/ohtY50L6EXhIJjO4nsaGf2KRItJQn6SJgcDPaxPPyMA7qLa/P70gCINNIEBg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-7.1.7.dmg" length="9773416" type="application/octet-stream" sparkle:edSignature="cMhwzBPsN1ZvHNpw9kcoT2QqL7KK0DPtZaSSJD7I81urQBGrhwcUx6bdYQag5r0YjybDdemAav6seITmd+OkDA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: HfPR8oZjW7v0YZsQQ9lqPAkiuqynUzCoakUlGfXCK+ZlAEMLkRSiXMJ96zYKM7Ks8oV9ZwMuua96c5yeYDBuAw==
-length: 1722
+edSignature: lnSllAK30ym2UrNgh6iGamtQU+fcOGg84e+uFCZ0d2V21+wwIiRJoxjhSlnSpSW+En7Wq6mnKXqSlzRNBa2GDg==
+length: 1970
 -->

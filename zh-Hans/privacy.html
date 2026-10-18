@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>隐私政策 · LumePane</title>
-  <meta name="description" content="LumePane 不做遥测、不做埋点、从不上传你的显示器数据。这份政策逐条说明应用在本地读取什么，以及它可能发起的全部网络请求。">
+  <meta name="description" content="LumePane 不做强制遥测、不做第三方埋点，也不上传你的显示器数据。唯一的匿名使用统计默认关闭；这份政策逐条说明应用在本地读取什么，以及它可能发起的全部网络请求。">
 <link rel="canonical" href="https://lumepane.com/zh-Hans/privacy.html">
 <link rel="alternate" hreflang="en" href="https://lumepane.com/privacy.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://lumepane.com/zh-Hans/privacy.html">
@@ -23,7 +23,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LumePane">
 <meta property="og:title" content="隐私政策 · LumePane">
-<meta property="og:description" content="LumePane 不做遥测、不做埋点、不上传显示器数据。这份政策逐条写明应用在本地读什么、真正会联网的只有哪三件事。">
+<meta property="og:description" content="LumePane 不做第三方埋点、不上传显示器数据。唯一的匿名使用统计默认关闭；这份政策逐条写明应用在本地读什么、什么时候联网。">
 <meta property="og:url" content="https://lumepane.com/zh-Hans/privacy.html">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
@@ -63,12 +63,13 @@
 <article class="doc">
   <h1>隐私政策</h1>
   <p class="updated">最后更新：2026 年 10 月 18 日</p>
-  <p class="summary">一句话：<strong>LumePane 应用内不做遥测、不做埋点。</strong>应用里没有分析 SDK，也不会上报你怎么用它。发码服务确实保留几个<strong>聚合计数</strong>——就在下一段，这是这里唯一称得上「统计」的东西。</p>
+  <p class="summary">一句话：<strong>LumePane 不做强制遥测，也不接第三方埋点。</strong>应用里没有分析 SDK。唯一的「匿名使用统计」是可选功能，<strong>默认关闭</strong>；开启后每天最多发送一次很小的请求。发码服务另外保留几个<strong>聚合计数</strong>——见下文。</p>
+<p><strong>可选的匿名使用统计（默认关闭）。</strong>只有在「关于」里主动开启后，应用才会每天最多向尼森与海的许可服务发送一次：随机安装 ID、应用版本、当前是试用还是已购。服务端只保存该 ID 的 SHA-256 摘要，不保存原始 ID；不发送 IP、账号、授权码、显示器数据、设置、命令或使用历史。它只用于统计每日活跃安装数；关闭后就不再发送。</p>
 <p><strong>尼森与海保留的计数。</strong>发码服务统计六类事件：下单页点击、建单、付款、取码、成功页展示、短码领取——按天、并按 <code>?src=</code> 投放标签分别计。这些计数不含任何标识：没有 IP 地址、没有 Cookie、没有设备号，也没有任何能与人关联的东西。它们存在的目的，是让尼森与海判断哪条渠道值得投入。</p>
 <p><strong>滥用防护是另一回事。</strong>发往下单页、成功页与取码页的请求都有限流。限流键使用客户端 IP 地址的截断 SHA-256，并会自动过期：成功页与取码页约 15 分钟，激活约 10 分钟。取码尝试还会写入一条审计记录，包含该截断哈希、订单号的截断哈希与结果；记录最多保留 30 天，以便调查滥用。限流键与审计记录不属于上面的聚合计数。</p>
   <h2>一、尼森与海收集什么</h2>
-  <p><strong>不收集任何关于你的使用数据。</strong>没有埋点、没有事件上报、没有崩溃日志上报、没有设备指纹、没有广告标识符、没有用户画像。</p>
-  <p>授权只会在两种情况下联网：<strong>短码的一次性领取</strong>（<code>DP-XXXX-XXXX-XXXX</code>），以及<strong>首次激活时的一次性设备登记</strong>。短码领取只发送两样东西：</p>
+  <p><strong>除非你主动开启匿名统计，否则不收集使用数据。</strong>没有第三方埋点、没有事件上报、没有崩溃日志上报、没有设备指纹、没有广告标识符、没有用户画像。上面的可选匿名统计是唯一的使用信号，默认关闭。</p>
+  <p>授权只会在两种情况下联网：<strong>短码的一次性领取</strong>（<code>DP-XXXX-XXXX-XXXX</code>），以及<strong>首次激活时的一次性设备登记</strong>。另外，只有主动开启「匿名使用统计」后，才会每天最多发送一次匿名脉冲。短码领取只发送两样东西：</p>
 <p><strong>设备登记：</strong>激活码验签通过后，应用会联系尼森与海自己的服务器<strong>一次</strong>，登记这台 Mac——只上传一个在本地由主板标识和机型标识算出的不可逆 SHA-256 摘要，绝不上传序列号或明文机型字符串。该摘要对同一台 Mac 是稳定的，五台 Mac 的上限正是靠它才能执行；它是假名化的，不是匿名的。之后每次启动都在本地验签。</p>
   <ul><li><strong>短码</strong>——付款后下单页显示的那 12 位字符；</li><li><strong>随机生成的设备标识</strong>——第一次领取短码时在本地生成的 UUID，存放在 macOS 钥匙串。它用于领取短码和绑定本地授权记录。它<strong>不含</strong>硬件序列号、MAC 地址、显示器 EDID、机器名、Apple ID 或任何账号信息。</li></ul>
   <p>这个请求只是让发码服务把短码换成该订单对应的长签名激活码。以 <code>DP-</code> 开头的长码之后完全<strong>离线</strong>校验，用的是应用内嵌的公钥。首次激活时，应用还会按上面的说明登记这台 Mac 一次；之后每次启动都在本地验签。那个随机标识无法回溯到你的设备型号。</p>
@@ -78,7 +79,7 @@
   <ul><li>显示器型号、厂商 ID、型号 ID、EDID 全文与物理色域；</li><li>分辨率、刷新率、当前伽马表、亮度与色温数值；</li><li>磁盘容量、缓存目录大小、扫描结果与清理记录；</li><li>窗口标题与窗口位置（窗口布局与会话恢复需要，要你授权辅助功能后才读得到）；</li><li>滚轮事件与热键按键（滚动平滑、鼠标映射需要）。</li></ul>
   <p>另外这些尼森与海<strong>根本不碰</strong>：</p>
   <ul><li>不上传显示器型号、EDID 或序列号——从来没有这类代码路径；</li><li>不上传使用时长、功能点击次数或启动次数；</li><li>不记录键盘输入。滚动平滑只读取滚轮事件的位移量；键盘只用于判断「按住 ⌘ 时绕过平滑」这一个状态；</li><li>不申请麦克风、屏幕录制与全盘访问权限。存储扫描是只读的，受系统保护的目录按 macOS 的规则直接跳过；</li><li>不采集画面与声音。应用里没有任何摄像头或麦克风调用。（<code>Info.plist</code> 里没有任何 <code>NS*UsageDescription</code> 键。）</li></ul>
-  <h2>三、真正联网的只有三件事</h2>
+  <h2>三、真正联网的事</h2>
   <p>除了下面三项，应用不会主动发起任何网络请求。全部走 HTTPS，不使用明文 HTTP。</p>
   <h3>1. 检查更新</h3>
   <p>应用会向 <code>appcast.xml</code> 请求一次版本清单，用于判断有没有新版本。这个清单与本网站一起托管在 GitHub Pages。这个请求里<strong>不含授权码、不含设备标识、不含任何使用数据</strong>。它<strong>默认是关闭的</strong>：只有你在「通用」面板里主动打开自动检查（此后每天最多一次），或者手动点一次「检查更新」，才会发出这个请求。</p>
@@ -90,7 +91,9 @@
   <p class="callout"><strong>当前状态：这一步已生效。</strong>长 <code>DP-</code> 码离线校验。授权请求只有两项：首次激活时的一次性设备登记，以及你如果用短码的话上面的短码领取；两者都发往尼森与海自己的服务。<strong>激活之前，应用不会发出任何授权请求，也不需要账号。</strong></p>
   <h3>3. 打开购买页或官网</h3>
   <p>点「购买」或「访问官网」时，地址会在你的默认浏览器里打开。付款在你的浏览器中完成，不经过应用。购买入口是由发码服务提供的下单页，使用你已有的浏览器，不安装任何东西。</p>
-  <h2>四、你的数据存在哪里</h2>
+  <h3>4. 可选的匿名使用统计</h3>
+  <p>只有你主动开启「匿名使用统计」时才会发生；默认关闭。它发送随机安装 ID（本地生成，不是硬件 ID）、版本与试用/已购标记，每天最多一次，不重试，不采集 IP、账号、显示器或操作数据。服务端先对安装 ID 做 SHA-256，再保留 45 天的每日聚合计数。关闭开关后不再发送，已记录的匿名行会自动过期。</p>
+<h2>四、你的数据存在哪里</h2>
   <ul><li><strong>授权记录</strong>（授权码、实例编号、激活与复核时间）：macOS 系统钥匙串，服务名 <code>com.neeson.displaypilot.license</code>。不是明文 plist。</li><li><strong>应用设置</strong>（试用起始日期、界面偏好、热键绑定、自动化规则、护眼排程）：<code>~/Library/Preferences/com.neeson.displaypilot.plist</code>。</li><li><strong>清理隔离区与操作台账</strong>：<code>~/Library/Application Support/com.neeson.displaypilot/Clean/</code>。被清理的文件先移进这里的隔离区，随时可还原；永久删除要等 30 天后才会提供。</li><li><strong>系统权限</strong>：辅助功能授权由 macOS 管理，可在「系统设置 → 隐私与安全性 → 辅助功能」里随时撤销。</li></ul>
   <p>删除方式：退出应用后，把上面两个目录／文件删掉即可；想要更彻底，再在钥匙串访问里删掉那一条记录。应用不在系统里安装任何后台服务或守护进程，卸载不留下常驻组件。</p>
   <h2>五、第三方</h2>
