@@ -9,6 +9,14 @@
 (function () {
   "use strict";
 
+  // GitHub Pages cannot set X-Frame-Options (the platform ignores _headers).
+  // The meta CSP is the main defence; this frame-busts the remaining case so
+  // the mirror cannot be embedded as a clickjacking surface. It is a fallback,
+  // not a replacement for the Cloudflare response headers on the canonical host.
+  try {
+    if (window.top !== window.self) window.top.location.href = window.location.href;
+  } catch (e) { /* sandboxed frame: best effort only */ }
+
   /* ── 只改这里 ────────────────────────────────────────────── */
   var SITE = {
     // 下载计数入口。由发码 Worker 记一次匿名下载、再 302 到当前 DMG；
