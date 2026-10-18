@@ -429,7 +429,7 @@ html[lang="zh-Hans"] .hero-v2 h1,
 html[lang="zh-Hant"] .hero-v2 h1,
 html[lang="ja"] .hero-v2 h1,
 html[lang="ko"] .hero-v2 h1 {
-  line-height: 1.18; letter-spacing: -.032em;
+  line-height: 1.2; letter-spacing: -.032em;
 }
 .hero-v2 .sub {
   margin-top: .55rem; color: var(--ink-soft);
