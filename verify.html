@@ -64,7 +64,9 @@ xcrun stapler validate /Applications/LumePane.app
 <h2>2. Did the download arrive intact?</h2>
 <pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.1.dmg
   eb958a456e31ac027520ae0765ca57441d2f009c4a3a6df926c4264b5ab733de</code></pre>
-<p>If your value differs, <strong>do not run the file</strong>.</p>
+<p><p>The same value is published in the Homebrew cask, so there are two independent places to compare against:</p>
+<pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
+If your value differs, <strong>do not run the file</strong>.</p>
 
 <h2>3. Does it phone home?</h2>
 <p>The app's own code contains exactly <strong>one</strong> endpoint: <code>/api/redeem</code> on our licence service. It is called only when you paste a <em>short</em> code — the long <code>DP-</code> code is verified entirely offline and never touches the network. Update checks are <strong>off by default</strong> (<code>SUEnableAutomaticChecks</code> and <code>SUAllowsAutomaticUpdates</code> are both <code>false</code>); if you switch them on, they fetch <code>appcast.xml</code> from our site and nothing else.</p>

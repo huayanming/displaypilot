@@ -64,7 +64,9 @@ xcrun stapler validate /Applications/LumePane.app
 <h2>二、下載的東西完整嗎？</h2>
 <pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.1.dmg
   eb958a456e31ac027520ae0765ca57441d2f009c4a3a6df926c4264b5ab733de</code></pre>
-<p>如果對不上，<strong>不要執行這個檔案</strong>。</p>
+<p><p>同一個值也寫在 Homebrew cask 裡，所以你有<strong>兩個獨立的地方</strong>可以對照：</p>
+<pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
+如果對不上，<strong>不要執行這個檔案</strong>。</p>
 
 <h2>三、它會偷偷連網嗎？</h2>
 <p>應用自己的程式碼裡<strong>只有一個</strong>網路端點：授權服務的 <code>/api/redeem</code>。它只在貼上<strong>短碼</strong>時被呼叫——以 <code>DP-</code> 開頭的長碼完全離線驗證，永不連網。自動檢查更新<strong>預設關閉</strong>（<code>SUEnableAutomaticChecks</code> 與 <code>SUAllowsAutomaticUpdates</code> 都是 <code>false</code>）；你若手動開啟，它只從我們站點取 <code>appcast.xml</code>，不取別的。</p>
