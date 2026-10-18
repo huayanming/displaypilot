@@ -7,21 +7,31 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 7.1.7</title>
-      <pubDate>Sun, 18 Oct 2026 14:56:21 +0000</pubDate>
-      <sparkle:version>7.1.7</sparkle:version>
-      <sparkle:shortVersionString>7.1.7</sparkle:shortVersionString>
+      <title>LumePane 8.0.0</title>
+      <pubDate>Sun, 18 Oct 2026 20:30:27 +0000</pubDate>
+      <sparkle:version>8.0.0</sparkle:version>
+      <sparkle:shortVersionString>8.0.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[可选匿名使用统计
-• 「关于」新增「匿名使用统计」开关，**默认关闭**。开启后每天最多发送一次随机安装 ID、应用版本与试用/已购状态；不发送 IP、账号、显示器、授权码或操作内容。
-• 服务端只保存随机安装 ID 的 SHA-256 摘要，用于统计每日活跃安装数；关闭后不再发送。
-• 后台新增「今日下载（试用）」「今日活跃（自愿）」「近 7 日 / 30 日活跃（自愿）」。
-• 官网新增下载计数入口：点击下载时记录一次匿名下载，再跳转到安装包；不记录 IP 或用户代理。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[光彩魔丸 / Glow Orb
+• 悬浮球正式命名为「光彩魔丸」，球面字标改为中文名，增加呼吸光晕。
+• 按住左键蓄力、球体加速旋转；松开后展开，短按立即展开；拖动仍可移动。
+• 支持左、右、顶、底四条屏幕边缘：左右为竖向 Dock，上下为横向 Dock。
+• Dock 长度按可见动作数量自适应，少量动作不再留下大段空玻璃，超出屏幕才滚动。
+• 新增「Dock 内容与顺序」：可选择哪些动作进入 Dock、上下调整顺序、恢复默认。
+• Dock 内可直接拖动排序；右键图标移除；底部 + 菜单把隐藏动作加回。
+快捷操作
+• 截图：全屏到剪贴板；区域截图使用系统原生框选。
+• 录屏、锁屏、睡眠、音量 +/−/静音、亮度、预设、平滑、12 种窗口布局、校准、诊断、控制台全部可放进 Dock。
+• 音量与系统动作在屏幕底部居中反馈；顶部显示鼠标、手表、键盘电量环。
+稳定性与交付
+• 修复非激活面板中系统拖放不启动的问题，改用面板内拖拽重排。
+• 修复展开/收起锚定球残留的问题（已恢复为用户确认的简单过渡）。
+• 官网首页新增可点击展开的光彩魔丸交互区与完整功能说明。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-7.1.7.dmg" length="9773416" type="application/octet-stream" sparkle:edSignature="cMhwzBPsN1ZvHNpw9kcoT2QqL7KK0DPtZaSSJD7I81urQBGrhwcUx6bdYQag5r0YjybDdemAav6seITmd+OkDA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.0.dmg" length="10504563" type="application/octet-stream" sparkle:edSignature="eJu2YNMIA7m3cCKdL4bQ1XDgz1wQRuKXN8RrJw49/iJXNlQcmNQHoz0zZfnUpKTVR4elT6zS07xKD8Aoq9PABg=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: lnSllAK30ym2UrNgh6iGamtQU+fcOGg84e+uFCZ0d2V21+wwIiRJoxjhSlnSpSW+En7Wq6mnKXqSlzRNBa2GDg==
-length: 1970
+edSignature: vMwslbvD21WmReGrTpqP7whnJu3ZlE+pUmgyOeCReEVxj2GUOWTcB3zfHAP8N44MrLE2/iwT1ChMsGqKXRrcDA==
+length: 2633
 -->

@@ -41,14 +41,15 @@
 <meta name="twitter:image" content="https://lumepane.com/img/og-zh-Hant.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LumePane","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 或以上","softwareVersion":"7.1.7","url":"https://lumepane.com/zh-Hant/","inLanguage":"zh-Hant","downloadUrl":"https://lumepane.com/dl/DisplayPilot-7.1.7.dmg","offers":{"@type":"Offer","price":"19","priceCurrency":"USD","url":"https://lumepane.com/checkout","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 顯示器控制，DDC 不可用時以伽馬表調光","以首次接管時讀到的曲線為基準的色彩校正","逐幀遞送的平滑捲動","選單列總控板：管理顯示器與系統動作","先隔離再刪除的開發者快取清理"],"publisher":{"@type":"Organization","name":"LumePane"},"headline":"滾輪、亮度、色彩"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LumePane","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 或以上","softwareVersion":"8.0.0","url":"https://lumepane.com/zh-Hant/","inLanguage":"zh-Hant","downloadUrl":"https://lumepane.com/dl/DisplayPilot-8.0.0.dmg","offers":{"@type":"Offer","price":"19","priceCurrency":"USD","url":"https://lumepane.com/checkout","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 顯示器控制，DDC 不可用時以伽馬表調光","以首次接管時讀到的曲線為基準的色彩校正","逐幀遞送的平滑捲動","選單列總控板：管理顯示器與系統動作","先隔離再刪除的開發者快取清理"],"publisher":{"@type":"Organization","name":"LumePane"},"headline":"滾輪、亮度、色彩"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳至主要內容</a>
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
-    <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
+    <nav class="nav-links" aria-label="主要導覽"><a href="#glow-orb">光彩魔丸</a>
+      <a href="index.html#features">功能</a>
       <a href="index.html#console">控制台</a>
       <a href="index.html#controls">控制</a>
       <a href="index.html#price">價格</a>
@@ -102,6 +103,61 @@
           </div>
         </div>
         <p class="console-caption">「顯示」面板的讀數範例。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 光彩魔丸：点击展开的交互区 -->
+  <section class="orb-section" id="glow-orb">
+    <div class="wrap">
+      <div class="orb-grid">
+        <div class="orb-copy">
+          <p class="orb-eyebrow"><i aria-hidden="true"></i>Glow Orb · 光彩魔丸</p>
+          <h2>一颗活的球，<br>装下整台 Mac 的快捷操作。</h2>
+          <p class="lede">光彩魔丸是 LumePane 里的悬浮快捷控台。平时是一颗会呼吸的玻璃球；按住蓄力，松手展开成 Dock。拖到屏幕哪一边，就从哪一边长出来。截图、音量、亮度、窗口布局和工具都在手边，放哪些、按什么顺序，由你决定。</p>
+          <ul class="orb-points">
+            <li>四条边都能吸附：左右竖向，上下横向。</li>
+            <li>按住蓄力，松开展开；短按也能立即打开。</li>
+            <li>拖动排序，右键移除，底部的 + 随时加回。Dock 会按内容自动伸缩。</li>
+            <li>顶部显示鼠标、手表、键盘电量，操作结果在屏幕底部居中反馈。</li>
+          </ul>
+          <div class="orb-actions">
+            <button class="btn btn-primary" type="button" data-glow-orb-toggle data-label-open="展开光彩魔丸" data-label-close="收起光彩魔丸" aria-expanded="false" aria-controls="glow-orb-panel">展开光彩魔丸</button>
+            <a class="btn btn-ghost" href="features.html">查看完整功能</a>
+          </div>
+          <p class="orb-hint">点球体或按钮都能展开；按 Esc 收起。</p>
+        </div>
+        <div class="orb-stage">
+          <button class="glow-orb" type="button" aria-label="展开光彩魔丸" aria-expanded="false" aria-controls="glow-orb-panel">
+            <span class="orb-core" aria-hidden="true"></span>
+            <span class="orb-glint" aria-hidden="true"></span>
+            <span class="orb-wordmark">光彩魔丸</span>
+          </button>
+          <div class="orb-dock" id="glow-orb-panel" aria-hidden="true">
+            <div class="orb-dock-head"><span class="orb-live" aria-hidden="true"></span><b>光彩魔丸</b> · 32 个动作 <span>⌃⌥H</span></div>
+            <ul class="orb-command-grid">
+              <li><span class="orb-dot" aria-hidden="true">◎</span><span><b>全屏截图</b><small>复制到剪贴板</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">⌗</span><span><b>区域截图</b><small>苹果原生框选</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">◉</span><span><b>屏幕录制</b><small>系统录屏工具</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">▣</span><span><b>锁屏</b><small>一步完成</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">◒</span><span><b>睡眠</b><small>显示器休眠</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">＋</span><span><b>音量 +</b><small>每次 10%</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">−</span><span><b>音量 −</b><small>每次 10%</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">⊘</span><span><b>静音</b><small>切换</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">☼</span><span><b>亮度</b><small>精细调节</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">▷</span><span><b>下一个预设</b><small>场景切换</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">◐</span><span><b>暂停平滑</b><small>临时恢复原生滚动</small></span></li>
+              <li><span class="orb-dot" aria-hidden="true">▤</span><span><b>窗口布局</b><small>12 个位置</small></span></li>
+            </ul>
+            <p class="orb-dock-foot">右键任意图标可移出；点 + 再放回来。顺序和显示项按 Mac 记住，Dock 长度随内容自动伸缩。</p>
+          </div>
+        </div>
+      </div>
+      <div class="orb-feature-cards">
+        <div class="orb-feature-card"><span>01</span><h3>常用动作，都在手边</h3><p>截图、区域截图、录屏、锁屏、睡眠、音量加减、静音、亮度、预设、平滑、12 种窗口布局、校准、诊断和控制台。</p></div>
+        <div class="orb-feature-card"><span>02</span><h3>你决定里面有什么</h3><p>勾选要显示的命令，拖动调整顺序，右键移出，点 + 加回。Dock 会按内容变长变短，不再留一截空玻璃。</p></div>
+        <div class="orb-feature-card"><span>03</span><h3>四条边，同一种手感</h3><p>拖到左、右、上、下都可以。左右是竖向长条，上下是横向 Dock，球停在哪就从哪展开。</p></div>
+        <div class="orb-feature-card"><span>04</span><h3>每个动作都有回应</h3><p>音量、系统动作和截图会在屏幕底部居中反馈；顶部电池环显示鼠标、手表和键盘电量。</p></div>
       </div>
     </div>
   </section>

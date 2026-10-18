@@ -21,7 +21,7 @@
   var SITE = {
     // 下载计数入口。由发码 Worker 记一次匿名下载、再 302 到当前 DMG；
     // 脚本被禁用时，HTML 里的 Releases 页面仍可兜底（但不会计数）。
-    download: "https://lumepane.com/dl/DisplayPilot-7.1.7.dmg",
+    download: "https://lumepane.com/dl/DisplayPilot-8.0.0.dmg",
     // 下载计数入口；保留上面的直链作为版本/兜底来源，运行时优先走计数入口。
     downloadEndpoint: "https://lumepane.com/api/download",
     // 结账地址。空字符串 = 还没有可用的付款入口。
@@ -484,4 +484,36 @@ function campaignSource() {
   layout.appendChild(body);
   if (list.children.length > 1) layout.appendChild(toc);
   doc.appendChild(layout);
+})();
+
+/* Glow Orb / 光彩魔丸: a click-to-expand dock that mirrors the macOS app. */
+(function () {
+  var stage = document.querySelector(".orb-stage");
+  if (!stage) return;
+  var orb = stage.querySelector(".glow-orb");
+  var toggle = document.querySelector("[data-glow-orb-toggle]");
+  var panel = stage.querySelector(".orb-dock");
+  if (!orb || !panel) return;
+
+  function setOpen(open) {
+    stage.classList.toggle("is-open", open);
+    orb.setAttribute("aria-expanded", String(open));
+    panel.setAttribute("aria-hidden", String(!open));
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.textContent = open
+        ? (toggle.getAttribute("data-label-close") || "Close Glow Orb")
+        : (toggle.getAttribute("data-label-open") || "Open Glow Orb");
+    }
+  }
+
+  orb.addEventListener("click", function () { setOpen(!stage.classList.contains("is-open")); });
+  if (toggle) toggle.addEventListener("click", function () { setOpen(!stage.classList.contains("is-open")); });
+  if (location.hash === "#glow-orb-open") setOpen(true);
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && stage.classList.contains("is-open")) {
+      setOpen(false);
+      orb.focus();
+    }
+  });
 })();
