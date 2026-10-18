@@ -22,7 +22,7 @@
 |---|---|---|
 | `check-conventions.py` | 文件≤400 行、界面字符串、本地化覆盖 | 137 个文件达标 |
 | `check-localization.py` | 每个界面中文字符串必须 7 个语言都有译文 | 1273 条 × 7 语言全通过 |
-| `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **2081 项** |
+| `check-app-claims.py` | 应用的**否定式承诺**：网络白名单、永久删除白名单、零遥测、更新默认关闭、权限说明 | **2114 项** |
 | `check-versions.py` | 版本单一来源（`VERSION`）与 34 处引用一致，并校验 Site/dl 安装包、appcast length/签名、8 语言 JSON-LD、「自己验证」页的文件名与 sha256（`--online` 另查远程） | 5.7.2 / 34 处 |
 | `check-pricing.py` | 价格单一来源（`CRYPTO_PRICE_CNY`）与 14 处副本一致（`--online` 核对实收 vs 广告价） | 99 元 / 14 处 |
 | `check-site-seo.py` | canonical 自指、hreflang 互指、x-default、sitemap 双向一致、og 卡片语言 | 94 页 / 94 条 URL |
@@ -317,7 +317,7 @@ bash Scripts/check.sh                      # 16 道守卫 + 编译 + 回归（�
 python3 Scripts/check-pricing.py --online  # 价格：含实时汇率下的实收 vs 广告价
 python3 Scripts/check-versions.py --online # 版本：含 brew tap 与 GitHub release
 python3 Scripts/check-eula.py              # EULA：结构 + 各语言完整度
-python3 Scripts/check-app-claims.py        # 应用侧否定式承诺（2081 项）
+python3 Scripts/check-app-claims.py        # 应用侧否定式承诺（2114 项）
 
 cd Server && npm test                      # 服务端 190 项
 ./Scripts/release.sh --package-only 9.9.9  # 应失败：产物版本断言（安全，不产出任何东西）
