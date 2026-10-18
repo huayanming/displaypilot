@@ -45,7 +45,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>自己验证</h1>
-<p class="summary">LumePane 是还没有评价的新付费应用，所以<strong>请不要信我们的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 7.1.5 版本。</p>
+<p class="summary">LumePane 是还没有评价的新付费应用，所以<strong>请不要信我们的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 7.1.6 版本。</p>
 
 <h2>一、它真的是我们的吗？Apple 公证过吗？</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -62,8 +62,8 @@ xcrun stapler validate /Applications/LumePane.app
 <p>这个二进制用我们的 Developer ID 签名，Apple 扫描并公证过，且公证凭据<strong>钉扎</strong>在应用内，因此离线也能验证。任何被改动过的副本都过不了这三项。</p>
 
 <h2>二、下载的东西完整吗？</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.5.dmg
-  fc834457c2a2457db3d81a0cf08f73c18eaafc4e9c62637451c8b91871f73b41</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-7.1.6.dmg
+  a459d47dd3675cbbfeb0e3a7dfe4fffb4ae4872bae31e2e84842deea74adbe1c</code></pre>
 <p>同一个值也写在 Homebrew cask 里，所以你有<strong>两个独立的地方</strong>可以对照：</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>如果对不上，<strong>不要运行这个文件</strong>。</p>
