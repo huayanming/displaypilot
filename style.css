@@ -665,13 +665,13 @@ footer { padding: 3rem 0 4rem; text-align: center; }
   .catalog-item dd { font-size: .9rem; }
 }
 
-/* ── 价格模块 v3（2026-10-18）：两栏、单一主 CTA、二维码退到次栏 ──
-   旧版把价格、四条长说明、二维码、加密说明、邮件兜底、两个按钮全塞进一列，
-   手机上要滑很久才看到一个购买按钮。现在：左栏只负责「多少钱 + 买 + 状态」，
-   右栏负责「扫码怎么付」，加密/邮件收进 <details>，次要操作只留一个。 */
+/* ── 价格模块 v4（2026-10-18）：单列 ──
+   购买按钮已经直达 /buy；首页不再重复「怎么买」卡片。
+   价格卡居中，保持一个明确的主 CTA。 */
 .price-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+  grid-template-columns: minmax(0, 680px);
+  justify-content: center;
   gap: 1.1rem;
   max-width: 1000px;
   margin-inline: auto;
@@ -691,46 +691,6 @@ footer { padding: 3rem 0 4rem; text-align: center; }
 .price-plate .ticks li { font-size: .94rem; line-height: 1.5; }
 .price-plate .buy { margin-top: .25rem; gap: .65rem; }
 .price-plate .buy-status { font-size: .82rem; }
-.pay-plate {
-  padding: 1.25rem 1.3rem;
-  display: flex;
-  flex-direction: column;
-  gap: .7rem;
-}
-.pay-plate h3 { margin: 0; font-size: 1.02rem; letter-spacing: -.01em; }
-.pay-plate .small { margin: 0; font-size: .86rem; line-height: 1.55; }
-.pay-plate .qr-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: .65rem;
-  max-width: 15rem;
-  width: 100%;
-  margin: .15rem auto .1rem;
-}
-.pay-plate .qr-card { padding: .5rem; gap: .3rem; border-radius: .65rem; }
-.pay-plate .qr-cap { font-size: .76rem; }
-.pay-steps {
-  margin: 0;
-  padding-left: 1.05rem;
-  display: grid;
-  gap: .22rem;
-  font-size: .84rem;
-  line-height: 1.45;
-  color: var(--ink-soft);
-}
-.pay-steps li::marker { color: var(--hermes-link); font-weight: 700; }
-.pay-plate .mt-6 { margin-top: .1rem; }
-.pay-more {
-  font-size: .84rem;
-  line-height: 1.5;
-  color: var(--ink-soft);
-  border-top: 1px solid var(--line-soft);
-  padding-top: .6rem;
-}
-.pay-more summary { cursor: pointer; color: var(--hermes-link); font-weight: 600; font-size: .84rem; }
-.pay-more p { margin: .45rem 0 0; }
-.pay-more code { font-size: .82rem; }
 @media (max-width: 860px) {
   .price-layout { grid-template-columns: 1fr; max-width: 620px; }
-  .pay-plate { order: 2; }
-}
+  }
