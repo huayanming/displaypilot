@@ -1184,7 +1184,7 @@ html[lang="zh-Hant"] .hero-v2 h1 {
   width: min(100%, 36rem);
   margin-top: .9rem;
   border-radius: 24px;
-  background: rgba(16, 24, 54, .74);
+  background: rgba(9, 16, 38, .93);
   border: 1px solid rgba(255,255,255,.16);
   box-shadow: 0 1.1rem 2.6rem rgba(10, 18, 50, .24), inset 0 1px rgba(255,255,255,.12);
   backdrop-filter: blur(22px) saturate(1.35);
@@ -1192,13 +1192,12 @@ html[lang="zh-Hant"] .hero-v2 h1 {
   color: #f6f7ff;
   overflow: hidden;
   max-height: 0;
-  opacity: 0;
   transform: translateY(-10px) scale(.97);
   transform-origin: 50% 0;
-  transition: max-height .55s cubic-bezier(.22,1,.36,1), opacity .35s ease,
+  transition: max-height .55s cubic-bezier(.22,1,.36,1),
               transform .55s cubic-bezier(.22,1,.36,1), margin .4s ease;
 }
-.orb-stage.is-open .orb-dock { max-height: 42rem; opacity: 1; transform: none; }
+.orb-stage.is-open .orb-dock { max-height: 42rem; transform: none; }
 .orb-dock-head {
   display: flex;
   align-items: center;
