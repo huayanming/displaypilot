@@ -70,7 +70,7 @@ Screenshots are unretouched captures of the shipping UI on a real external monit
 ## Contact
 
 Email **huayanming2019@gmail.com** — a person reads it, usually within a few hours.
-Download: <https://huayanming.github.io/displaypilot/dl/DisplayPilot-5.7.1.dmg>
+Download: <https://huayanming.github.io/displaypilot/dl/DisplayPilot-7.0.0.dmg>
 Homepage: <https://huayanming.github.io/displaypilot/>
 
 ---

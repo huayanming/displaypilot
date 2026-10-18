@@ -2,12 +2,12 @@
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
 --><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
-    <title>DisplayPilot</title>
+    <title>LumePane</title>
     <link>https://huayanming.github.io/displaypilot/dl/</link>
-    <description>DisplayPilot 软件更新</description>
+    <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>DisplayPilot 7.0.0</title>
+      <title>LumePane 7.0.0</title>
       <pubDate>Sun, 18 Oct 2026 07:31:56 +0000</pubDate>
       <sparkle:version>7.0.0</sparkle:version>
       <sparkle:shortVersionString>7.0.0</sparkle:shortVersionString>
