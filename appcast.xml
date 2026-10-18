@@ -7,15 +7,15 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 7.1.3</title>
-      <pubDate>Sun, 18 Oct 2026 12:39:23 +0000</pubDate>
-      <sparkle:version>7.1.3</sparkle:version>
-      <sparkle:shortVersionString>7.1.3</sparkle:shortVersionString>
+      <title>LumePane 7.1.4</title>
+      <pubDate>Sun, 18 Oct 2026 13:04:50 +0000</pubDate>
+      <sparkle:version>7.1.4</sparkle:version>
+      <sparkle:shortVersionString>7.1.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-7.1.3.dmg" length="9742345" type="application/octet-stream" sparkle:edSignature="o3nLRXXFta4WOrvmHoZR/sVYCtnnyhe/XVyEW1YS7vzZfl66skwz2zr08049lXTZZgki0J3ukt/vdMzHFiSsBw=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-7.1.4.dmg" length="9742914" type="application/octet-stream" sparkle:edSignature="9XcLN9BinqIRKR5rxW0+pckwbTCzdqo4sNGCV6JIv6n8xwnLq8OYXimgwwzO69sibKlegyzupAn6igoLCvIhAA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: fNkJalVSsGWVtjBtCbCZohn1y9Dr6gBdSgLCZKZlZjcZh9Q1cgDQHTd8OdxfBCiktL2HXaNqB0+8wUrCxqg/BA==
+edSignature: ZxirS2x+khU7wn9fner9t0WrvOODXvij6aCRf1DlfrFWO41aCZRA7fubNKf29tj+wU4W8Xq0PrM6HOrZ10DiBw==
 length: 1157
 -->
