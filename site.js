@@ -134,3 +134,177 @@ function campaignSource() {
     });
   });
 })();
+
+/* ── Motion / instrument layer ─────────────────────────────────────
+   Small, dependency-free enhancements. All targets are optional: the
+   static page remains complete if this file is blocked or JS is off. */
+(function () {
+  "use strict";
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var hero = document.querySelector(".hero-v2");
+  var consoleEl = document.querySelector(".hero-console");
+  var screen = document.querySelector(".console-screen");
+
+  /* Top-of-page instrument meter. */
+  var meter = document.createElement("div");
+  meter.className = "scroll-meter";
+  meter.setAttribute("aria-hidden", "true");
+  meter.appendChild(document.createElement("i"));
+  document.body.appendChild(meter);
+  var meterFill = meter.firstChild;
+  var ticking = false;
+  function paintMeter() {
+    ticking = false;
+    var max = document.documentElement.scrollHeight - innerHeight;
+    meterFill.style.width = (max > 0 ? Math.min(100, (scrollY / max) * 100) : 0) + "%";
+  }
+  addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(paintMeter); }
+  }, { passive: true });
+  paintMeter();
+
+  /* Pointer light and shallow tilt, confined to the hero console. */
+  if (hero && consoleEl) {
+    hero.addEventListener("pointermove", function (event) {
+      var rect = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width) * 100 + "%");
+      hero.style.setProperty("--my", ((event.clientY - rect.top) / rect.height) * 100 + "%");
+    });
+    if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      consoleEl.addEventListener("pointermove", function (event) {
+        var rect = consoleEl.getBoundingClientRect();
+        var x = (event.clientX - rect.left) / rect.width - 0.5;
+        var y = (event.clientY - rect.top) / rect.height - 0.5;
+        consoleEl.style.transform = "perspective(1100px) rotateX(" + (-y * 3.2) + "deg) rotateY(" + (x * 4.5) + "deg)";
+      });
+      consoleEl.addEventListener("pointerleave", function () {
+        consoleEl.style.transform = "";
+      });
+    }
+  }
+
+  if (screen) {
+    /* The readout is a real, keyboard-accessible brightness control. */
+    screen.removeAttribute("aria-hidden");
+    var track = screen.querySelector(".cs-track");
+    var fill = screen.querySelector(".cs-fill");
+    var knob = screen.querySelector(".cs-knob");
+    var readout = screen.querySelector(".cs-readout .num");
+    var sliderValue = 100;
+    var dragging = false;
+    function setBrightness(value) {
+      sliderValue = Math.max(0, Math.min(100, Math.round(value)));
+      if (fill) fill.style.width = sliderValue + "%";
+      if (knob) knob.style.left = "calc(" + sliderValue + "% - 8px)";
+      if (readout) readout.textContent = String(sliderValue);
+      if (track) track.setAttribute("aria-valuenow", String(sliderValue));
+    }
+    if (track) {
+      track.setAttribute("role", "slider");
+      track.setAttribute("tabindex", "0");
+      track.setAttribute("aria-valuemin", "0");
+      track.setAttribute("aria-valuemax", "100");
+      track.setAttribute("aria-valuenow", "100");
+      track.setAttribute("aria-label", (screen.querySelector(".cs-label") || {}).textContent + " brightness");
+      var fromPointer = function (event) {
+        var rect = track.getBoundingClientRect();
+        setBrightness(((event.clientX - rect.left) / rect.width) * 100);
+      };
+      track.addEventListener("pointerdown", function (event) {
+        dragging = true; track.setPointerCapture(event.pointerId); fromPointer(event);
+      });
+      track.addEventListener("pointermove", function (event) {
+        if (dragging) fromPointer(event);
+      });
+      track.addEventListener("pointerup", function () { dragging = false; });
+      track.addEventListener("pointercancel", function () { dragging = false; });
+      track.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowLeft" || event.key === "ArrowDown") { event.preventDefault(); setBrightness(sliderValue - 2); }
+        if (event.key === "ArrowRight" || event.key === "ArrowUp") { event.preventDefault(); setBrightness(sliderValue + 2); }
+        if (event.key === "Home") { event.preventDefault(); setBrightness(0); }
+        if (event.key === "End") { event.preventDefault(); setBrightness(100); }
+      });
+      setBrightness(100);
+    }
+
+    /* Values settle once; no perpetual number churn. */
+    var reduce = function () { return matchMedia("(prefers-reduced-motion: reduce)").matches; };
+    var settle = function (el, target, decimals) {
+      if (!el || reduce()) return;
+      var textNode = null;
+      for (var i = 0; i < el.childNodes.length; i += 1) {
+        if (el.childNodes[i].nodeType === 3) { textNode = el.childNodes[i]; break; }
+      }
+      if (!textNode) return;
+      var start = performance.now();
+      var duration = 850;
+      function tick(now) {
+        var t = Math.min(1, (now - start) / duration);
+        var eased = 1 - Math.pow(1 - t, 3);
+        var value = target * eased;
+        textNode.nodeValue = decimals ? value.toFixed(decimals) : String(Math.round(value));
+        if (t < 1) requestAnimationFrame(tick);
+        else textNode.nodeValue = decimals ? target.toFixed(decimals) : String(target);
+      }
+      textNode.nodeValue = decimals ? "0".repeat(decimals + 1) : "0";
+      requestAnimationFrame(tick);
+    };
+    var gauges = screen.querySelectorAll(".cs-gauge .v");
+    var gaugeTargets = [{ value: 6500, decimals: 0 }, { value: 2.2, decimals: 1 }, { value: 104, decimals: 0 }];
+    for (var gi = 0; gi < gauges.length && gi < gaugeTargets.length; gi += 1) {
+      settle(gauges[gi], gaugeTargets[gi].value, gaugeTargets[gi].decimals);
+    }
+    requestAnimationFrame(function () { screen.classList.add("is-live"); });
+
+    /* A small live badge above the console. */
+    if (consoleEl) {
+      var hud = document.createElement("div");
+      hud.className = "hero-hud";
+      hud.setAttribute("aria-hidden", "true");
+      var live = document.createElement("span");
+      live.className = "hud-live";
+      var dot = document.createElement("i");
+      live.appendChild(dot);
+      live.appendChild(document.createTextNode("Live"));
+      hud.appendChild(live);
+      ["DDC", "CG", "ΔE 0.8"].forEach(function (label) {
+        var item = document.createElement("span");
+        item.textContent = label;
+        hud.appendChild(item);
+      });
+      consoleEl.insertBefore(hud, consoleEl.firstChild);
+    }
+  }
+
+  /* Modules reveal once, at the moment they enter the viewport. */
+  var revealTargets = document.querySelectorAll(".sec-head, .feature, .catalog-item, .insight-card, .price-card, .controls-grid");
+  if ("IntersectionObserver" in window && revealTargets.length) {
+    for (var ri = 0; ri < revealTargets.length; ri += 1) {
+      revealTargets[ri].classList.add("motion-reveal");
+      revealTargets[ri].style.setProperty("--reveal-delay", (ri % 4) * 55 + "ms");
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    for (var oi = 0; oi < revealTargets.length; oi += 1) observer.observe(revealTargets[oi]);
+  }
+
+  /* Catalog cards trace the pointer with a soft local light. */
+  if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll(".catalog-item").forEach(function (card) {
+      card.addEventListener("pointermove", function (event) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty("--spot-x", ((event.clientX - rect.left) / rect.width) * 100 + "%");
+        card.style.setProperty("--spot-y", ((event.clientY - rect.top) / rect.height) * 100 + "%");
+        card.classList.add("is-spot");
+      });
+      card.addEventListener("pointerleave", function () { card.classList.remove("is-spot"); });
+    });
+  }
+})();
