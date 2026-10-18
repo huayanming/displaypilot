@@ -439,6 +439,14 @@ html[lang="zh-Hans"] .hero-v2 h1 br,
 html[lang="zh-Hant"] .hero-v2 h1 br {
   display: none;
 }
+/* Keep the three CJK terms on one baseline at desktop width. The CJK glyphs
+   are wider than the Latin hero; a slightly smaller display size lets the
+   whole phrase fit the copy column without breaking mid-word. */
+html[lang="zh-Hans"] .hero-v2 h1,
+html[lang="zh-Hant"] .hero-v2 h1 {
+  font-size: clamp(2.2rem, 5vw, 4.1rem);
+  white-space: nowrap;
+}
 .hero-v2 .sub {
   margin-top: .55rem; color: var(--ink-soft);
   font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 600; letter-spacing: -.028em;
