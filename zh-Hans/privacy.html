@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>隐私政策 · DisplayPilot</title>
-  <meta name="description" content="DisplayPilot 不做遥测、不做埋点、从不上传你的显示器数据。这份政策逐条说明应用在本地读取什么，以及它可能发起的全部网络请求。">
+<title>隐私政策 · LumePane</title>
+  <meta name="description" content="LumePane 不做遥测、不做埋点、从不上传你的显示器数据。这份政策逐条说明应用在本地读取什么，以及它可能发起的全部网络请求。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/privacy.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
@@ -18,9 +18,9 @@
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="DisplayPilot">
-<meta property="og:title" content="隐私政策 · DisplayPilot">
-<meta property="og:description" content="DisplayPilot 不做遥测、不做埋点、不上传显示器数据。这份政策逐条写明应用在本地读什么、真正会联网的只有哪三件事。">
+<meta property="og:site_name" content="LumePane">
+<meta property="og:title" content="隐私政策 · LumePane">
+<meta property="og:description" content="LumePane 不做遥测、不做埋点、不上传显示器数据。这份政策逐条写明应用在本地读什么、真正会联网的只有哪三件事。">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,18 +33,18 @@
 <meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.v532.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DisplayPilot — the missing console for your Mac display">
+<meta property="og:image:alt" content="LumePane — the missing console for your Mac display">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"隐私政策","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/privacy.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"隐私政策","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/privacy.html"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要内容</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
     <nav class="nav-links" aria-label="主导航"><a href="index.html#features">功能</a>
       <a href="index.html#console">控制台</a>
       <a href="index.html#controls">控制</a>
@@ -60,7 +60,7 @@
 <article class="doc">
   <h1>隐私政策</h1>
   <p class="updated">最后更新：2026 年 10 月 18 日</p>
-  <p class="summary">一句话：<strong>DisplayPilot 应用内不做遥测、不做埋点。</strong>应用里没有分析 SDK，也不会上报你怎么用它。发码服务确实保留几个<strong>聚合计数</strong>——就在下一段，这是这里唯一称得上「统计」的东西。</p>
+  <p class="summary">一句话：<strong>LumePane 应用内不做遥测、不做埋点。</strong>应用里没有分析 SDK，也不会上报你怎么用它。发码服务确实保留几个<strong>聚合计数</strong>——就在下一段，这是这里唯一称得上「统计」的东西。</p>
 <p><strong>我们保留的计数。</strong>发码服务统计六类事件：下单页点击、建单、付款、取码、成功页展示、短码领取——按天、并按 <code>?src=</code> 投放标签分别计。这些计数不含任何标识：没有 IP 地址、没有 Cookie、没有设备号，也没有任何能与人关联的东西。它们存在的目的，是让我们判断哪条渠道值得投入。</p>
 <p><strong>滥用防护是另一回事。</strong>发往下单页、成功页与取码页的请求都有限流。限流键使用客户端 IP 地址的截断 SHA-256，并会自动过期：成功页与取码页约 15 分钟，激活约 10 分钟。取码尝试还会写入一条审计记录，包含该截断哈希、订单号的截断哈希与结果；记录最多保留 30 天，以便调查滥用。限流键与审计记录不属于上面的聚合计数。</p>
   <h2>一、我们收集什么</h2>
@@ -94,7 +94,7 @@
   <ul><li><strong>我们的发码服务</strong>（Cloudflare Workers）：提供下单页、把你的付款与链上记录比对、签发激活码，并处理短码领取。它能看到订单号、链上交易哈希与金额，以及——取决于路径——随机设备标识（领取短码）或一次性设备摘要（激活）；它<strong>看不到</strong>你的姓名或账号，也不会为你建立画像。如果你通过会收集邮箱的渠道购买，或使用取码表单，它还会处理该邮箱地址：邮箱随订单记录一起保存（订单记录我们一直保留，取码才能长期可用），用于重新发码；同时保存其截断的 SHA-256 哈希并写进已签名的激活码，使取码表单无需比对原始地址即可匹配到你的订单。</li><li><strong>公共区块链 API</strong>（例如 TronGrid 与公共 RPC 端点）：发码服务读取公开链上数据以确认你的转账，不会向它们发送个人数据。</li><li><strong>GitHub</strong>：托管本网站、更新源与下载包。作为托管方，它会保留常规访问日志（IP、时间、请求路径）。</li></ul>
   <p>除此之外，本应用与本站点<strong>没有</strong>任何分析服务、广告网络、社交插件或第三方字体。</p>
   <h2>六、儿童</h2>
-  <p>DisplayPilot 是面向 Mac 用户的桌面工具，不面向儿童设计，也不会有意收集儿童的任何信息。</p>
+  <p>LumePane 是面向 Mac 用户的桌面工具，不面向儿童设计，也不会有意收集儿童的任何信息。</p>
   <h2>七、政策变更</h2>
   <p>如果未来的版本改变了应用的联网行为（例如新增云同步），这份政策会先更新，并在更新日志里写明改了什么。我们不会用「继续使用即视为同意」来悄悄扩大收集范围。</p>
   <h2>八、联系方式</h2>
@@ -112,7 +112,7 @@
           <a href="verify.html">自己验证</a>
       <a href="alternatives.html">对比各工具</a>
 </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
+    <p class="foot-copy">© 2026 LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

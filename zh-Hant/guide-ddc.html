@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mac 外接顯示器 DDC/CI 無回應 · DisplayPilot</title>
+<title>Mac 外接顯示器 DDC/CI 無回應 · LumePane</title>
 <meta name="description" content="為什麼 Mac 調不動外接顯示器的亮度和音量？顯示器、線材、擴充底座各佔多少責任，怎麼兩分鐘定位，以及 DDC/CI 真的不可用時還能怎麼做。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-ddc.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-ddc.html">
@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:site_name" content="LumePane">
 <meta property="og:title" content="Mac 外接顯示器 DDC/CI 無回應">
 <meta property="og:description" content="為什麼 Mac 調不動外接顯示器的亮度，怎麼定位原因，以及 DDC/CI 不可用時還能怎麼做。">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-ddc.html">
@@ -25,13 +25,13 @@
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI 無回應：為什麼 Mac 調不動外接顯示器的亮度","about":"Display Data Channel Command Interface","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-ddc.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI 無回應：為什麼 Mac 調不動外接顯示器的亮度","about":"Display Data Channel Command Interface","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-ddc.html"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要內容</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
     <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
       <a href="index.html#console">控制台</a>
       <a href="index.html#controls">控制</a>
@@ -72,7 +72,7 @@
 
   <h2>DDC/CI 真的沒有時，還有什麼辦法</h2>
   <p>你看到的畫面由 GPU 產生，再經過一張 <strong>伽馬表</strong>整形，才送到面板。macOS 把這張表開放給應用程式。往表裡寫入一條壓暗曲線，就能讓螢幕上的一切變暗——不需要向顯示器要任何東西：不需要 DDC，不需要韌體，也不需要特殊線材。</p>
-  <p>這正是 DisplayPilot 的備援方案，它把代價講清楚：</p>
+  <p>這正是 LumePane 的備援方案，它把代價講清楚：</p>
   <ul>
     <li>它壓暗的是<strong>畫面</strong>，所以只要能顯示畫面就能用；</li>
     <li>它<strong>不降低背光電流</strong>，省電幅度不如筆電上的硬體調光；</li>
@@ -84,7 +84,7 @@
   <h2>什麼時候該修環境而不是用軟體</h2>
   <p>如果只有經過擴充底座時 DDC 才失效，更好的答案是換被動線或換埠——硬體亮度、音量與輸入源切換會一次全部回來。軟體調光是備援，不是首選。</p>
 
-  <p class="callout"><strong>用一分鐘在你的顯示器上驗證。</strong> DisplayPilot 會探測 DDC/CI、回報面板的回應，並在拿不到硬體控制時自動改用伽馬表調光。14 天試用功能完整，不需要註冊帳號。</p>
+  <p class="callout"><strong>用一分鐘在你的顯示器上驗證。</strong> LumePane 會探測 DDC/CI、回報面板的回應，並在拿不到硬體控制時自動改用伽馬表調光。14 天試用功能完整，不需要註冊帳號。</p>
   <p><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載 macOS 版</a> <a class="btn btn-ghost" data-site="purchase" href="https://displaypilot-license.huayanming2019.workers.dev/buy" hidden>購買</a></p>
 
   <a class="back" href="index.html">← 返回首頁</a>
@@ -102,7 +102,7 @@
       <a href="support.html">支援</a>
       <a href="https://github.com/huayanming/displaypilot/issues">問題與回饋 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
+    <p class="foot-copy">© 2026 LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

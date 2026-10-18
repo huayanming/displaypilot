@@ -1,6 +1,6 @@
-/* DisplayPilot 站点样式
+/* LumePane 站点样式
    版式：大标题 / 大留白 / 居中 Hero / 交替 section —— 骨架参考 Apple 官网的节奏。
-   质感：色值、圆角、阴影取自应用本体 Sources/DisplayPilot/UI/Theme.swift 与
+   质感：色值、圆角、阴影取自应用本体 Sources/LumePane/UI/Theme.swift 与
         UI/NeuSurfaces.swift 的拟态配方（四层阴影 + 硬发丝边 + 凹陷）。
    不引入外部字体、图标库、跟踪资源；无框架，只有 site.js 里的几行原生 JS。 */
 

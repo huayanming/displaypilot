@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Política de privacidad · DisplayPilot</title>
-<meta name="description" content="DisplayPilot no tiene telemetría ni analítica. Esta política detalla exactamente qué lee la app en local y las únicas peticiones de red que puede hacer.">
+<title>Política de privacidad · LumePane</title>
+<meta name="description" content="LumePane no tiene telemetría ni analítica. Esta política detalla exactamente qué lee la app en local y las únicas peticiones de red que puede hacer.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/es/privacy.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/privacy.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
@@ -18,9 +18,9 @@
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="DisplayPilot">
-<meta property="og:title" content="Política de privacidad · DisplayPilot">
-<meta property="og:description" content="DisplayPilot no tiene telemetría, ni analítica, y nunca sube datos de tu pantalla. Esta política detalla qué lee la app en local y las tres únicas cosas que llegan a la red.">
+<meta property="og:site_name" content="LumePane">
+<meta property="og:title" content="Política de privacidad · LumePane">
+<meta property="og:description" content="LumePane no tiene telemetría, ni analítica, y nunca sube datos de tu pantalla. Esta política detalla qué lee la app en local y las tres únicas cosas que llegan a la red.">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/es/privacy.html">
 <meta property="og:locale" content="es_ES">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,18 +33,18 @@
 <meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-es.v532.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DisplayPilot — the missing console for your Mac display">
+<meta property="og:image:alt" content="LumePane — the missing console for your Mac display">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-es.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"Política de privacidad","inLanguage":"es","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/es/privacy.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"Política de privacidad","inLanguage":"es","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/es/privacy.html"}</script>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido principal</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
     <nav class="nav-links" aria-label="Navegación principal"><a href="index.html#features">Funciones</a>
       <a href="index.html#console">La consola</a>
       <a href="index.html#controls">Controles</a>
@@ -60,7 +60,7 @@
 <article class="doc">
   <h1>Política de privacidad</h1>
   <p class="updated">Última actualización: 18 de octubre de 2026</p>
-  <p class="summary">En una frase: <strong>DisplayPilot no tiene telemetría ni analítica en la app.</strong> La app no incluye ningún SDK de analítica y nunca informa de cómo la usas. Nuestro servicio de licencias sí mantiene unos pocos <strong>contadores agregados</strong> — descritos en el párrafo siguiente y lo único aquí que podría llamarse analítica.</p>
+  <p class="summary">En una frase: <strong>LumePane no tiene telemetría ni analítica en la app.</strong> La app no incluye ningún SDK de analítica y nunca informa de cómo la usas. Nuestro servicio de licencias sí mantiene unos pocos <strong>contadores agregados</strong> — descritos en el párrafo siguiente y lo único aquí que podría llamarse analítica.</p>
 <p><strong>Los contadores que llevamos.</strong> El servicio de licencias cuenta seis eventos: un clic en la página de pago, un pedido creado, un pedido pagado, un código reclamado, una página de éxito servida y un código corto canjeado — por día y por etiqueta de campaña <code>?src=</code>. Los contadores no contienen ningún identificador: ni dirección IP, ni cookie, ni id de dispositivo, nada que pueda vincularse a una persona. Existen para saber qué canal merece el esfuerzo.</p>
 <p><strong>La protección contra abusos es aparte.</strong> Las peticiones a las páginas de pedido, de éxito y de recuperación tienen límite de frecuencia. Las claves del límite usan un resumen SHA-256 truncado de la dirección IP del cliente y caducan automáticamente: unos 15 minutos para las páginas de éxito y de recuperación, y 10 minutos para la activación. Los intentos de recuperación también escriben una fila de auditoría con ese hash truncado, un hash truncado del id de pedido y el resultado; la fila se conserva hasta 30 días para poder investigar abusos. Las claves del límite y las filas de auditoría no forman parte de los contadores agregados de arriba.</p>
   <h2>1. Qué recogemos</h2>
@@ -94,7 +94,7 @@
   <ul><li><strong>Nuestro servicio de licencias</strong> (Cloudflare Workers): sirve la página de pedido, coteja tu pago con la blockchain, emite el código de activación y atiende el canje de un código corto. Ve el número de pedido, el hash y el importe de la transacción on-chain y, según el camino, un identificador de dispositivo aleatorio (canje de código corto) o el resumen de dispositivo único (activación); <strong>no</strong> ve tu nombre ni tu cuenta, y no crea ningún perfil sobre ti. Si compras por un canal que recoge una dirección de correo, o si usas el formulario de recuperación, también trata esa dirección: se guarda con el pedido (los pedidos los conservamos para que la recuperación siga funcionando) para poder reenviar tu código, y se almacena un hash SHA-256 truncado que se incluye en el código firmado, de modo que el formulario encuentra tu pedido sin comparar direcciones sin tratar.</li><li><strong>API públicas de blockchain</strong> (por ejemplo TronGrid y puntos RPC públicos): el servicio de licencias lee datos públicos de la cadena para confirmar tu transferencia. No se les envían datos personales.</li><li><strong>GitHub</strong>: aloja este sitio, el manifiesto de actualización y la descarga. Como anfitrión conserva registros de acceso ordinarios (dirección IP, hora, ruta de la petición).</li></ul>
   <p>Más allá de esto, la app y este sitio <strong>no tienen</strong> ningún servicio de analítica, red publicitaria, complemento social ni fuente de terceros.</p>
   <h2>6. Menores</h2>
-  <p>DisplayPilot es una herramienta de escritorio para usuarios de Mac. No está diseñada para menores y no recoge conscientemente información de menores.</p>
+  <p>LumePane es una herramienta de escritorio para usuarios de Mac. No está diseñada para menores y no recoge conscientemente información de menores.</p>
   <h2>7. Cambios en esta política</h2>
   <p>Si una versión futura cambia el comportamiento de red de la app — por ejemplo, al añadir sincronización en la nube —, esta política se actualizará primero y el registro de cambios dirá qué cambió. No ampliaremos en silencio lo que se recoge tras una cláusula de «seguir usándolo implica aceptarlo».</p>
   <h2>8. Contacto</h2>
@@ -110,7 +110,7 @@
       <a href="support.html">Soporte</a>
       <a href="https://github.com/huayanming/displaypilot/issues">Preguntas y comentarios · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
+    <p class="foot-copy">© 2026 LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

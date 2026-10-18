@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mac 外接顯示器的亮度怎麼調 · DisplayPilot</title>
+<title>Mac 外接顯示器的亮度怎麼調 · LumePane</title>
 <meta name="description" content="亮度鍵只對內建螢幕有效。這裡按「值得依次嘗試」的順序列出三種辦法，並說明三種都不行時該怎麼辦。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hant/guide-brightness.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-brightness.html">
@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:site_name" content="LumePane">
 <meta property="og:title" content="Mac 外接顯示器的亮度怎麼調">
 <meta property="og:description" content="亮度鍵只對內建螢幕有效。這裡按「值得依次嘗試」的順序列出三種辦法，並說明三種都不行時該怎麼辦。">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hant/guide-brightness.html">
@@ -25,13 +25,13 @@
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hant.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接顯示器的亮度怎麼調","about":"External display brightness on macOS","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-brightness.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Mac 外接顯示器的亮度怎麼調","about":"External display brightness on macOS","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hant/guide-brightness.html"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要內容</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
     <nav class="nav-links" aria-label="主要導覽"><a href="index.html#features">功能</a>
       <a href="index.html#console">控制台</a>
       <a href="index.html#controls">控制</a>
@@ -65,7 +65,7 @@
 <ul class="ticks"><li>去顯示器自己的選單裡找 <strong>DDC/CI</strong> 開關，把它打開。</li><li><strong>換一根線、換一個埠</strong>——這是最常見的一招，因為擴充塢和 KVM 正是丟掉 DDC/CI 的地方。</li><li>把顯示器<strong>直連</strong>試試，中間不要有 hub。</li><li>完整的排查順序見 <a href="guide-ddc.html">DDC/CI 無回應</a>。</li></ul>
 
 <h2>我們的应用程式是怎麼處理的</h2>
-<p>DisplayPilot 先試 DDC/CI，顯示器不回應時改用伽馬表，所以同一套控制在混合面板之間都能用——而且它會<strong>告訴</strong>你目前這塊螢幕走的是哪條路，而不是假裝兩者等價。走伽馬表時，它以<strong>首次接管時讀到的曲線</strong>為基準，關掉時把原始表交還回去。</p>
+<p>LumePane 先試 DDC/CI，顯示器不回應時改用伽馬表，所以同一套控制在混合面板之間都能用——而且它會<strong>告訴</strong>你目前這塊螢幕走的是哪條路，而不是假裝兩者等價。走伽馬表時，它以<strong>首次接管時讀到的曲線</strong>為基準，關掉時把原始表交還回去。</p>
 
 <h2>相關</h2>
 <p class="small"><a href="guides.html">全部指南</a> · <a href="guide-ddc.html">DDC/CI 無回應</a> · <a href="guide-color.html">色彩發灰</a> · <a href="guide-scroll.html">滾輪卡頓</a> · <a href="alternatives.html">該用哪個工具？</a></p>
@@ -79,7 +79,7 @@
       <a href="support.html">支援</a>
       <a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
+    <p class="foot-copy">© 2026 LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

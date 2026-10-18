@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>休眠之后外接显示器亮度被重置——为什么，以及什么办法真的有效 · DisplayPilot</title>
+<title>休眠之后外接显示器亮度被重置——为什么，以及什么办法真的有效 · LumePane</title>
 <meta name="description" content="显示器从休眠回来时亮度不对，而 macOS 里没有任何地方能把它设回来。这一页讲清楚：这个值为什么会丢、为什么想当然的修法会失败、以及什么才是有效的。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-wake.html">
@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:site_name" content="LumePane">
 <meta property="og:title" content="休眠之后外接显示器亮度被重置——为什么，以及什么办法真的有效">
 <meta property="og:description" content="显示器从休眠回来时亮度不对，而 macOS 里没有任何地方能把它设回来。这一页讲清楚：这个值为什么会丢、为什么想当然的修法会失败、以及什么才是有效的。">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html">
@@ -25,13 +25,13 @@
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-zh-Hans.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"休眠之后，外接显示器亮度被重置","about":"Display Data Channel Command Interface","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"休眠之后，外接显示器亮度被重置","about":"Display Data Channel Command Interface","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guide-wake.html"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要内容</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
     <nav class="nav-links" aria-label="主导航"><a href="index.html#features">功能</a>
       <a href="index.html#console">控制台</a>
       <a href="index.html#controls">控制</a>
@@ -59,7 +59,7 @@
 <ul class="ticks">
   <li><strong>在显示器自己的 OSD 里设置。</strong>由面板自己保存的值，能扛过休眠、分辨率变化和重启。</li>
   <li><strong>用一个处理了唤醒路径的免费工具。</strong><strong>MonitorControl</strong> 做 DDC 亮度与音量，而且开源——如果你只要亮度和音量，就用它，不要给我们付钱。这话我们也写在<a href="alternatives.html">对比页</a>里。</li>
-  <li><strong>或者让应用替你写回。</strong>DisplayPilot 会监听唤醒与显示器重配置，等待、把记住的硬件状态写回去，失败就重试。你可以关掉自动重放，只留一个「立即重放一次」按钮，把控制权握在自己手上。</li>
+  <li><strong>或者让应用替你写回。</strong>LumePane 会监听唤醒与显示器重配置，等待、把记住的硬件状态写回去，失败就重试。你可以关掉自动重放，只留一个「立即重放一次」按钮，把控制权握在自己手上。</li>
 </ul>
 
 <h2>如果亮度完全回不来</h2>
@@ -79,7 +79,7 @@
       <a href="support.html">支持</a>
       <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
+    <p class="foot-copy">© 2026 LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

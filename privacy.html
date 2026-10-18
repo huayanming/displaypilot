@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy · DisplayPilot</title>
-  <meta name="description" content="DisplayPilot has no telemetry and no analytics. This policy lists exactly what the app reads locally, and the only network requests it can ever make.">
+<title>Privacy Policy · LumePane</title>
+  <meta name="description" content="LumePane has no telemetry and no analytics. This policy lists exactly what the app reads locally, and the only network requests it can ever make.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/privacy.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/privacy.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://huayanming.github.io/displaypilot/zh-Hans/privacy.html">
@@ -18,9 +18,9 @@
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="DisplayPilot">
-<meta property="og:title" content="Privacy Policy · DisplayPilot">
-<meta property="og:description" content="DisplayPilot has no telemetry, no analytics, and never uploads your display data. This policy states exactly what the app reads locally, and the only three things that ever reach the network.">
+<meta property="og:site_name" content="LumePane">
+<meta property="og:title" content="Privacy Policy · LumePane">
+<meta property="og:description" content="LumePane has no telemetry, no analytics, and never uploads your display data. This policy states exactly what the app reads locally, and the only three things that ever reach the network.">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/privacy.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
@@ -33,18 +33,18 @@
 <meta property="og:image" content="https://huayanming.github.io/displaypilot/img/og-en.v532.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DisplayPilot — the missing console for your Mac display">
+<meta property="og:image:alt" content="LumePane — the missing console for your Mac display">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.v532.png">
 <link rel="icon" href="img/icon.png" type="image/png">
 <link rel="stylesheet" href="style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"Privacy Policy","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/privacy.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"Privacy Policy","inLanguage":"en","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/privacy.html"}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
     <nav class="nav-links" aria-label="Primary"><a href="index.html#features">Features</a>
       <a href="index.html#console">The console</a>
       <a href="index.html#controls">Controls</a>
@@ -60,7 +60,7 @@
 <article class="doc">
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: October 18, 2026</p>
-  <p class="summary">In one sentence: <strong>DisplayPilot has no telemetry and no analytics in the app.</strong> The app bundles no analytics SDK and never reports how you use it. Our licence service does keep a handful of <strong>aggregate counters</strong> — described in the next paragraph, and the only thing here that could be called analytics.</p>
+  <p class="summary">In one sentence: <strong>LumePane has no telemetry and no analytics in the app.</strong> The app bundles no analytics SDK and never reports how you use it. Our licence service does keep a handful of <strong>aggregate counters</strong> — described in the next paragraph, and the only thing here that could be called analytics.</p>
 <p><strong>The counters we keep.</strong> The licence service counts six events: a checkout click, an order created, an order paid, a code claimed, a success page served, and a short code redeemed — per day and per <code>?src=</code> campaign tag. The counters contain no identifier: no IP address, no cookie, no device id, nothing that could be linked to a person. They exist so we can tell which channel is worth the effort.</p>
 <p><strong>Abuse protection is separate.</strong> Requests to the order, success and retrieval pages are rate-limited. The rate-limit keys use a truncated SHA-256 of the client IP address and expire automatically: about 15 minutes for the success and retrieval pages, and 10 minutes for activation. Retrieval attempts also write an audit row containing that truncated hash, a truncated hash of the order id and the outcome; the row is kept for up to 30 days so abuse can be investigated. Rate-limit keys and audit rows are not part of the aggregate counters above.</p>
   <h2>1. What we collect</h2>
@@ -94,7 +94,7 @@
   <ul><li><strong>Our licensing service</strong> (Cloudflare Workers): serves the order page, matches your payment against the blockchain, issues the activation code, and answers a short-code redemption. It sees the order number, the on-chain transaction hash and amount, and — depending on the path — a random device identifier (short-code redemption) or the one-time device digest (activation); it does <strong>not</strong> see your name or account, and it keeps no profile of you. If you buy through a channel that collects an email address, or if you use the recovery form, it also handles that address: stored with the order record (which we keep, so that recovery keeps working) so your code can be re-sent, and a truncated SHA-256 hash of it is stored and embedded in the signed code so the form can match your order without comparing raw addresses.</li><li><strong>Public blockchain APIs</strong> (for example TronGrid and public RPC endpoints): the licensing service reads public chain data to confirm your transfer. No personal data is sent to them.</li><li><strong>GitHub</strong>: hosts this website, the update manifest, and the download. As the host it keeps ordinary access logs (IP address, time, request path).</li></ul>
   <p>Beyond these, the app and this website have <strong>no</strong> analytics service, ad network, social plugin, or third-party font.</p>
   <h2>6. Children</h2>
-  <p>DisplayPilot is a desktop tool for Mac users. It is not designed for children, and it does not knowingly collect any information from children.</p>
+  <p>LumePane is a desktop tool for Mac users. It is not designed for children, and it does not knowingly collect any information from children.</p>
   <h2>7. Changes to this policy</h2>
   <p>If a future version changes the app's network behavior — for example, adding cloud sync — this policy will be updated first, and the changelog will say what changed. We will not quietly widen what we collect behind a “continued use means acceptance” clause.</p>
   <h2>8. Contact</h2>
@@ -112,7 +112,7 @@
           <a href="verify.html">Verify it yourself</a>
       <a href="alternatives.html">Compare the options</a>
 </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
+    <p class="foot-copy">© 2026 LumePane</p>
   </div>
 </footer>
 <script src="site.js" defer></script>

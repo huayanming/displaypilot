@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DDC/CI not responding on macOS · DisplayPilot</title>
+<title>DDC/CI not responding on macOS · LumePane</title>
 <meta name="description" content="Why external display brightness and volume stop responding on a Mac, how to tell whether the display, the cable or the dock is at fault, and what actually works when DDC/CI is unavailable.">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/guide-ddc.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-ddc.html">
@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:site_name" content="LumePane">
 <meta property="og:title" content="DDC/CI not responding on macOS">
 <meta property="og:description" content="Why external display brightness stops responding on a Mac, how to isolate the cause, and what works when DDC/CI is unavailable.">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/guide-ddc.html">
@@ -25,13 +25,13 @@
 <meta name="twitter:image" content="https://huayanming.github.io/displaypilot/img/og-en.v532.png">
 <link rel="icon" href="img/icon.png" type="image/png">
 <link rel="stylesheet" href="style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI not responding: why your Mac can't dim the external display","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-ddc.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DDC/CI not responding: why your Mac can't dim the external display","about":"Display Data Channel Command Interface","inLanguage":"en","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/guide-ddc.html"}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
     <nav class="nav-links" aria-label="Primary"><a href="index.html#features">Features</a>
       <a href="index.html#console">The console</a>
       <a href="index.html#controls">Controls</a>
@@ -72,7 +72,7 @@
 
   <h2>What still works when DDC/CI is gone</h2>
   <p>The picture you see is produced by the GPU and then shaped by a <strong>gamma table</strong> before it reaches the panel. macOS exposes that table to applications. Writing a dimming curve into it darkens everything on screen without asking the monitor for anything — no DDC, no firmware, no special cable.</p>
-  <p>That is the fallback DisplayPilot uses, and it is honest about the trade-offs:</p>
+  <p>That is the fallback LumePane uses, and it is honest about the trade-offs:</p>
   <ul>
     <li>it dims the <strong>image</strong>, so it works on any display that can show a picture;</li>
     <li>it does <strong>not</strong> reduce backlight current, so it saves less power than hardware dimming on a laptop;</li>
@@ -84,7 +84,7 @@
   <h2>When to fix the setup instead</h2>
   <p>If DDC is unavailable only through your dock, the better answer is usually a passive cable or a different port — hardware brightness, volume and input switching all come back at once. Software dimming is the fallback, not the preference.</p>
 
-  <p class="callout"><strong>Test it on your own display in a minute.</strong> DisplayPilot probes DDC/CI, reports what the panel answers, and falls back to gamma-table dimming when it cannot. The 14-day trial is fully featured and needs no account.</p>
+  <p class="callout"><strong>Test it on your own display in a minute.</strong> LumePane probes DDC/CI, reports what the panel answers, and falls back to gamma-table dimming when it cannot. The 14-day trial is fully featured and needs no account.</p>
   <p><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download for macOS</a> <a class="btn btn-ghost" data-site="purchase" href="https://displaypilot-license.huayanming2019.workers.dev/buy" hidden>Buy</a></p>
 
   <a class="back" href="index.html">← Back to home</a>
@@ -102,7 +102,7 @@
       <a href="support.html">Support</a>
       <a href="https://github.com/huayanming/displaypilot/issues">Questions &amp; feedback · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
+    <p class="foot-copy">© 2026 LumePane</p>
   </div>
 </footer>
 <script src="site.js" defer></script>

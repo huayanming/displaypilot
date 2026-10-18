@@ -1,6 +1,6 @@
-# DisplayPilot 功能清单（源码核对版）
+# LumePane 功能清单（源码核对版）
 
-> 这份清单不是营销文案，是从 Sources/DisplayPilot/UI/*.swift 里逐张卡片读出来的。
+> 这份清单不是营销文案，是从 Sources/LumePane/UI/*.swift 里逐张卡片读出来的。
 > 每一行都能在代码里找到对应的 Rule(title:) 或 CLI 分支。
 
 ## 一、面板（14 个标签页 / 52 张卡片）

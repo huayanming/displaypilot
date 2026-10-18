@@ -1,4 +1,4 @@
-/* DisplayPilot 站点脚本 —— 全站唯一的地址与价格常量，外加几个很小的交互。
+/* LumePane 站点脚本 —— 全站唯一的地址与价格常量，外加几个很小的交互。
    没有跟踪、没有 Cookie、没有第三方请求，也没有外部字体。
 
    · 价格只有一个来源：下面的 SITE.pricing。页面里的静态数字是构建时从同一份
@@ -12,7 +12,7 @@
   /* ── 只改这里 ────────────────────────────────────────────── */
   var SITE = {
     // 安装包直链（GitHub Releases）。发新版只改这一行。
-    download: "https://huayanming.github.io/displaypilot/dl/DisplayPilot-6.0.3.dmg",
+    download: "https://huayanming.github.io/displaypilot/dl/DisplayPilot-7.0.0.dmg",
     // 结账地址。空字符串 = 还没有可用的付款入口。
     purchase: "https://displaypilot-license.huayanming2019.workers.dev/buy",
     // 价格：全站唯一常量。key 是页面的 <html lang>，default 覆盖其余语言。

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>macOS 开发者缓存清理：哪些能删、哪些删了就出事 · DisplayPilot</title>
+<title>macOS 开发者缓存清理：哪些能删、哪些删了就出事 · LumePane</title>
 <meta name="description" content="macOS 上哪些开发者缓存可以安全删除、哪些只是「看起来像缓存」、确切路径与终端命令，以及为什么先隔离再删除比直接删更稳妥。">
 <link rel="canonical" href="https://huayanming.github.io/displaypilot/zh-Hans/guide-cleanup.html">
 <link rel="alternate" hreflang="en" href="https://huayanming.github.io/displaypilot/guide-cleanup.html">
@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="DisplayPilot">
+<meta property="og:site_name" content="LumePane">
 <meta property="og:title" content="macOS 开发者缓存清理：哪些能删、哪些删了就出事">
 <meta property="og:description" content="哪些开发者缓存可以安全删除、哪些只是看起来像缓存，以及确切路径。">
 <meta property="og:url" content="https://huayanming.github.io/displaypilot/zh-Hans/guide-cleanup.html">
@@ -26,14 +26,14 @@
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"macOS 开发者缓存清理：哪些能删、哪些删了就出事","about":"macOS 开发者缓存","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"DisplayPilot"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guide-cleanup.html"}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"macOS 开发者缓存清理：哪些能删、哪些删了就出事","about":"macOS 开发者缓存","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://huayanming.github.io/displaypilot/zh-Hans/guide-cleanup.html"}
 </script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要内容</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">DisplayPilot</span></a>
+    <a class="brand" href="index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
     <nav class="nav-links" aria-label="主导航"><a href="index.html#features">功能</a>
       <a href="index.html#console">控制台</a>
       <a href="index.html#controls">控制</a>
@@ -98,7 +98,7 @@ rm -rf ~/Library/Caches/go-build/*</code></pre>
   <h2>实际能清出多少</h2>
   <p>对一个经常使用的 iOS 项目，DerivedData 通常单项最大（5–50 GB）。Node 与 Rust 缓存常在 1–10 GB；Gradle 和 Go 一般几 GB。如果你的总计不到 1 GB，那清理并不是你的磁盘问题——存储面板会告诉你真正占地方的是什么。</p>
 
-  <p class="callout"><strong>先看清空间去哪了。</strong> DisplayPilot 的存储面板按类别拆解磁盘占用、指出这 13 类里哪些值得清，并且一律先隔离 30 天再删除。14 天试用功能完整，不需要注册账号。</p>
+  <p class="callout"><strong>先看清空间去哪了。</strong> LumePane 的存储面板按类别拆解磁盘占用、指出这 13 类里哪些值得清，并且一律先隔离 30 天再删除。14 天试用功能完整，不需要注册账号。</p>
   <p><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载 macOS 版</a> <a class="btn btn-ghost" data-site="purchase" href="https://displaypilot-license.huayanming2019.workers.dev/buy" hidden>购买</a></p>
 
   <a class="back" href="index.html">← 返回首页</a>
@@ -112,7 +112,7 @@ rm -rf ~/Library/Caches/go-build/*</code></pre>
       <a href="support.html">支持</a>
       <a href="https://github.com/huayanming/displaypilot/issues">问题与反馈 · GitHub Issues</a>
     </p>
-    <p class="foot-copy">© 2026 DisplayPilot</p>
+    <p class="foot-copy">© 2026 LumePane</p>
   </div>
 </footer>
 <script src="../site.js" defer></script>

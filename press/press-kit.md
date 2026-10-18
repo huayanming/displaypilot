@@ -1,13 +1,13 @@
-# DisplayPilot — press kit
+# LumePane — press kit
 
 One page of facts, plus ready-to-use assets. Everything here has been checked against the
 shipped build; nothing is aspirational.
 
 ## The one-paragraph version
 
-DisplayPilot is a macOS console for external displays: brightness, colour, scrolling and disk
+LumePane is a macOS console for external displays: brightness, colour, scrolling and disk
 in one window. Its reason to exist is the failure everyone hits eventually — a lot of monitors
-ship without DDC/CI, so the Mac's brightness keys do nothing. DisplayPilot falls back to
+ship without DDC/CI, so the Mac's brightness keys do nothing. LumePane falls back to
 CoreGraphics gamma tables, which means the panel can still be dimmed and it is fully
 reversible. It also does colour calibration anchored to the panel's original curves, scroll
 smoothing that is time-based rather than frame-based, and a cleanup that only touches files
@@ -17,7 +17,7 @@ with a deterministic rebuild path — quarantined for 30 days before anything is
 
 | | |
 |---|---|
-| Name | DisplayPilot |
+| Name | LumePane |
 | Version | 5.7.1 |
 | Platform | macOS 14 or later · universal binary (Apple silicon + Intel) |
 | Bundle identifier | `com.neeson.displaypilot` |
@@ -77,9 +77,9 @@ Homepage: <https://huayanming.github.io/displaypilot/>
 
 ## 中文版（供中文媒体使用）
 
-DisplayPilot 是一款 macOS 外接显示器控制台：亮度、色彩、滚动与磁盘清理集中在一个窗口里。
+LumePane 是一款 macOS 外接显示器控制台：亮度、色彩、滚动与磁盘清理集中在一个窗口里。
 它存在的理由是那个迟早会遇到的故障——大量显示器没有实现 DDC/CI，Mac 的亮度键因此完全不起作用。
-DisplayPilot 改用 CoreGraphics 伽马表接管，面板依然可以调暗，而且完全可回退。
+LumePane 改用 CoreGraphics 伽马表接管，面板依然可以调暗，而且完全可回退。
 
 **事实**：版本 5.7.1 · macOS 14 及以上 · 通用二进制（Apple 芯片与 Intel）·
 Developer ID 团队 `7P2P353LBW` · 已由 Apple 公证且凭据钉扎 · ¥99 / US$14 一次买断（含一年更新）·

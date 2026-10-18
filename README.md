@@ -1,8 +1,8 @@
 
-# DisplayPilot · 显示器控制
+# LumePane · 显示器控制
 A native macOS display console. One-time purchase, no account, no telemetry.
 
-安装包：`DisplayPilot-6.0.3.dmg`（macOS 14 或更高，苹果芯片与英特尔通用）
+安装包：`DisplayPilot-7.0.0.dmg`（macOS 14 或更高，苹果芯片与英特尔通用）
 
 ## 菜单栏快捷开关
 
@@ -14,8 +14,8 @@ A native macOS display console. One-time purchase, no account, no telemetry.
 
 每一项都可以自己验证：
 
-    DisplayPilot --switch-probe      # 只读：每项可用性与当前状态
-    DisplayPilot --switch-selftest   # 实跑：读 -> 切 -> 读回（结束恢复原值）
+    LumePane --switch-probe      # 只读：每项可用性与当前状态
+    LumePane --switch-selftest   # 实跑：读 -> 切 -> 读回（结束恢复原值）
 
 
 ## 产品规格
@@ -28,11 +28,11 @@ A native macOS display console. One-time purchase, no account, no telemetry.
 | 清理隔离区 | 保留 30 天 |
 | 可重建产物 | 13 类有确定性重建方式 |
 | 永久删除 | 必须同时满足 6 个条件 |
-| 下载 | DisplayPilot-6.0.3.dmg |
+| 下载 | DisplayPilot-7.0.0.dmg |
 
 ## 下载
 
-- macOS 应用：`DisplayPilot-6.0.3.dmg`（Release 页）
+- macOS 应用：`DisplayPilot-7.0.0.dmg`（Release 页）
 - 更新源：`appcast.xml`
 
 ## 先说结论：你这块显示器不支持 DDC/CI
@@ -57,7 +57,7 @@ A native macOS display console. One-time purchase, no account, no telemetry.
 swiftc -O Tools/ddc-probe.swift -o /tmp/ddc-probe && /tmp/ddc-probe
 ```
 
-于是 DisplayPilot 的核心改为 **CoreGraphics 伽马表软件调光**：
+于是 LumePane 的核心改为 **CoreGraphics 伽马表软件调光**：
 它不依赖显示器固件，对任何面板都有效，实测在你这里生效（中点 0.5020 → 0.3012）。
 
 ---
@@ -161,13 +161,13 @@ iPhone 从 7 代起用的是 Display P3，比 sRGB 大约大 36% —— 你的�
 
 ```bash
 ./Scripts/build-app.sh          # 渲染图标 → 编译 → 打包 → 临时签名
-open build/DisplayPilot.app
+open build/LumePane.app
 ```
 
 装到应用程序目录：
 
 ```bash
-cp -R build/DisplayPilot.app /Applications/
+cp -R build/LumePane.app /Applications/
 ```
 
 跑一遍端到端自检（会短暂把屏幕调到 60% 再恢复）：
@@ -185,16 +185,16 @@ cp -R build/DisplayPilot.app /Applications/
 同一个二进制文件带参数运行即为命令行模式。调光指令会发送给正在运行的 App：
 
 ```text
-DisplayPilot --list                         # 列出在线显示器
-DisplayPilot --set-brightness 0.4           # 亮度 40%
-DisplayPilot --offset-brightness -0.05      # 在当前亮度上减 5%
-DisplayPilot --set-temperature 4300         # 色温 4300K
-DisplayPilot --preset night                 # day|read|night|film|dark
-DisplayPilot --set-resolution 1920x1080     # 切换分辨率，优先 HiDPI
-DisplayPilot --set-resolution 2560x1440@144 # 指定刷新率
-DisplayPilot --list-modes                   # 全部模式（含系统隐藏的 HiDPI）
-DisplayPilot --dump-gamma                   # 打印伽马表中点值（只读）
-DisplayPilot --reset                        # 交回系统 ColorSync 校准
+LumePane --list                         # 列出在线显示器
+LumePane --set-brightness 0.4           # 亮度 40%
+LumePane --offset-brightness -0.05      # 在当前亮度上减 5%
+LumePane --set-temperature 4300         # 色温 4300K
+LumePane --preset night                 # day|read|night|film|dark
+LumePane --set-resolution 1920x1080     # 切换分辨率，优先 HiDPI
+LumePane --set-resolution 2560x1440@144 # 指定刷新率
+LumePane --list-modes                   # 全部模式（含系统隐藏的 HiDPI）
+LumePane --dump-gamma                   # 打印伽马表中点值（只读）
+LumePane --reset                        # 交回系统 ColorSync 校准
 ```
 
 ---
@@ -218,7 +218,7 @@ macOS 26 上伽马表由**窗口服务器持有**，设置它的进程一旦退�
 进程退出后   mid = 0.5020   （自动回到系统状态）
 ```
 
-所以即使 DisplayPilot 崩溃或被强杀，屏幕也会自己恢复，不存在「调暗后再也调不回来」的风险。
+所以即使 LumePane 崩溃或被强杀，屏幕也会自己恢复，不存在「调暗后再也调不回来」的风险。
 除此之外还有两道保险：
 
 * 正常退出时主动还原伽马；
@@ -253,7 +253,7 @@ macOS 26 上伽马表由**窗口服务器持有**，设置它的进程一旦退�
 
 ## 换显示器之后
 
-把新的显示器接上，重新打开 DisplayPilot：
+把新的显示器接上，重新打开 LumePane：
 
 * 若它支持 DDC/CI，「显示器硬件通道」一栏会自动出现硬件亮度、对比度、音量、输入源按钮；
 * `--list` 会列出新面板；
@@ -358,7 +358,7 @@ macOS 26 上伽马表由**窗口服务器持有**，设置它的进程一旦退�
 
 ### 自检
 
-    DisplayPilot --scroll-selftest
+    LumePane --scroll-selftest
 
 前半段是**离线基准**：`ScrollSelfTest` 用固定的 dt 逐帧驱动插值器，
 不开事件拦截、不发任何真实事件，量出起步与收尾的形状：
@@ -393,7 +393,7 @@ macOS 26 上伽马表由**窗口服务器持有**，设置它的进程一旦退�
 ### 首次使用
 
 打开「滚动」页 → 打开「启用平滑」→ 点「授予辅助功能权限」→
-在 系统设置 → 隐私与安全性 → 辅助功能 里勾选 DisplayPilot → 回到窗口即自动生效。
+在 系统设置 → 隐私与安全性 → 辅助功能 里勾选 LumePane → 回到窗口即自动生效。
 
 ---
 
@@ -412,7 +412,7 @@ macOS 26 上伽马表由**窗口服务器持有**，设置它的进程一旦退�
 
 签名的锚点可以用这条命令自查：
 
-    codesign -d -r- /Applications/DisplayPilot.app
+    codesign -d -r- /Applications/LumePane.app
 
 只要输出里**没有 `cdhash`**、而是 `certificate leaf[subject.CN]`，就是对的。
 
@@ -436,7 +436,7 @@ TCC 把辅助功能授权钉在「代码签名要求」上。
 
 改用本机已有的 Apple Development 证书签名后，连续重建两次权限都还在。自查：
 
-    codesign -d -r- /Applications/DisplayPilot.app
+    codesign -d -r- /Applications/LumePane.app
     # 输出里不该出现 cdhash
 
 ### 根因二：用 isContinuous 区分鼠标和触控板是错的
