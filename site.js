@@ -331,14 +331,55 @@ function campaignSource() {
   };
   var c = copy[lang] || copy.en;
   var prefix = /\/(zh-Hans|zh-Hant|ja|ko|de|fr|es)\//.test(path) ? "../img/" : "img/";
-  var section = document.createElement("section");
-  section.className = "contact-card";
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+  var section = el("section", "contact-card");
   section.setAttribute("aria-labelledby", "contact-dev");
-  section.innerHTML = '<a class="contact-qr" href="' + prefix + 'wechat-service-qr.png" target="_blank" rel="noopener"><img src="' + prefix + 'wechat-service-qr.png" alt="' + c.wechat + '" width="128" height="114" loading="lazy"></a>' +
-    '<div class="contact-copy"><h2 id="contact-dev">' + c.title + '</h2><p>' + c.body + '</p>' +
-    '<div class="contact-kv"><span>' + c.email + ': <a href="mailto:huayanming2019@gmail.com">huayanming2019@gmail.com</a></span><span>' + c.wechat + ': <code>neeson1987</code></span></div>' +
-    '<div class="contact-actions"><a class="btn btn-primary" href="mailto:huayanming2019@gmail.com?subject=LumePane%20support">' + c.emailBtn + '</a><a class="btn btn-ghost" href="https://github.com/huayanming/displaypilot/issues">' + c.issue + '</a></div>' +
-    '<p class="small">' + c.note + '</p></div>';
+
+  var qr = el("a", "contact-qr");
+  qr.href = prefix + "wechat-service-qr.png";
+  qr.target = "_blank";
+  qr.rel = "noopener";
+  qr.setAttribute("aria-label", c.wechat + " QR");
+  var img = document.createElement("img");
+  img.src = prefix + "wechat-service-qr.png";
+  img.alt = c.wechat;
+  img.width = 128; img.height = 114; img.loading = "lazy";
+  qr.appendChild(img);
+  section.appendChild(qr);
+
+  var copyCol = el("div", "contact-copy");
+  copyCol.appendChild(el("h2", "", c.title)).id = "contact-dev";
+  // Keep the card text content-only: no markup from a language table ever
+  // reaches the DOM as markup.
+  copyCol.appendChild(el("p", "", c.body.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&")));
+  var kv = el("div", "contact-kv");
+  var emailLine = el("span", "", c.email + ": ");
+  var emailLink = el("a", "", "huayanming2019@gmail.com");
+  emailLink.href = "mailto:huayanming2019@gmail.com";
+  emailLine.appendChild(emailLink);
+  kv.appendChild(emailLine);
+  var wechatLine = el("span", "", c.wechat + ": ");
+  var wechatCode = el("code", "", "neeson1987");
+  wechatLine.appendChild(wechatCode);
+  kv.appendChild(wechatLine);
+  copyCol.appendChild(kv);
+
+  var actions = el("div", "contact-actions");
+  var mail = el("a", "btn btn-primary", c.emailBtn);
+  mail.href = "mailto:huayanming2019@gmail.com?subject=LumePane%20support";
+  actions.appendChild(mail);
+  var issues = el("a", "btn btn-ghost", c.issue);
+  issues.href = "https://github.com/huayanming/displaypilot/issues";
+  actions.appendChild(issues);
+  copyCol.appendChild(actions);
+  copyCol.appendChild(el("p", "small", c.note));
+  section.appendChild(copyCol);
+
   var back = doc.querySelector("a.back");
   if (back) doc.insertBefore(section, back); else doc.appendChild(section);
 })();
