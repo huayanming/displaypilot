@@ -13,7 +13,9 @@
   var SITE = {
     // 下载计数入口。由发码 Worker 记一次匿名下载、再 302 到当前 DMG；
     // 脚本被禁用时，HTML 里的 Releases 页面仍可兜底（但不会计数）。
-    download: "https://lumepane.com/api/download",
+    download: "https://lumepane.com/dl/DisplayPilot-7.1.6.dmg",
+    // 下载计数入口；保留上面的直链作为版本/兜底来源，运行时优先走计数入口。
+    downloadEndpoint: "https://lumepane.com/api/download",
     // 结账地址。空字符串 = 还没有可用的付款入口。
     purchase: "https://license.lumepane.com/buy",
     // 价格：全站唯一常量。key 是页面的 <html lang>，default 覆盖其余语言。
@@ -41,11 +43,12 @@
 
   // 2) 下载：脚本可用时指向计数入口；脚本被禁用时保留 HTML 里的 Releases 页面兜底。
   //    来源标签一并带上，后台才能看出下载来自哪个渠道（不会记录 IP/UA）。
-  if (SITE.download) {
+  var downloadTarget = SITE.downloadEndpoint || SITE.download;
+  if (downloadTarget) {
     var dlSrc = campaignSource();
     var dlUrl = dlSrc
-      ? SITE.download + (SITE.download.indexOf("?") === -1 ? "?" : "&") + "src=" + encodeURIComponent(dlSrc)
-      : SITE.download;
+      ? downloadTarget + (downloadTarget.indexOf("?") === -1 ? "?" : "&") + "src=" + encodeURIComponent(dlSrc)
+      : downloadTarget;
     all('[data-site="download"]').forEach(function (a) { a.href = dlUrl; });
   }
 
