@@ -7,22 +7,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.3</title>
-      <pubDate>Mon, 19 Oct 2026 04:23:53 +0000</pubDate>
-      <sparkle:version>8.0.3</sparkle:version>
-      <sparkle:shortVersionString>8.0.3</sparkle:shortVersionString>
+      <title>LumePane 8.0.4</title>
+      <pubDate>Mon, 19 Oct 2026 04:43:36 +0000</pubDate>
+      <sparkle:version>8.0.4</sparkle:version>
+      <sparkle:shortVersionString>8.0.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[Dock 交互与材质
-• 左右和上下 Dock 统一使用指针位置驱动的橙色填充与轻微放大；取消整排位移放大。
-• 图标底改为液态拟态玻璃：柔和高光、底部折射彩边、双层倒角。
-• 四条边都可以直接拖动边框缩放 Dock：左右/上下分别调整厚度与长度上限。
-• 顶部和底部横向 Dock 的悬停动画补齐。
-• 官网页面启用平滑滚动。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[修复
+• 修复 Dock 四边缩放热区未真正铺满边缘的问题：现在拖动左/右边框调整宽度，拖动上/下边框调整长度，鼠标靠近边框显示缩放光标。
+• 上下 Dock 的橙色悬停反馈补齐。
+• 图标底统一为液态拟态玻璃（柔光、折射彩边、双层倒角）。
+• 恢复稳定版悬浮球过渡与 LumePane 字标。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.3.dmg" length="10574033" type="application/octet-stream" sparkle:edSignature="iSrtlDzI7tcG3ENcEYFGJaUm1o4SR+1G3KPUVwlo/iDkxXMiXYeszQrTjdbadAzL3IUyrYEu9s5DRRL2j3EQBg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.4.dmg" length="10574820" type="application/octet-stream" sparkle:edSignature="XeEtNxfCVUz+cz+gibBdjPF8C9RCgiptJ3bDNrhZfdU2XdQheky1ZS1Aklyznfog9kVNh1XflLLgEV/TCVUbBw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: /Wf8CYkDSET5DEHgs4DLNeFB+KdrqimrUXhax80Hpabpp3fY9TrrkCMboTfm9IGAiyPylXLTzH+pQInXdXrmDA==
-length: 1770
+edSignature: AafFxmKIZNI9Q/J45nI1ZrJh+tnchETwfc3QxFRHiHRZsJ8DdDTzolGyfX6+nwtJ7Jb9Og5uR6q55wEr29SkDA==
+length: 1721
 -->
