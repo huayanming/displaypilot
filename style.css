@@ -49,7 +49,14 @@
 
 html { background: var(--canvas); -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0; background: var(--canvas); color: var(--ink-strong);
+  margin: 0;
+  /* One continuous ambient wash for the whole page. Section-scoped glows
+     created hard horizontal cut lines where the section box began/ended. */
+  background:
+    radial-gradient(72rem 54rem at 92% 10%, rgba(79, 110, 255, .075), transparent 63%),
+    radial-gradient(60rem 44rem at 4% 66%, rgba(243, 112, 33, .055), transparent 65%),
+    var(--canvas);
+  color: var(--ink-strong);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
                "Helvetica Neue", Arial, sans-serif;
   font-size: 17px; line-height: 1.7;
@@ -1001,16 +1008,16 @@ html[lang="zh-Hant"] .hero-v2 h1 {
 .orb-section {
   position: relative;
   padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem);
-  overflow: hidden;
+  /* Let the orb's local haze bleed past this section instead of being cut by
+     the section rectangle. */
+  overflow: visible;
 }
 .orb-section::before {
   content: "";
   position: absolute;
-  inset: -12% 0;
-  background:
-    radial-gradient(38rem 24rem at 70% 20%, rgba(66, 112, 255, .12), transparent 70%),
-    radial-gradient(32rem 22rem at 30% 80%, rgba(243, 112, 33, .10), transparent 72%);
-  filter: blur(34px);
+  inset: 4% 12% -6%;
+  background: radial-gradient(42rem 26rem at 68% 44%, rgba(79, 110, 255, .055), transparent 70%);
+  filter: blur(52px);
   pointer-events: none;
 }
 .orb-grid {
