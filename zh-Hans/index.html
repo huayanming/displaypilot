@@ -41,7 +41,7 @@
 <meta name="twitter:image" content="https://lumepane.com/img/og-zh-Hans.v532.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LumePane","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 或更高","softwareVersion":"8.0.0","url":"https://lumepane.com/zh-Hans/","inLanguage":"zh-Hans","downloadUrl":"https://lumepane.com/dl/DisplayPilot-8.0.0.dmg","offers":{"@type":"Offer","price":"99","priceCurrency":"CNY","url":"https://lumepane.com/checkout","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 显示器控制，DDC 不可用时退回伽马表调光","以首次接管时读到的曲线为基准的色彩校准","逐帧投递的平滑滚动","菜单栏总控板：管理显示器与系统动作","先隔离再删除的开发者缓存清理"],"publisher":{"@type":"Organization","name":"LumePane"},"headline":"滚轮、亮度、色彩"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LumePane","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 或更高","softwareVersion":"8.0.1","url":"https://lumepane.com/zh-Hans/","inLanguage":"zh-Hans","downloadUrl":"https://lumepane.com/dl/DisplayPilot-8.0.1.dmg","offers":{"@type":"Offer","price":"99","priceCurrency":"CNY","url":"https://lumepane.com/checkout","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 显示器控制，DDC 不可用时退回伽马表调光","以首次接管时读到的曲线为基准的色彩校准","逐帧投递的平滑滚动","菜单栏总控板：管理显示器与系统动作","先隔离再删除的开发者缓存清理"],"publisher":{"@type":"Organization","name":"LumePane"},"headline":"滚轮、亮度、色彩"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要内容</a>
@@ -122,18 +122,18 @@
             <li>顶部显示鼠标、手表、键盘电量，操作结果在屏幕底部居中反馈。</li>
           </ul>
           <div class="orb-actions">
-            <button class="btn btn-primary" type="button" data-glow-orb-toggle data-label-open="展开光彩魔丸" data-label-close="收起光彩魔丸" aria-expanded="false" aria-controls="glow-orb-panel">展开光彩魔丸</button>
+            <button class="btn btn-primary" type="button" data-glow-orb-toggle data-label-open="展开光彩魔丸" data-label-close="收起光彩魔丸" aria-expanded="true" aria-controls="glow-orb-panel">收起光彩魔丸</button>
             <a class="btn btn-ghost" href="features.html">查看完整功能</a>
           </div>
           <p class="orb-hint">点球体或按钮都能展开；按 Esc 收起。</p>
         </div>
-        <div class="orb-stage">
-          <button class="glow-orb" type="button" aria-label="展开光彩魔丸" aria-expanded="false" aria-controls="glow-orb-panel">
+        <div class="orb-stage is-open">
+          <button class="glow-orb" type="button" aria-label="展开光彩魔丸" aria-expanded="true" aria-controls="glow-orb-panel">
             <span class="orb-core" aria-hidden="true"></span>
             <span class="orb-glint" aria-hidden="true"></span>
             <span class="orb-wordmark">光彩魔丸</span>
           </button>
-          <div class="orb-dock" id="glow-orb-panel" aria-hidden="true">
+          <div class="orb-dock" id="glow-orb-panel" aria-hidden="false">
             <div class="orb-dock-head"><span class="orb-live" aria-hidden="true"></span><b>光彩魔丸</b> · 32 个动作 <span>⌃⌥H</span></div>
             <ul class="orb-command-grid">
               <li><span class="orb-dot" aria-hidden="true">◎</span><span><b>全屏截图</b><small>复制到剪贴板</small></span></li>

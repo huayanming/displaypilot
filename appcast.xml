@@ -7,31 +7,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.0</title>
-      <pubDate>Sun, 18 Oct 2026 20:30:27 +0000</pubDate>
-      <sparkle:version>8.0.0</sparkle:version>
-      <sparkle:shortVersionString>8.0.0</sparkle:shortVersionString>
+      <title>LumePane 8.0.1</title>
+      <pubDate>Mon, 19 Oct 2026 03:27:30 +0000</pubDate>
+      <sparkle:version>8.0.1</sparkle:version>
+      <sparkle:shortVersionString>8.0.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[光彩魔丸 / Glow Orb
-• 悬浮球正式命名为「光彩魔丸」，球面字标改为中文名，增加呼吸光晕。
-• 按住左键蓄力、球体加速旋转；松开后展开，短按立即展开；拖动仍可移动。
-• 支持左、右、顶、底四条屏幕边缘：左右为竖向 Dock，上下为横向 Dock。
-• Dock 长度按可见动作数量自适应，少量动作不再留下大段空玻璃，超出屏幕才滚动。
-• 新增「Dock 内容与顺序」：可选择哪些动作进入 Dock、上下调整顺序、恢复默认。
-• Dock 内可直接拖动排序；右键图标移除；底部 + 菜单把隐藏动作加回。
-快捷操作
-• 截图：全屏到剪贴板；区域截图使用系统原生框选。
-• 录屏、锁屏、睡眠、音量 +/−/静音、亮度、预设、平滑、12 种窗口布局、校准、诊断、控制台全部可放进 Dock。
-• 音量与系统动作在屏幕底部居中反馈；顶部显示鼠标、手表、键盘电量环。
-稳定性与交付
-• 修复非激活面板中系统拖放不启动的问题，改用面板内拖拽重排。
-• 修复展开/收起锚定球残留的问题（已恢复为用户确认的简单过渡）。
-• 官网首页新增可点击展开的光彩魔丸交互区与完整功能说明。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[修正
+• 软件球面字标恢复为品牌名「LumePane」；「光彩魔丸」继续作为功能名和官网交互区名称。
+• 官网首页光彩魔丸默认展开，打开页面即可看到 Dock 内容；仍可点击收起。
+• 官网首屏按钮下方规格文字居中对齐，不再相对按钮漂移。
+• 修复首页橙色/蓝色流动光晕被容器上边界裁成横切线的问题，改为连续模糊光雾。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.0.dmg" length="10504563" type="application/octet-stream" sparkle:edSignature="eJu2YNMIA7m3cCKdL4bQ1XDgz1wQRuKXN8RrJw49/iJXNlQcmNQHoz0zZfnUpKTVR4elT6zS07xKD8Aoq9PABg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.1.dmg" length="10512340" type="application/octet-stream" sparkle:edSignature="36NkGws/PDQ/epC+W03WlP14b/ig54HbB49Winf7WR+qeC0rCYMb3CsrTh/XPx+874QwLtH9Mkl2KSHd51Z3Ag=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: vMwslbvD21WmReGrTpqP7whnJu3ZlE+pUmgyOeCReEVxj2GUOWTcB3zfHAP8N44MrLE2/iwT1ChMsGqKXRrcDA==
-length: 2633
+edSignature: hUWokjMDten22EAry9Lk2Y0Jzr9hwyB60TUfTQ7/tB5IT7EVpxvZeqzR734TZTt7IKVvHcaBSb66i3sxIAN0Dw==
+length: 1775
 -->

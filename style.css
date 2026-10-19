@@ -452,9 +452,9 @@ html[lang="zh-Hant"] .hero-v2 h1 {
   font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 600; letter-spacing: -.028em;
 }
 .hero-v2 .lede { margin-top: 1.5rem; max-width: 35rem; color: var(--ink-soft); font-size: clamp(1rem, 1.15vw, 1.1rem); line-height: 1.72; }
-.hero-v2 .hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.hero-v2 .hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 2rem; }
 .hero-spec {
-  display: flex; flex-wrap: wrap; gap: .35rem 1.15rem; margin: 1.6rem 0 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .35rem 1.15rem; margin: 1.6rem 0 0; padding: 0; list-style: none;
   color: var(--ink-soft); font-size: .82rem; line-height: 1.6;
 }
 .hero-spec li { position: relative; }
@@ -1006,10 +1006,11 @@ html[lang="zh-Hant"] .hero-v2 h1 {
 .orb-section::before {
   content: "";
   position: absolute;
-  inset: 12% 0 0;
+  inset: -12% 0;
   background:
     radial-gradient(38rem 24rem at 70% 20%, rgba(66, 112, 255, .12), transparent 70%),
     radial-gradient(32rem 22rem at 30% 80%, rgba(243, 112, 33, .10), transparent 72%);
+  filter: blur(34px);
   pointer-events: none;
 }
 .orb-grid {
@@ -1084,10 +1085,10 @@ html[lang="zh-Hant"] .hero-v2 h1 {
 .orb-stage::before {
   content: "";
   position: absolute;
-  inset: 12% 8% 4%;
+  inset: -8% 8% -8%;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 55%, rgba(80, 104, 255, .16), transparent 64%);
-  filter: blur(22px);
+  filter: blur(28px);
   pointer-events: none;
 }
 .glow-orb {
