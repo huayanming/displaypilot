@@ -1,3 +1,9 @@
+> **Website:** https://lumepane.com/ · **Free browser scroll test:** https://lumepane.com/scroll-test.html · **90-day launch codes:** https://lumepane.com/launch.html
+>
+> LumePane is a native macOS utility: a draggable orb that unfolds into a dock for display control, mouse-wheel smoothing and window layouts. 14-day trial, one-time purchase, no account, no telemetry.
+>
+> English summary below. 中文说明从下一段开始。
+
 
 # LumePane · 显示器控制
 A native macOS display console. One-time purchase, no account, no telemetry.
