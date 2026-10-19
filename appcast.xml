@@ -7,20 +7,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.14</title>
-      <pubDate>Mon, 19 Oct 2026 16:13:16 +0000</pubDate>
-      <sparkle:version>8.0.14</sparkle:version>
-      <sparkle:shortVersionString>8.0.14</sparkle:shortVersionString>
+      <title>LumePane 8.0.15</title>
+      <pubDate>Mon, 19 Oct 2026 16:37:34 +0000</pubDate>
+      <sparkle:version>8.0.15</sparkle:version>
+      <sparkle:shortVersionString>8.0.15</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <description sparkle:descriptionFormat="plain-text"><![CDATA[新快捷
-• 新增 Wi-Fi 开关：CoreWLAN 读取、切换、读回确认。
-• 新增截图到剪贴板：screencapture -c，不落盘。
-• 滚动改为连续 Hz 曲线（60–240Hz），低刷新率分帧更细。]]></description>
+• 桌面图标显示/隐藏：Finder CreateDesktop 写入、读回、重启 Finder。
+• 重启 Finder：killall Finder，用于 Finder 卡住或菜单不刷新。
+• Wi-Fi 开关与截图到剪贴板保持 8.0.14 的行为。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-8.0.14.dmg" length="10529918" type="application/octet-stream" sparkle:edSignature="3ZDwidfYR7jFJjiDZ5UUTdnXvaBKBvGLxxgRBnpYBkjAyHGFtWqtO+3MeVbIMSfkL5xfBovKMEIaXdn2XGASCA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-8.0.15.dmg" length="10531732" type="application/octet-stream" sparkle:edSignature="iS6K0SkzySGmQFieJkdXIUDLb3EXoFMkrPlu6vDNJ5MuuY1HvSRZda/ZjpP/Vd2CEyw2z3Up/YX3x69a8l0qDg=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: cIGFgDrWVnC5qGzKvOnHNtC/ag0C51fgrkVDDFRmqTCKcGSnunYzI91Jfm1kInX82O9jf7BJSreQRqeAmmb2AQ==
-length: 1564
+edSignature: N74kyiVi66HR7ejfuomxt/L5g06zHlL5T35Ts9A6TbnI97xo/U2tB1/l3fBTdFRyMK/xL3vcLG5wBLiSFZHADA==
+length: 1584
 -->
