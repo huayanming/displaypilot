@@ -10,6 +10,13 @@
 > 5.7.1 是本轮对外发布版本，整合 4.0.0–4.4.0 期间全部面向用户的变更；
 > 4.0.0–4.4.0 的条目保留为内部工程记录（其中 4.4.0 未生成对外二进制）。
 
+## [9.0.0] - 2026-10-20
+
+### Brand reset
+
+- User-facing product name, app bundle, source paths, screenshots, social cards, CSV filenames and repository links are LumePane.
+- Bundle identifier is now `com.neeson.lumepane`.
+- The old product name is not used in shipped UI or website copy.
 ## [8.0.17] - 2026-10-20
 
 ### Dock 可见性检测

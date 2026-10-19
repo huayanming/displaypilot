@@ -7,19 +7,17 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.17</title>
-      <pubDate>Mon, 19 Oct 2026 18:40:21 +0000</pubDate>
-      <sparkle:version>8.0.17</sparkle:version>
-      <sparkle:shortVersionString>8.0.17</sparkle:shortVersionString>
+      <title>LumePane 9.0.0</title>
+      <pubDate>Mon, 19 Oct 2026 19:36:11 +0000</pubDate>
+      <sparkle:version>9.0.0</sparkle:version>
+      <sparkle:shortVersionString>9.0.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[Dock 可见性检测
-• 切换自动隐藏后检查真实 Dock 窗口是否消失，不再只读 defaults 就报成功。
-• 若 macOS 不执行自动隐藏，返回失败并保留原状态提示。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-8.0.17.dmg" length="10543199" type="application/octet-stream" sparkle:edSignature="eO6emj+rj/u0juaEjuZ/rMHZwX0eYUQA1K1Ohl3hiPPyHkanS2Glt+2VzPR/yzlXVnTfcDLY5q3MtszT8efmAw=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.0.0.dmg" length="10550893" type="application/octet-stream" sparkle:edSignature="fBjy2+7ekwwYgxReyeHOYSjoo55koWlS9UE9/jGEYVSlnEYTZomk6GR6aun840Ii9J/naPqZsfrRSi5QBmjVDA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: zZQ0PvgiHzPSfQ/jGPSn7S9bokh0uVrp9WBPGNEc5ha9j5oyG4UTI1JmbKywbfTxfv+4622k+gLAg0ywxNEwBw==
-length: 1544
+edSignature: gquW/C/RCviFGx5Y640TtfJWki0h3e6D4jYIBLpydepO4EuS+SuDXHRshEhYpZX7TuhSvuHqiIkgJRy7vyEKAA==
+length: 1340
 -->
