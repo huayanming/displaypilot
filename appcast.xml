@@ -7,18 +7,17 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.0.3</title>
-      <pubDate>Mon, 19 Oct 2026 20:21:35 +0000</pubDate>
-      <sparkle:version>9.0.3</sparkle:version>
-      <sparkle:shortVersionString>9.0.3</sparkle:shortVersionString>
+      <title>LumePane 9.0.4</title>
+      <pubDate>Mon, 19 Oct 2026 20:37:42 +0000</pubDate>
+      <sparkle:version>9.0.4</sparkle:version>
+      <sparkle:shortVersionString>9.0.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[• Add --compat-probe: local model, architecture, OS, screens, refresh rate, Wi-Fi, audio outputs and Accessibility status.
-• This is a capability report, not a claim of physical testing on every Mac.]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[• Rebuild with the restored license signing public key after Worker secret recovery.]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.0.3.dmg" length="10559256" type="application/octet-stream" sparkle:edSignature="8QNWIuJfxvnwkcOU8MU3MCMh5ltlxSNHK0un9ZiLEpkLCZT5AAozChKEyokgg7GObX9GwrEG1oKdxbxMjkldAw=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.0.4.dmg" length="10559389" type="application/octet-stream" sparkle:edSignature="ndfVW04PowOkCfw2PkQb0RH0e0WWkEPewO+5qJW91byQztvj2ngkh1DkieFUakTawS//6h9HYzs/emRQTrA2Dw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: csdg/muzWvUvMxsQpdHrhUjfni6CPu8BCNzuLNJNSNjyWTEGcb+5KosCBdU20ufdrwnFbWqk1K6ujxKB/sDXCg==
-length: 1543
+edSignature: eQUlVGFu32yYLYagvL8oPH040Lebd0mUEsBXmIaGJnxhHDhQqr9pBfvOzoWTag1ydAr0OVuf8bia+nN5z3tLBg==
+length: 1426
 -->
