@@ -375,20 +375,15 @@ function campaignSource() {
   // reaches the DOM as markup.
   copyCol.appendChild(el("p", "", c.body.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&")));
   var kv = el("div", "contact-kv");
-  var emailLine = el("span", "", c.email + ": ");
-  var emailLink = el("a", "", "huayanming2019@gmail.com");
-  emailLink.href = "mailto:huayanming2019@gmail.com";
-  emailLine.appendChild(emailLink);
-  kv.appendChild(emailLine);
-  var wechatLine = el("span", "", c.wechat + ": ");
-  var wechatCode = el("code", "", "neeson1987");
-  wechatLine.appendChild(wechatCode);
-  kv.appendChild(wechatLine);
+  var supportLine = el("span", "", (c.email || "Support") + ": ");
+  supportLine.appendChild(el("span", "", "使用本页右下角客服窗口 / Use the support window on this page"));
+  kv.appendChild(supportLine);
   copyCol.appendChild(kv);
 
   var actions = el("div", "contact-actions");
-  var mail = el("a", "btn btn-primary", c.emailBtn);
-  mail.href = "mailto:huayanming2019@gmail.com?subject=LumePane%20support";
+  var mail = el("button", "btn btn-primary", "打开客服 / Open support");
+  mail.type = "button";
+  mail.addEventListener("click", function () { if (window.LP_SUPPORT) window.LP_SUPPORT.open("support", ""); });
   actions.appendChild(mail);
   var issues = el("a", "btn btn-ghost", c.issue);
   issues.href = "https://github.com/huayanming/lumepane/issues";
@@ -635,7 +630,7 @@ function campaignSource() {
     fetch(API + "/thread", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ email: email, topic: topic, message: message }) })
       .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || "error"); return j; }); })
       .then(function (j) { save({ id: j.id, token: j.token }); current = j.thread; renderThread(current); startPolling(); setStatus(t("Message sent.", "已发送。")); })
-      .catch(function () { setStatus(t("Could not send. Email huayanming2019@gmail.com instead.", "发送失败，请改发邮件 huayanming2019@gmail.com。"), true); })
+      .catch(function () { setStatus(t("Could not send. Retry from this support window.", "发送失败，请在这个客服窗口重试。"), true); })
       .finally(function () { btn.disabled = false; });
   }
 
