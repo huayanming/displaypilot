@@ -177,7 +177,7 @@
           <p class="f-eyebrow">01 · Smooth scrolling</p>
           <h2 class="f-title">One notch, split into a stroke</h2>
           <p class="f-body">A wheel notch stops being a single jump. Events are accumulated, then delivered on every display refresh — each frame emitting <code>pending × (1 − e^(−dt/τ))</code>. Because the decay is driven by elapsed time rather than by frame count, the response shape is set by time, not refresh rate; total conservation is measured at 60, 120 and 144 Hz. In Neeson &amp; Sea's offline benchmark, the first frame at 120 Hz improved from 3 points to 9, and time-to-90% fell from 150 ms to 133 ms.</p>
-          <p class="f-body"><a href="scroll-test.html">Run the free browser scroll test →</a> It measures wheel-event gaps and dropped frames without installing anything.</p>
+          <p class="f-body"><a href="scroll-test.html?src=free-scroll">Run the free browser scroll test →</a> It measures wheel-event gaps and dropped frames without installing anything.</p>
           <p class="f-note sunk neu neu-sink">Windows that treat the wheel as a precision input or a zoom control — terminals, image viewers, slide decks — are handed back to the system by default. Hold ⌘ at any time to return to native scrolling. Smoothing ships <strong>off</strong>: it never takes over your wheel unless you turn it on. The interface keeps four live counters — seen, gesture, intercepted, delivered — so when a new mouse misbehaves, you can see exactly which layer is dropping it.</p>
         </div>
         <figure class="f-media tall neu plate">
@@ -190,7 +190,7 @@
           <p class="f-eyebrow">02 · Software dimming</p>
           <h2 class="f-title">Dim without touching panel firmware</h2>
           <p class="f-body">Brightness runs through the CoreGraphics gamma table, so it works even on monitors that don't implement DDC/CI. After a resolution change or wake, the app rewrites the curve and checks one interior sample against the intent; on a mismatch it retries, up to four attempts in total. Resolution changes and wake-from-sleep replay the curve automatically, so it never silently stops working.</p>
-          <p class="f-body"><a href="display-test.html">Run the free display test patterns →</a></p>
+          <p class="f-body"><a href="display-test.html?src=free-display">Run the free display test patterns →</a></p>
           <p class="f-note sunk neu neu-sink">Replays always recompute from the baseline captured at takeover rather than from the current curve, so repeated adjustment can't accumulate error. At 60% brightness the mid-gray point moves from 0.5020 to 0.3012 — exact scaling, not an accumulated delta. macOS restores the display when the process exits, and there are two further recovery paths: one inside the app, and <code>Scripts/restore-dimming.sh</code>.</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="Measured color calibration readings">
@@ -412,7 +412,7 @@
     <div class="wrap"><h2>System requirements</h2><p class="spec-line">macOS 14 Sonoma or later · Universal binary for Apple silicon and Intel · No package-manager dependencies; the only bundled third-party component is Sparkle (MIT), used for update checks that are off by default · Accessibility is used by scroll smoothing, mouse mapping, window management and window restore; everything else works without it · Works offline after activation</p></div>
   </section>
 
-<section class="wrap" style="padding-bottom:2rem"><p class="f-note"><p class="f-body"><a href="window-layouts.html">Preview the 12 window layouts →</a></p></p></section>
+<section class="wrap" style="padding-bottom:2rem"><p class="f-note"><p class="f-body"><a href="window-layouts.html?src=free-window">Preview the 12 window layouts →</a></p></p></section>
 </main>
 <footer class="foot-v2">
   <div class="wrap">

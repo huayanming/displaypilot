@@ -176,7 +176,7 @@
           <p class="f-eyebrow">01 · 滚动平滑</p>
           <h2 class="f-title">一格滚轮，拆成一段</h2>
           <p class="f-body">滚轮的一格不再是一次跳变。事件先攒起来，再在每次屏幕刷新时投递，每帧投出 <code>pending × (1 − e^(−dt/τ))</code>。衰减由经过的时间驱动、而不是帧数，所以响应形状由时间决定，与刷新率无关；总量守恒在 60、120、144 Hz 下都测过。离线基准里，120 Hz 的首帧从 3 点提升到 9 点，90% 用时从 150 ms 降到 133 ms。</p>
-          <p class="f-body"><a href="../scroll-test.html">运行免费的浏览器滚轮测试 →</a> 不需要安装，测量滚轮事件间隔和丢帧。</p>
+          <p class="f-body"><a href="../scroll-test.html?src=free-scroll">运行免费的浏览器滚轮测试 →</a> 不需要安装，测量滚轮事件间隔和丢帧。</p>
           <p class="f-note sunk neu neu-sink">把滚轮当精确输入或缩放控件的窗口——终端、看图、幻灯片——默认交回系统。按住 ⌘ 随时回到原生滚动。平滑<strong>默认关闭</strong>：你不打开，它就不会接管滚轮。界面上留着四个实时计数——看到、手势、拦截、投递——换了新鼠标出问题，能看清是哪一层丢了事件。</p>
         </div>
         <figure class="f-media tall neu plate">
@@ -189,7 +189,7 @@
           <p class="f-eyebrow">02 · 软件调光</p>
           <h2 class="f-title">调暗，不碰面板固件</h2>
           <p class="f-body">亮度走 CoreGraphics 伽马表，所以显示器没实现 DDC/CI 也能用。换分辨率或唤醒后，应用会重写曲线，并把一个内部采样点与目标值比对；对不上就重试，总共最多四次。换分辨率与休眠唤醒都会自动重放曲线，不会悄悄失效。</p>
-          <p class="f-body"><a href="../display-test.html">运行免费的显示器测试图 →</a></p>
+          <p class="f-body"><a href="../display-test.html?src=free-display">运行免费的显示器测试图 →</a></p>
           <p class="f-note sunk neu neu-sink">重放始终从接管时抓取的基准重算，而不是拿当前曲线当基准，所以反复调整不会累积误差。亮度 60% 时，中灰点从 0.5020 移到 0.3012——这是精确缩放，不是累积的偏移量。进程退出时 macOS 会还原显示器；另有两条不依赖应用运行的恢复路径：应用内一条，以及 <code>Scripts/restore-dimming.sh</code>。</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="色彩校准实测读数">
@@ -411,7 +411,7 @@
     <div class="wrap"><h2>系统要求</h2><p class="spec-line">macOS 14 Sonoma 或更高 · Apple 芯片与 Intel 通用二进制 · 不依赖包管理器；唯一打包的第三方组件是 Sparkle（MIT），用于默认关闭的更新检查 · 滚动平滑、鼠标映射、窗口管理与窗口恢复会用到辅助功能权限，其它功能不需要 · 激活后离线可用</p></div>
   </section>
 
-<section class="wrap" style="padding-bottom:2rem"><p class="f-note"><p class="f-body"><a href="../window-layouts.html">预览 12 种窗口布局 →</a></p></p></section>
+<section class="wrap" style="padding-bottom:2rem"><p class="f-note"><p class="f-body"><a href="../window-layouts.html?src=free-window">预览 12 种窗口布局 →</a></p></p></section>
 </main>
 <footer class="foot-v2">
   <div class="wrap">
