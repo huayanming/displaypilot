@@ -1119,6 +1119,11 @@ html[lang="zh-Hant"] .hero-v2 h1 {
   inset: 0;
   border-radius: 50%;
   overflow: hidden;
+  isolation: isolate;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  transform: translateZ(0);
   background:
     radial-gradient(circle at 28% 24%, rgba(255,255,255,.88) 0 2%, transparent 12%),
     radial-gradient(circle at 34% 30%, rgba(255,255,255,.22), transparent 30%),
@@ -1301,8 +1306,11 @@ html[lang="zh-Hant"] .hero-v2 h1 {
 @media (max-width: 620px) {
   .orb-command-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .orb-feature-cards { grid-template-columns: 1fr; }
-  .orb-stage { min-height: 15rem; }
+  .orb-section > .wrap { overflow: clip; }
+  .orb-stage { min-height: 0; overflow: clip; padding: .7rem 0 1.1rem; }
+  .glow-orb { width: clamp(8.6rem, 43vw, 11rem); max-width: 72%; }
   .orb-stage.is-open .orb-dock { max-height: 68rem; }
+  .orb-dock { border-radius: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .orb-core, .orb-core::before, .orb-core::after, .glow-orb { animation: none !important; }
