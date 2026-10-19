@@ -403,7 +403,7 @@ footer { padding: 3rem 0 4rem; text-align: center; }
 
 /* ── 1. Hero ── */
 .hero-v2 {
-  position: relative; overflow: clip; text-align: left;
+  position: relative; overflow: visible; text-align: left;
   padding: clamp(3rem, 7vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
 }
 .hero-v2::before {
@@ -772,7 +772,7 @@ html[lang="zh-Hant"] .hero-v2 h1 {
 
 /* The pointer light is local to the hero; the rest of the page stays calm. */
 .hero-v2::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  content: ""; position: absolute; inset: -22% -8%; pointer-events: none; z-index: 0;
   background: radial-gradient(240px circle at var(--mx) var(--my),
               rgba(243,112,33,.12), rgba(243,112,33,.035) 38%, transparent 72%);
   opacity: .9;
