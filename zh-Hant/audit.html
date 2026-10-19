@@ -30,9 +30,10 @@
   <article class="doc">
     <h1>LumePane 怎麼檢查自己</h1>
     <p class="summary">這個站點上的每個數字主張，都由一個讀原始碼的自動腳本核對。</p>
-    <p><strong>16 道自動檢查</strong></p>
+    <p><strong>17 道自動檢查</strong></p>
     <ul>
       <li><code>check-app-claims</code> — 應用側否定式承諾：網路白名單、永久刪除白名單、零遙測、更新預設關閉、權限說明</li>
+      <li><code>check-brand-naming</code> — the shipped app, executable and DMG use the LumePane name; a legacy DisplayPilot artifact name fails the gate.</li>
       <li><code>check-audit-report</code> — 稽核報告與文件副本一致、守衛項數等於實測</li>
       <li><code>check-channel-tags</code> — 渠道標籤引用：文件裡出現的標籤必須真實存在</li>
       <li><code>check-conventions</code> — 命名與結構約定、單檔行數上限、中文字面量必須進本地化</li>

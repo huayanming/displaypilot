@@ -30,9 +30,10 @@
   <article class="doc">
     <h1>How Neeson &amp; Sea check ourselves</h1>
     <p class="summary">Every claim on this site is checked by an automated script that reads the source of truth. A failing check blocks the build.</p>
-    <p><strong>16 automated checks</strong></p>
+    <p><strong>17 automated checks</strong></p>
     <ul>
       <li><code>check-app-claims</code> — app-side negative promises: the network allowlist, the permanent-delete allowlist, zero telemetry, updates off by default, and permission wording.</li>
+      <li><code>check-brand-naming</code> — the shipped app, executable and DMG use the LumePane name; a legacy DisplayPilot artifact name fails the gate.</li>
       <li><code>check-audit-report</code> — the audit report matches the docs, and its guard counts equal the measured ones.</li>
       <li><code>check-channel-tags</code> — campaign tags referenced in docs must actually exist.</li>
       <li><code>check-conventions</code> — naming and structure conventions, the per-file line cap, and Chinese literals must be localised.</li>
