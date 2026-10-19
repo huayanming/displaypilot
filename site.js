@@ -562,7 +562,7 @@ function campaignSource() {
   var root = document.createElement("div");
   root.id = "lp-support";
   root.innerHTML = '<div id="lp-support-panel" role="dialog" aria-modal="false" aria-label="' + t("LumePane support", "LumePane 支持") + '">' +
-    '<div id="lp-support-head"><div><b>' + t("LumePane support", "LumePane 支持") + '</b><small>' + t("Leave a message. Replies usually within 24h.", "留言即可，通常 24 小时内回复。") + '</small></div><button id="lp-support-close" type="button" aria-label="' + t("Close", "关闭") + '">×</button></div>' +
+    '<div id="lp-support-head"><div><b>' + t("LumePane support", "LumePane 支持") + '</b><small>' + t("Leave a message. Replies usually within 24h; reopen this window to see them.", "留言即可，通常 24 小时内回复；重新打开窗口查看回复。") + '</small></div><button id="lp-support-close" type="button" aria-label="' + t("Close", "关闭") + '">×</button></div>' +
     '<div id="lp-support-body">' +
       '<div><label for="lp-support-email">' + t("Email", "邮箱") + '</label><input id="lp-support-email" type="email" autocomplete="email" placeholder="you@example.com"></div>' +
       '<div><label for="lp-support-topic">' + t("Topic", "主题") + '</label><select id="lp-support-topic"><option value="support">' + t("A question", "使用问题") + '</option><option value="order">' + t("Order / code", "购买 / 发码") + '</option><option value="privacy">' + t("Privacy", "隐私") + '</option></select></div>' +
@@ -651,7 +651,7 @@ function campaignSource() {
   }
 
   document.getElementById("lp-support-close").addEventListener("click", function () { setOpen(false); });
-  fab.addEventListener("click", function () { setOpen(!panel.classList.contains("open")); if (!current) loadThread(); });
+  fab.addEventListener("click", function () { setOpen(!panel.classList.contains("open")); if (saved()) loadThread(); else if (!current) loadThread(); });
   document.getElementById("lp-support-send").addEventListener("click", send);
   document.getElementById("lp-support-reply-send").addEventListener("click", reply);
   document.getElementById("lp-support-reply-input").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); reply(); } });
