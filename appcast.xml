@@ -7,20 +7,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.15</title>
-      <pubDate>Mon, 19 Oct 2026 16:37:34 +0000</pubDate>
-      <sparkle:version>8.0.15</sparkle:version>
-      <sparkle:shortVersionString>8.0.15</sparkle:shortVersionString>
+      <title>LumePane 8.0.16</title>
+      <pubDate>Mon, 19 Oct 2026 16:47:31 +0000</pubDate>
+      <sparkle:version>8.0.16</sparkle:version>
+      <sparkle:shortVersionString>8.0.16</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[新快捷
-• 桌面图标显示/隐藏：Finder CreateDesktop 写入、读回、重启 Finder。
-• 重启 Finder：killall Finder，用于 Finder 卡住或菜单不刷新。
-• Wi-Fi 开关与截图到剪贴板保持 8.0.14 的行为。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[音频输出切换
+• 使用 CoreAudio 枚举输出设备，读取默认输出，切到下一台并读回确认。
+• 输出设备少于两台时明确标为不支持，不显示可点但无效的按钮。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-8.0.15.dmg" length="10531732" type="application/octet-stream" sparkle:edSignature="iS6K0SkzySGmQFieJkdXIUDLb3EXoFMkrPlu6vDNJ5MuuY1HvSRZda/ZjpP/Vd2CEyw2z3Up/YX3x69a8l0qDg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-8.0.16.dmg" length="10535564" type="application/octet-stream" sparkle:edSignature="Jr6/mE6Fq1pKGKyW9+UEGV6VFpo6b8EN8nA/HDzH8/Yi2zpkgftr2BetZyK4A11OHaG2sYfJNktmPgmuZHrOCA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: N74kyiVi66HR7ejfuomxt/L5g06zHlL5T35Ts9A6TbnI97xo/U2tB1/l3fBTdFRyMK/xL3vcLG5wBLiSFZHADA==
-length: 1584
+edSignature: LY+twKmcN55QL0YPXo2CuWJPamb2av2kDl9/Z5OfyZMTfIkle+bBV4k23oA98IkvgATJx/ltEDUI3ScZzeIvBg==
+length: 1551
 -->
