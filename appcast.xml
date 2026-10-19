@@ -7,19 +7,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.9</title>
-      <pubDate>Mon, 19 Oct 2026 05:58:59 +0000</pubDate>
-      <sparkle:version>8.0.9</sparkle:version>
-      <sparkle:shortVersionString>8.0.9</sparkle:shortVersionString>
+      <title>LumePane 8.0.10</title>
+      <pubDate>Mon, 19 Oct 2026 06:13:45 +0000</pubDate>
+      <sparkle:version>8.0.10</sparkle:version>
+      <sparkle:shortVersionString>8.0.10</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[收起动画
-• 修复收起 Dock 时整个玻璃面板从 Dock 位置缩向悬浮球、看起来像一个透明玻璃球飞过去的问题。
-• 展开与收起改为直接切换面板尺寸与位置；球体自身保留光晕和流体动画。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[平滑滚动
+• 慢速滚轮不再落入死区后直接透传原生事件；低于死区仍平滑，只是不做首帧加速。
+• 步进拆段只用于大幅滚动；慢速微动不再先拆成 10 段等待凑齐第一像素。
+• 步进拆段的第一段立即进入插值，剩余段才排队，消除每格开始前的空等。
+• 保持逐帧总量守恒和正反向可逆。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.9.dmg" length="10537996" type="application/octet-stream" sparkle:edSignature="iBVQDoN80VU/ITc6hmMyQA+ooLFuss4dqVpowhYGBT/tk2EvbrUPq/11YxzzSxpXySFutCC/7YzGxLovw5TjCw=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.10.dmg" length="10539390" type="application/octet-stream" sparkle:edSignature="IlSa+ebSaB6lgcuKwhzM1sWTSeuewhf6BQFj/Eo9AHcpEzcx9P1r9SOWYUvRGAKpzcYRajAdZNiTEmgDQ78HCQ=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: x9L15qXFsOfLmF4ael4lkmYFIjEcg0mKOXojuSAPuCuwUefSU8XiMWuSly4Qb4YgD3ycE/ML6s6EC7CMOEO1DA==
-length: 1591
+edSignature: 7BiGWUrghmTLEGx7UQ5f3VYJcL0XGYcVfG9fNZ4PrxC1izzRajVOJDEzBmirXBbIeLsKOpIMws4DDaDhHcpCAA==
+length: 1732
 -->
