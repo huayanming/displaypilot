@@ -517,3 +517,147 @@ function campaignSource() {
     }
   });
 })();
+
+/* LumePane support inbox — first-party, no third-party chat SDK.
+   A thread is created on the licence Worker; replies are read by the owner in
+   the admin support page. This is an inbox, not a claim of live presence. */
+(function () {
+  "use strict";
+  if (window.__lpSupportLoaded) return;
+  window.__lpSupportLoaded = true;
+  var lang = (document.documentElement.lang || "en").toLowerCase();
+  var zh = lang.indexOf("zh") === 0;
+  var API = "https://license.lumepane.com/api/support";
+  var KEY = "lp-support-thread-v1";
+  var current = null;
+  var poll = 0;
+  var t = function (en, cn) { return zh ? cn : en; };
+
+  var style = document.createElement("style");
+  style.textContent = [
+    "#lp-support{position:fixed;right:20px;bottom:20px;z-index:2147483000;font:14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink,#26221e)}",
+    "#lp-support *{box-sizing:border-box}",
+    "#lp-support-fab{width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:var(--surface,#f2efea);box-shadow:8px 8px 18px rgba(88,78,64,.22),-8px -8px 18px rgba(255,255,255,.8);color:var(--ink,#26221e);font-weight:700;font-size:11px;letter-spacing:.02em;position:relative}",
+    "#lp-support-fab:focus-visible,#lp-support-panel button:focus-visible,#lp-support-panel input:focus-visible,#lp-support-panel textarea:focus-visible,#lp-support-panel select:focus-visible{outline:2px solid #b8480f;outline-offset:3px}",
+    "#lp-support-fab:after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#b8480f;box-shadow:0 0 0 3px var(--surface,#f2efea)}",
+    "#lp-support-panel{position:absolute;right:0;bottom:70px;width:min(370px,calc(100vw - 40px));max-height:min(620px,calc(100vh - 110px));background:var(--surface,#f2efea);border-radius:24px;box-shadow:18px 18px 40px rgba(88,78,64,.27),-10px -10px 28px rgba(255,255,255,.75);display:none;flex-direction:column;overflow:hidden}",
+    "#lp-support-panel.open{display:flex}",
+    "#lp-support-head{display:flex;align-items:center;gap:10px;padding:16px 18px 12px;border-bottom:1px solid rgba(87,81,74,.12)}",
+    "#lp-support-head b{font-size:14px;letter-spacing:-.01em}#lp-support-head small{display:block;color:var(--ink-muted,#6b645c);font-size:11px;margin-top:2px}",
+    "#lp-support-close{margin-left:auto;border:0;background:transparent;color:var(--ink-muted,#6b645c);font-size:22px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:8px}",
+    "#lp-support-body{padding:14px 18px;overflow:auto;display:flex;flex-direction:column;gap:10px}",
+    "#lp-support-body label{font-size:11px;font-weight:650;color:var(--ink-soft,#57514a);letter-spacing:.02em;display:block;margin-bottom:4px}",
+    "#lp-support-body input,#lp-support-body select,#lp-support-body textarea{width:100%;font:inherit;color:var(--ink,#26221e);background:var(--sunken,#d2cec7);border:0;border-radius:12px;padding:9px 11px;box-shadow:inset 2px 2px 5px rgba(150,143,133,.45),inset -2px -2px 5px rgba(255,255,255,.75)}",
+    "#lp-support-body textarea{min-height:92px;resize:vertical}#lp-support-body .hint{font-size:11px;color:var(--ink-muted,#6b645c);line-height:1.55;margin:0}",
+    "#lp-support-send{width:100%;border:0;border-radius:12px;background:#b8480f;color:#fff;padding:11px 14px;font:650 13px/1 inherit;cursor:pointer;box-shadow:0 6px 14px rgba(184,72,15,.22)}#lp-support-send:disabled{opacity:.5;cursor:default}",
+    "#lp-support-status{font-size:11px;color:var(--ink-muted,#6b645c);min-height:16px}",
+    "#lp-support-thread{display:none;flex-direction:column;gap:8px;padding:14px 18px;overflow:auto}#lp-support-thread.open{display:flex}",
+    ".lp-msg{max-width:86%;padding:8px 11px;border-radius:14px;white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.5}.lp-msg.user{background:#fff;margin-right:auto;box-shadow:0 2px 8px rgba(88,78,64,.08)}.lp-msg.support{background:#f7d9c8;margin-left:auto}.lp-msg small{display:block;font-size:10px;color:var(--ink-muted,#6b645c);margin-bottom:2px}",
+    "#lp-support-reply{display:flex;gap:6px;padding:0 18px 16px}#lp-support-reply input{flex:1;font:inherit;border:0;border-radius:12px;padding:9px 11px;background:var(--sunken,#d2cec7);box-shadow:inset 2px 2px 5px rgba(150,143,133,.45),inset -2px -2px 5px rgba(255,255,255,.75);color:inherit}#lp-support-reply button{border:0;border-radius:12px;background:#b8480f;color:#fff;padding:0 14px;font-weight:650;cursor:pointer}",
+    "#lp-support .lp-hidden{display:none!important}",
+    "@media(max-width:480px){#lp-support{right:12px;bottom:12px}#lp-support-panel{width:calc(100vw - 24px);max-height:calc(100vh - 90px)}}",
+  ].join("");
+  document.head.appendChild(style);
+
+  var root = document.createElement("div");
+  root.id = "lp-support";
+  root.innerHTML = '<div id="lp-support-panel" role="dialog" aria-modal="false" aria-label="' + t("LumePane support", "LumePane 支持") + '">' +
+    '<div id="lp-support-head"><div><b>' + t("LumePane support", "LumePane 支持") + '</b><small>' + t("Leave a message. Replies usually within 24h.", "留言即可，通常 24 小时内回复。") + '</small></div><button id="lp-support-close" type="button" aria-label="' + t("Close", "关闭") + '">×</button></div>' +
+    '<div id="lp-support-body">' +
+      '<div><label for="lp-support-email">' + t("Email", "邮箱") + '</label><input id="lp-support-email" type="email" autocomplete="email" placeholder="you@example.com"></div>' +
+      '<div><label for="lp-support-topic">' + t("Topic", "主题") + '</label><select id="lp-support-topic"><option value="support">' + t("A question", "使用问题") + '</option><option value="order">' + t("Order / code", "购买 / 发码") + '</option><option value="privacy">' + t("Privacy", "隐私") + '</option></select></div>' +
+      '<div><label for="lp-support-message">' + t("Message", "消息") + '</label><textarea id="lp-support-message" maxlength="2000" placeholder="' + t("What happened? For an order, include the order id or transaction id.", "发生了什么？如果是订单，请写订单号或交易号。") + '"></textarea></div>' +
+      '<p class="hint">' + t("Never send a card number, password, seed phrase or private key. This is an inbox, not live chat.", "不要发送银行卡号、密码、助记词或私钥。这里是留言收件箱，不是实时在线聊天。") + '</p>' +
+      '<button id="lp-support-send" type="button">' + t("Send", "发送") + '</button><p id="lp-support-status" role="status" aria-live="polite"></p>' +
+    '</div>' +
+    '<div id="lp-support-thread" aria-live="polite"></div>' +
+    '<div id="lp-support-reply" class="lp-hidden"><input id="lp-support-reply-input" maxlength="2000" placeholder="' + t("Reply…", "继续回复…") + '"><button id="lp-support-reply-send" type="button">' + t("Reply", "回复") + '</button></div>' +
+  '</div><button id="lp-support-fab" type="button" aria-label="' + t("Open support", "打开客服") + '" aria-expanded="false">' + t("SUPPORT", "客服") + '</button>';
+  document.body.appendChild(root);
+
+  var panel = document.getElementById("lp-support-panel");
+  var body = document.getElementById("lp-support-body");
+  var threadBox = document.getElementById("lp-support-thread");
+  var replyRow = document.getElementById("lp-support-reply");
+  var status = document.getElementById("lp-support-status");
+  var fab = document.getElementById("lp-support-fab");
+
+  function setOpen(open) {
+    panel.classList.toggle("open", open);
+    fab.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) setTimeout(function () { document.getElementById("lp-support-email").focus(); }, 50);
+  }
+  function setStatus(text, bad) { status.textContent = text; status.style.color = bad ? "#a32b1e" : ""; }
+  function esc(v) { return String(v == null ? "" : v); }
+  function saved() { try { return JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { return null; } }
+  function save(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+  function clear() { try { localStorage.removeItem(KEY); } catch (e) {} }
+
+  function renderThread(thread) {
+    if (!thread) return;
+    body.classList.add("lp-hidden");
+    replyRow.classList.remove("lp-hidden");
+    threadBox.classList.add("open");
+    threadBox.innerHTML = "";
+    (thread.messages || []).forEach(function (m) {
+      var d = document.createElement("div");
+      d.className = "lp-msg " + (m.from === "support" ? "support" : "user");
+      var label = document.createElement("small");
+      label.textContent = (m.from === "support" ? t("Support", "客服") : t("You", "你")) + " · " + new Date(m.at).toLocaleString();
+      var text = document.createElement("div");
+      text.textContent = m.body;
+      d.appendChild(label); d.appendChild(text); threadBox.appendChild(d);
+    });
+    threadBox.scrollTop = threadBox.scrollHeight;
+  }
+
+  function loadThread() {
+    var s = saved();
+    if (!s || !s.id || !s.token) return;
+    fetch(API + "/thread?id=" + encodeURIComponent(s.id) + "&token=" + encodeURIComponent(s.token), { cache: "no-store" })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || "error"); return j; }); })
+      .then(function (j) { current = j.thread; if (panel.classList.contains("open")) renderThread(current); })
+      .catch(function () { clear(); });
+  }
+
+  function startPolling() {
+    if (poll) return;
+    poll = setInterval(function () { if (panel.classList.contains("open") && current) loadThread(); }, 8000);
+  }
+
+  function send() {
+    var email = document.getElementById("lp-support-email").value.trim();
+    var topic = document.getElementById("lp-support-topic").value;
+    var message = document.getElementById("lp-support-message").value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus(t("Enter a valid email.", "请输入有效邮箱。"), true); return; }
+    if (!message) { setStatus(t("Write a message first.", "请先写消息。"), true); return; }
+    var btn = document.getElementById("lp-support-send"); btn.disabled = true; setStatus(t("Sending…", "发送中…"));
+    fetch(API + "/thread", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ email: email, topic: topic, message: message }) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || "error"); return j; }); })
+      .then(function (j) { save({ id: j.id, token: j.token }); current = j.thread; renderThread(current); startPolling(); setStatus(t("Message sent.", "已发送。")); })
+      .catch(function () { setStatus(t("Could not send. Email huayanming2019@gmail.com instead.", "发送失败，请改发邮件 huayanming2019@gmail.com。"), true); })
+      .finally(function () { btn.disabled = false; });
+  }
+
+  function reply() {
+    var input = document.getElementById("lp-support-reply-input");
+    var text = input.value.trim(); if (!text || !saved()) return;
+    var s = saved(); var btn = document.getElementById("lp-support-reply-send"); btn.disabled = true;
+    fetch(API + "/message", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: s.id, token: s.token, message: text }) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || "error"); return j; }); })
+      .then(function (j) { input.value = ""; current = j.thread; renderThread(current); })
+      .catch(function () { setStatus(t("Reply failed. Try again later.", "回复失败，请稍后再试。"), true); })
+      .finally(function () { btn.disabled = false; });
+  }
+
+  document.getElementById("lp-support-close").addEventListener("click", function () { setOpen(false); });
+  fab.addEventListener("click", function () { setOpen(!panel.classList.contains("open")); if (!current) loadThread(); });
+  document.getElementById("lp-support-send").addEventListener("click", send);
+  document.getElementById("lp-support-reply-send").addEventListener("click", reply);
+  document.getElementById("lp-support-reply-input").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); reply(); } });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && panel.classList.contains("open")) setOpen(false); });
+
+  var s = saved();
+  if (s) { current = { messages: [] }; loadThread(); fab.setAttribute("aria-label", t("Open support (conversation saved)", "打开客服（有已保存的对话）")); }
+  startPolling();
+})();
