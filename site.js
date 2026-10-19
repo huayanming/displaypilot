@@ -537,9 +537,9 @@ function campaignSource() {
   style.textContent = [
     "#lp-support{position:fixed;right:20px;bottom:20px;z-index:2147483000;font:14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink,#26221e)}",
     "#lp-support *{box-sizing:border-box}",
-    "#lp-support-fab{width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:var(--surface,#f2efea);box-shadow:8px 8px 18px rgba(88,78,64,.22),-8px -8px 18px rgba(255,255,255,.8);color:var(--ink,#26221e);font-weight:700;font-size:11px;letter-spacing:.02em;position:relative}",
+    "#lp-support-fab{width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:var(--hermes,#F37021);box-shadow:8px 8px 18px rgba(184,72,15,.30),-8px -8px 18px rgba(255,255,255,.8);color:#fff;font-weight:700;font-size:11px;letter-spacing:.02em;position:relative}",
     "#lp-support-fab:focus-visible,#lp-support-panel button:focus-visible,#lp-support-panel input:focus-visible,#lp-support-panel textarea:focus-visible,#lp-support-panel select:focus-visible{outline:2px solid #b8480f;outline-offset:3px}",
-    "#lp-support-fab:after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#b8480f;box-shadow:0 0 0 3px var(--surface,#f2efea)}",
+    "#lp-support-fab:after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--hermes,#F37021)}",
     "#lp-support-panel{position:absolute;right:0;bottom:70px;width:min(370px,calc(100vw - 40px));max-height:min(620px,calc(100vh - 110px));background:var(--surface,#f2efea);border-radius:24px;box-shadow:18px 18px 40px rgba(88,78,64,.27),-10px -10px 28px rgba(255,255,255,.75);display:none;flex-direction:column;overflow:hidden}",
     "#lp-support-panel.open{display:flex}",
     "#lp-support-head{display:flex;align-items:center;gap:10px;padding:16px 18px 12px;border-bottom:1px solid rgba(87,81,74,.12)}",
@@ -622,7 +622,7 @@ function campaignSource() {
 
   function startPolling() {
     if (poll) return;
-    poll = setInterval(function () { if (panel.classList.contains("open") && current) loadThread(); }, 8000);
+    poll = setInterval(function () { if (panel.classList.contains("open") && current) loadThread(); }, 3000);
   }
 
   function send() {
