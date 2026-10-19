@@ -376,8 +376,13 @@ function campaignSource() {
   copyCol.appendChild(el("p", "", c.body.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&")));
   var kv = el("div", "contact-kv");
   var supportLine = el("span", "", (c.email || "Support") + ": ");
-  supportLine.appendChild(el("span", "", "使用本页右下角客服窗口 / Use the support window on this page"));
+  var supportMail = el("a", "", "support@lumepane.com");
+  supportMail.href = "mailto:support@lumepane.com";
+  supportLine.appendChild(supportMail);
   kv.appendChild(supportLine);
+  var windowLine = el("span", "", "在线客服 / Support window: ");
+  windowLine.appendChild(el("span", "", "右下角 / bottom right"));
+  kv.appendChild(windowLine);
   copyCol.appendChild(kv);
 
   var actions = el("div", "contact-actions");
