@@ -7,20 +7,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.13</title>
-      <pubDate>Mon, 19 Oct 2026 15:50:36 +0000</pubDate>
-      <sparkle:version>8.0.13</sparkle:version>
-      <sparkle:shortVersionString>8.0.13</sparkle:shortVersionString>
+      <title>LumePane 8.0.14</title>
+      <pubDate>Mon, 19 Oct 2026 16:13:16 +0000</pubDate>
+      <sparkle:version>8.0.14</sparkle:version>
+      <sparkle:shortVersionString>8.0.14</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[低刷新率屏幕的平滑滚动
-• 60Hz 屏幕上单帧推进量上限从自然 alpha 降到 16%，避免首帧/每帧跳一大段；120/144Hz 不受影响。
-• 总位移仍然守恒；60Hz 的尾部会分到更多帧，Mac mini + 60Hz 外接屏不再显得一跳一跳。
-• 离线自检：60/120/144Hz 总量误差 0%；60Hz 首帧 13%，120Hz 首帧 30%。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[新快捷
+• 新增 Wi-Fi 开关：CoreWLAN 读取、切换、读回确认。
+• 新增截图到剪贴板：screencapture -c，不落盘。
+• 滚动改为连续 Hz 曲线（60–240Hz），低刷新率分帧更细。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-8.0.13.dmg" length="10525932" type="application/octet-stream" sparkle:edSignature="QNkbzoKRB98Ja8Oh0X9P92b42OVRU/R4qfPXIAgdJvf6cMhpdmUlgzH0o3Xdr93vUbGJrweNOunOeHvBqv8ICA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-8.0.14.dmg" length="10529918" type="application/octet-stream" sparkle:edSignature="3ZDwidfYR7jFJjiDZ5UUTdnXvaBKBvGLxxgRBnpYBkjAyHGFtWqtO+3MeVbIMSfkL5xfBovKMEIaXdn2XGASCA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: FsnT6eLXTKxFdROSvNtQ9LxKMIL0lzYqi4DlGhu6uDm0qaUu3diVDaIMquM691AJ0G0iWdT2YgD0TbH1Gt/HBw==
-length: 1709
+edSignature: cIGFgDrWVnC5qGzKvOnHNtC/ag0C51fgrkVDDFRmqTCKcGSnunYzI91Jfm1kInX82O9jf7BJSreQRqeAmmb2AQ==
+length: 1564
 -->

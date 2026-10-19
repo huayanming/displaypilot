@@ -70,7 +70,7 @@ Screenshots are unretouched captures of the shipping UI on a real external monit
 ## Contact
 
 Email **huayanming2019@gmail.com** — a person reads it, usually within a few hours.
-Download: <https://lumepane.com/dl/LumePane-8.0.13.dmg>
+Download: <https://lumepane.com/dl/LumePane-8.0.14.dmg>
 Homepage: <https://lumepane.com/>
 
 ---
