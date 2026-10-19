@@ -48,7 +48,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>自己验证</h1>
-<p class="summary">LumePane 是还没有评价的新付费应用，所以<strong>请不要信尼森与海的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 8.0.11 版本。</p>
+<p class="summary">LumePane 是还没有评价的新付费应用，所以<strong>请不要信尼森与海的话</strong>。这一页的每条说法，都可以在你的 Mac 上用下面的命令亲自核对。这里引用的输出，逐字来自已发布的 8.0.12 版本。</p>
 
 <h2>一、它真的是尼森与海的吗？Apple 公证过吗？</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -65,8 +65,8 @@ xcrun stapler validate /Applications/LumePane.app
 <p>这个二进制用尼森与海的 Developer ID 签名，Apple 扫描并公证过，且公证凭据<strong>钉扎</strong>在应用内，因此离线也能验证。任何被改动过的副本都过不了这三项。</p>
 
 <h2>二、下载的东西完整吗？</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-8.0.11.dmg
-  ca5a9a037d5745c84315fc08558323862bcb735badf3321ce5836c34a223f4d1</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/LumePane-8.0.12.dmg
+  8c519e0354de596fd39da2fb7b78cfe9deeddffaa86cfab661d36f294723ccaf</code></pre>
 <p>同一个值也写在 Homebrew cask 里，所以你有<strong>两个独立的地方</strong>可以对照：</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>如果对不上，<strong>不要运行这个文件</strong>。</p>
@@ -93,6 +93,7 @@ xcrun stapler validate /Applications/LumePane.app
 <pre><code>LumePane --scroll-selftest</code></pre>
 <p>在尼森与海的测试面板（120&nbsp;Hz）上，首帧从 3 点提升到 9 点，90% 用时从 150&nbsp;ms 降到 133&nbsp;ms。这些数字描述的是<em>算法</em>的响应，不是你的硬件，所以你自己跑出来的会不一样。</p>
 </article>
+<p class="wrap" style="padding-bottom:2rem"><a href="download.html"><a href="download.html">下载镜像</a></a></p>
 </main>
 <footer class="doc-foot">
   <div class="wrap">
@@ -105,6 +106,6 @@ xcrun stapler validate /Applications/LumePane.app
     <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=8.0.11-orb4" defer></script>
+<script src="../site.js?v=8.0.12-orb1" defer></script>
 </body>
 </html>

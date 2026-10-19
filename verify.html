@@ -48,7 +48,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>Verify it yourself</h1>
-<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take Neeson &amp; Sea's word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 8.0.11 build.</p>
+<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take Neeson &amp; Sea's word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 8.0.12 build.</p>
 
 <h2>1. Is it really ours, and did Apple notarize it?</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -65,8 +65,8 @@ xcrun stapler validate /Applications/LumePane.app
 <p>The binary is signed with Neeson &amp; Sea's Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
 
 <h2>2. Did the download arrive intact?</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-8.0.11.dmg
-  ca5a9a037d5745c84315fc08558323862bcb735badf3321ce5836c34a223f4d1</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/LumePane-8.0.12.dmg
+  8c519e0354de596fd39da2fb7b78cfe9deeddffaa86cfab661d36f294723ccaf</code></pre>
 <p>The same value is published in the Homebrew cask, so there are two independent places to compare against:</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>If your value differs, <strong>do not run the file</strong>.</p>
@@ -93,6 +93,7 @@ xcrun stapler validate /Applications/LumePane.app
 <pre><code>LumePane --scroll-selftest</code></pre>
 <p>On Neeson &amp; Sea's test panel (120&nbsp;Hz) the first frame went from 3 to 9 points and time-to-90% from 150&nbsp;ms to 133&nbsp;ms. Those numbers describe the <em>algorithm's</em> response, not your hardware, so expect your own run to differ.</p>
 </article>
+<p class="wrap" style="padding-bottom:2rem"><a href="download.html"><a href="download.html">Download mirrors</a></a></p>
 </main>
 <footer class="doc-foot">
   <div class="wrap">
@@ -105,6 +106,6 @@ xcrun stapler validate /Applications/LumePane.app
     <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
-<script src="site.js?v=8.0.11-orb4" defer></script>
+<script src="site.js?v=8.0.12-orb1" defer></script>
 </body>
 </html>

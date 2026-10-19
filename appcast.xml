@@ -7,21 +7,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.11</title>
-      <pubDate>Mon, 19 Oct 2026 06:28:47 +0000</pubDate>
-      <sparkle:version>8.0.11</sparkle:version>
-      <sparkle:shortVersionString>8.0.11</sparkle:shortVersionString>
+      <title>LumePane 8.0.12</title>
+      <pubDate>Mon, 19 Oct 2026 15:07:29 +0000</pubDate>
+      <sparkle:version>8.0.12</sparkle:version>
+      <sparkle:shortVersionString>8.0.12</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[滚动抖动修复
-• 修复插值器把整数输出直接从待滚动量里扣除、导致残余量正负翻转、无限发出 +1/−1 滚动事件的问题。这就是鼠标移动时页面上下轻微跳动的根因。
-• 待滚动量现在只按时间常数衰减；亚像素余量在空闲时一次结清，总量守恒恢复到 100%。
-• 慢速滚轮不再落入死区后直接透传；步进拆分只用于大幅滚动。
-• 离线自检：60/120/144Hz 总量误差 0%，反向归零。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[品牌一致性修复
+• 对外安装包从 DisplayPilot-8.0.11.dmg 改为 LumePane-8.0.12.dmg。
+• 应用包从 DisplayPilot.app 改为 LumePane.app，可执行文件改为 LumePane。
+• 修复「外观已经是 LumePane，但下载包、应用程序名、可执行文件名仍是 DisplayPilot」的低级不一致。
+• Bundle ID 保持 com.neeson.displaypilot 不变，避免升级时丢失许可、偏好设置和辅助功能授权；这是兼容性选择，不是漏改。
+• 增加品牌命名门禁：构建/发布时检查 app、可执行文件、DMG 名称一致，防止再次发出旧名字的包。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.11.dmg" length="10539457" type="application/octet-stream" sparkle:edSignature="hKZQ4N/qHVqcysC60GcmOZQxME7cMagYgbZ2Ac9UHa3aIq8QW5US56a6NJ/gbSXNtYNIAQCfG/CYxEBsTZoYCg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-8.0.12.dmg" length="10527803" type="application/octet-stream" sparkle:edSignature="/cRiOIO7A412dIgLXruP5TiHkg0PtwRxx5s5uxERdHlUMiwiXL2SqJyIxPp0l+dgiJZJ/6MIvfYIq9FNTsc6Bg=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: QlmD6P/ojZ7cKXxn41kR5DQm5kVaZPtvQlW3nBka6dcCtEh3rTEQhmMH8scI8p6V2SQ6YW6zOmJS2Ow++0anDw==
-length: 1845
+edSignature: /tsP7V4YWkdRzT38VQ3os2CMXimjz1RyOxQpqZ4/UCDM7g3Ha7LZpSjzL5WsTrJ+CZW5/GlepuWf0m9XAHkABg==
+length: 1961
 -->
