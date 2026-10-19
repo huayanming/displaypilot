@@ -20,7 +20,7 @@ with a deterministic rebuild path — quarantined for 30 days before anything is
 | Name | LumePane |
 | Version | 5.7.1 |
 | Platform | macOS 14 or later · universal binary (Apple silicon + Intel) |
-| Bundle identifier | `com.neeson.displaypilot` |
+| Bundle identifier | `com.neeson.lumepane` |
 | Developer ID team | `7P2P353LBW` (yanming hua) |
 | Signing | Developer ID, hardened runtime, notarized by Apple, ticket stapled |
 | Price | ¥99 / US$19 one-time (perpetual licence, one user; one year of updates included) |
@@ -44,8 +44,8 @@ with a deterministic rebuild path — quarantined for 30 days before anything is
 
 | File | Size | Use |
 |---|---|---|
-| `displaypilot-icon-1024.png` | 1024×1024 | App icon, store/listing art |
-| `displaypilot-icon-512.png` | 512×512 | Smaller icon slots |
+| `lumepane-icon-1024.png` | 1024×1024 | App icon, store/listing art |
+| `lumepane-icon-512.png` | 512×512 | Smaller icon slots |
 | `screenshot-display-en.png` | 1090×2416 | Display panel (English) |
 | `screenshot-scroll-en.png` | 700×1552 | Scrolling panel (English) |
 | `screenshot-storage-en.png` | 700×1552 | Storage panel (English) |
@@ -69,7 +69,7 @@ Screenshots are unretouched captures of the shipping UI on a real external monit
 
 ## Contact
 
-Download: <https://lumepane.com/dl/LumePane-8.0.17.dmg>
+Download: <https://lumepane.com/dl/LumePane-9.0.0.dmg>
 Homepage: <https://lumepane.com/>
 
 ---

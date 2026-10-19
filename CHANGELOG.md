@@ -52,10 +52,10 @@
 
 ### 品牌一致性修复
 
-- 对外安装包从 `DisplayPilot-8.0.11.dmg` 改为 `LumePane-8.0.12.dmg`。
-- 应用包从 `DisplayPilot.app` 改为 `LumePane.app`，可执行文件改为 `LumePane`。
-- 修复「外观已经是 LumePane，但下载包、应用程序名、可执行文件名仍是 DisplayPilot」的低级不一致。
-- Bundle ID 保持 `com.neeson.displaypilot` 不变，避免升级时丢失许可、偏好设置和辅助功能授权；这是兼容性选择，不是漏改。
+- 对外安装包从 `LumePane-8.0.11.dmg` 改为 `LumePane-8.0.12.dmg`。
+- 应用包从 `LumePane.app` 改为 `LumePane.app`，可执行文件改为 `LumePane`。
+- 修复「外观已经是 LumePane，但下载包、应用程序名、可执行文件名仍是 LumePane」的低级不一致。
+- Bundle ID 保持 `com.neeson.lumepane` 不变，避免升级时丢失许可、偏好设置和辅助功能授权；这是兼容性选择，不是漏改。
 - 增加品牌命名门禁：构建/发布时检查 app、可执行文件、DMG 名称一致，防止再次发出旧名字的包。
 
 ## [8.0.11] - 2026-10-19
@@ -276,8 +276,8 @@
 ### 品牌
 
 - 正式更名为 **LumePane**：App 显示名、窗口/菜单、CLI、官网、购买页、本地化文案统一更新。
-- 保留内部 bundle ID（`com.neeson.displaypilot`）与可执行文件名，避免丢失辅助功能授权、设备登记和 Sparkle 更新链路。
-- 内部设置 schema 仍为 `displaypilot.settings`，旧设置文件可继续导入。
+- 保留内部 bundle ID（`com.neeson.lumepane`）与可执行文件名，避免丢失辅助功能授权、设备登记和 Sparkle 更新链路。
+- 内部设置 schema 仍为 `lumepane.settings`，旧设置文件可继续导入。
 
 ### 交付
 
@@ -294,8 +294,8 @@
 
 ### 修正
 
-- **平滑滚动在“DisplayPilot 窗口在前台、鼠标在浏览器上滚动”时完全失效**。
-  引擎原来用“当前前台应用”判断是否要排除，误把浏览器滚动当成 DisplayPilot 自身滚动，
+- **平滑滚动在“LumePane 窗口在前台、鼠标在浏览器上滚动”时完全失效**。
+  引擎原来用“当前前台应用”判断是否要排除，误把浏览器滚动当成 LumePane 自身滚动，
   全部跳过（诊断可见 `seen=119 / excluded=119 / intercepted=0`）。现改为按
   **鼠标指针下最上层窗口所属应用**判断；同样场景实测 `intercepted=12 / 投递帧=150`。
 

@@ -33,12 +33,12 @@
 <meta property="og:locale:alternate" content="ko_KR">
 <meta property="og:locale:alternate" content="de_DE">
 <meta property="og:locale:alternate" content="fr_FR">
-<meta property="og:image" content="https://lumepane.com/img/og-lumepane.v601.png">
+<meta property="og:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="LumePane — the missing console for your Mac display">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lumepane.com/img/og-lumepane.v601.png">
+<meta name="twitter:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css?v=8.0.14-1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"Política de privacidad","inLanguage":"es","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://lumepane.com/es/privacy.html"}</script>
@@ -56,7 +56,7 @@
       <a href="support.html">Soporte</a>
     </nav>
     <details class="lang"><summary>Español</summary><ul class="lang-menu" aria-label="Idioma"><li><a href="../privacy.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/privacy.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="../zh-Hant/privacy.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li><li><a href="../ja/privacy.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/privacy.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/privacy.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/privacy.html" hreflang="fr" lang="fr">Français</a></li><li><a href="privacy.html" hreflang="es" lang="es" aria-current="true">Español</a></li></ul></details>
-    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Descargar</a>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/lumepane/releases">Descargar</a>
   </div>
 </header>
 <main id="main">
@@ -92,7 +92,7 @@
   <h3>3. Abrir la página de compra o el sitio web</h3>
   <p>Al hacer clic en «Comprar» o «Visitar el sitio», la dirección se abre en tu navegador predeterminado. El pago se realiza en el navegador, no en la app. La entrada de compra es la página de pedido que sirve de Neeson &amp; Sea servicio de licencias; usa el navegador que ya tienes y no instala nada.</p>
   <h2>4. Dónde viven tus datos</h2>
-  <ul><li><strong>Registro de licencia</strong> (clave de licencia, ID de instancia, fechas de activación y recomprobación): en el Llavero de macOS, con el nombre de servicio <code>com.neeson.displaypilot.license</code>. No es un plist en texto plano.</li><li><strong>Ajustes de la app</strong> (fecha de inicio de la prueba, preferencias de interfaz, atajos, reglas de automatización, programa de cuidado ocular): <code>~/Library/Preferences/com.neeson.displaypilot.plist</code>.</li><li><strong>Cuarentena y registro de operaciones de limpieza</strong>: <code>~/Library/Application Support/com.neeson.displaypilot/Clean/</code>. Los archivos se mueven primero aquí, a la cuarentena, siguen siendo restaurables, y el borrado permanente solo se ofrece a los 30 días.</li><li><strong>Permisos del sistema</strong>: la autorización de accesibilidad la gestiona macOS y puede revocarse en cualquier momento en Ajustes del Sistema → Privacidad y seguridad → Accesibilidad.</li></ul>
+  <ul><li><strong>Registro de licencia</strong> (clave de licencia, ID de instancia, fechas de activación y recomprobación): en el Llavero de macOS, con el nombre de servicio <code>com.neeson.lumepane.license</code>. No es un plist en texto plano.</li><li><strong>Ajustes de la app</strong> (fecha de inicio de la prueba, preferencias de interfaz, atajos, reglas de automatización, programa de cuidado ocular): <code>~/Library/Preferences/com.neeson.lumepane.plist</code>.</li><li><strong>Cuarentena y registro de operaciones de limpieza</strong>: <code>~/Library/Application Support/com.neeson.lumepane/Clean/</code>. Los archivos se mueven primero aquí, a la cuarentena, siguen siendo restaurables, y el borrado permanente solo se ofrece a los 30 días.</li><li><strong>Permisos del sistema</strong>: la autorización de accesibilidad la gestiona macOS y puede revocarse en cualquier momento en Ajustes del Sistema → Privacidad y seguridad → Accesibilidad.</li></ul>
   <p>Para eliminarlo todo: sal de la app y borra los dos directorios/archivos anteriores; para dejarlo impecable, borra también esa entrada del Llavero en Acceso a Llaveros. La app no instala ningún servicio en segundo plano ni demonio, y al desinstalarla no queda ningún componente residente.</p>
   <h2>5. Terceros</h2>
   <ul><li><strong>Nuestro servicio de licencias</strong> (Cloudflare Workers): sirve la página de pedido, coteja tu pago con la blockchain, emite el código de activación y atiende el canje de un código corto. Ve el número de pedido, el hash y el importe de la transacción on-chain y, según el camino, un identificador de dispositivo aleatorio (canje de código corto) o el resumen de dispositivo único (activación); <strong>no</strong> ve tu nombre ni tu cuenta, y no crea ningún perfil sobre ti. Si compras por un canal que recoge una dirección de correo, o si usas el formulario de recuperación, también trata esa dirección: se guarda con el pedido (los pedidos los conservamos para que la recuperación siga funcionando) para poder reenviar tu código, y se almacena un hash SHA-256 truncado que se incluye en el código firmado, de modo que el formulario encuentra tu pedido sin comparar direcciones sin tratar.</li><li><strong>API públicas de blockchain</strong> (por ejemplo TronGrid y puntos RPC públicos): el servicio de licencias lee datos públicos de la cadena para confirmar tu transferencia. No se les envían datos personales.</li><li><strong>GitHub</strong>: aloja este sitio, el manifiesto de actualización y la descarga. Como anfitrión conserva registros de acceso ordinarios (dirección IP, hora, ruta de la petición).</li></ul>
@@ -102,7 +102,7 @@
   <h2>7. Cambios en esta política</h2>
   <p>Si una versión futura cambia el comportamiento de red de la app — por ejemplo, al añadir sincronización en la nube —, esta política se actualizará primero y el registro de cambios dirá qué cambió. No ampliaremos en silencio lo que se recoge tras una cláusula de «seguir usándolo implica aceptarlo».</p>
   <h2>8. Contacto</h2>
-  <p>Si tienes dudas sobre esta política o quieres comprobar qué información de licencia se conserva sobre ti, <a href="https://github.com/huayanming/displaypilot/issues">abre una incidencia en GitHub</a>.</p>
+  <p>Si tienes dudas sobre esta política o quieres comprobar qué información de licencia se conserva sobre ti, <a href="https://github.com/huayanming/lumepane/issues">abre una incidencia en GitHub</a>.</p>
   <a class="back" href="index.html">← Volver al inicio</a>
 </article>
 </main>
@@ -112,11 +112,11 @@
       <a href="privacy.html">Privacidad</a>
       <a href="eula.html">Licencia</a>
       <a href="support.html">Soporte</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">Preguntas y comentarios · GitHub Issues</a>
+      <a href="https://github.com/huayanming/lumepane/issues">Preguntas y comentarios · GitHub Issues</a>
     </p>
     <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=8.0.17-orb1" defer></script>
+<script src="../site.js?v=9.0.0-orb1" defer></script>
 </body>
 </html>

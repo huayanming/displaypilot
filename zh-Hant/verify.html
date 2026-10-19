@@ -21,11 +21,11 @@
 <meta property="og:description" content="LumePane 是還沒有評價的新付費應用。別信尼森與海的話：這一頁告訴你如何在自己的 Mac 上驗證簽章、公證、校驗和、離線啟用，以及是否真的沒有遙測。">
 <meta property="og:url" content="https://lumepane.com/zh-Hant/verify.html">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://lumepane.com/img/og-lumepane.v601.png">
+<meta property="og:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lumepane.com/img/og-lumepane.v601.png">
+<meta name="twitter:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css?v=8.0.14-1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"自己驗證","about":"Display Data Channel Command Interface","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://lumepane.com/zh-Hant/verify.html"}</script>
@@ -43,7 +43,7 @@
       <a href="support.html">支援</a>
     </nav>
     <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../verify.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/verify.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="verify.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li></ul></details>
-    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/lumepane/releases">下載</a>
   </div>
 </header>
 <main id="main" class="wrap page"><article class="doc">
@@ -65,16 +65,16 @@ xcrun stapler validate /Applications/LumePane.app
 <p>這個二進位用尼森與海的 Developer ID 簽章，Apple 掃描並公證過，且公證憑據<strong>釘紮</strong>在應用內，因此離線也能驗證。任何被改動過的副本都過不了這三項。</p>
 
 <h2>二、下載的東西完整嗎？</h2>
-<pre><code>shasum -a 256 ~/Downloads/LumePane-8.0.17.dmg
+<pre><code>shasum -a 256 ~/Downloads/LumePane-9.0.0.dmg
   c2c89f705f22f643120d24f533784edf832a7e6e615c2d8c57f2f54d3d07f6de</code></pre>
 <p>同一個值也寫在 Homebrew cask 裡，所以你有<strong>兩個獨立的地方</strong>可以對照：</p>
-<pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
+<pre><code>brew cat huayanming/tap/lumepane | grep sha256</code></pre>
 <p>如果對不上，<strong>不要執行這個檔案</strong>。</p>
 
 <h2>三、它會偷偷連網嗎？</h2>
 <p>應用自己的程式碼裡有兩個網路端點，都在授權服務上：<code>/api/redeem</code> 只在貼上<strong>短碼</strong>時呼叫；<code>/api/pulse</code> 只在你主動開啟「匿名使用統計」後每天最多呼叫一次。以 <code>DP-</code> 開頭的長碼完全離線驗證，永不連網。自動檢查更新<strong>預設關閉</strong>（<code>SUEnableAutomaticChecks</code> 為 <code>false</code>）。自動下載是明確選擇：<code>SUAllowsAutomaticUpdates</code> 允許開啟，但預設仍為 <code>false</code>；你在面板裡打開後，它只從尼森與海站點取 <code>appcast.xml</code> 和簽名更新包，不取別的。</p>
 <p>你可以自己盯：開啟應用、讓它閒置，然後在終端機執行：</p>
-<pre><code>lsof -i -P | grep -i displaypilot</code></pre>
+<pre><code>lsof -i -P | grep -i lumepane</code></pre>
 <p>在關閉自動更新檢查、且匿名使用統計保持預設關閉時，這條命令<strong>什麼都不輸出</strong>。應用不會自動傳送當機報告或識別碼；唯一的可選使用訊號是預設關閉的匿名統計。</p>
 
 <h2>四、斷網也能啟用嗎？</h2>
@@ -82,7 +82,7 @@ xcrun stapler validate /Applications/LumePane.app
 
 <h2>五、這一頁驗證不了什麼</h2>
 <ul class="ticks">
-  <li><strong>清理邏輯對不對。</strong>它只處理 13 類有確定性重建方式的產物，先隔離 30 天。尼森與海把推理與檢查寫在<a href="https://github.com/huayanming/displaypilot">審計報告</a>裡，而不是讓你相信介面。</li>
+  <li><strong>清理邏輯對不對。</strong>它只處理 13 類有確定性重建方式的產物，先隔離 30 天。尼森與海把推理與檢查寫在<a href="https://github.com/huayanming/lumepane">審計報告</a>裡，而不是讓你相信介面。</li>
   <li><strong>顯示器那部分對你的面板是否合適。</strong>這正是 14 天試用存在的意義。</li>
   <li><strong>尼森與海好不好打交道。</strong>這沒有哪一頁能證明。寄封郵件試試。</li>
 </ul>
@@ -100,11 +100,11 @@ xcrun stapler validate /Applications/LumePane.app
       <a href="privacy.html">隱私政策</a>
       <a href="eula.html">授權條款</a>
       <a href="support.html">支援</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">問題與回饋 · GitHub Issues</a>
+      <a href="https://github.com/huayanming/lumepane/issues">問題與回饋 · GitHub Issues</a>
     </p>
     <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=8.0.17-orb1" defer></script>
+<script src="../site.js?v=9.0.0-orb1" defer></script>
 </body>
 </html>

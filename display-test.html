@@ -18,7 +18,7 @@
 <meta property="og:title" content="Mac display test patterns">
 <meta property="og:description" content="Grayscale, colour bars, black level, white clipping, sharpness and uniformity — in the browser, free.">
 <meta property="og:url" content="https://lumepane.com/display-test.html">
-<meta property="og:image" content="https://lumepane.com/img/og-lumepane.v601.png">
+<meta property="og:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/icon.png" type="image/png">
 <link rel="stylesheet" href="style.css?v=8.0.14-1">
@@ -62,7 +62,7 @@
       <a href="support.html">Support</a>
     </nav>
     <details class="lang"><summary>English</summary><ul class="lang-menu" aria-label="Language"><li><a href="display-test.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="zh-Hans/display-test.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li></ul></details>
-    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/lumepane/releases">Download</a>
   </div>
 </header>
 <main id="main" class="wrap page">
@@ -85,17 +85,17 @@
     <div class="dt-pattern" id="pattern"></div>
   </div>
   <div class="dt-caption"><span id="caption">Grayscale ramp: every step should be visible on a calibrated display.</span><button class="btn btn-ghost" type="button" id="full">Full screen</button></div>
-  <div class="dt-actions"><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Try LumePane's calibration</a><a class="btn btn-ghost" href="guide-color.html">Colour guide</a><a class="btn btn-ghost" href="scroll-test.html">Scroll test</a></div>
+  <div class="dt-actions"><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/lumepane/releases">Try LumePane's calibration</a><a class="btn btn-ghost" href="guide-color.html">Colour guide</a><a class="btn btn-ghost" href="scroll-test.html">Scroll test</a></div>
 
   <p class="dt-note"><strong>What this can and cannot do.</strong> The browser can show reference steps, but it cannot read or change the panel's gamma, colour temperature or DDC/CI registers. A pattern that looks good on screen is not a calibration report. If banding, a colour cast or clipped blacks are visible here, the next step is a measured calibration in LumePane (gamma-table anchor + DDC/CI where available). This page makes no network requests after loading.</p>
 </main>
 <footer class="doc-foot">
   <div class="wrap">
-    <p class="foot-links"><a href="privacy.html">Privacy Policy</a><a href="eula.html">License</a><a href="support.html">Support</a><a href="scroll-test.html">Scroll test</a><a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a></p>
+    <p class="foot-links"><a href="privacy.html">Privacy Policy</a><a href="eula.html">License</a><a href="support.html">Support</a><a href="scroll-test.html">Scroll test</a><a href="https://github.com/huayanming/lumepane/issues">GitHub Issues</a></p>
     <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
-<script src="site.js?v=8.0.17-orb1" defer></script>
+<script src="site.js?v=9.0.0-orb1" defer></script>
 <script>
 (function(){
   var pattern=document.getElementById('pattern'),caption=document.getElementById('caption'),stage=document.getElementById('stage');

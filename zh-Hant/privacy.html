@@ -33,12 +33,12 @@
 <meta property="og:locale:alternate" content="de_DE">
 <meta property="og:locale:alternate" content="fr_FR">
 <meta property="og:locale:alternate" content="es_ES">
-<meta property="og:image" content="https://lumepane.com/img/og-lumepane.v601.png">
+<meta property="og:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="LumePane — the missing console for your Mac display">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lumepane.com/img/og-lumepane.v601.png">
+<meta name="twitter:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css?v=8.0.14-1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"隱私政策","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://lumepane.com/zh-Hant/privacy.html"}</script>
@@ -56,7 +56,7 @@
       <a href="support.html">支援</a>
     </nav>
     <details class="lang"><summary>繁體中文</summary><ul class="lang-menu" aria-label="語言"><li><a href="../privacy.html" hreflang="en" lang="en">English</a></li><li><a href="../zh-Hans/privacy.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="privacy.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="true">繁體中文</a></li><li><a href="../ja/privacy.html" hreflang="ja" lang="ja">日本語</a></li><li><a href="../ko/privacy.html" hreflang="ko" lang="ko">한국어</a></li><li><a href="../de/privacy.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/privacy.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/privacy.html" hreflang="es" lang="es">Español</a></li></ul></details>
-    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下載</a>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/lumepane/releases">下載</a>
   </div>
 </header>
 <main id="main">
@@ -91,7 +91,7 @@
   <h3>3. 開啟購買頁或官網</h3>
   <p>點「購買」或「前往官網」時，網址會在你的預設瀏覽器裡開啟。付款在你的瀏覽器中完成，不經過應用程式。購買入口是由發碼服務提供的下單頁，使用你已有的瀏覽器，不安裝任何東西。</p>
   <h2>四、你的資料存在哪裡</h2>
-  <ul><li><strong>授權紀錄</strong>（授權碼、執行個體編號、啟用與複查時間）：macOS 系統鑰匙圈，服務名稱 <code>com.neeson.displaypilot.license</code>。不是明文 plist。</li><li><strong>應用程式設定</strong>（試用起始日期、介面偏好、快速鍵綁定、自動化規則、護眼排程）：<code>~/Library/Preferences/com.neeson.displaypilot.plist</code>。</li><li><strong>清理隔離區與操作台帳</strong>：<code>~/Library/Application Support/com.neeson.displaypilot/Clean/</code>。被清理的檔案先移進這裡的隔離區，隨時可還原；永久刪除要等 30 天後才會提供。</li><li><strong>系統權限</strong>：輔助使用授權由 macOS 管理，可在「系統設定 → 隱私權與安全性 → 輔助使用」裡隨時撤銷。</li></ul>
+  <ul><li><strong>授權紀錄</strong>（授權碼、執行個體編號、啟用與複查時間）：macOS 系統鑰匙圈，服務名稱 <code>com.neeson.lumepane.license</code>。不是明文 plist。</li><li><strong>應用程式設定</strong>（試用起始日期、介面偏好、快速鍵綁定、自動化規則、護眼排程）：<code>~/Library/Preferences/com.neeson.lumepane.plist</code>。</li><li><strong>清理隔離區與操作台帳</strong>：<code>~/Library/Application Support/com.neeson.lumepane/Clean/</code>。被清理的檔案先移進這裡的隔離區，隨時可還原；永久刪除要等 30 天後才會提供。</li><li><strong>系統權限</strong>：輔助使用授權由 macOS 管理，可在「系統設定 → 隱私權與安全性 → 輔助使用」裡隨時撤銷。</li></ul>
   <p>刪除方式：結束應用程式後，把上面兩個目錄／檔案刪掉即可；想要更徹底，再在鑰匙圈存取裡刪掉那一筆紀錄。應用程式不在系統裡安裝任何背景服務或常駐程式，解除安裝不留下常駐元件。</p>
   <h2>五、第三方</h2>
   <ul><li><strong>尼森與海的發碼服務</strong>（Cloudflare Workers）：提供下單頁、把你的付款與鏈上記錄比對、簽發啟動碼，並處理短碼領取。它能看到訂單號、鏈上交易雜湊與金額，以及——取決於路徑——隨機裝置識別碼（領取短碼）或一次性裝置摘要（啟用）；它<strong>看不到</strong>你的姓名或帳號，也不會為你建立輪廓。如果你透過會收集電子郵件的通路購買，或使用取碼表單，它還會處理該電子郵件地址：郵件隨訂單記錄一起保存（訂單記錄尼森與海一直保留，取碼才能長期可用），用於重新發碼；同時保存其截斷的 SHA-256 雜湊並寫進已簽名的啟動碼，使取碼表單無需比對原始位址即可對應到你的訂單。</li><li><strong>公共區塊鏈 API</strong>（例如 TronGrid 與公共 RPC 端點）：發碼服務讀取公開鏈上資料以確認你的轉帳，不會向它們傳送個人資料。</li><li><strong>GitHub</strong>：託管本網站、更新來源與下載包。作為託管方，它會保留一般存取日誌（IP、時間、請求路徑）。</li></ul>
@@ -101,7 +101,7 @@
   <h2>七、政策變更</h2>
   <p>如果未來的版本改變了應用程式的連網行為（例如新增雲端同步），這份政策會先更新，並在更新記錄裡寫明改了什麼。尼森與海不會用「繼續使用即視為同意」來悄悄擴大蒐集範圍。</p>
   <h2>八、聯絡方式</h2>
-  <p>對這份政策有疑問，或想核對你被保存了哪些授權資訊，請在<a href="https://github.com/huayanming/displaypilot/issues">GitHub 上開一條 issue</a>。</p>
+  <p>對這份政策有疑問，或想核對你被保存了哪些授權資訊，請在<a href="https://github.com/huayanming/lumepane/issues">GitHub 上開一條 issue</a>。</p>
   <a class="back" href="index.html">← 返回首頁</a>
 </article>
 </main>
@@ -111,13 +111,13 @@
       <a href="privacy.html">隱私政策</a>
       <a href="eula.html">授權條款</a>
       <a href="support.html">支援</a>
-      <a href="https://github.com/huayanming/displaypilot/issues">問題與建議 · GitHub Issues</a>
+      <a href="https://github.com/huayanming/lumepane/issues">問題與建議 · GitHub Issues</a>
           <a href="verify.html">自己驗證</a>
       <a href="alternatives.html">對比各工具</a>
 </p>
     <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=8.0.17-orb1" defer></script>
+<script src="../site.js?v=9.0.0-orb1" defer></script>
 </body>
 </html>

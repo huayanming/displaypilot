@@ -3,7 +3,7 @@
 > LumePane is a native macOS 14+ console for display control, mouse-wheel smoothing, window layouts and a draggable Glow Orb dock. 14-day fully featured trial; one-time purchase; no account; no telemetry.
 
 Canonical: https://lumepane.com/
-Source / releases: https://github.com/huayanming/displaypilot
+Source / releases: https://github.com/huayanming/lumepane
 Free browser tools:
 - Wheel smoothness test: https://lumepane.com/scroll-test.html
 - Display test patterns: https://lumepane.com/display-test.html

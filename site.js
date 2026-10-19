@@ -21,7 +21,7 @@
   var SITE = {
     // 下载计数入口。由发码 Worker 记一次匿名下载、再 302 到当前 DMG；
     // 脚本被禁用时，HTML 里的 Releases 页面仍可兜底（但不会计数）。
-    download: "https://lumepane.com/dl/LumePane-8.0.17.dmg",
+    download: "https://lumepane.com/dl/LumePane-9.0.0.dmg",
     // 下载计数入口；保留上面的直链作为版本/兜底来源，运行时优先走计数入口。
     downloadEndpoint: "https://lumepane.com/api/download",
     // 结账地址。空字符串 = 还没有可用的付款入口。
@@ -391,7 +391,7 @@ function campaignSource() {
   mail.href = "mailto:huayanming2019@gmail.com?subject=LumePane%20support";
   actions.appendChild(mail);
   var issues = el("a", "btn btn-ghost", c.issue);
-  issues.href = "https://github.com/huayanming/displaypilot/issues";
+  issues.href = "https://github.com/huayanming/lumepane/issues";
   actions.appendChild(issues);
   copyCol.appendChild(actions);
   copyCol.appendChild(el("p", "small", c.note));
