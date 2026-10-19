@@ -48,7 +48,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>Verify it yourself</h1>
-<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take Neeson &amp; Sea's word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 8.0.4 build.</p>
+<p class="summary">LumePane is a new paid app with no reviews yet, so please do not take Neeson &amp; Sea's word for anything. Every claim on this page can be checked on your own Mac with the commands below. The outputs quoted here are verbatim from the shipped 8.0.5 build.</p>
 
 <h2>1. Is it really ours, and did Apple notarize it?</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -65,8 +65,8 @@ xcrun stapler validate /Applications/LumePane.app
 <p>The binary is signed with Neeson &amp; Sea's Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
 
 <h2>2. Did the download arrive intact?</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-8.0.4.dmg
-  478eb095a0339e1f4a2c2f88ff1e9977bc171d41c30d7390d3f39201d3189a8e</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-8.0.5.dmg
+  73b7a65b105ac7a7f9855685dd6cfa1d17685a8909a70555056d9673506e52c6</code></pre>
 <p>The same value is published in the Homebrew cask, so there are two independent places to compare against:</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>If your value differs, <strong>do not run the file</strong>.</p>

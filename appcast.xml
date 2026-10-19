@@ -7,21 +7,23 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.4</title>
-      <pubDate>Mon, 19 Oct 2026 04:43:36 +0000</pubDate>
-      <sparkle:version>8.0.4</sparkle:version>
-      <sparkle:shortVersionString>8.0.4</sparkle:shortVersionString>
+      <title>LumePane 8.0.5</title>
+      <pubDate>Mon, 19 Oct 2026 04:58:36 +0000</pubDate>
+      <sparkle:version>8.0.5</sparkle:version>
+      <sparkle:shortVersionString>8.0.5</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[修复
-• 修复 Dock 四边缩放热区未真正铺满边缘的问题：现在拖动左/右边框调整宽度，拖动上/下边框调整长度，鼠标靠近边框显示缩放光标。
-• 上下 Dock 的橙色悬停反馈补齐。
-• 图标底统一为液态拟态玻璃（柔光、折射彩边、双层倒角）。
-• 恢复稳定版悬浮球过渡与 LumePane 字标。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[交互收敛
+• 取消 Dock 四边拖拽缩放，改为四边共用一套 Dock 厚度 / 长度上限 参数。
+• 拖动魔丸时球内流体进入高速流动；松手恢复待机速度。
+• 新增 Dock 自动隐藏：指针离开 Dock 区域约 0.35 秒后收回玻璃球；在玻璃球上停留约 0.8 秒重新展开。
+• 设置中可关闭自动收起。
+• 上下与左右 Dock 共用同一套悬停橙色填充与尺寸参数。
+• 保留液态拟态图标、LumePane 字标和官网平滑滚动。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.4.dmg" length="10574820" type="application/octet-stream" sparkle:edSignature="XeEtNxfCVUz+cz+gibBdjPF8C9RCgiptJ3bDNrhZfdU2XdQheky1ZS1Aklyznfog9kVNh1XflLLgEV/TCVUbBw=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.5.dmg" length="10565986" type="application/octet-stream" sparkle:edSignature="hJsE3OeBPHHsaEcIwalFOF0DCyJTcFtWVGZuTCIS7naLzrC72ZDzNnZjvWAkSGBGAh/q6PJDhyBFbgoFrJGlDQ=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: AafFxmKIZNI9Q/J45nI1ZrJh+tnchETwfc3QxFRHiHRZsJ8DdDTzolGyfX6+nwtJ7Jb9Og5uR6q55wEr29SkDA==
-length: 1721
+edSignature: Y9b5Yps58idUrvS+VyrI9+3sgRdY+Y7+LyGOkCGzY+vjdRqlv+4TdVPT3ooOwPsmN/takXKGvnjc+gzudboDBg==
+length: 1857
 -->
