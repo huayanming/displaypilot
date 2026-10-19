@@ -48,7 +48,7 @@
 </header>
 <main id="main" class="wrap page"><article class="doc">
 <h1>自己驗證</h1>
-<p class="summary">LumePane 是還沒有評價的新付費應用，所以<strong>請不要信尼森與海的話</strong>。這一頁的每條說法，都可以在你的 Mac 上用下面的命令親自核對。這裡引用的輸出，逐字來自已發布的 8.0.8 版本。</p>
+<p class="summary">LumePane 是還沒有評價的新付費應用，所以<strong>請不要信尼森與海的話</strong>。這一頁的每條說法，都可以在你的 Mac 上用下面的命令親自核對。這裡引用的輸出，逐字來自已發布的 8.0.9 版本。</p>
 
 <h2>一、它真的是尼森與海的嗎？Apple 公證過嗎？</h2>
 <pre><code>codesign -dv --verbose=2 /Applications/LumePane.app
@@ -65,8 +65,8 @@ xcrun stapler validate /Applications/LumePane.app
 <p>這個二進位用尼森與海的 Developer ID 簽章，Apple 掃描並公證過，且公證憑據<strong>釘紮</strong>在應用內，因此離線也能驗證。任何被改動過的副本都過不了這三項。</p>
 
 <h2>二、下載的東西完整嗎？</h2>
-<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-8.0.8.dmg
-  0304d9e16071505a9886111c100e953b699fc558b09ac07183b45a656915085a</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/DisplayPilot-8.0.9.dmg
+  b6c7c5920aa97068f5b670a127a1208c92d252a88f7d4417b55c66bdb39e3aaf</code></pre>
 <p>同一個值也寫在 Homebrew cask 裡，所以你有<strong>兩個獨立的地方</strong>可以對照：</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>如果對不上，<strong>不要執行這個檔案</strong>。</p>

@@ -7,20 +7,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.8</title>
-      <pubDate>Mon, 19 Oct 2026 05:29:05 +0000</pubDate>
-      <sparkle:version>8.0.8</sparkle:version>
-      <sparkle:shortVersionString>8.0.8</sparkle:shortVersionString>
+      <title>LumePane 8.0.9</title>
+      <pubDate>Mon, 19 Oct 2026 05:58:59 +0000</pubDate>
+      <sparkle:version>8.0.9</sparkle:version>
+      <sparkle:shortVersionString>8.0.9</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[拖动收尾
-• 修复拖动魔丸后在面板外松手时收不到 mouseUp、导致不展开的问题；现在松手一定结束拖动并展开 Dock。
-• 确认取消 Dock 自动显示/自动隐藏，以及四条边缩放和厚度/长度设置。
-• 拖动中球内流体高速旋转；拖动期间不展开，停止后展开。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[收起动画
+• 修复收起 Dock 时整个玻璃面板从 Dock 位置缩向悬浮球、看起来像一个透明玻璃球飞过去的问题。
+• 展开与收起改为直接切换面板尺寸与位置；球体自身保留光晕和流体动画。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.8.dmg" length="10537997" type="application/octet-stream" sparkle:edSignature="3T82DftJtSlDscleMTZYele13se7DetH6Sa79Je/b/ydPMnyha8H1nqcbLdXRFTu2sS+xyETrqkLS8TDCxYJDg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.9.dmg" length="10537996" type="application/octet-stream" sparkle:edSignature="iBVQDoN80VU/ITc6hmMyQA+ooLFuss4dqVpowhYGBT/tk2EvbrUPq/11YxzzSxpXySFutCC/7YzGxLovw5TjCw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 67UKLVje1wZHWrGcv4iOOMpEaR8eCA+QYPzoL+EjucbuCSS/BwXyqgmj6+zf8H+pdBcIi5qRVBDD19Sm4YRjBA==
-length: 1677
+edSignature: x9L15qXFsOfLmF4ael4lkmYFIjEcg0mKOXojuSAPuCuwUefSU8XiMWuSly4Qb4YgD3ycE/ML6s6EC7CMOEO1DA==
+length: 1591
 -->
