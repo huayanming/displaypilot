@@ -7,21 +7,23 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.1</title>
-      <pubDate>Mon, 19 Oct 2026 03:27:30 +0000</pubDate>
-      <sparkle:version>8.0.1</sparkle:version>
-      <sparkle:shortVersionString>8.0.1</sparkle:shortVersionString>
+      <title>LumePane 8.0.2</title>
+      <pubDate>Mon, 19 Oct 2026 04:03:24 +0000</pubDate>
+      <sparkle:version>8.0.2</sparkle:version>
+      <sparkle:shortVersionString>8.0.2</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[修正
-• 软件球面字标恢复为品牌名「LumePane」；「光彩魔丸」继续作为功能名和官网交互区名称。
-• 官网首页光彩魔丸默认展开，打开页面即可看到 Dock 内容；仍可点击收起。
-• 官网首屏按钮下方规格文字居中对齐，不再相对按钮漂移。
-• 修复首页橙色/蓝色流动光晕被容器上边界裁成横切线的问题，改为连续模糊光雾。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[Dock 与电量
+• 左右/上下四条边的 Dock 都支持调节厚度；Dock 厚度 同时控制左右 Dock 的宽度和上下 Dock 的高度。
+• 新增 Dock 长度上限：0 为按动作数量自动伸缩，非 0 时限制最长边。
+• 取消鼠标移动时的整排放大和位移，改为指针所在图标填充橙色并轻微放大，邻位与名称保持不动。
+• 顶部电量环改为每 15 秒刷新，也可点按立即刷新；悬停会显示实际设备名。
+• 明确 Apple Watch 在 macOS 上没有公开电量接口，读不到时显示 —，不再像真实监测值。
+• 官网补充 Dock 尺寸调节与电量数据来源说明。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.1.dmg" length="10512340" type="application/octet-stream" sparkle:edSignature="36NkGws/PDQ/epC+W03WlP14b/ig54HbB49Winf7WR+qeC0rCYMb3CsrTh/XPx+874QwLtH9Mkl2KSHd51Z3Ag=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.2.dmg" length="10530693" type="application/octet-stream" sparkle:edSignature="kMGupZJSr/91lY47pAamZqx++m/9D0k/VTjiOyE/i4uYy/x5vCj64TqETauXkVADgneVsKUJ8M7cKbk38lUeCg=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: hUWokjMDten22EAry9Lk2Y0Jzr9hwyB60TUfTQ7/tB5IT7EVpxvZeqzR734TZTt7IKVvHcaBSb66i3sxIAN0Dw==
-length: 1775
+edSignature: ngi75JAv7sCM/k04NZuCQnMMfYMHI4GsGMjBhIpJdiyOU/cFtbXR0uldjC2HVJYvJqB1QaXPl7m9zYdFOoigBw==
+length: 2007
 -->
