@@ -7,19 +7,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.16</title>
-      <pubDate>Mon, 19 Oct 2026 16:47:31 +0000</pubDate>
-      <sparkle:version>8.0.16</sparkle:version>
-      <sparkle:shortVersionString>8.0.16</sparkle:shortVersionString>
+      <title>LumePane 8.0.17</title>
+      <pubDate>Mon, 19 Oct 2026 18:40:21 +0000</pubDate>
+      <sparkle:version>8.0.17</sparkle:version>
+      <sparkle:shortVersionString>8.0.17</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[音频输出切换
-• 使用 CoreAudio 枚举输出设备，读取默认输出，切到下一台并读回确认。
-• 输出设备少于两台时明确标为不支持，不显示可点但无效的按钮。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[Dock 可见性检测
+• 切换自动隐藏后检查真实 Dock 窗口是否消失，不再只读 defaults 就报成功。
+• 若 macOS 不执行自动隐藏，返回失败并保留原状态提示。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-8.0.16.dmg" length="10535564" type="application/octet-stream" sparkle:edSignature="Jr6/mE6Fq1pKGKyW9+UEGV6VFpo6b8EN8nA/HDzH8/Yi2zpkgftr2BetZyK4A11OHaG2sYfJNktmPgmuZHrOCA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-8.0.17.dmg" length="10543199" type="application/octet-stream" sparkle:edSignature="eO6emj+rj/u0juaEjuZ/rMHZwX0eYUQA1K1Ohl3hiPPyHkanS2Glt+2VzPR/yzlXVnTfcDLY5q3MtszT8efmAw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: LY+twKmcN55QL0YPXo2CuWJPamb2av2kDl9/Z5OfyZMTfIkle+bBV4k23oA98IkvgATJx/ltEDUI3ScZzeIvBg==
-length: 1551
+edSignature: zZQ0PvgiHzPSfQ/jGPSn7S9bokh0uVrp9WBPGNEc5ha9j5oyG4UTI1JmbKywbfTxfv+4622k+gLAg0ywxNEwBw==
+length: 1544
 -->
