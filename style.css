@@ -1374,3 +1374,8 @@ html[lang="zh-Hant"] .hero-v2 h1 {
   .orb-core::after { animation: orb-flow-b 6.6s ease-in-out infinite alternate-reverse, orb-hue 11s linear infinite reverse !important; }
   .orb-glint { animation: orb-glint 5.2s ease-in-out infinite !important; }
 }
+
+/* Download mirror choice: a raised neumorphic module, not an inline text link. */
+.hero-mirror{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:1.1rem auto 0;max-width:36rem;padding:.9rem 1.05rem;border-radius:18px;background:var(--surface);box-shadow:var(--raise)}
+.hero-mirror .mirror-copy{min-width:0}.hero-mirror .mirror-kicker{display:block;font:650 .68rem/1 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--hermes-deep);margin-bottom:.3rem}.hero-mirror strong{display:block;font-size:.92rem;color:var(--ink)}.hero-mirror span.mirror-detail{display:block;color:var(--ink-soft);font-size:.78rem;margin-top:.2rem}
+@media(max-width:520px){.hero-mirror{justify-content:flex-start}.hero-mirror .btn{width:100%}}

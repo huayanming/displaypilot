@@ -6,7 +6,7 @@ Security fixes are shipped in the latest signed LumePane release. The current do
 
 ## Reporting a vulnerability
 
-Email **huayanming2019@gmail.com** with:
+Use the website support window.
 
 - the affected version and macOS version;
 - the steps to reproduce;

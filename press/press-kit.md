@@ -69,7 +69,6 @@ Screenshots are unretouched captures of the shipping UI on a real external monit
 
 ## Contact
 
-Email **huayanming2019@gmail.com** — a person reads it, usually within a few hours.
 Download: <https://lumepane.com/dl/LumePane-8.0.14.dmg>
 Homepage: <https://lumepane.com/>
 
@@ -91,4 +90,3 @@ Developer ID 团队 `7P2P353LBW` · 已由 Apple 公证且凭据钉扎 · ¥99 /
 
 **我们不主张**：HiDPI 缩放、虚拟屏、XDR 增亮（这些是别的工具擅长的，我们在对比页里直接推荐它们）。
 
-**联系**：huayanming2019@gmail.com（有人读，通常几小时内回）。

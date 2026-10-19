@@ -660,4 +660,20 @@ function campaignSource() {
   var s = saved();
   if (s) { current = { messages: [] }; loadThread(); fab.setAttribute("aria-label", t("Open support (conversation saved)", "打开客服（有已保存的对话）")); }
   startPolling();
+
+  /* Product pages can open the support inbox with a prefilled product topic;
+     this is deliberately a support inbox, not an order form. */
+  window.LP_SUPPORT = {
+    open: function (topic, message) {
+      setOpen(true);
+      if (topic) { var select = document.getElementById("lp-support-topic"); if (select) select.value = topic; }
+      if (message) { var box = document.getElementById("lp-support-message"); if (box) box.value = message; }
+    }
+  };
+  document.addEventListener("click", function (event) {
+    var target = event.target && event.target.closest ? event.target.closest("[data-support-open]") : null;
+    if (!target) return;
+    event.preventDefault();
+    window.LP_SUPPORT.open(target.getAttribute("data-topic") || "", target.getAttribute("data-message") || "");
+  });
 })();
