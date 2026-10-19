@@ -7,18 +7,18 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.0.2</title>
-      <pubDate>Mon, 19 Oct 2026 19:55:40 +0000</pubDate>
-      <sparkle:version>9.0.2</sparkle:version>
-      <sparkle:shortVersionString>9.0.2</sparkle:shortVersionString>
+      <title>LumePane 9.0.3</title>
+      <pubDate>Mon, 19 Oct 2026 20:21:35 +0000</pubDate>
+      <sparkle:version>9.0.3</sparkle:version>
+      <sparkle:shortVersionString>9.0.3</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[• New Sparkle EdDSA key under com.neeson.lumepane; old signing account removed.
-• Appcast re-signed with the new key.]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[• Add --compat-probe: local model, architecture, OS, screens, refresh rate, Wi-Fi, audio outputs and Accessibility status.
+• This is a capability report, not a claim of physical testing on every Mac.]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.0.2.dmg" length="10550961" type="application/octet-stream" sparkle:edSignature="WGkTUHhwuAtUzzrNCMLWsR417t4494rFPm3EOPnu75kdR6gCTRURziwZW0u+jJVx3xQwDiQF77I8Mqq1Hx4MCQ=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.0.3.dmg" length="10559256" type="application/octet-stream" sparkle:edSignature="8QNWIuJfxvnwkcOU8MU3MCMh5ltlxSNHK0un9ZiLEpkLCZT5AAozChKEyokgg7GObX9GwrEG1oKdxbxMjkldAw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 3PPHdh217hH2Me1su+GL/R0DnWhDtyZqbRSJiH5G5/JFi7o0bib1LKeX5H94X8riH+lZDXBVW2i0OvyQ/YlaBQ==
-length: 1461
+edSignature: csdg/muzWvUvMxsQpdHrhUjfni6CPu8BCNzuLNJNSNjyWTEGcb+5KosCBdU20ufdrwnFbWqk1K6ujxKB/sDXCg==
+length: 1543
 -->

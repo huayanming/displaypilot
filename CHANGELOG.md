@@ -10,6 +10,11 @@
 > 5.7.1 是本轮对外发布版本，整合 4.0.0–4.4.0 期间全部面向用户的变更；
 > 4.0.0–4.4.0 的条目保留为内部工程记录（其中 4.4.0 未生成对外二进制）。
 
+## [9.0.3] - 2026-10-20
+
+- Add `--compat-probe`: local model, architecture, OS, screens, refresh rate, Wi-Fi, audio outputs and Accessibility status.
+- This is a capability report, not a claim of physical testing on every Mac.
+
 ## [9.0.2] - 2026-10-20
 
 - New Sparkle EdDSA key under `com.neeson.lumepane`; old signing account removed.
