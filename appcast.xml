@@ -7,21 +7,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.6</title>
-      <pubDate>Mon, 19 Oct 2026 05:10:09 +0000</pubDate>
-      <sparkle:version>8.0.6</sparkle:version>
-      <sparkle:shortVersionString>8.0.6</sparkle:shortVersionString>
+      <title>LumePane 8.0.7</title>
+      <pubDate>Mon, 19 Oct 2026 05:18:50 +0000</pubDate>
+      <sparkle:version>8.0.7</sparkle:version>
+      <sparkle:shortVersionString>8.0.7</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[自动显示修复
-• 修复玻璃球悬停展开没有触发的问题：现在在球上停留约 0.8 秒展开，移出 Dock 约 0.35 秒后自动收回。
-• 自动收起默认开启，可在「通用 → 光彩魔丸」关闭。
-• 拖动魔丸时流体高速旋转，松手恢复待机速度。
-• 四边共用厚度/长度上限参数；四边拖拽缩放已移除。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[回退
+• 取消 Dock 自动显示/自动隐藏；不再因鼠标移开而收起。
+• 取消四边拖拽缩放，也移除 Dock 厚度/长度上限设置；恢复按动作数量自动伸缩、短边固定 150pt。
+• 拖动魔丸期间保持球体、不展开；拖动结束后再展开 Dock。
+• 拖动期间球内流体高速旋转，松手恢复。
+• 保留液态拟态图标、橙色指针反馈、LumePane 字标与官网平滑滚动。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.6.dmg" length="10566865" type="application/octet-stream" sparkle:edSignature="0O6oo5cNv1qpwkjHN6scSVdkD9Z6291id+ljfyZJYktXnN4JeeMn2zhkxkQUu+HU5UM2Hto7Df8sCZnfevp/CA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.7.dmg" length="10536401" type="application/octet-stream" sparkle:edSignature="WaYr35VKCGfEbAHYcRpEjuAUxOGuGwpllPUVkvMwgLoV+aKgbwhx5mHP00iOxfnJqsPQCOWCwf6PJ1QYpkbqAA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 5BwobbGzoiXnk+HQwun1GfG29XNgDg1LKPLLDMXE7QJKydk2h3GcTRTqpRvaFZxbDFYBiE4Pv6X637206WxtBw==
-length: 1720
+edSignature: Rc0SR6QZipfLjYf96UbD28QtZcaBalGpkk7i+nRcnizpkVseFc81R+pna4Sf+/gX34Mj5ZROcfcKTRQHIoNACQ==
+length: 1793
 -->
