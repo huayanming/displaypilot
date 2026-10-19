@@ -41,7 +41,7 @@
 <meta name="twitter:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css?v=8.0.14-1">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LumePane","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 或更高","softwareVersion":"9.0.0","url":"https://lumepane.com/zh-Hans/","inLanguage":"zh-Hans","downloadUrl":"https://lumepane.com/dl/LumePane-9.0.0.dmg","offers":{"@type":"Offer","price":"99","priceCurrency":"CNY","url":"https://lumepane.com/checkout","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 显示器控制，DDC 不可用时退回伽马表调光","以首次接管时读到的曲线为基准的色彩校准","逐帧投递的平滑滚动","菜单栏总控板：管理显示器与系统动作","先隔离再删除的开发者缓存清理"],"publisher":{"@type":"Organization","name":"LumePane"},"headline":"滚轮、亮度、色彩"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LumePane","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 或更高","softwareVersion":"9.0.1","url":"https://lumepane.com/zh-Hans/","inLanguage":"zh-Hans","downloadUrl":"https://lumepane.com/dl/LumePane-9.0.1.dmg","offers":{"@type":"Offer","price":"99","priceCurrency":"CNY","url":"https://lumepane.com/checkout","availability":"https://schema.org/InStock"},"featureList":["DDC/CI 显示器控制，DDC 不可用时退回伽马表调光","以首次接管时读到的曲线为基准的色彩校准","逐帧投递的平滑滚动","菜单栏总控板：管理显示器与系统动作","先隔离再删除的开发者缓存清理"],"publisher":{"@type":"Organization","name":"LumePane"},"headline":"滚轮、亮度、色彩"}</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要内容</a>
@@ -357,8 +357,8 @@
       </div>
       <div class="trust-grid">
         <ul class="proof-list">
-          <li><strong>离线验证。</strong>长 <code>DP-</code> 码用应用内置的公钥做 Ed25519 验签。激活时唯一的请求是下一条描述的一次性设备登记；之后每次启动都在本地验签，更新检查默认关闭，除非你主动开启。</li>
-          <li><strong>只登记一次，然后安静。</strong>仅在首次激活时，应用会把一个不可逆的 SHA-256 摘要发给尼森与海自己的授权服务——摘要在本地由主板标识和机型标识算出，长 <code>DP-</code> 码正是靠它限制在 5 台 Mac 上。不会发送序列号、明文机型字符串、MAC 地址、显示器 EDID、账号或使用数据。</li>
+          <li><strong>离线验证。</strong>长 <code>LP-</code> 码用应用内置的公钥做 Ed25519 验签。激活时唯一的请求是下一条描述的一次性设备登记；之后每次启动都在本地验签，更新检查默认关闭，除非你主动开启。</li>
+          <li><strong>只登记一次，然后安静。</strong>仅在首次激活时，应用会把一个不可逆的 SHA-256 摘要发给尼森与海自己的授权服务——摘要在本地由主板标识和机型标识算出，长 <code>LP-</code> 码正是靠它限制在 5 台 Mac 上。不会发送序列号、明文机型字符串、MAC 地址、显示器 EDID、账号或使用数据。</li>
           <li><strong>没有遥测。</strong>没有分析、没有 Cookie、没有第三方字体、没有后台服务。这个页面不发任何对外请求。</li>
           <li><strong>自检随应用一起发布。</strong>自检是二进制的一部分，审计页列出每一项断言什么。这里哪条说法有一天不成立了，就会有一项自检变红。</li>
         </ul>
@@ -433,6 +433,6 @@
     <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=9.0.0-orb1" defer></script>
+<script src="../site.js?v=9.0.1-orb1" defer></script>
 </body>
 </html>

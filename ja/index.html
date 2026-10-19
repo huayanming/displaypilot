@@ -41,7 +41,7 @@
 <meta name="twitter:image" content="https://lumepane.com/img/og-lumepane.v900.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css?v=8.0.14-1">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LumePane","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"9.0.0","url":"https://lumepane.com/ja/","inLanguage":"ja","downloadUrl":"https://lumepane.com/dl/LumePane-9.0.0.dmg","offers":{"@type":"Offer","price":"19","priceCurrency":"USD","url":"https://lumepane.com/checkout","availability":"https://schema.org/InStock"},"featureList":["DDC/CI によるディスプレイ制御と、ガンマテーブルへのフォールバック","引き継ぎ時に読み取ったカーブを基準にした色調整","フレーム単位のスクロール スムージング","ディスプレイとシステム操作のためのメニューバー操作盤","隔離してから削除する開発者キャッシュのクリーンアップ"],"publisher":{"@type":"Organization","name":"LumePane"},"headline":"スクロール、明るさ、色。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LumePane","applicationCategory":"UtilitiesApplication","operatingSystem":"macOS 14 or later","softwareVersion":"9.0.1","url":"https://lumepane.com/ja/","inLanguage":"ja","downloadUrl":"https://lumepane.com/dl/LumePane-9.0.1.dmg","offers":{"@type":"Offer","price":"19","priceCurrency":"USD","url":"https://lumepane.com/checkout","availability":"https://schema.org/InStock"},"featureList":["DDC/CI によるディスプレイ制御と、ガンマテーブルへのフォールバック","引き継ぎ時に読み取ったカーブを基準にした色調整","フレーム単位のスクロール スムージング","ディスプレイとシステム操作のためのメニューバー操作盤","隔離してから削除する開発者キャッシュのクリーンアップ"],"publisher":{"@type":"Organization","name":"LumePane"},"headline":"スクロール、明るさ、色。"}</script>
 </head>
 <body>
 <a class="skip" href="#main">メイン コンテンツへスキップ</a>
@@ -299,8 +299,8 @@
       </div>
       <div class="trust-grid">
         <ul class="proof-list">
-          <li><strong>オフライン検証。</strong>長い <code>DP-</code> コードは、アプリに内蔵された公開鍵で Ed25519 検証します。アクティベーション時に発生する通信は、次に書く 1 回だけのデバイス登録のみ。その後は起動のたびにローカルで検証し、アップデート確認も自分でオンにしない限り行いません。</li>
-          <li><strong>登録は 1 回だけ、あとは何も送りません。</strong>初回アクティベーションのときだけ、ボード識別子とモデル識別子からローカルで計算した不可逆な SHA-256 ダイジェストを、自社のライセンス サービスへ送ります — これが、長い <code>DP-</code> コードを 5 台の Mac までに制限できる仕組みです。シリアル番号、平文のモデル名、MAC アドレス、ディスプレイの EDID、アカウント、利用データは送りません。</li>
+          <li><strong>オフライン検証。</strong>長い <code>LP-</code> コードは、アプリに内蔵された公開鍵で Ed25519 検証します。アクティベーション時に発生する通信は、次に書く 1 回だけのデバイス登録のみ。その後は起動のたびにローカルで検証し、アップデート確認も自分でオンにしない限り行いません。</li>
+          <li><strong>登録は 1 回だけ、あとは何も送りません。</strong>初回アクティベーションのときだけ、ボード識別子とモデル識別子からローカルで計算した不可逆な SHA-256 ダイジェストを、自社のライセンス サービスへ送ります — これが、長い <code>LP-</code> コードを 5 台の Mac までに制限できる仕組みです。シリアル番号、平文のモデル名、MAC アドレス、ディスプレイの EDID、アカウント、利用データは送りません。</li>
           <li><strong>テレメトリーはありません。</strong>解析も、Cookie も、サードパーティ フォントも、バックグラウンド サービスもありません。このページも外部へのリクエストを出しません。</li>
           <li><strong>検査はアプリに同梱されています。</strong>セルフテストはバイナリの一部で、何を検証しているかは監査ページに一覧があります。ここに書いた主張が正しくなくなれば、どれかが赤になります。</li>
         </ul>
@@ -363,6 +363,6 @@
     <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=9.0.0-orb1" defer></script>
+<script src="../site.js?v=9.0.1-orb1" defer></script>
 </body>
 </html>

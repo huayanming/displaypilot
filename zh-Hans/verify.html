@@ -65,20 +65,20 @@ xcrun stapler validate /Applications/LumePane.app
 <p>这个二进制用尼森与海的 Developer ID 签名，Apple 扫描并公证过，且公证凭据<strong>钉扎</strong>在应用内，因此离线也能验证。任何被改动过的副本都过不了这三项。</p>
 
 <h2>二、下载的东西完整吗？</h2>
-<pre><code>shasum -a 256 ~/Downloads/LumePane-9.0.0.dmg
-  baf938f8ea9a2778c8d3e8c806e9df4909d05962b9e324e5fa18a56d12cca15e</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/LumePane-9.0.1.dmg
+  fa44a546d87b5201cb0a185ef83e55badaeb380243eb3871e50faf3f29fd79f0</code></pre>
 <p>同一个值也写在 Homebrew cask 里，所以你有<strong>两个独立的地方</strong>可以对照：</p>
 <pre><code>brew cat huayanming/tap/lumepane | grep sha256</code></pre>
 <p>如果对不上，<strong>不要运行这个文件</strong>。</p>
 
 <h2>三、它会偷偷联网吗？</h2>
-<p>应用自己的代码里有两个网络端点，都在许可服务上：<code>/api/redeem</code> 只在粘贴<strong>短码</strong>时调用；<code>/api/pulse</code> 只在你主动开启「匿名使用统计」后每天最多调用一次。以 <code>DP-</code> 开头的长码完全离线校验，永不联网。自动检查更新<strong>默认关闭</strong>（<code>SUEnableAutomaticChecks</code> 为 <code>false</code>）。自动下载是显式选择：<code>SUAllowsAutomaticUpdates</code> 允许开启，但默认仍为 <code>false</code>；你在面板里打开后，它只从尼森与海站点取 <code>appcast.xml</code> 和签名更新包，不取别的。</p>
+<p>应用自己的代码里有两个网络端点，都在许可服务上：<code>/api/redeem</code> 只在粘贴<strong>短码</strong>时调用；<code>/api/pulse</code> 只在你主动开启「匿名使用统计」后每天最多调用一次。以 <code>LP-</code> 开头的长码完全离线校验，永不联网。自动检查更新<strong>默认关闭</strong>（<code>SUEnableAutomaticChecks</code> 为 <code>false</code>）。自动下载是显式选择：<code>SUAllowsAutomaticUpdates</code> 允许开启，但默认仍为 <code>false</code>；你在面板里打开后，它只从尼森与海站点取 <code>appcast.xml</code> 和签名更新包，不取别的。</p>
 <p>你可以自己盯：打开应用、让它空闲，然后在终端里执行：</p>
 <pre><code>lsof -i -P | grep -i lumepane</code></pre>
 <p>在关闭自动更新检查、且匿名使用统计保持默认关闭时，这条命令<strong>什么都不输出</strong>。应用不会自动发送崩溃报告或标识符；唯一的可选使用信号是默认关闭的匿名统计。</p>
 
 <h2>四、断网也能激活吗？</h2>
-<p>关掉 Wi-Fi，把长 <code>DP-</code> 码粘进授权框，它会激活。公钥内嵌在应用里：用 Ed25519 在本机验签，且激活码<strong>不绑定设备</strong>。</p>
+<p>关掉 Wi-Fi，把长 <code>LP-</code> 码粘进授权框，它会激活。公钥内嵌在应用里：用 Ed25519 在本机验签，且激活码<strong>不绑定设备</strong>。</p>
 
 <h2>五、这一页验证不了什么</h2>
 <ul class="ticks">
@@ -106,6 +106,6 @@ xcrun stapler validate /Applications/LumePane.app
     <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=9.0.0-orb1" defer></script>
+<script src="../site.js?v=9.0.1-orb1" defer></script>
 </body>
 </html>

@@ -107,7 +107,7 @@
     </ul>
 
     <h2>Frontière de confidentialité</h2>
-    <p>La vérification est entièrement hors ligne : un long code <code>DP-</code> est vérifié avec Ed25519 contre une clé publique intégrée à l’appli. Le seul usage réseau de l’appli est l’activation — la récupération d’un code court et l’enregistrement unique de l’appareil auprès de notre propre service de licences, afin qu’un long code <code>DP-</code> puisse être limité à 5 Macs. Cet enregistrement transmet un condensat SHA-256 irréversible, calculé localement à partir de l’identifiant de carte et de l’identifiant de modèle ; aucun numéro de série, nom de modèle en clair, adresse MAC, EDID d’écran, nom d’utilisateur ni compte n’est envoyé. Ensuite, chaque lancement est vérifié localement, et la recherche de mises à jour reste désactivée sauf si vous l’activez. Les rapports de diagnostic exportés sont caviardés (numéros de série, codes de licence, chemins absolus, noms d’utilisateur) avant de quitter l’appli.</p>
+    <p>La vérification est entièrement hors ligne : un long code <code>LP-</code> est vérifié avec Ed25519 contre une clé publique intégrée à l’appli. Le seul usage réseau de l’appli est l’activation — la récupération d’un code court et l’enregistrement unique de l’appareil auprès de notre propre service de licences, afin qu’un long code <code>LP-</code> puisse être limité à 5 Macs. Cet enregistrement transmet un condensat SHA-256 irréversible, calculé localement à partir de l’identifiant de carte et de l’identifiant de modèle ; aucun numéro de série, nom de modèle en clair, adresse MAC, EDID d’écran, nom d’utilisateur ni compte n’est envoyé. Ensuite, chaque lancement est vérifié localement, et la recherche de mises à jour reste désactivée sauf si vous l’activez. Les rapports de diagnostic exportés sont caviardés (numéros de série, codes de licence, chemins absolus, noms d’utilisateur) avant de quitter l’appli.</p>
     <p class="callout">Les affirmations de cette page sont faites pour être vérifiables. Les commandes d’autotest ci-dessus font partie du binaire, et <a href="../audit.html">la page de transparence</a> liste ce que chacune vérifie.</p>
 
     <p class="back"><a href="index.html">← Retour à la vue d’ensemble</a></p>
@@ -126,6 +126,6 @@
     <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=9.0.0-orb1" defer></script>
+<script src="../site.js?v=9.0.1-orb1" defer></script>
 </body>
 </html>

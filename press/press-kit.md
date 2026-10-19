@@ -37,7 +37,7 @@ with a deterministic rebuild path — quarantined for 30 days before anything is
 2. **Cleanup with a quarantine and a narrow definition.** Only 13 kinds of artifacts that have a
    deterministic rebuild path are touched; everything moves to quarantine for 30 days first;
    permanent deletion is off by default and requires six conditions to hold.
-3. **Offline activation.** A `DP-` code is verified locally with an embedded Ed25519 public key:
+3. **Offline activation.** A `LP-` code is verified locally with an embedded Ed25519 public key:
    no server call, no device binding.
 
 ## Assets in this kit
@@ -69,7 +69,7 @@ Screenshots are unretouched captures of the shipping UI on a real external monit
 
 ## Contact
 
-Download: <https://lumepane.com/dl/LumePane-9.0.0.dmg>
+Download: <https://lumepane.com/dl/LumePane-9.0.1.dmg>
 Homepage: <https://lumepane.com/>
 
 ---

@@ -7,17 +7,17 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.0.0</title>
-      <pubDate>Mon, 19 Oct 2026 19:36:11 +0000</pubDate>
-      <sparkle:version>9.0.0</sparkle:version>
-      <sparkle:shortVersionString>9.0.0</sparkle:shortVersionString>
+      <title>LumePane 9.0.1</title>
+      <pubDate>Mon, 19 Oct 2026 19:45:07 +0000</pubDate>
+      <sparkle:version>9.0.1</sparkle:version>
+      <sparkle:shortVersionString>9.0.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <description sparkle:descriptionFormat="plain-text"><![CDATA[]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.0.0.dmg" length="10550893" type="application/octet-stream" sparkle:edSignature="fBjy2+7ekwwYgxReyeHOYSjoo55koWlS9UE9/jGEYVSlnEYTZomk6GR6aun840Ii9J/naPqZsfrRSi5QBmjVDA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.0.1.dmg" length="10550985" type="application/octet-stream" sparkle:edSignature="EMwEGCHIM81ZO4mbP2xsZsteWMysABENfXxL/R5S5vWtlKZ4IMGqAyA8LWdB9HVvA7j6tAd+gEHhSD8eVcB+CA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: gquW/C/RCviFGx5Y640TtfJWki0h3e6D4jYIBLpydepO4EuS+SuDXHRshEhYpZX7TuhSvuHqiIkgJRy7vyEKAA==
+edSignature: 4wV2uw9hnqlQtXZJi/D9gi7DS+WCKD0rwT2j7WoccI/Yl1n2pp+cIdWcVG4kHK8i6jhgDkJeEOiE2UkWqfCFBA==
 length: 1340
 -->

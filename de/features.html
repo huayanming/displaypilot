@@ -107,7 +107,7 @@
     </ul>
 
     <h2>Datenschutzgrenze</h2>
-    <p>Die Verifikation ist vollständig offline: Ein langer <code>DP-</code>-Code wird mit Ed25519 gegen einen öffentlichen Schlüssel in der App geprüft. Die einzige Netzwerknutzung der App ist die Aktivierung — die Einlösung eines Kurzcodes und die einmalige Geräteregistrierung bei unserem eigenen Lizenzdienst, damit ein langer <code>DP-</code>-Code auf 5 Macs begrenzt werden kann. Diese Registrierung überträgt einen nicht rückführbaren SHA-256-Digest, der lokal aus der Board-Kennung und der Modellkennung berechnet wird; es werden keine Seriennummer, keine Klartext-Modellbezeichnung, keine MAC-Adresse, keine Display-EDID, kein Benutzername und kein Konto gesendet. Danach wird jeder Start lokal geprüft, und Update-Prüfungen bleiben aus, solange du sie nicht einschaltest. Exportierte Diagnoseberichte werden vor dem Verlassen der App um Seriennummern, Lizenzcodes, absolute Pfade und Benutzernamen geschwärzt.</p>
+    <p>Die Verifikation ist vollständig offline: Ein langer <code>LP-</code>-Code wird mit Ed25519 gegen einen öffentlichen Schlüssel in der App geprüft. Die einzige Netzwerknutzung der App ist die Aktivierung — die Einlösung eines Kurzcodes und die einmalige Geräteregistrierung bei unserem eigenen Lizenzdienst, damit ein langer <code>LP-</code>-Code auf 5 Macs begrenzt werden kann. Diese Registrierung überträgt einen nicht rückführbaren SHA-256-Digest, der lokal aus der Board-Kennung und der Modellkennung berechnet wird; es werden keine Seriennummer, keine Klartext-Modellbezeichnung, keine MAC-Adresse, keine Display-EDID, kein Benutzername und kein Konto gesendet. Danach wird jeder Start lokal geprüft, und Update-Prüfungen bleiben aus, solange du sie nicht einschaltest. Exportierte Diagnoseberichte werden vor dem Verlassen der App um Seriennummern, Lizenzcodes, absolute Pfade und Benutzernamen geschwärzt.</p>
     <p class="callout">Die Aussagen auf dieser Seite sollen prüfbar sein. Die Selbsttest-Befehle oben sind Teil des Binaries, und <a href="../audit.html">die Transparenzseite</a> listet, was jeder einzelne prüft.</p>
 
     <p class="back"><a href="index.html">← Zurück zur Übersicht</a></p>
@@ -126,6 +126,6 @@
     <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=9.0.0-orb1" defer></script>
+<script src="../site.js?v=9.0.1-orb1" defer></script>
 </body>
 </html>
