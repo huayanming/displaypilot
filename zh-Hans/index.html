@@ -189,6 +189,7 @@
           <p class="f-eyebrow">02 · 软件调光</p>
           <h2 class="f-title">调暗，不碰面板固件</h2>
           <p class="f-body">亮度走 CoreGraphics 伽马表，所以显示器没实现 DDC/CI 也能用。换分辨率或唤醒后，应用会重写曲线，并把一个内部采样点与目标值比对；对不上就重试，总共最多四次。换分辨率与休眠唤醒都会自动重放曲线，不会悄悄失效。</p>
+          <p class="f-body"><a href="../display-test.html">运行免费的显示器测试图 →</a></p>
           <p class="f-note sunk neu neu-sink">重放始终从接管时抓取的基准重算，而不是拿当前曲线当基准，所以反复调整不会累积误差。亮度 60% 时，中灰点从 0.5020 移到 0.3012——这是精确缩放，不是累积的偏移量。进程退出时 macOS 会还原显示器；另有两条不依赖应用运行的恢复路径：应用内一条，以及 <code>Scripts/restore-dimming.sh</code>。</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="色彩校准实测读数">

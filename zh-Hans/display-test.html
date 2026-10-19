@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 显示器测试图：灰阶、颜色、黑位、锐度 · LumePane</title>
+<meta name="description" content="免费的 Mac 显示器浏览器测试：灰阶渐变、彩条、近黑/近白、1 像素网格和均匀性。不安装，不上传。">
+<link rel="canonical" href="https://lumepane.com/zh-Hans/display-test.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://lumepane.com/display-test.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://lumepane.com/zh-Hans/display-test.html">
+<link rel="alternate" hreflang="x-default" href="https://lumepane.com/display-test.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://license.lumepane.com; base-uri 'none'; form-action 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LumePane">
+<meta property="og:title" content="Mac 显示器测试图">
+<meta property="og:description" content="灰阶、彩条、黑位、白位、锐度和均匀性，在浏览器里免费测试。">
+<meta property="og:url" content="https://lumepane.com/zh-Hans/display-test.html">
+<meta property="og:image" content="https://lumepane.com/img/og-en.v532.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="stylesheet" href="../style.css?v=8.0.11-orb2">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LumePane 显示器测试图","headline":"看你的屏幕，不要只看参数表。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","url":"https://lumepane.com/zh-Hans/display-test.html","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"LumePane"}}</script>
+<style>
+.dt-hero{max-width:52rem;margin:0 auto;text-align:center}
+.dt-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;letter-spacing:-.04em;margin:.9rem 0 0}
+.dt-hero .lede{max-width:40rem;margin:1rem auto 0;color:var(--ink-soft)}
+.dt-tools{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:center;margin:1.4rem 0 .9rem}
+.dt-tab{appearance:none;border:0;border-radius:999px;padding:.5rem .8rem;background:var(--surface);box-shadow:var(--raise-sm);color:var(--ink-soft);font:600 .78rem/1 inherit;cursor:pointer}
+.dt-tab[aria-selected="true"]{background:var(--ink);color:#fff}
+.dt-stage{border-radius:22px;overflow:hidden;box-shadow:var(--raise);background:#000;min-height:clamp(15rem,44vh,28rem);display:flex;position:relative}
+.dt-pattern{flex:1;display:flex;min-height:inherit}
+.dt-pattern>div{flex:1}
+.dt-ramp{display:flex;width:100%}.dt-ramp span{flex:1}
+.dt-bars{display:flex;width:100%}.dt-bars span{flex:1}
+.dt-steps{display:flex;width:100%;align-items:stretch}.dt-steps span{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;color:#999;font:9px/1 ui-monospace,monospace;padding-bottom:6px}
+.dt-grid{width:100%;background:#fff}
+.dt-grid i{display:block;width:100%;height:100%;background:repeating-linear-gradient(90deg,#000 0 1px,transparent 1px 4px),repeating-linear-gradient(0deg,#000 0 1px,transparent 1px 4px)}
+.dt-uniform{width:100%;background:#808080}
+.dt-caption{display:flex;justify-content:space-between;gap:.7rem;flex-wrap:wrap;color:var(--ink-muted);font-size:.78rem;margin-top:.6rem}
+.dt-actions{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:.9rem}
+.dt-note{font-size:.8rem;color:var(--ink-muted);line-height:1.65;margin-top:1rem}
+.dt-cta{margin-top:1.2rem;background:var(--surface);border-radius:24px;box-shadow:var(--raise);padding:1.2rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+.dt-cta p{margin:0;max-width:34rem;color:var(--ink-soft);font-size:.9rem}
+@media(max-width:620px){.dt-hero{text-align:center}.dt-stage{min-height:36vh}.dt-tab{font-size:.72rem;padding:.45rem .65rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="../index.html"><img src="../img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
+    <nav class="nav-links" aria-label="Primary"><a href="../index.html#features">功能</a>
+      <a href="../index.html#console">控制台</a>
+      <a href="../index.html#controls">控制</a>
+      <a href="../index.html#price">价格</a>
+      <a href="../guides.html">指南</a>
+      <a href="../scroll-test.html">免费测试</a>
+      <a href="../support.html">支持</a>
+    </nav>
+    <details class="lang"><summary>简体中文</summary><ul class="lang-menu" aria-label="Language"><li><a href="../display-test.html" hreflang="en" lang="en">English</a></li><li><a href="display-test.html" hreflang="zh-Hans" lang="zh-Hans" aria-current="true">简体中文</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">下载</a>
+  </div>
+</header>
+<main id="main" class="wrap page">
+  <section class="dt-hero">
+    <p class="f-eyebrow">免费浏览器测试 · 不安装 · 不上传</p>
+    <h1>看你的屏幕，不要只看参数表。</h1>
+    <p class="lede">六张 Mac 显示器测试图：灰阶、彩条、近黑、近白、1 像素网格和均匀场。请全屏、使用显示器原生分辨率。</p>
+  </section>
+
+  <div class="dt-tools" role="tablist" aria-label="Test patterns">
+    <button class="dt-tab" role="tab" aria-selected="true" data-kind="ramp">灰阶渐变</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="bars">彩条</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="black">近黑</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="white">近白</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="sharp">1 像素网格</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="uniform">均匀场</button>
+  </div>
+
+  <div class="dt-stage" id="stage" aria-live="polite">
+    <div class="dt-pattern" id="pattern"></div>
+  </div>
+  <div class="dt-caption"><span id="caption">灰阶渐变: every step should be visible on a calibrated display.</span><button class="btn btn-ghost" type="button" id="full">全屏</button></div>
+  <div class="dt-actions"><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">试用 LumePane 校准</a><a class="btn btn-ghost" href="../guide-color.html">色彩指南</a><a class="btn btn-ghost" href="../scroll-test.html">滚轮测试</a></div>
+
+  <p class="dt-note"><strong>能做什么、不能做什么。</strong>浏览器只能显示参考级差，不能读取或修改面板的伽马、色温或 DDC/CI 寄存器。在屏幕上“看起来不错”不是校准报告。如果这里能看到色带、偏色或黑位裁切，下一步是在 LumePane 里做有测量的校准（伽马表锚定 + 可用时的 DDC/CI）。本页加载后不再发起网络请求。</p>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links"><a href="../privacy.html">隐私政策</a><a href="../eula.html">许可</a><a href="../support.html">支持</a><a href="../scroll-test.html">滚轮测试</a><a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a></p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
+  </div>
+</footer>
+<script src="../site.js?v=8.0.11-orb2" defer></script>
+<script>
+(function(){
+  var pattern=document.getElementById('pattern'),caption=document.getElementById('caption'),stage=document.getElementById('stage');
+  var tabs=[].slice.call(document.querySelectorAll('.dt-tab'));
+  function build(kind){
+    var h='';
+    if(kind==='ramp'){h='<div class="dt-ramp">';for(var i=0;i<21;i++){var v=Math.round(i*255/20);h+='<span style="background:rgb('+v+','+v+','+v+')"></span>';}h+='</div>';caption.textContent='灰阶渐变: every step should be visible on a calibrated display.';}
+    else if(kind==='bars'){var c=['#ff0000','#00ff00','#0000ff','#00ffff','#ff00ff','#ffff00','#ffffff','#000000'];h='<div class="dt-bars">';c.forEach(function(x){h+='<span style="background:'+x+'"></span>';});h+='</div>';caption.textContent='彩条: check for a colour cast and for clean transitions.';}
+    else if(kind==='black'){h='<div class="dt-steps">';for(var i=0;i<9;i++){var v=i;h+='<span style="background:rgb('+v+','+v+','+v+')">'+v+'</span>';}h+='</div>';caption.textContent='近黑: count how many dark steps you can distinguish from the black background.';}
+    else if(kind==='white'){h='<div class="dt-steps">';for(var j=0;j<9;j++){var w=247+j;h+='<span style="background:rgb('+w+','+w+','+w+');color:#222">'+w+'</span>';}h+='</div>';caption.textContent='近白: check that the brightest steps do not clip into one flat white.';}
+    else if(kind==='sharp'){h='<div class="dt-grid"><i></i></div>';caption.textContent='1 像素网格: use the display native resolution and avoid browser zoom. The grid should not smear or moiré.';}
+    else {h='<div class="dt-uniform"></div>';caption.textContent='均匀场: look for uneven brightness or colour across the panel.';}
+    pattern.innerHTML=h;
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.setAttribute('aria-selected','false')});t.setAttribute('aria-selected','true');build(t.dataset.kind);});});
+  document.getElementById('full').addEventListener('click',function(){if(stage.requestFullscreen)stage.requestFullscreen().catch(function(){});});
+  build('ramp');
+})();
+</script>
+</body>
+</html>

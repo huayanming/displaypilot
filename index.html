@@ -190,6 +190,7 @@
           <p class="f-eyebrow">02 · Software dimming</p>
           <h2 class="f-title">Dim without touching panel firmware</h2>
           <p class="f-body">Brightness runs through the CoreGraphics gamma table, so it works even on monitors that don't implement DDC/CI. After a resolution change or wake, the app rewrites the curve and checks one interior sample against the intent; on a mismatch it retries, up to four attempts in total. Resolution changes and wake-from-sleep replay the curve automatically, so it never silently stops working.</p>
+          <p class="f-body"><a href="display-test.html">Run the free display test patterns →</a></p>
           <p class="f-note sunk neu neu-sink">Replays always recompute from the baseline captured at takeover rather than from the current curve, so repeated adjustment can't accumulate error. At 60% brightness the mid-gray point moves from 0.5020 to 0.3012 — exact scaling, not an accumulated delta. macOS restores the display when the process exits, and there are two further recovery paths: one inside the app, and <code>Scripts/restore-dimming.sh</code>.</p>
         </div>
         <div class="f-media instrument card neu" role="group" aria-label="Measured color calibration readings">

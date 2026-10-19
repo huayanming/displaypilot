@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac display test patterns: grayscale, colour, black level, sharpness · LumePane</title>
+<meta name="description" content="Free browser display test for Mac monitors: grayscale ramp, colour bars, near-black and near-white steps, 1-pixel sharpness grid and uniformity. No install, no upload.">
+<link rel="canonical" href="https://lumepane.com/display-test.html">
+<link rel="alternate" hreflang="en" href="https://lumepane.com/display-test.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://lumepane.com/zh-Hans/display-test.html">
+<link rel="alternate" hreflang="x-default" href="https://lumepane.com/display-test.html">
+<meta name="theme-color" content="#E2DED9">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://license.lumepane.com; base-uri 'none'; form-action 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LumePane">
+<meta property="og:title" content="Mac display test patterns">
+<meta property="og:description" content="Grayscale, colour bars, black level, white clipping, sharpness and uniformity — in the browser, free.">
+<meta property="og:url" content="https://lumepane.com/display-test.html">
+<meta property="og:image" content="https://lumepane.com/img/og-en.v532.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="stylesheet" href="style.css?v=8.0.11-orb2">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LumePane display test patterns","headline":"Look at your display, not at a spec sheet.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","url":"https://lumepane.com/display-test.html","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"LumePane"}}</script>
+<style>
+.dt-hero{max-width:52rem;margin:0 auto;text-align:center}
+.dt-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;letter-spacing:-.04em;margin:.9rem 0 0}
+.dt-hero .lede{max-width:40rem;margin:1rem auto 0;color:var(--ink-soft)}
+.dt-tools{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:center;margin:1.4rem 0 .9rem}
+.dt-tab{appearance:none;border:0;border-radius:999px;padding:.5rem .8rem;background:var(--surface);box-shadow:var(--raise-sm);color:var(--ink-soft);font:600 .78rem/1 inherit;cursor:pointer}
+.dt-tab[aria-selected="true"]{background:var(--ink);color:#fff}
+.dt-stage{border-radius:22px;overflow:hidden;box-shadow:var(--raise);background:#000;min-height:clamp(15rem,44vh,28rem);display:flex;position:relative}
+.dt-pattern{flex:1;display:flex;min-height:inherit}
+.dt-pattern>div{flex:1}
+.dt-ramp{display:flex;width:100%}.dt-ramp span{flex:1}
+.dt-bars{display:flex;width:100%}.dt-bars span{flex:1}
+.dt-steps{display:flex;width:100%;align-items:stretch}.dt-steps span{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;color:#999;font:9px/1 ui-monospace,monospace;padding-bottom:6px}
+.dt-grid{width:100%;background:#fff}
+.dt-grid i{display:block;width:100%;height:100%;background:repeating-linear-gradient(90deg,#000 0 1px,transparent 1px 4px),repeating-linear-gradient(0deg,#000 0 1px,transparent 1px 4px)}
+.dt-uniform{width:100%;background:#808080}
+.dt-caption{display:flex;justify-content:space-between;gap:.7rem;flex-wrap:wrap;color:var(--ink-muted);font-size:.78rem;margin-top:.6rem}
+.dt-actions{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:.9rem}
+.dt-note{font-size:.8rem;color:var(--ink-muted);line-height:1.65;margin-top:1rem}
+.dt-cta{margin-top:1.2rem;background:var(--surface);border-radius:24px;box-shadow:var(--raise);padding:1.2rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+.dt-cta p{margin:0;max-width:34rem;color:var(--ink-soft);font-size:.9rem}
+@media(max-width:620px){.dt-hero{text-align:center}.dt-stage{min-height:36vh}.dt-tab{font-size:.72rem;padding:.45rem .65rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="24" height="24"><span class="brand-name">LumePane</span></a>
+    <nav class="nav-links" aria-label="Primary"><a href="index.html#features">Features</a>
+      <a href="index.html#console">The console</a>
+      <a href="index.html#controls">Controls</a>
+      <a href="index.html#price">Pricing</a>
+      <a href="guides.html">Guides</a>
+      <a href="scroll-test.html">Free test</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <details class="lang"><summary>English</summary><ul class="lang-menu" aria-label="Language"><li><a href="display-test.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="zh-Hans/display-test.html" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li></ul></details>
+    <a class="btn btn-primary btn-sm" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Download</a>
+  </div>
+</header>
+<main id="main" class="wrap page">
+  <section class="dt-hero">
+    <p class="f-eyebrow">Free browser test · no install · no upload</p>
+    <h1>Look at your display, not at a spec sheet.</h1>
+    <p class="lede">Six test patterns for a Mac monitor: grayscale, colour bars, near-black, near-white, a 1-pixel grid and a uniform field. Use full screen and the display's native resolution.</p>
+  </section>
+
+  <div class="dt-tools" role="tablist" aria-label="Test patterns">
+    <button class="dt-tab" role="tab" aria-selected="true" data-kind="ramp">Grayscale ramp</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="bars">Colour bars</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="black">Near black</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="white">Near white</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="sharp">1-pixel grid</button>
+    <button class="dt-tab" role="tab" aria-selected="false" data-kind="uniform">Uniform field</button>
+  </div>
+
+  <div class="dt-stage" id="stage" aria-live="polite">
+    <div class="dt-pattern" id="pattern"></div>
+  </div>
+  <div class="dt-caption"><span id="caption">Grayscale ramp: every step should be visible on a calibrated display.</span><button class="btn btn-ghost" type="button" id="full">Full screen</button></div>
+  <div class="dt-actions"><a class="btn btn-primary" data-site="download" href="https://github.com/huayanming/displaypilot/releases">Try LumePane's calibration</a><a class="btn btn-ghost" href="guide-color.html">Colour guide</a><a class="btn btn-ghost" href="scroll-test.html">Scroll test</a></div>
+
+  <p class="dt-note"><strong>What this can and cannot do.</strong> The browser can show reference steps, but it cannot read or change the panel's gamma, colour temperature or DDC/CI registers. A pattern that looks good on screen is not a calibration report. If banding, a colour cast or clipped blacks are visible here, the next step is a measured calibration in LumePane (gamma-table anchor + DDC/CI where available). This page makes no network requests after loading.</p>
+</main>
+<footer class="doc-foot">
+  <div class="wrap">
+    <p class="foot-links"><a href="privacy.html">Privacy Policy</a><a href="eula.html">License</a><a href="support.html">Support</a><a href="scroll-test.html">Scroll test</a><a href="https://github.com/huayanming/displaypilot/issues">GitHub Issues</a></p>
+    <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
+  </div>
+</footer>
+<script src="site.js?v=8.0.11-orb2" defer></script>
+<script>
+(function(){
+  var pattern=document.getElementById('pattern'),caption=document.getElementById('caption'),stage=document.getElementById('stage');
+  var tabs=[].slice.call(document.querySelectorAll('.dt-tab'));
+  function build(kind){
+    var h='';
+    if(kind==='ramp'){h='<div class="dt-ramp">';for(var i=0;i<21;i++){var v=Math.round(i*255/20);h+='<span style="background:rgb('+v+','+v+','+v+')"></span>';}h+='</div>';caption.textContent='Grayscale ramp: every step should be visible on a calibrated display.';}
+    else if(kind==='bars'){var c=['#ff0000','#00ff00','#0000ff','#00ffff','#ff00ff','#ffff00','#ffffff','#000000'];h='<div class="dt-bars">';c.forEach(function(x){h+='<span style="background:'+x+'"></span>';});h+='</div>';caption.textContent='Colour bars: check for a colour cast and for clean transitions.';}
+    else if(kind==='black'){h='<div class="dt-steps">';for(var i=0;i<9;i++){var v=i;h+='<span style="background:rgb('+v+','+v+','+v+')">'+v+'</span>';}h+='</div>';caption.textContent='Near black: count how many dark steps you can distinguish from the black background.';}
+    else if(kind==='white'){h='<div class="dt-steps">';for(var j=0;j<9;j++){var w=247+j;h+='<span style="background:rgb('+w+','+w+','+w+');color:#222">'+w+'</span>';}h+='</div>';caption.textContent='Near white: check that the brightest steps do not clip into one flat white.';}
+    else if(kind==='sharp'){h='<div class="dt-grid"><i></i></div>';caption.textContent='1-pixel grid: use the display native resolution and avoid browser zoom. The grid should not smear or moiré.';}
+    else {h='<div class="dt-uniform"></div>';caption.textContent='Uniform field: look for uneven brightness or colour across the panel.';}
+    pattern.innerHTML=h;
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.setAttribute('aria-selected','false')});t.setAttribute('aria-selected','true');build(t.dataset.kind);});});
+  document.getElementById('full').addEventListener('click',function(){if(stage.requestFullscreen)stage.requestFullscreen().catch(function(){});});
+  build('ramp');
+})();
+</script>
+</body>
+</html>
