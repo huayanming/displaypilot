@@ -2,7 +2,7 @@
 # LumePane · 显示器控制
 A native macOS display console. One-time purchase, no account, no telemetry.
 
-安装包：`DisplayPilot-8.0.10.dmg`（macOS 14 或更高，苹果芯片与英特尔通用）
+安装包：`DisplayPilot-8.0.11.dmg`（macOS 14 或更高，苹果芯片与英特尔通用）
 
 ## 菜单栏快捷开关
 
@@ -28,11 +28,11 @@ A native macOS display console. One-time purchase, no account, no telemetry.
 | 清理隔离区 | 保留 30 天 |
 | 可重建产物 | 13 类有确定性重建方式 |
 | 永久删除 | 必须同时满足 6 个条件 |
-| 下载 | DisplayPilot-8.0.10.dmg |
+| 下载 | DisplayPilot-8.0.11.dmg |
 
 ## 下载
 
-- macOS 应用：`DisplayPilot-8.0.10.dmg`（Release 页）
+- macOS 应用：`DisplayPilot-8.0.11.dmg`（Release 页）
 - 更新源：`appcast.xml`
 
 ## 先说结论：你这块显示器不支持 DDC/CI
