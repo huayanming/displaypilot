@@ -7,23 +7,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.5</title>
-      <pubDate>Mon, 19 Oct 2026 04:58:36 +0000</pubDate>
-      <sparkle:version>8.0.5</sparkle:version>
-      <sparkle:shortVersionString>8.0.5</sparkle:shortVersionString>
+      <title>LumePane 8.0.6</title>
+      <pubDate>Mon, 19 Oct 2026 05:10:09 +0000</pubDate>
+      <sparkle:version>8.0.6</sparkle:version>
+      <sparkle:shortVersionString>8.0.6</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[交互收敛
-• 取消 Dock 四边拖拽缩放，改为四边共用一套 Dock 厚度 / 长度上限 参数。
-• 拖动魔丸时球内流体进入高速流动；松手恢复待机速度。
-• 新增 Dock 自动隐藏：指针离开 Dock 区域约 0.35 秒后收回玻璃球；在玻璃球上停留约 0.8 秒重新展开。
-• 设置中可关闭自动收起。
-• 上下与左右 Dock 共用同一套悬停橙色填充与尺寸参数。
-• 保留液态拟态图标、LumePane 字标和官网平滑滚动。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[自动显示修复
+• 修复玻璃球悬停展开没有触发的问题：现在在球上停留约 0.8 秒展开，移出 Dock 约 0.35 秒后自动收回。
+• 自动收起默认开启，可在「通用 → 光彩魔丸」关闭。
+• 拖动魔丸时流体高速旋转，松手恢复待机速度。
+• 四边共用厚度/长度上限参数；四边拖拽缩放已移除。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.5.dmg" length="10565986" type="application/octet-stream" sparkle:edSignature="hJsE3OeBPHHsaEcIwalFOF0DCyJTcFtWVGZuTCIS7naLzrC72ZDzNnZjvWAkSGBGAh/q6PJDhyBFbgoFrJGlDQ=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/DisplayPilot-8.0.6.dmg" length="10566865" type="application/octet-stream" sparkle:edSignature="0O6oo5cNv1qpwkjHN6scSVdkD9Z6291id+ljfyZJYktXnN4JeeMn2zhkxkQUu+HU5UM2Hto7Df8sCZnfevp/CA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: Y9b5Yps58idUrvS+VyrI9+3sgRdY+Y7+LyGOkCGzY+vjdRqlv+4TdVPT3ooOwPsmN/takXKGvnjc+gzudboDBg==
-length: 1857
+edSignature: 5BwobbGzoiXnk+HQwun1GfG29XNgDg1LKPLLDMXE7QJKydk2h3GcTRTqpRvaFZxbDFYBiE4Pv6X637206WxtBw==
+length: 1720
 -->
