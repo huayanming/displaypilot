@@ -10,6 +10,15 @@
 > 5.7.1 是本轮对外发布版本，整合 4.0.0–4.4.0 期间全部面向用户的变更；
 > 4.0.0–4.4.0 的条目保留为内部工程记录（其中 4.4.0 未生成对外二进制）。
 
+## [9.0.2] - 2026-10-20
+
+- New Sparkle EdDSA key under `com.neeson.lumepane`; old signing account removed.
+- Appcast re-signed with the new key.
+
+## [9.0.1] - 2026-10-20
+
+- License display prefix is now `LP-`; the legacy `DP-` prefix is no longer emitted or accepted.
+- Rebuilt after the full signature/vector update.
 ## [9.0.0] - 2026-10-20
 
 ### Brand reset

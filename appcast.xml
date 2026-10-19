@@ -7,17 +7,18 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.0.1</title>
-      <pubDate>Mon, 19 Oct 2026 19:45:07 +0000</pubDate>
-      <sparkle:version>9.0.1</sparkle:version>
-      <sparkle:shortVersionString>9.0.1</sparkle:shortVersionString>
+      <title>LumePane 9.0.2</title>
+      <pubDate>Mon, 19 Oct 2026 19:55:40 +0000</pubDate>
+      <sparkle:version>9.0.2</sparkle:version>
+      <sparkle:shortVersionString>9.0.2</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[• New Sparkle EdDSA key under com.neeson.lumepane; old signing account removed.
+• Appcast re-signed with the new key.]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.0.1.dmg" length="10550985" type="application/octet-stream" sparkle:edSignature="EMwEGCHIM81ZO4mbP2xsZsteWMysABENfXxL/R5S5vWtlKZ4IMGqAyA8LWdB9HVvA7j6tAd+gEHhSD8eVcB+CA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.0.2.dmg" length="10550961" type="application/octet-stream" sparkle:edSignature="WGkTUHhwuAtUzzrNCMLWsR417t4494rFPm3EOPnu75kdR6gCTRURziwZW0u+jJVx3xQwDiQF77I8Mqq1Hx4MCQ=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 4wV2uw9hnqlQtXZJi/D9gi7DS+WCKD0rwT2j7WoccI/Yl1n2pp+cIdWcVG4kHK8i6jhgDkJeEOiE2UkWqfCFBA==
-length: 1340
+edSignature: 3PPHdh217hH2Me1su+GL/R0DnWhDtyZqbRSJiH5G5/JFi7o0bib1LKeX5H94X8riH+lZDXBVW2i0OvyQ/YlaBQ==
+length: 1461
 -->
