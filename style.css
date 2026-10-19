@@ -1307,3 +1307,41 @@ html[lang="zh-Hant"] .hero-v2 h1 {
   font-size: .66rem;
   line-height: 1;
 }
+
+/* The whole Glow Orb block is one neumorphic module, not a full-bleed band
+   inserted between sections. The material matches the site's cards and the
+   app's raised surfaces, so the block reads as part of the same instrument. */
+.orb-section > .wrap {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.35rem, 3.4vw, 3.1rem);
+  border-radius: clamp(26px, 3.4vw, 40px);
+  background: var(--surface);
+  box-shadow:
+    2.5px 2.5px 1px var(--dark),
+    -2px -2px .5px #fff,
+    10px 14px 28px rgba(150, 143, 133, .22),
+    -8px -8px 20px rgba(255, 255, 255, .62),
+    inset 0 1px 0 rgba(255, 255, 255, .86);
+}
+.orb-section > .wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, .58);
+  pointer-events: none;
+}
+.orb-feature-card {
+  background: var(--sunken);
+  box-shadow:
+    inset 2px 2px 6px rgba(170, 163, 153, .42),
+    inset -2px -2px 6px rgba(255, 255, 255, .72);
+}
+.orb-feature-card span {
+  background: var(--surface);
+  box-shadow: var(--raise-tiny);
+}
+@media (max-width: 620px) {
+  .orb-section > .wrap { padding: 1rem; border-radius: 24px; }
+}
