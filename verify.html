@@ -65,8 +65,8 @@ xcrun stapler validate /Applications/LumePane.app
 <p>The binary is signed with Neeson &amp; Sea's Developer ID, Apple scanned and notarized it, and the notarization ticket is <strong>stapled</strong> to the app so it validates offline. A modified copy fails all three checks.</p>
 
 <h2>2. Did the download arrive intact?</h2>
-<pre><code>shasum -a 256 ~/Downloads/LumePane-8.0.12.dmg
-  8c519e0354de596fd39da2fb7b78cfe9deeddffaa86cfab661d36f294723ccaf</code></pre>
+<pre><code>shasum -a 256 ~/Downloads/LumePane-8.0.13.dmg
+  60edce6e54a6e242801cc630031f4e98acdc32ed290da7d24e7783e5a9e4a56f</code></pre>
 <p>The same value is published in the Homebrew cask, so there are two independent places to compare against:</p>
 <pre><code>brew cat huayanming/tap/displaypilot | grep sha256</code></pre>
 <p>If your value differs, <strong>do not run the file</strong>.</p>
@@ -106,6 +106,6 @@ xcrun stapler validate /Applications/LumePane.app
     <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane</p>
   </div>
 </footer>
-<script src="site.js?v=8.0.12-orb2" defer></script>
+<script src="site.js?v=8.0.13-orb1" defer></script>
 </body>
 </html>

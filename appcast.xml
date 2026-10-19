@@ -7,22 +7,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 8.0.12</title>
-      <pubDate>Mon, 19 Oct 2026 15:07:29 +0000</pubDate>
-      <sparkle:version>8.0.12</sparkle:version>
-      <sparkle:shortVersionString>8.0.12</sparkle:shortVersionString>
+      <title>LumePane 8.0.13</title>
+      <pubDate>Mon, 19 Oct 2026 15:50:36 +0000</pubDate>
+      <sparkle:version>8.0.13</sparkle:version>
+      <sparkle:shortVersionString>8.0.13</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[品牌一致性修复
-• 对外安装包从 DisplayPilot-8.0.11.dmg 改为 LumePane-8.0.12.dmg。
-• 应用包从 DisplayPilot.app 改为 LumePane.app，可执行文件改为 LumePane。
-• 修复「外观已经是 LumePane，但下载包、应用程序名、可执行文件名仍是 DisplayPilot」的低级不一致。
-• Bundle ID 保持 com.neeson.displaypilot 不变，避免升级时丢失许可、偏好设置和辅助功能授权；这是兼容性选择，不是漏改。
-• 增加品牌命名门禁：构建/发布时检查 app、可执行文件、DMG 名称一致，防止再次发出旧名字的包。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[低刷新率屏幕的平滑滚动
+• 60Hz 屏幕上单帧推进量上限从自然 alpha 降到 16%，避免首帧/每帧跳一大段；120/144Hz 不受影响。
+• 总位移仍然守恒；60Hz 的尾部会分到更多帧，Mac mini + 60Hz 外接屏不再显得一跳一跳。
+• 离线自检：60/120/144Hz 总量误差 0%；60Hz 首帧 13%，120Hz 首帧 30%。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-8.0.12.dmg" length="10527803" type="application/octet-stream" sparkle:edSignature="/cRiOIO7A412dIgLXruP5TiHkg0PtwRxx5s5uxERdHlUMiwiXL2SqJyIxPp0l+dgiJZJ/6MIvfYIq9FNTsc6Bg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-8.0.13.dmg" length="10525932" type="application/octet-stream" sparkle:edSignature="QNkbzoKRB98Ja8Oh0X9P92b42OVRU/R4qfPXIAgdJvf6cMhpdmUlgzH0o3Xdr93vUbGJrweNOunOeHvBqv8ICA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: /tsP7V4YWkdRzT38VQ3os2CMXimjz1RyOxQpqZ4/UCDM7g3Ha7LZpSjzL5WsTrJ+CZW5/GlepuWf0m9XAHkABg==
-length: 1961
+edSignature: FsnT6eLXTKxFdROSvNtQ9LxKMIL0lzYqi4DlGhu6uDm0qaUu3diVDaIMquM691AJ0G0iWdT2YgD0TbH1Gt/HBw==
+length: 1709
 -->
