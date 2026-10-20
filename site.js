@@ -23,7 +23,7 @@
     // 脚本被禁用时，HTML 里的 Releases 页面仍可兜底（但不会计数）。
     download: "https://lumepane.com/dl/LumePane-9.0.7.dmg",
     // 下载计数入口；保留上面的直链作为版本/兜底来源，运行时优先走计数入口。
-    downloadEndpoint: "https://license.lumepane.com/api/download",
+    downloadEndpoint: "https://cdn.jsdelivr.net/gh/huayanming/lumepane@main/dl/LumePane-9.0.7.dmg",
     // 结账地址。空字符串 = 还没有可用的付款入口。
     purchase: "https://license.lumepane.com/buy",
     // 价格：全站唯一常量。key 是页面的 <html lang>，default 覆盖其余语言。
