@@ -7,17 +7,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.0.4</title>
-      <pubDate>Mon, 19 Oct 2026 20:37:42 +0000</pubDate>
-      <sparkle:version>9.0.4</sparkle:version>
-      <sparkle:shortVersionString>9.0.4</sparkle:shortVersionString>
+      <title>LumePane 9.0.7</title>
+      <pubDate>Tue, 20 Oct 2026 10:58:10 +0000</pubDate>
+      <sparkle:version>9.0.7</sparkle:version>
+      <sparkle:shortVersionString>9.0.7</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[• Rebuild with the restored license signing public key after Worker secret recovery.]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[• The glass ball is enabled by default (and respects an explicit off).
+• Remove the ineffective system Dock auto-hide control.
+• Keep legacy DP-/old-key licence acceptance.]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.0.4.dmg" length="10559389" type="application/octet-stream" sparkle:edSignature="ndfVW04PowOkCfw2PkQb0RH0e0WWkEPewO+5qJW91byQztvj2ngkh1DkieFUakTawS//6h9HYzs/emRQTrA2Dw=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.0.7.dmg" length="10558785" type="application/octet-stream" sparkle:edSignature="ZFGkXqsESrls0+2foqNE3wB/nK50bJzJ5RaVjqkhDu2dYHwdwS0U/ibZMU26ogtS41Xc6O0P0Iz38//AyEjLCw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: eQUlVGFu32yYLYagvL8oPH040Lebd0mUEsBXmIaGJnxhHDhQqr9pBfvOzoWTag1ydAr0OVuf8bia+nN5z3tLBg==
-length: 1426
+edSignature: XMVz/Hu07wEAL3NSqLyhB80jknhlVOFHfleFAad69LBnzwNs1MaFdZuGn6FF3ErQCLnuJfD0GTf4kgm9WzqbBg==
+length: 1518
 -->

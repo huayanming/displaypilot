@@ -10,6 +10,21 @@
 > 5.7.1 是本轮对外发布版本，整合 4.0.0–4.4.0 期间全部面向用户的变更；
 > 4.0.0–4.4.0 的条目保留为内部工程记录（其中 4.4.0 未生成对外二进制）。
 
+## [9.0.7] - 2026-10-20
+
+- The glass ball is enabled by default (and respects an explicit off).
+- Remove the ineffective system Dock auto-hide control.
+- Keep legacy `DP-`/old-key licence acceptance.
+
+## [9.0.6] - 2026-10-20
+
+- Accept legacy `DP-` activation-code prefix and legacy Ed25519 licence key so pre-9.0.4 perpetual codes keep working after the brand/key migration.
+
+## [9.0.5] - 2026-10-20
+
+- Reset the console window to the design width on first launch; prevent the infinite-ideal-width window from opening nearly edge-to-edge.
+- Restore developer WeChat QR and email on the support page.
+
 ## [9.0.4] - 2026-10-20
 
 - Rebuild with the restored license signing public key after Worker secret recovery.

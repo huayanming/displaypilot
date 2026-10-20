@@ -21,9 +21,9 @@
   var SITE = {
     // 下载计数入口。由发码 Worker 记一次匿名下载、再 302 到当前 DMG；
     // 脚本被禁用时，HTML 里的 Releases 页面仍可兜底（但不会计数）。
-    download: "https://lumepane.com/dl/LumePane-9.0.4.dmg",
+    download: "https://lumepane.com/dl/LumePane-9.0.7.dmg",
     // 下载计数入口；保留上面的直链作为版本/兜底来源，运行时优先走计数入口。
-    downloadEndpoint: "https://lumepane.com/api/download",
+    downloadEndpoint: "https://license.lumepane.com/api/download",
     // 结账地址。空字符串 = 还没有可用的付款入口。
     purchase: "https://license.lumepane.com/buy",
     // 价格：全站唯一常量。key 是页面的 <html lang>，default 覆盖其余语言。
@@ -357,6 +357,18 @@ function campaignSource() {
   var section = el("section", "contact-card");
   section.setAttribute("aria-labelledby", "contact-dev");
 
+  var qr = el("a", "contact-qr");
+  qr.href = prefix + "wechat-service-qr.png";
+  qr.target = "_blank";
+  qr.rel = "noopener";
+  qr.setAttribute("aria-label", c.wechat + " QR");
+  var img = document.createElement("img");
+  img.src = prefix + "wechat-service-qr.png";
+  img.alt = c.wechat;
+  img.width = 128; img.height = 114; img.loading = "lazy";
+  qr.appendChild(img);
+  section.appendChild(qr);
+
   var copyCol = el("div", "contact-copy");
   copyCol.appendChild(el("h2", "", c.title)).id = "contact-dev";
   // Keep the card text content-only: no markup from a language table ever
@@ -364,10 +376,14 @@ function campaignSource() {
   copyCol.appendChild(el("p", "", c.body.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&")));
   var kv = el("div", "contact-kv");
   var supportLine = el("span", "", (c.email || "Support") + ": ");
-  var supportMail = el("a", "", "support@lumepane.com");
-  supportMail.href = "mailto:support@lumepane.com";
+  var supportMail = el("a", "", "huayanming2019@gmail.com");
+  supportMail.href = "mailto:huayanming2019@gmail.com";
   supportLine.appendChild(supportMail);
   kv.appendChild(supportLine);
+  var wechatLine = el("span", "", c.wechat + ": ");
+  var wechatCode = el("code", "", "neeson1987");
+  wechatLine.appendChild(wechatCode);
+  kv.appendChild(wechatLine);
   var windowLine = el("span", "", "在线客服 / Support window: ");
   windowLine.appendChild(el("span", "", "右下角 / bottom right"));
   kv.appendChild(windowLine);
@@ -623,7 +639,7 @@ function campaignSource() {
     fetch(API + "/thread", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ email: email, topic: topic, message: message }) })
       .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || "error"); return j; }); })
       .then(function (j) { save({ id: j.id, token: j.token }); current = j.thread; renderThread(current); startPolling(); setStatus(t("Message sent.", "已发送。")); })
-      .catch(function () { setStatus(t("Could not send. Retry from this support window.", "发送失败，请在这个客服窗口重试。"), true); })
+      .catch(function () { setStatus(t("Could not send. Email huayanming2019@gmail.com instead.", "发送失败，请改发邮件 huayanming2019@gmail.com。"), true); })
       .finally(function () { btn.disabled = false; });
   }
 
