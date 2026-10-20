@@ -357,18 +357,6 @@ function campaignSource() {
   var section = el("section", "contact-card");
   section.setAttribute("aria-labelledby", "contact-dev");
 
-  var qr = el("a", "contact-qr");
-  qr.href = prefix + "wechat-service-qr.png";
-  qr.target = "_blank";
-  qr.rel = "noopener";
-  qr.setAttribute("aria-label", c.wechat + " QR");
-  var img = document.createElement("img");
-  img.src = prefix + "wechat-service-qr.png";
-  img.alt = c.wechat;
-  img.width = 128; img.height = 114; img.loading = "lazy";
-  qr.appendChild(img);
-  section.appendChild(qr);
-
   var copyCol = el("div", "contact-copy");
   copyCol.appendChild(el("h2", "", c.title)).id = "contact-dev";
   // Keep the card text content-only: no markup from a language table ever
