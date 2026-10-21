@@ -10,6 +10,20 @@
 > 5.7.1 是本轮对外发布版本，整合 4.0.0–4.4.0 期间全部面向用户的变更；
 > 4.0.0–4.4.0 的条目保留为内部工程记录（其中 4.4.0 未生成对外二进制）。
 
+## [9.0.9] - 2026-10-22
+
+### 性能
+
+- Glass Orb idle CPU: on this Mac, 19–25% before, now about 2–6% while active and near 0% when the app is in the background.
+- Idle orb rendering is 24fps; charge/drag interactions still use 60fps.
+- The Metal renderer pauses when the app resigns active and resumes when it becomes active again.
+- Removed the infinite SwiftUI shadow animation on the idle orb; it now uses a static glow while the shader supplies the motion.
+
+### 质量
+
+- No feature or licence-flow changes. Existing `DP-` legacy codes and `LP-` codes remain accepted.
+- Release gate: conventions, localisation, claims, pricing, site links, 208 server tests, and all nine app self-tests.
+
 ## [9.0.8] - 2026-10-21
 
 - Fix legacy `DP-` short-code normalization.
