@@ -7,19 +7,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.0.7</title>
-      <pubDate>Tue, 20 Oct 2026 10:58:10 +0000</pubDate>
-      <sparkle:version>9.0.7</sparkle:version>
-      <sparkle:shortVersionString>9.0.7</sparkle:shortVersionString>
+      <title>LumePane 9.0.8</title>
+      <pubDate>Wed, 21 Oct 2026 05:28:36 +0000</pubDate>
+      <sparkle:version>9.0.8</sparkle:version>
+      <sparkle:shortVersionString>9.0.8</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[• The glass ball is enabled by default (and respects an explicit off).
-• Remove the ineffective system Dock auto-hide control.
-• Keep legacy DP-/old-key licence acceptance.]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[• Fix legacy DP- short-code normalization.
+• Fix the signed-licence self-test vector and keep the release gate green.
+• Add the missing Glow Orb / Dock strings for all seven localizations.
+• Fix localized support-page QR asset paths.]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.0.7.dmg" length="10558785" type="application/octet-stream" sparkle:edSignature="ZFGkXqsESrls0+2foqNE3wB/nK50bJzJ5RaVjqkhDu2dYHwdwS0U/ibZMU26ogtS41Xc6O0P0Iz38//AyEjLCw=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.0.8.dmg" length="10560186" type="application/octet-stream" sparkle:edSignature="cgJq1w0YzylZ7juMATVRNJVG8ol6MEVIrQe7fIwTIWd6bjBy5jNV2q+8vhHOT3jEJZzRbZdj/BZO4wJ9NBz+BQ=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: XMVz/Hu07wEAL3NSqLyhB80jknhlVOFHfleFAad69LBnzwNs1MaFdZuGn6FF3ErQCLnuJfD0GTf4kgm9WzqbBg==
-length: 1518
+edSignature: hqUiFkwUV7dgwQ9SABJs4e7+UNAi2+f50rcCuE/IO+NJFNlMmGXsiIFXsuEnzs0JRMGZR5RtP8zJ5xOJ7aRiDw==
+length: 1581
 -->

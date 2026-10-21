@@ -10,6 +10,13 @@
 > 5.7.1 是本轮对外发布版本，整合 4.0.0–4.4.0 期间全部面向用户的变更；
 > 4.0.0–4.4.0 的条目保留为内部工程记录（其中 4.4.0 未生成对外二进制）。
 
+## [9.0.8] - 2026-10-21
+
+- Fix legacy `DP-` short-code normalization.
+- Fix the signed-licence self-test vector and keep the release gate green.
+- Add the missing Glow Orb / Dock strings for all seven localizations.
+- Fix localized support-page QR asset paths.
+
 ## [9.0.7] - 2026-10-20
 
 - The glass ball is enabled by default (and respects an explicit off).
