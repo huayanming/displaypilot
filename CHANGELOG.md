@@ -10,6 +10,14 @@
 > 5.7.1 是本轮对外发布版本，整合 4.0.0–4.4.0 期间全部面向用户的变更；
 > 4.0.0–4.4.0 的条目保留为内部工程记录（其中 4.4.0 未生成对外二进制）。
 
+## [9.1.0] - 2026-10-22
+
+### 视觉与窄窗口
+
+- Sidebar is now vertically scrollable when the window is shorter than the default 1410pt, so the last destinations stay reachable instead of being clipped.
+- The built-in scroll-semantic app list is collapsed by default. It expands on click, keeping the Scroll page readable instead of showing 27 raw bundle IDs.
+- No feature or licence-flow changes.
+
 ## [9.0.9] - 2026-10-22
 
 ### 性能

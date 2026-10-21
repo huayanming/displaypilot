@@ -7,24 +7,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.0.9</title>
-      <pubDate>Wed, 21 Oct 2026 21:26:11 +0000</pubDate>
-      <sparkle:version>9.0.9</sparkle:version>
-      <sparkle:shortVersionString>9.0.9</sparkle:shortVersionString>
+      <title>LumePane 9.1.0</title>
+      <pubDate>Wed, 21 Oct 2026 21:50:19 +0000</pubDate>
+      <sparkle:version>9.1.0</sparkle:version>
+      <sparkle:shortVersionString>9.1.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[性能
-• Glass Orb idle CPU: on this Mac, 19–25% before, now about 2–6% while active and near 0% when the app is in the background.
-• Idle orb rendering is 24fps; charge/drag interactions still use 60fps.
-• The Metal renderer pauses when the app resigns active and resumes when it becomes active again.
-• Removed the infinite SwiftUI shadow animation on the idle orb; it now uses a static glow while the shader supplies the motion.
-质量
-• No feature or licence-flow changes. Existing DP- legacy codes and LP- codes remain accepted.
-• Release gate: conventions, localisation, claims, pricing, site links, 208 server tests, and all nine app self-tests.]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[视觉与窄窗口
+• Sidebar is now vertically scrollable when the window is shorter than the default 1410pt, so the last destinations stay reachable instead of being clipped.
+• The built-in scroll-semantic app list is collapsed by default. It expands on click, keeping the Scroll page readable instead of showing 27 raw bundle IDs.
+• No feature or licence-flow changes.]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.0.9.dmg" length="10558210" type="application/octet-stream" sparkle:edSignature="12d9248yR2sDIfVTY439UqtSupGpnDkACcT2KwZz8cmgui8f9qh2k77Anfl1FG2v8Kafw/ehXUl/f6jz78LyDA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.1.0.dmg" length="10585800" type="application/octet-stream" sparkle:edSignature="QfI8dN1l8/PjK7Wk7HR7Fbs1Rk+4NDpasSrx/fUe15m7N4xJd3+k6iO6R/9PcifbTBNLubd9A+mrdiaP94BxCQ=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: BDuefE8pjX+v6evCp88QzDQWX1+O/zotnWugsajATBZD86+cQUpnjvAeK+MucSf+jhqk0Tm46mfwS8ZCh7BsAQ==
-length: 2008
+edSignature: P6OjoCoY/qXftlTYN68Gp8cM9OH/1WVf2dFXkHuh0gx3FfPBVCVgvyEYBzPLzlfhIOr7tDKuDCswp7N7NjmsDQ==
+length: 1716
 -->
