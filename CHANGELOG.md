@@ -12,16 +12,10 @@
 
 ## [9.1.1] - 2026-10-23
 
-### 网站安全与清理
+### 维护更新
 
-- Externalized the six executable inline test-page scripts; `script-src` no longer needs `'unsafe-inline'` on the site or Cloudflare headers.
-- Kept `style-src 'unsafe-inline'` for now; inline style blocks/attributes still need a separate migration.
-- Removed stale 9.0.7 / 9.0.8 / 9.0.9 DMGs from the site mirror; only the current build remains.
-
-### 软件维护
-
-- Removed low-risk compiler warnings without behavior changes: unused locals, immutable `var`s, and unnecessary actor hops.
-- All gates, 208 server tests, and the nine app self-tests remain green.
+- 维护更新，没有功能变化。
+- 优化更新包下载方式。
 
 ## [9.1.0] - 2026-10-22
 

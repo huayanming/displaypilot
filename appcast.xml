@@ -5,36 +5,40 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>LumePane</title>
         <item>
             <title>9.1.1</title>
-            <pubDate>Fri, 23 Oct 2026 20:53:25 +0800</pubDate>
+            <pubDate>Fri, 23 Oct 2026 21:18:53 +0800</pubDate>
             <sparkle:version>9.1.1</sparkle:version>
             <sparkle:shortVersionString>9.1.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[### 网站安全与清理
+            <description sparkle:format="markdown"><![CDATA[### 维护更新
 
-- Externalized the six executable inline test-page scripts; script-src no longer needs 'unsafe-inline' on the site or Cloudflare headers.
-- Kept style-src 'unsafe-inline' for now; inline style blocks/attributes still need a separate migration.
-- Removed stale 9.0.7 / 9.0.8 / 9.0.9 DMGs from the site mirror; only the current build remains.
-
-### 软件维护
-
-- Removed low-risk compiler warnings without behavior changes: unused locals, immutable vars, and unnecessary actor hops.
-- All gates, 208 server tests, and the nine app self-tests remain green.
+- 维护更新，没有功能变化。
+- 优化更新包下载方式。
 ]]></description>
             <enclosure url="https://lumepane.com/dl/LumePane-9.1.1.dmg" length="10590791" type="application/octet-stream" sparkle:edSignature="F4ArMXGl8FqGrg4Fs7q865kWLActnOaUyNuAovUGboefHHG5u/Ee5iIuQ/KRJkGfrfWu9kOxsAhQqAcJyTvhDQ=="></enclosure>
             <sparkle:deltas>
                 <enclosure url="https://lumepane.com/dl/LumePane9.1.1-9.1.0.delta" sparkle:deltaFrom="9.1.0" length="766462" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="6PO0tp8MzTYI6Kc1dV4w0EkcRVJPaM7RO+ShOxhinA84lpDaSKSplaCHJ2n3QL3OQGlfTWo0Xjy3q/XQz08AAA=="></enclosure>
+                <enclosure url="https://lumepane.com/dl/LumePane9.1.1-9.0.9.delta" sparkle:deltaFrom="9.0.9" length="937422" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Bsth0EvJM+hL+hoLlyfW2mJaJG1WJLbQO87bCv3uWq9kWFz5O/m0BsKpVUHx4pmfJ2CCFM79+p+odnv+ftvKBA=="></enclosure>
+                <enclosure url="https://lumepane.com/dl/LumePane9.1.1-9.0.8.delta" sparkle:deltaFrom="9.0.8" length="992582" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="uSuzZD7D/dkyYni+dZ9qIH37k8QuegnYbJNWcnNTOywkWKZS6gO4bubNLx2I41gqOkPn0uNGpBs3k6KFI/KvCQ=="></enclosure>
             </sparkle:deltas>
         </item>
         <item>
             <title>9.1.0</title>
-            <pubDate>Fri, 23 Oct 2026 20:53:25 +0800</pubDate>
+            <pubDate>Fri, 23 Oct 2026 21:18:53 +0800</pubDate>
             <sparkle:version>9.1.0</sparkle:version>
             <sparkle:shortVersionString>9.1.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <enclosure url="https://lumepane.com/dl/LumePane-9.1.0.dmg" length="10585800" type="application/octet-stream" sparkle:edSignature="QfI8dN1l8/PjK7Wk7HR7Fbs1Rk+4NDpasSrx/fUe15m7N4xJd3+k6iO6R/9PcifbTBNLubd9A+mrdiaP94BxCQ=="></enclosure>
         </item>
+        <item>
+            <title>9.0.9</title>
+            <pubDate>Fri, 23 Oct 2026 21:18:53 +0800</pubDate>
+            <sparkle:version>9.0.9</sparkle:version>
+            <sparkle:shortVersionString>9.0.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://lumepane.com/dl/LumePane-9.0.9.dmg" length="10558210" type="application/octet-stream" sparkle:edSignature="12d9248yR2sDIfVTY439UqtSupGpnDkACcT2KwZz8cmgui8f9qh2k77Anfl1FG2v8Kafw/ehXUl/f6jz78LyDA=="></enclosure>
+        </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: UeF5ykMK0ODkcwdyL79uMYzBjFshmA27+3Mm4Pg57Ok42g1UWCKCMVZ1pdCEPzEvrkYbDdDqdb1gnlIdOk62CA==
-length: 2690
+edSignature: 2QjnYdTfGiPyEolmZa/8HdGvgCyJ/PM8k+5BWk/t5VAW86T9pmwsZ4GCzz87/xXiq3nxdSzwXOMEE4b2g+B2Dw==
+length: 3545
 -->
