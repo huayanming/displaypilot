@@ -4,42 +4,43 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>LumePane</title>
         <item>
-            <title>9.1.3</title>
-            <pubDate>Sat, 24 Oct 2026 02:57:04 +0800</pubDate>
-            <sparkle:version>9.1.3</sparkle:version>
-            <sparkle:shortVersionString>9.1.3</sparkle:shortVersionString>
+            <title>9.1.4</title>
+            <pubDate>Sat, 24 Oct 2026 04:40:34 +0800</pubDate>
+            <sparkle:version>9.1.4</sparkle:version>
+            <sparkle:shortVersionString>9.1.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[### 修复
 
-- 截图改为应用内捕获，修复已授权后区域截图仍反复要求屏幕录制权限的问题。
+- 修复菜单栏和其他截图入口在已授权后仍反复请求屏幕录制权限的问题。
+- 补充 Finder 与音乐控制所需自动化权限的说明。
 ]]></description>
-            <enclosure url="https://lumepane.com/dl/LumePane-9.1.3.dmg" length="10608305" type="application/octet-stream" sparkle:edSignature="JV9QzAVu4yImRAczVQcEEOxr4Uo1MB37pEGTnAl9fz512NoFMNBvysDk2LZ4HVWFbOdgjN5N3CYKbVJUTDAADA=="></enclosure>
+            <enclosure url="https://lumepane.com/dl/LumePane-9.1.4.dmg" length="10608490" type="application/octet-stream" sparkle:edSignature="lx8HoT35Wf3uo1yAovfMqsNZKTIHa+mxsYO33SNgrZZO/Yy6KlKx6FNsCAHyvcYMcigmRjlOvJFjoe1vNvodAg=="></enclosure>
             <sparkle:deltas>
-                <enclosure url="https://lumepane.com/dl/LumePane9.1.3-9.1.2.delta" sparkle:deltaFrom="9.1.2" length="990914" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="tNemuOmBhXdgzvcDFM1BBRoIO9uEZLbTCpUbnmjew4+qy9MMRn7uhhU/Nlep2UC44Hisw2RwpQ+B6S+mPpDJAg=="></enclosure>
-                <enclosure url="https://lumepane.com/dl/LumePane9.1.3-9.1.1.delta" sparkle:deltaFrom="9.1.1" length="993618" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="zTkSgbxBXEUZy+tcEF8tP4QghyIaBTgeyekHNzbDOC8YoGoqZfcM80qNzWQGty8Ga2R1qSHLsDjKlxbwEB22BQ=="></enclosure>
-                <enclosure url="https://lumepane.com/dl/LumePane9.1.3-9.1.0.delta" sparkle:deltaFrom="9.1.0" length="1026878" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="B7ueJi0g4TiH5gXK3u7arC0arEcGy7+Okupc9pLtlWpDH3QTtY14MOboGz262S3YJWdx6hjR3azEkyTJG6OpCQ=="></enclosure>
-                <enclosure url="https://lumepane.com/dl/LumePane9.1.3-9.0.9.delta" sparkle:deltaFrom="9.0.9" length="1143318" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="DlN0RB6XoPIOi7sdWNCDsuearw9SnbHXcKvZebgQTuBo007K8iL9rjnXaHpmUAS3wAbmII1DPEd3NoophaaCCA=="></enclosure>
-                <enclosure url="https://lumepane.com/dl/LumePane9.1.3-9.0.8.delta" sparkle:deltaFrom="9.0.8" length="1220034" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="ga1y9Q54JhO6TgjG8Z7R/55u2XbBO2LyaRVh6aaCoPVBBEnDTY473W6bY1MKT8jFvX4hDdoPWAgR/gBv9GYUAw=="></enclosure>
+                <enclosure url="https://lumepane.com/dl/LumePane9.1.4-9.1.3.delta" sparkle:deltaFrom="9.1.3" length="645146" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="uFQs1k1s5la2nLpyVCODXPDZMKymyuNroFDK1K8bAmxsLEACb2eBO7lIV0t+Hpqi3QloM2AG1cyBSiic9y/TAA=="></enclosure>
+                <enclosure url="https://lumepane.com/dl/LumePane9.1.4-9.1.2.delta" sparkle:deltaFrom="9.1.2" length="1053598" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="HO36dcYOb9moPDjZAxv27w5qSmN2IMenHFeY1oHCphXsWjRDi5YbHZ0p8QF4PfVsLHGcNDj694HEOQ4h9gn6Cw=="></enclosure>
+                <enclosure url="https://lumepane.com/dl/LumePane9.1.4-9.1.1.delta" sparkle:deltaFrom="9.1.1" length="1045726" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="duOQjVIF2UrQAR5/+2lIS1BJdlmUUNnQOxqQuQ1oj5kniz8VzomZDi+d9KGLA+gai0RoViMJjaRIUWsHynZFDQ=="></enclosure>
+                <enclosure url="https://lumepane.com/dl/LumePane9.1.4-9.1.0.delta" sparkle:deltaFrom="9.1.0" length="1046106" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="11rr1JkU1Gach5FYGGJrTAKFliDH9Ii3h/YXZmhIaOFDUxJlpFK9I7tixlIi0tJQLWCAW9s5Gdp++BPHPUBLDg=="></enclosure>
+                <enclosure url="https://lumepane.com/dl/LumePane9.1.4-9.0.9.delta" sparkle:deltaFrom="9.0.9" length="1152182" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="nER0VRAZt8nbbxrDOcxt6FSmZONJW0nEac9bbP1KNgAJ+o3wvVuhZcSSNSk8MCck2P3WwTCsC7rkeEf4UHTnBw=="></enclosure>
             </sparkle:deltas>
         </item>
         <item>
+            <title>9.1.3</title>
+            <pubDate>Sat, 24 Oct 2026 04:40:34 +0800</pubDate>
+            <sparkle:version>9.1.3</sparkle:version>
+            <sparkle:shortVersionString>9.1.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://lumepane.com/dl/LumePane-9.1.3.dmg" length="10608305" type="application/octet-stream" sparkle:edSignature="JV9QzAVu4yImRAczVQcEEOxr4Uo1MB37pEGTnAl9fz512NoFMNBvysDk2LZ4HVWFbOdgjN5N3CYKbVJUTDAADA=="></enclosure>
+        </item>
+        <item>
             <title>9.1.2</title>
-            <pubDate>Sat, 24 Oct 2026 02:57:04 +0800</pubDate>
+            <pubDate>Sat, 24 Oct 2026 04:40:34 +0800</pubDate>
             <sparkle:version>9.1.2</sparkle:version>
             <sparkle:shortVersionString>9.1.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <enclosure url="https://lumepane.com/dl/LumePane-9.1.2.dmg" length="10594469" type="application/octet-stream" sparkle:edSignature="5a/8QjSzNOiJqirLke8PU28aqGLRTkke5V7ZcViYFksLEim2jT8SpMJRmmny+WoQ5qYP1aM8ZlE8+j18zhKmDQ=="></enclosure>
         </item>
-        <item>
-            <title>9.1.1</title>
-            <pubDate>Sat, 24 Oct 2026 02:57:04 +0800</pubDate>
-            <sparkle:version>9.1.1</sparkle:version>
-            <sparkle:shortVersionString>9.1.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://lumepane.com/dl/LumePane-9.1.1.dmg" length="10590791" type="application/octet-stream" sparkle:edSignature="F4ArMXGl8FqGrg4Fs7q865kWLActnOaUyNuAovUGboefHHG5u/Ee5iIuQ/KRJkGfrfWu9kOxsAhQqAcJyTvhDQ=="></enclosure>
-        </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: ajfA56kaOvWcYJKa2J2SyQ6rFinRBQ4eCr8JgISDNqs2m7wkoqzd95/xreaVA0rghLvF7EKho+qBwfLMjGVICg==
-length: 4346
+edSignature: Ae5ADtByAhoPyJf2jSmPFGngTRsCBos9hl8fBeXkt4B9bIavlPGP2CERcKJypndTFNLuhHGPbPVzEkjQ1fjADA==
+length: 4403
 -->
