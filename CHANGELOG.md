@@ -10,6 +10,19 @@
 > 5.7.1 是本轮对外发布版本，整合 4.0.0–4.4.0 期间全部面向用户的变更；
 > 4.0.0–4.4.0 的条目保留为内部工程记录（其中 4.4.0 未生成对外二进制）。
 
+## [9.1.1] - 2026-10-23
+
+### 网站安全与清理
+
+- Externalized the six executable inline test-page scripts; `script-src` no longer needs `'unsafe-inline'` on the site or Cloudflare headers.
+- Kept `style-src 'unsafe-inline'` for now; inline style blocks/attributes still need a separate migration.
+- Removed stale 9.0.7 / 9.0.8 / 9.0.9 DMGs from the site mirror; only the current build remains.
+
+### 软件维护
+
+- Removed low-risk compiler warnings without behavior changes: unused locals, immutable `var`s, and unnecessary actor hops.
+- All gates, 208 server tests, and the nine app self-tests remain green.
+
 ## [9.1.0] - 2026-10-22
 
 ### 视觉与窄窗口

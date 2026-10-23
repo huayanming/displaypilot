@@ -7,20 +7,23 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.1.0</title>
-      <pubDate>Wed, 21 Oct 2026 21:50:19 +0000</pubDate>
-      <sparkle:version>9.1.0</sparkle:version>
-      <sparkle:shortVersionString>9.1.0</sparkle:shortVersionString>
+      <title>LumePane 9.1.1</title>
+      <pubDate>Fri, 23 Oct 2026 10:25:55 +0000</pubDate>
+      <sparkle:version>9.1.1</sparkle:version>
+      <sparkle:shortVersionString>9.1.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[视觉与窄窗口
-• Sidebar is now vertically scrollable when the window is shorter than the default 1410pt, so the last destinations stay reachable instead of being clipped.
-• The built-in scroll-semantic app list is collapsed by default. It expands on click, keeping the Scroll page readable instead of showing 27 raw bundle IDs.
-• No feature or licence-flow changes.]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[网站安全与清理
+• Externalized the six executable inline test-page scripts; script-src no longer needs 'unsafe-inline' on the site or Cloudflare headers.
+• Kept style-src 'unsafe-inline' for now; inline style blocks/attributes still need a separate migration.
+• Removed stale 9.0.7 / 9.0.8 / 9.0.9 DMGs from the site mirror; only the current build remains.
+软件维护
+• Removed low-risk compiler warnings without behavior changes: unused locals, immutable vars, and unnecessary actor hops.
+• All gates, 208 server tests, and the nine app self-tests remain green.]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.1.0.dmg" length="10585800" type="application/octet-stream" sparkle:edSignature="QfI8dN1l8/PjK7Wk7HR7Fbs1Rk+4NDpasSrx/fUe15m7N4xJd3+k6iO6R/9PcifbTBNLubd9A+mrdiaP94BxCQ=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.1.1.dmg" length="10590791" type="application/octet-stream" sparkle:edSignature="F4ArMXGl8FqGrg4Fs7q865kWLActnOaUyNuAovUGboefHHG5u/Ee5iIuQ/KRJkGfrfWu9kOxsAhQqAcJyTvhDQ=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: P6OjoCoY/qXftlTYN68Gp8cM9OH/1WVf2dFXkHuh0gx3FfPBVCVgvyEYBzPLzlfhIOr7tDKuDCswp7N7NjmsDQ==
-length: 1716
+edSignature: td17xhtf8KHBtu3Q28fu3lR7XXlzKL6BnmgWjNHJEtSIfku3R/GH0uYjlhhq7WfhHU62MG3WLCRI1kybtNM6BQ==
+length: 1920
 -->
