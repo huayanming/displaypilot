@@ -1,29 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
-  <channel>
-    <title>LumePane</title>
-    <link>https://lumepane.com/dl/</link>
-    <description>LumePane 软件更新</description>
-    <language>zh-Hans</language>
-    <item>
-      <title>LumePane 9.1.1</title>
-      <pubDate>Fri, 23 Oct 2026 10:25:55 +0000</pubDate>
-      <sparkle:version>9.1.1</sparkle:version>
-      <sparkle:shortVersionString>9.1.1</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[网站安全与清理
-• Externalized the six executable inline test-page scripts; script-src no longer needs 'unsafe-inline' on the site or Cloudflare headers.
-• Kept style-src 'unsafe-inline' for now; inline style blocks/attributes still need a separate migration.
-• Removed stale 9.0.7 / 9.0.8 / 9.0.9 DMGs from the site mirror; only the current build remains.
-软件维护
-• Removed low-risk compiler warnings without behavior changes: unused locals, immutable vars, and unnecessary actor hops.
-• All gates, 208 server tests, and the nine app self-tests remain green.]]></description>
-      <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.1.1.dmg" length="10590791" type="application/octet-stream" sparkle:edSignature="F4ArMXGl8FqGrg4Fs7q865kWLActnOaUyNuAovUGboefHHG5u/Ee5iIuQ/KRJkGfrfWu9kOxsAhQqAcJyTvhDQ=="></enclosure>
-    </item>
-  </channel>
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>LumePane</title>
+        <item>
+            <title>9.1.1</title>
+            <pubDate>Fri, 23 Oct 2026 20:53:25 +0800</pubDate>
+            <sparkle:version>9.1.1</sparkle:version>
+            <sparkle:shortVersionString>9.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[### 网站安全与清理
+
+- Externalized the six executable inline test-page scripts; script-src no longer needs 'unsafe-inline' on the site or Cloudflare headers.
+- Kept style-src 'unsafe-inline' for now; inline style blocks/attributes still need a separate migration.
+- Removed stale 9.0.7 / 9.0.8 / 9.0.9 DMGs from the site mirror; only the current build remains.
+
+### 软件维护
+
+- Removed low-risk compiler warnings without behavior changes: unused locals, immutable vars, and unnecessary actor hops.
+- All gates, 208 server tests, and the nine app self-tests remain green.
+]]></description>
+            <enclosure url="https://lumepane.com/dl/LumePane-9.1.1.dmg" length="10590791" type="application/octet-stream" sparkle:edSignature="F4ArMXGl8FqGrg4Fs7q865kWLActnOaUyNuAovUGboefHHG5u/Ee5iIuQ/KRJkGfrfWu9kOxsAhQqAcJyTvhDQ=="></enclosure>
+            <sparkle:deltas>
+                <enclosure url="https://lumepane.com/dl/LumePane9.1.1-9.1.0.delta" sparkle:deltaFrom="9.1.0" length="766462" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="6PO0tp8MzTYI6Kc1dV4w0EkcRVJPaM7RO+ShOxhinA84lpDaSKSplaCHJ2n3QL3OQGlfTWo0Xjy3q/XQz08AAA=="></enclosure>
+            </sparkle:deltas>
+        </item>
+        <item>
+            <title>9.1.0</title>
+            <pubDate>Fri, 23 Oct 2026 20:53:25 +0800</pubDate>
+            <sparkle:version>9.1.0</sparkle:version>
+            <sparkle:shortVersionString>9.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://lumepane.com/dl/LumePane-9.1.0.dmg" length="10585800" type="application/octet-stream" sparkle:edSignature="QfI8dN1l8/PjK7Wk7HR7Fbs1Rk+4NDpasSrx/fUe15m7N4xJd3+k6iO6R/9PcifbTBNLubd9A+mrdiaP94BxCQ=="></enclosure>
+        </item>
+    </channel>
 </rss><!-- sparkle-signatures:
-edSignature: td17xhtf8KHBtu3Q28fu3lR7XXlzKL6BnmgWjNHJEtSIfku3R/GH0uYjlhhq7WfhHU62MG3WLCRI1kybtNM6BQ==
-length: 1920
+edSignature: UeF5ykMK0ODkcwdyL79uMYzBjFshmA27+3Mm4Pg57Ok42g1UWCKCMVZ1pdCEPzEvrkYbDdDqdb1gnlIdOk62CA==
+length: 2690
 -->
