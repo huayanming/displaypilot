@@ -69,7 +69,7 @@ Screenshots are unretouched captures of the shipping UI on a real external monit
 
 ## Contact
 
-Download: <https://lumepane.com/dl/LumePane-9.1.2.dmg>
+Download: <https://lumepane.com/dl/LumePane-9.1.3.dmg>
 Homepage: <https://lumepane.com/>
 
 ---
