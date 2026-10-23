@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="x-default" href="https://lumepane.com/window-layouts.html">
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://license.lumepane.com; base-uri 'none'; form-action 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://license.lumepane.com; base-uri 'none'; form-action 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LumePane">
@@ -23,17 +23,7 @@
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css?v=8.0.14-1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LumePane window layout playground","headline":"先看形状，再动手。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://lumepane.com/zh-Hans/window-layouts.html","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"LumePane"}}</script>
-<style>
-.wl-hero{max-width:52rem;margin:0 auto;text-align:center}.wl-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;letter-spacing:-.04em;margin:.9rem 0 0}.wl-hero .lede{max-width:40rem;margin:1rem auto 0;color:var(--ink-soft)}
-.wl-grid{display:grid;grid-template-columns:17rem minmax(0,1fr);gap:1rem;margin-top:1.5rem;align-items:start}
-.wl-list{display:grid;gap:.4rem}.wl-btn{border:0;border-radius:12px;background:var(--surface);box-shadow:var(--raise-sm);padding:.6rem .7rem;text-align:left;font:600 .82rem/1.2 inherit;color:var(--ink-soft);cursor:pointer}.wl-btn[aria-pressed="true"]{background:var(--ink);color:#fff}
-.wl-stage{aspect-ratio:16/10;border-radius:20px;background:var(--sunken);box-shadow:var(--sink);position:relative;overflow:hidden;min-height:320px}
-.wl-window{position:absolute;background:var(--surface);border-radius:8px;box-shadow:0 8px 20px rgba(38,34,30,.22),inset 0 0 0 1px rgba(38,34,30,.1);transition:all .35s cubic-bezier(.22,1,.36,1);display:flex;align-items:center;justify-content:center;color:var(--ink-muted);font:600 .75rem/1 ui-monospace,monospace}
-.wl-window::before{content:"";position:absolute;left:8px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--dark);box-shadow:9px 0 var(--dark),18px 0 var(--dark)}
-.wl-label{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;color:var(--ink-muted);font-size:.78rem;margin-top:.6rem}
-.wl-note{font-size:.8rem;color:var(--ink-muted);line-height:1.65;margin-top:1rem}.wl-cta{margin-top:1.2rem;background:var(--surface);border-radius:24px;box-shadow:var(--raise);padding:1.2rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.wl-cta p{margin:0;max-width:35rem;color:var(--ink-soft);font-size:.9rem}
-@media(max-width:760px){.wl-grid{grid-template-columns:1fr}.wl-list{grid-template-columns:1fr 1fr}.wl-stage{min-height:260px}.wl-hero{text-align:center}}
-</style>
+<link rel="stylesheet" href="../css/window-layouts.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"这个页面会移动我的窗口吗？","acceptedAnswer":{"@type":"Answer","text":"不会。它只做视觉预览；LumePane 才通过辅助功能把布局应用到真实窗口。"}},{"@type":"Question","name":"展示了哪些布局？","acceptedAnswer":{"@type":"Answer","text":"半屏、四分之一、三等分和三分之二，共 12 种位置。"}}]}</script>
 </head>
 <body>

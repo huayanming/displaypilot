@@ -537,31 +537,6 @@ function campaignSource() {
   var poll = 0;
   var t = function (en, cn) { return zh ? cn : en; };
 
-  var style = document.createElement("style");
-  style.textContent = [
-    "#lp-support{position:fixed;right:20px;bottom:20px;z-index:2147483000;font:14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink,#26221e)}",
-    "#lp-support *{box-sizing:border-box}",
-    "#lp-support-fab{width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:var(--hermes,#F37021);box-shadow:8px 8px 18px rgba(184,72,15,.30),-8px -8px 18px rgba(255,255,255,.8);color:#fff;font-weight:700;font-size:11px;letter-spacing:.02em;position:relative}",
-    "#lp-support-fab:focus-visible,#lp-support-panel button:focus-visible,#lp-support-panel input:focus-visible,#lp-support-panel textarea:focus-visible,#lp-support-panel select:focus-visible{outline:2px solid #b8480f;outline-offset:3px}",
-    "#lp-support-fab:after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--hermes,#F37021)}",
-    "#lp-support-panel{position:absolute;right:0;bottom:70px;width:min(370px,calc(100vw - 40px));max-height:min(620px,calc(100vh - 110px));background:var(--surface,#f2efea);border-radius:24px;box-shadow:18px 18px 40px rgba(88,78,64,.27),-10px -10px 28px rgba(255,255,255,.75);display:none;flex-direction:column;overflow:hidden}",
-    "#lp-support-panel.open{display:flex}",
-    "#lp-support-head{display:flex;align-items:center;gap:10px;padding:16px 18px 12px;border-bottom:1px solid rgba(87,81,74,.12)}",
-    "#lp-support-head b{font-size:14px;letter-spacing:-.01em}#lp-support-head small{display:block;color:var(--ink-muted,#6b645c);font-size:11px;margin-top:2px}",
-    "#lp-support-close{margin-left:auto;border:0;background:transparent;color:var(--ink-muted,#6b645c);font-size:22px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:8px}",
-    "#lp-support-body{padding:14px 18px;overflow:auto;display:flex;flex-direction:column;gap:10px}",
-    "#lp-support-body label{font-size:11px;font-weight:650;color:var(--ink-soft,#57514a);letter-spacing:.02em;display:block;margin-bottom:4px}",
-    "#lp-support-body input,#lp-support-body select,#lp-support-body textarea{width:100%;font:inherit;color:var(--ink,#26221e);background:var(--sunken,#d2cec7);border:0;border-radius:12px;padding:9px 11px;box-shadow:inset 2px 2px 5px rgba(150,143,133,.45),inset -2px -2px 5px rgba(255,255,255,.75)}",
-    "#lp-support-body textarea{min-height:92px;resize:vertical}#lp-support-body .hint{font-size:11px;color:var(--ink-muted,#6b645c);line-height:1.55;margin:0}",
-    "#lp-support-send{width:100%;border:0;border-radius:12px;background:#b8480f;color:#fff;padding:11px 14px;font:650 13px/1 inherit;cursor:pointer;box-shadow:0 6px 14px rgba(184,72,15,.22)}#lp-support-send:disabled{opacity:.5;cursor:default}",
-    "#lp-support-status{font-size:11px;color:var(--ink-muted,#6b645c);min-height:16px}",
-    "#lp-support-thread{display:none;flex-direction:column;gap:8px;padding:14px 18px;overflow:auto}#lp-support-thread.open{display:flex}",
-    ".lp-msg{max-width:86%;padding:8px 11px;border-radius:14px;white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.5}.lp-msg.user{background:#fff;margin-right:auto;box-shadow:0 2px 8px rgba(88,78,64,.08)}.lp-msg.support{background:#f7d9c8;margin-left:auto}.lp-msg small{display:block;font-size:10px;color:var(--ink-muted,#6b645c);margin-bottom:2px}",
-    "#lp-support-reply{display:flex;gap:6px;padding:0 18px 16px}#lp-support-reply input{flex:1;font:inherit;border:0;border-radius:12px;padding:9px 11px;background:var(--sunken,#d2cec7);box-shadow:inset 2px 2px 5px rgba(150,143,133,.45),inset -2px -2px 5px rgba(255,255,255,.75);color:inherit}#lp-support-reply button{border:0;border-radius:12px;background:#b8480f;color:#fff;padding:0 14px;font-weight:650;cursor:pointer}",
-    "#lp-support .lp-hidden{display:none!important}",
-    "@media(max-width:480px){#lp-support{right:12px;bottom:12px}#lp-support-panel{width:calc(100vw - 24px);max-height:calc(100vh - 90px)}}",
-  ].join("");
-  document.head.appendChild(style);
 
   var root = document.createElement("div");
   root.id = "lp-support";

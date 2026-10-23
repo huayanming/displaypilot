@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="x-default" href="https://lumepane.com/display-test.html">
 <meta name="theme-color" content="#E2DED9">
 <meta name="color-scheme" content="light">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://license.lumepane.com; base-uri 'none'; form-action 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://license.lumepane.com; base-uri 'none'; form-action 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LumePane">
@@ -23,29 +23,7 @@
 <link rel="icon" href="../img/icon.png" type="image/png">
 <link rel="stylesheet" href="../style.css?v=8.0.14-1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LumePane 显示器测试图","headline":"看你的屏幕，不要只看参数表。","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","url":"https://lumepane.com/zh-Hans/display-test.html","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"LumePane"}}</script>
-<style>
-.dt-hero{max-width:52rem;margin:0 auto;text-align:center}
-.dt-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;letter-spacing:-.04em;margin:.9rem 0 0}
-.dt-hero .lede{max-width:40rem;margin:1rem auto 0;color:var(--ink-soft)}
-.dt-tools{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:center;margin:1.4rem 0 .9rem}
-.dt-tab{appearance:none;border:0;border-radius:999px;padding:.5rem .8rem;background:var(--surface);box-shadow:var(--raise-sm);color:var(--ink-soft);font:600 .78rem/1 inherit;cursor:pointer}
-.dt-tab[aria-selected="true"]{background:var(--ink);color:#fff}
-.dt-stage{border-radius:22px;overflow:hidden;box-shadow:var(--raise);background:#000;min-height:clamp(15rem,44vh,28rem);display:flex;position:relative}
-.dt-pattern{flex:1;display:flex;min-height:inherit}
-.dt-pattern>div{flex:1}
-.dt-ramp{display:flex;width:100%}.dt-ramp span{flex:1}
-.dt-bars{display:flex;width:100%}.dt-bars span{flex:1}
-.dt-steps{display:flex;width:100%;align-items:stretch}.dt-steps span{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;color:#999;font:9px/1 ui-monospace,monospace;padding-bottom:6px}
-.dt-grid{width:100%;background:#fff}
-.dt-grid i{display:block;width:100%;height:100%;background:repeating-linear-gradient(90deg,#000 0 1px,transparent 1px 4px),repeating-linear-gradient(0deg,#000 0 1px,transparent 1px 4px)}
-.dt-uniform{width:100%;background:#808080}
-.dt-caption{display:flex;justify-content:space-between;gap:.7rem;flex-wrap:wrap;color:var(--ink-muted);font-size:.78rem;margin-top:.6rem}
-.dt-actions{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:.9rem}
-.dt-note{font-size:.8rem;color:var(--ink-muted);line-height:1.65;margin-top:1rem}
-.dt-cta{margin-top:1.2rem;background:var(--surface);border-radius:24px;box-shadow:var(--raise);padding:1.2rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
-.dt-cta p{margin:0;max-width:34rem;color:var(--ink-soft);font-size:.9rem}
-@media(max-width:620px){.dt-hero{text-align:center}.dt-stage{min-height:36vh}.dt-tab{font-size:.72rem;padding:.45rem .65rem}}
-</style>
+<link rel="stylesheet" href="../css/display-test.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"这个页面能校准显示器吗？","acceptedAnswer":{"@type":"Answer","text":"不能。它只在浏览器里显示参考级差，不能读取或修改伽马、色温或 DDC/CI 寄存器。"}},{"@type":"Question","name":"应该看什么？","acceptedAnswer":{"@type":"Answer","text":"色带、偏色、近黑/近白是否被裁切，以及均匀场是否亮度或颜色不一致。"}}]}</script>
 </head>
 <body>
