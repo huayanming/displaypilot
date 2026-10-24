@@ -7,19 +7,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.1.9</title>
-      <pubDate>Sat, 24 Oct 2026 11:32:13 +0000</pubDate>
-      <sparkle:version>9.1.9</sparkle:version>
-      <sparkle:shortVersionString>9.1.9</sparkle:shortVersionString>
+      <title>LumePane 9.1.10</title>
+      <pubDate>Sat, 24 Oct 2026 12:05:19 +0000</pubDate>
+      <sparkle:version>9.1.10</sparkle:version>
+      <sparkle:shortVersionString>9.1.10</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <description sparkle:descriptionFormat="plain-text"><![CDATA[新增
-• 新增「文件」面板：PDF 合并、拆分、PDF 转图片、图片转 PDF，图片格式转换，MP4/MOV 压缩、提取音频和视频转 GIF。
-• 支持把文件拖入面板；所有转换在本机完成，不上传文件，不覆盖原文件。]]></description>
+• 「文件工具」加入魔丸 Dock，可以直接从桌面悬浮球打开。
+• 启动时窗口自动展开到屏幕可用的完整高度，避免功能藏在下方。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.1.9.dmg" length="10863320" type="application/octet-stream" sparkle:edSignature="7zRcQJtwGK69GUEpfvj6rWiPxU8BecqZlIV2O2IqYd/zNRXADk0ySeGBuK8dm24ybtMurGpxTkP2zcy6IUUZAA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.1.10.dmg" length="10897501" type="application/octet-stream" sparkle:edSignature="zzLZamcGJmei0PjSPNXdH7YRyDsLH9dQxKdM6U6khCfbtOuarlXavFErTksYXRW9w/besWWmurNUm8ZgWQZBAw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: f7Q2WqQADHgZmtk9w21v9zusO7bjOIoFnWdzN93vW0D3tudfH3UaeTNRLZn6nNlBfuT1//LRwwCickItDkOuBg==
-length: 1605
+edSignature: 2RUsZhfeZZM6WJyIy4N1mUG1mv66tOtoAdP6slLZCQ1HJd59ieuh/Am06+HxY2e+IB5ZFCIwlxNXk/8FD9UHDg==
+length: 1524
 -->
