@@ -7,18 +7,18 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.1.7</title>
-      <pubDate>Sat, 24 Oct 2026 10:54:13 +0000</pubDate>
-      <sparkle:version>9.1.7</sparkle:version>
-      <sparkle:shortVersionString>9.1.7</sparkle:shortVersionString>
+      <title>LumePane 9.1.8</title>
+      <pubDate>Sat, 24 Oct 2026 11:02:15 +0000</pubDate>
+      <sparkle:version>9.1.8</sparkle:version>
+      <sparkle:shortVersionString>9.1.8</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[新增
-• 语言设置新增「跟随系统」：未手动选择语言时跟随 macOS；选择后清除语言覆盖，下次启动重新读取系统语言。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[修复
+• 修复「跟随系统」选项在英文及其他语言界面仍显示中文的问题。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.1.7.dmg" length="10625349" type="application/octet-stream" sparkle:edSignature="2Bp3tHgrzfaP0UxaSDKdNp62zCux/TmKjQ/8R8T23qDUcr1HJhYYVDELqajPMPMaqS/kBxy0Nc1cwtPBWDogCg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.1.8.dmg" length="10625067" type="application/octet-stream" sparkle:edSignature="TbkqkI/Sm8KgFyJMrsqgRjBFuft2c/xYWxOOmIba0goznIrfxKJsXQYpETh8hrGhGOiGSSkhGuX37w7rQFTWCw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 3x9fPCVe+my0sqV2tTUcrwvDK7Ksb95tx6zdRPH6VkoJMijB45l5qi6tbOE4GOgs1SS3lkX1uvGObmGQ475YAQ==
-length: 1498
+edSignature: edj1K9/YqkV1Qlpip8GDb9fMfHdLgFnynNPOGLjBFl5mqEzBL8uG4hEKMIg1p3D3zm3E6zFk43xwGA7mBh1sBA==
+length: 1438
 -->
