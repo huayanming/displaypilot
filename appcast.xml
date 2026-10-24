@@ -7,21 +7,18 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.2.0</title>
-      <pubDate>Sat, 24 Oct 2026 12:45:46 +0000</pubDate>
-      <sparkle:version>9.2.0</sparkle:version>
-      <sparkle:shortVersionString>9.2.0</sparkle:shortVersionString>
+      <title>LumePane 9.2.1</title>
+      <pubDate>Sat, 24 Oct 2026 12:58:22 +0000</pubDate>
+      <sparkle:version>9.2.1</sparkle:version>
+      <sparkle:shortVersionString>9.2.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[新增
-• 截图面板新增录屏、滚动截图和文字识别（OCR）。
-• 录屏使用应用内 ScreenCaptureKit，保存为桌面 MP4。
-• OCR 识别结果直接复制到剪贴板，不上传图片。
-• 魔丸新增「截图与录屏」入口。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[修复
+• 截图、OCR、录屏和滚动截图移到工具页顶部，打开工具页即可看到。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.2.0.dmg" length="11001078" type="application/octet-stream" sparkle:edSignature="XiPl0NQcjS4XtxGeMluNVzr14GduiX2U9JSGbpQtZVblwSHA1ngrvChkAlanTKgSvUFN3YVqSL3iRQ76S4Z9Bg=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.2.1.dmg" length="11000794" type="application/octet-stream" sparkle:edSignature="FRSbNWdQm6WGFh9FIs8f01LZhFPcbd+vw+6AWpE6cuzQn/5hnbMNCRE5qVsAV5oyrfIAHRLjARSbj/IaZCj8AA=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 5BGdjRA7WsSSRlkLc3x9oAT1OFMaX25DkZobqmAyuOgAt/auABUje8OhgPJh6uvybWwO3PTO9/Xjqj8Zj8txDA==
-length: 1598
+edSignature: IQkdinakM3BhVr/4LZBC4Y+zw8pNS0UbfvIFWUU2bv5eqZEkz/ogm7mwu/O15RuPj5SASbgLuJqEaVGSa4/pAw==
+length: 1441
 -->
