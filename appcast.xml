@@ -7,18 +7,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.2.1</title>
-      <pubDate>Sat, 24 Oct 2026 12:58:22 +0000</pubDate>
-      <sparkle:version>9.2.1</sparkle:version>
-      <sparkle:shortVersionString>9.2.1</sparkle:shortVersionString>
+      <title>LumePane 9.3.0</title>
+      <pubDate>Sat, 24 Oct 2026 13:16:03 +0000</pubDate>
+      <sparkle:version>9.3.0</sparkle:version>
+      <sparkle:shortVersionString>9.3.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[修复
-• 截图、OCR、录屏和滚动截图移到工具页顶部，打开工具页即可看到。]]></description>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[新增
+• 新增「应用」面板：已安装应用、按 bundle id 匹配的残留文件、用户 LaunchAgents 启动项审计。
+• 卸载与清理只移到废纸篓；系统应用、系统启动项和正在运行的应用受保护。
+• 魔丸新增「应用卸载」入口。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.2.1.dmg" length="11000794" type="application/octet-stream" sparkle:edSignature="FRSbNWdQm6WGFh9FIs8f01LZhFPcbd+vw+6AWpE6cuzQn/5hnbMNCRE5qVsAV5oyrfIAHRLjARSbj/IaZCj8AA=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.3.0.dmg" length="11185267" type="application/octet-stream" sparkle:edSignature="Yf1yHmGi2VoGLdM0uIglsVFzocEgvv3liLUOVjnfDh1qf3zKsHtGX4pkZmit2hhF1TE9w3JRKPNY3jfCP04IBQ=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: IQkdinakM3BhVr/4LZBC4Y+zw8pNS0UbfvIFWUU2bv5eqZEkz/ogm7mwu/O15RuPj5SASbgLuJqEaVGSa4/pAw==
-length: 1441
+edSignature: CAEHCF+Xptr/IKPVpX5OMjZyS0/CKBp4MFA9+L+hedSX3ZZ7NED/du4kIFiU4hZTP3rRenorpaCfrIW0hO2NBg==
+length: 1623
 -->
