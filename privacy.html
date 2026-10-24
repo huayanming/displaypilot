@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lumepane.com/img/og-site.v901.png">
 <link rel="icon" href="img/icon.png" type="image/png">
-<link rel="stylesheet" href="style.css?v=9.3.0-style1">
+<link rel="stylesheet" href="style.css?v=9.4.0-style1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"Privacy Policy","inLanguage":"en","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://lumepane.com/privacy.html"}</script>
 </head>
 <body>
@@ -78,7 +78,7 @@
   <p>These are things the app <strong>uses but processes only locally on your Mac. They are never uploaded:</strong></p>
   <ul><li>display model, vendor ID, product ID, the full EDID, and physical color gamut;</li><li>resolution, refresh rate, the current gamma table, brightness, and color temperature values;</li><li>disk capacity, cache directory sizes, scan results, and cleanup records;</li><li>window titles and positions (needed for window layout and session restore; readable only after you grant Accessibility permission);</li><li>scroll wheel events and hotkey keystrokes (needed for scroll smoothing and mouse mapping).</li></ul>
   <p>And these Neeson &amp; Sea <strong>never touch at all</strong>:</p>
-  <ul><li>Neeson &amp; Sea don't upload your display model, EDID, or serial number — no such code path exists;</li><li>Neeson &amp; Sea don't upload session length, feature click counts, or launch counts;</li><li>Neeson &amp; Sea don't record keystrokes. Scroll smoothing reads only the displacement of scroll-wheel events; the keyboard is used solely to determine the single state “⌘ is held, bypass smoothing”;</li><li>Neeson &amp; Sea don't request microphone, screen recording, or Full Disk Access permission. Storage scanning is read-only, and system-protected directories are skipped according to macOS rules;</li><li>Neeson &amp; Sea don't capture screen or audio. There is no camera or microphone call anywhere in the app. (<code>Info.plist</code> carries no <code>NS*UsageDescription</code> keys at all.)</li></ul>
+  <ul><li>Neeson &amp; Sea don't upload your display model, EDID, or serial number — no such code path exists;</li><li>Neeson &amp; Sea don't upload session length, feature click counts, or launch counts;</li><li>Neeson &amp; Sea don't record keystrokes. Scroll smoothing reads only the displacement of scroll-wheel events; the keyboard is used solely to determine the single state “⌘ is held, bypass smoothing”;</li><li>Neeson &amp; Sea request Screen Recording only when you start a screenshot, scrolling capture or recording. Recordings are written only to the folder you choose; audio captured for per-app volume is processed in memory and never recorded. Full Disk Access is optional and used only for the cleanup scanner; protected directories are skipped according to macOS rules;</li><li>The app has no camera or microphone call. Its <code>Info.plist</code> explains Screen Recording, System Audio Recording and Apple Events only when those features are used.</li></ul>
   <h2>3. What reaches the network</h2>
   <p>Apart from the items below, the app initiates no network requests. Everything is HTTPS; plaintext HTTP is never used.</p>
   <h3>1. Checking for updates</h3>
@@ -124,6 +124,6 @@
     <p class="foot-copy">© 2026 Neeson &amp; Sea · LumePane · <a href="mailto:support@lumepane.com">support@lumepane.com</a></p>
   </div>
 </footer>
-<script src="site.js?v=9.3.0-orb1" defer></script>
+<script src="site.js?v=9.4.0-orb1" defer></script>
 </body>
 </html>

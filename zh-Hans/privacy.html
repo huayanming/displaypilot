@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lumepane.com/img/og-site.v901.png">
 <link rel="icon" href="../img/icon.png" type="image/png">
-<link rel="stylesheet" href="../style.css?v=9.3.0-style1">
+<link rel="stylesheet" href="../style.css?v=9.4.0-style1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"隐私政策","inLanguage":"zh-Hans","publisher":{"@type":"Organization","name":"LumePane"},"mainEntityOfPage":"https://lumepane.com/zh-Hans/privacy.html"}</script>
 </head>
 <body>
@@ -78,7 +78,7 @@
   <p>下面这些数据应用<strong>会用到、但只在你本机处理，永远不上传</strong>：</p>
   <ul><li>显示器型号、厂商 ID、型号 ID、EDID 全文与物理色域；</li><li>分辨率、刷新率、当前伽马表、亮度与色温数值；</li><li>磁盘容量、缓存目录大小、扫描结果与清理记录；</li><li>窗口标题与窗口位置（窗口布局与会话恢复需要，要你授权辅助功能后才读得到）；</li><li>滚轮事件与热键按键（滚动平滑、鼠标映射需要）。</li></ul>
   <p>另外这些尼森与海<strong>根本不碰</strong>：</p>
-  <ul><li>不上传显示器型号、EDID 或序列号——从来没有这类代码路径；</li><li>不上传使用时长、功能点击次数或启动次数；</li><li>不记录键盘输入。滚动平滑只读取滚轮事件的位移量；键盘只用于判断「按住 ⌘ 时绕过平滑」这一个状态；</li><li>不申请麦克风、屏幕录制与全盘访问权限。存储扫描是只读的，受系统保护的目录按 macOS 的规则直接跳过；</li><li>不采集画面与声音。应用里没有任何摄像头或麦克风调用。（<code>Info.plist</code> 里没有任何 <code>NS*UsageDescription</code> 键。）</li></ul>
+  <ul><li>不上传显示器型号、EDID 或序列号——从来没有这类代码路径；</li><li>不上传使用时长、功能点击次数或启动次数；</li><li>不记录键盘输入。滚动平滑只读取滚轮事件的位移量；键盘只用于判断「按住 ⌘ 时绕过平滑」这一个状态；</li><li>只有在你主动开始截图、滚动截图或录屏时，才会申请屏幕录制权限；录屏只写入你选择的目录；分应用音量所需的系统音频只在内存中处理，不录音、不保存。全盘访问是可选的，仅用于清理扫描；受系统保护的目录按 macOS 规则跳过；</li><li>应用没有摄像头或麦克风调用。只有使用对应功能时，<code>Info.plist</code> 才会解释屏幕录制、系统音频录制与 Apple Events 权限。</li></ul>
   <h2>三、真正联网的事</h2>
   <p>除了下面三项，应用不会主动发起任何网络请求。全部走 HTTPS，不使用明文 HTTP。</p>
   <h3>1. 检查更新</h3>
@@ -124,6 +124,6 @@
     <p class="foot-copy">© 2026 尼森与海 · LumePane</p>
   </div>
 </footer>
-<script src="../site.js?v=9.3.0-orb1" defer></script>
+<script src="../site.js?v=9.4.0-orb1" defer></script>
 </body>
 </html>

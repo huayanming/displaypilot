@@ -7,20 +7,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>LumePane 软件更新</description>
     <language>zh-Hans</language>
     <item>
-      <title>LumePane 9.3.0</title>
-      <pubDate>Sat, 24 Oct 2026 13:16:03 +0000</pubDate>
-      <sparkle:version>9.3.0</sparkle:version>
-      <sparkle:shortVersionString>9.3.0</sparkle:shortVersionString>
+      <title>LumePane 9.4.0</title>
+      <pubDate>Sat, 24 Oct 2026 13:49:06 +0000</pubDate>
+      <sparkle:version>9.4.0</sparkle:version>
+      <sparkle:shortVersionString>9.4.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <description sparkle:descriptionFormat="plain-text"><![CDATA[新增
-• 新增「应用」面板：已安装应用、按 bundle id 匹配的残留文件、用户 LaunchAgents 启动项审计。
-• 卸载与清理只移到废纸篓；系统应用、系统启动项和正在运行的应用受保护。
-• 魔丸新增「应用卸载」入口。]]></description>
+• 音频面板新增分应用音量（0–150%）与静音。
+• 使用 Core Audio process tap 与私有 aggregate device；音频只在内存处理，不录音、不保存。
+• 魔丸新增「分应用音频」入口。]]></description>
       <sparkle:fullReleaseNotesLink>https://lumepane.com/CHANGELOG.md</sparkle:fullReleaseNotesLink>
-      <enclosure url="https://lumepane.com/dl/LumePane-9.3.0.dmg" length="11185267" type="application/octet-stream" sparkle:edSignature="Yf1yHmGi2VoGLdM0uIglsVFzocEgvv3liLUOVjnfDh1qf3zKsHtGX4pkZmit2hhF1TE9w3JRKPNY3jfCP04IBQ=="></enclosure>
+      <enclosure url="https://lumepane.com/dl/LumePane-9.4.0.dmg" length="11290027" type="application/octet-stream" sparkle:edSignature="8WlgYAxbLMbK5N6S8Ck93gSNgdR2NebEPE+H9L34KZi1e1xQMsgyWG2wQYGgloA9PZGoGtPwmcE9bRoAZcmzCw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: CAEHCF+Xptr/IKPVpX5OMjZyS0/CKBp4MFA9+L+hedSX3ZZ7NED/du4kIFiU4hZTP3rRenorpaCfrIW0hO2NBg==
-length: 1623
+edSignature: 7YITo0uEcWyLNG32i9gS588dBDMqSZ16ltReW50ItEb1Kp2uSKE5hjFGZDu9qQkSBR/8riVzkZCZI4VvOyhGDA==
+length: 1572
 -->
